@@ -1,0 +1,58 @@
+<?php
+
+namespace App\Repositories;
+
+use App\Models\Admin\{{modelName}};
+use Illuminate\Support\Facades\Cache;
+use App\Contracts\{{modelName}}RepositoryInterface;
+use App\Http\Requests\{{modelName}}Request;
+
+class {{modelName}}Repository implements {{modelName}}RepositoryInterface
+{
+    // {{modelName}} Index
+    public function index{{modelName}}()
+    {
+        ${{modelNamePluralLowerCase}} = config('coderz.caching', true)
+            ? (Cache::has('{{modelNamePluralLowerCase}}') ? Cache::get('{{modelNamePluralLowerCase}}') : Cache::rememberForever('{{modelNamePluralLowerCase}}', function () {
+                return {{modelName}}::latest()->get();
+            }))
+            : {{modelName}}::latest()->get();
+        return compact('{{modelNamePluralLowerCase}}');
+    }
+
+    // {{modelName}} Create
+    public function create{{modelName}}()
+    {
+        //
+    }
+
+    // {{modelName}} Store
+    public function store{{modelName}}({{modelName}}Request $request)
+    {
+        {{modelName}}::create($request->validated());
+    }
+
+    // {{modelName}} Show
+    public function show{{modelName}}({{modelName}} ${{modelNameLowerCase}})
+    {
+        return compact('{{modelNameLowerCase}}');
+    }
+
+    // {{modelName}} Edit
+    public function edit{{modelName}}({{modelName}} ${{modelNameLowerCase}})
+    {
+        return compact('{{modelNameLowerCase}}');
+    }
+
+    // {{modelName}} Update
+    public function update{{modelName}}({{modelName}}Request $request, {{modelName}} ${{modelNameLowerCase}})
+    {
+        ${{modelNameLowerCase}}->update($request->validated());
+    }
+
+    // {{modelName}} Destroy
+    public function destroy{{modelName}}({{modelName}} ${{modelNameLowerCase}})
+    {
+        ${{modelNameLowerCase}}->delete();
+    }
+}

@@ -1,0 +1,142 @@
+- var theme_customizer      = true;
+- var tooltip               = true;
+- var echart                = true;
+- var echart_pie            = true;
+- var page_echart           = true;
+- var sidebar               = true;
+- var scrollbar             = true;
+doctype html
+html(lang='en')
+  include ../../components/header-files
+  body
+    include ../../components/taptop
+    // page-wrapper Start
+    #pageWrapper.page-wrapper.compact-wrapper
+      include ../../components/header
+      // Page Body Start
+      .page-body-wrapper.sidebar-icon
+        include ../../components/sidebar
+        .page-body
+          .container-fluid
+            .page-title
+              .row
+                .col-6
+                  h3
+                    | Echarts
+
+                .col-6
+                  ol.breadcrumb
+                    li.breadcrumb-item
+                      a(href='index.html')                                        
+                        i(data-feather="home")
+                    li.breadcrumb-item Charts
+                    li.breadcrumb-item.active Echarts
+          // Container-fluid starts
+          .container-fluid
+            .row
+              .col-sm-12
+                .card
+                  .card-header
+                    h5
+                      | Basic Area Chart 
+                  .card-body
+                    #area-echart.apache-cotainer
+              .col-xl-6.box-col-12
+                .card
+                  .card-header
+                    h5 Area pie chart
+                  .card-body
+                    #echart-pie.apache-cotainer
+              .col-xl-6.box-col-12
+                .card
+                  .card-header
+                    h5 Bar polar chart
+                  .card-body
+                    #echart-polar.apache-cotainer
+              .col-xl-12
+                .card
+                  .card-header
+                    h5 Bar chart
+                  .card-body
+                    #echart-bar.apache-cotainer-large    
+              .col-xl-12
+                .card
+                  .card-header
+                    h5 Bar chart 2
+                  .card-body
+                    #echart-bar2.apache-cotainer-large
+              .col-xl-6.box-col-12
+                .card
+                  .card-header
+                    h5 Boxplot chart
+                  .card-body
+                    #echart-boxplot.apache-cotainer.boxplot-cotainer
+              .col-xl-6.box-col-12
+                .card
+                  .card-header
+                    h5 lines clip chart
+                  .card-body.clip-chart-wrapper
+                    #lines-clip.apache-cotainer
+              .col-xl-12
+                .card
+                  .card-header
+                    h5 line visual chart
+                  .card-body
+                    #line-visual.apache-cotainer
+              .col-xl-6
+                .card
+                  .card-header
+                    h5 angle chart
+                  .card-body
+                    #texture-bar-by-clipPath.apache-cotainer 
+              .col-xl-6
+                .card
+                  .card-header
+                    h5 gauge chart
+                  .card-body
+                    #echart-gauge.apache-cotainer 
+              .col-xl-12
+                .card
+                  .card-header
+                    h5 line visual chart 2
+                  .card-body
+                    #line-visulH.apache-cotainer 
+              .col-xl-12
+                .card
+                  .card-header
+                    h5 pictorial repeat chart
+                  .card-body
+                    #dynamic-data.apache-cotainer
+              .col-xl-6.xl-100.box-col-12
+                .card
+                  .card-header
+                    h5 radar chart
+                  .card-body
+                    #echart-radar.apache-cotainer
+              .col-xl-6.xl-100.box-col-12
+                .card
+                  .card-header
+                    h5 polar line chart
+                  .card-body
+                    #main0.apache-container.polar-line
+              .col-xl-6
+                .card
+                  .card-header
+                    h5 pie rich text chart
+                  .card-body
+                    #echart-pierich.apache-container
+              .col-xl-6
+                .card
+                  .card-header
+                    h5 pictorial single chart
+                  .card-body
+                    #dotted.apache-container
+              .col-xl-12
+                .card.note.p-20.d-inline-block.w-100
+                  |  Echarts for more options please refer 
+                  a(href="https://echarts.apache.org/examples/en/index.html" target="_blank") echart Official site  
+                  | And 
+                  a(href="https://github.com/apache/echarts" target="_blank") githup link
+          // Container-fluid Ends
+        include ../../components/footer
+    include ../../components/footer-files

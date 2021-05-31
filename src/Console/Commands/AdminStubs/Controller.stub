@@ -1,0 +1,100 @@
+<?php
+
+namespace App\Http\Controllers\Admin;
+
+use App\Models\Admin\{{modelName}};
+use Illuminate\Http\Request;
+use App\Http\Requests\{{modelName}}Request;
+use App\Http\Controllers\Controller;
+use App\Contracts\{{modelName}}RepositoryInterface;
+
+class {{modelName}}Controller extends Controller
+{
+    protected ${{modelNameSingularLowerCase}}RepositoryInterface;
+
+    public function __construct({{modelName}}RepositoryInterface ${{modelNameSingularLowerCase}}RepositoryInterface)
+    {
+        $this->{{modelNameSingularLowerCase}}RepositoryInterface = ${{modelNameSingularLowerCase}}RepositoryInterface;
+        $this->authorizeResource({{modelName}}::class, '{{modelNameSingularLowerCase}}');
+    }
+
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        return view('admin.{{modelNameSingularLowerCase}}.index', $this->{{modelNameSingularLowerCase}}RepositoryInterface->index{{modelName}}());
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        return view('admin.{{modelNameSingularLowerCase}}.create');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \App\Http\Requests\{{modelName}}Requestt  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store({{modelName}}Request $request)
+    {
+        $this->{{modelNameSingularLowerCase}}RepositoryInterface->store{{modelName}}($request);
+        return redirect(adminRedirectRoute('{{modelNameSingularLowerCase}}'))->withSuccess('{{modelName}} Created Successfully.');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\{{modelName}}  ${{modelNameSingularLowerCase}}
+     * @return \Illuminate\Http\Response
+     */
+    public function show({{modelName}} ${{modelNameSingularLowerCase}})
+    {
+        return view('admin.{{modelNameSingularLowerCase}}.show', $this->{{modelNameSingularLowerCase}}RepositoryInterface->show{{modelName}}(${{modelNameSingularLowerCase}}));
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Models\{{modelName}}  ${{modelNameSingularLowerCase}}
+     * @return \Illuminate\Http\Response
+     */
+    public function edit({{modelName}} ${{modelNameSingularLowerCase}})
+    {
+        return view('admin.{{modelNameSingularLowerCase}}.edit', $this->{{modelNameSingularLowerCase}}RepositoryInterface->edit{{modelName}}(${{modelNameSingularLowerCase}}));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \App\Http\Requests\{{modelName}}Request  $request
+     * @param  \App\Models\{{modelName}}  ${{modelNameSingularLowerCase}}
+     * @return \Illuminate\Http\Response
+     */
+    public function update({{modelName}}Request $request, {{modelName}} ${{modelNameSingularLowerCase}})
+    {
+        $this->{{modelNameSingularLowerCase}}RepositoryInterface->update{{modelName}}($request, ${{modelNameSingularLowerCase}});
+        return redirect(adminRedirectRoute('{{modelNameSingularLowerCase}}'))->withInfo('{{modelName}} Updated Successfully.');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\{{modelName}}  ${{modelNameSingularLowerCase}}
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy({{modelName}} ${{modelNameSingularLowerCase}})
+    {
+        $this->{{modelNameSingularLowerCase}}RepositoryInterface->destroy{{modelName}}(${{modelNameSingularLowerCase}});
+        return redirect(adminRedirectRoute('{{modelNameSingularLowerCase}}'))->withFail('{{modelName}} Deleted Successfully.');
+    }
+}

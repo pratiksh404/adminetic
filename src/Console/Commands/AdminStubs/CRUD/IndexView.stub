@@ -1,0 +1,41 @@
+@extends('adminetic::admin.layouts.app')
+
+@section('content')
+<x-adminetic.index-page name="{{modelNameSinglularLowerCase}}" route="{{modelNameSinglularLowerCase}}">
+    <x-slot name="content">
+        {{-- ================================Card================================ --}}
+        <table class="table table-striped table-bordered datatable">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (${{modelNamePluralLowerCase}} as ${{modelNameSinglularLowerCase}})
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <x-adminetic.admin.action :model="${{modelNameSinglularLowerCase}}" route="{{modelNameSinglularLowerCase}}" />
+                    </td>
+                </tr>
+                @endforeach
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Actions</th>
+                </tr>
+            </tfoot>
+        </table>
+        {{-- =================================================================== --}}
+    </x-slot>
+</x-adminetic-index-page>
+@endsection
+
+@section('custom_js')
+@include('adminetic::admin.layouts.modules.{{modelNameSinglularLowerCase}}.scripts')
+@endsection

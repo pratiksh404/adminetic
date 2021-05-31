@@ -1,0 +1,80 @@
+<?php
+
+namespace App\Http\Controllers\Admin\API\Restful;
+
+use App\Models\Admin\{{modelName}};
+use App\Http\Requests\{{modelName}}Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use App\Contracts\{{modelName}}RepositoryInterface;
+
+class {{modelName}}ApiController extends Controller
+{
+
+    protected ${{modelNameSingularLowerCase}}RepositoryInterface;
+
+    public function __construct({{modelName}}RepositoryInterface ${{modelNameSingularLowerCase}}RepositoryInterface)
+    {
+        $this->{{modelNameSingularLowerCase}}RepositoryInterface = ${{modelNameSingularLowerCase}}RepositoryInterface;
+        $this->authorizeResource({{modelName}}::class, '{{modelNameSingularLowerCase}}');
+    }
+    
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        return response()->json($this->{{modelNameSingularLowerCase}}RepositoryInterface->index{{modelName}}(), 200);
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store({{modelName}}Request $request $request)
+    {
+        ${{modelNameSingularLowerCase}} = $this->{{modelNameSingularLowerCase}}RepositoryInterface->store{{modelName}}($request);
+        return response()->json($this->{{modelNameSingularLowerCase}}RepositoryInterface->store{{modelName}}(), 200);
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Admin\{{modelName}}  ${{modelNameSingularLowerCase}}
+     * @return \Illuminate\Http\Response
+     */
+    public function show({{modelName}} ${{modelNameSingularLowerCase}})
+    {
+         return response()->json(${{modelNameSingularLowerCase}}, 200);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Admin\{{modelName}}  ${{modelNameSingularLowerCase}}
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, {{modelName}} ${{modelNameSingularLowerCase}})
+    {
+         $this->{{modelNameSingularLowerCase}}RepositoryInterface->update{{modelName}}($request, ${{modelNameSingularLowerCase}});
+         return response()->json(${{modelNameSingularLowerCase}}, 200);
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\Admin\Faq  $faq
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy({{modelName}} ${{modelNameSingularLowerCase}})
+    {
+         $deleted_item = ${{modelNameSingularLowerCase}};
+         ${{modelNameLowerCase}}->delete();
+          return response()->json($deleted_item, 200);
+    }
+}

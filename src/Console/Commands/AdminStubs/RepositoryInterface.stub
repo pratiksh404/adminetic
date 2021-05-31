@@ -1,0 +1,23 @@
+<?php
+
+namespace App\Contracts;
+
+use App\Models\Admin\{{modelName}};
+use App\Http\Requests\{{modelName}}Request;
+
+interface {{modelName}}RepositoryInterface
+{
+    public function index{{modelName}}();
+
+    public function create{{modelName}}();
+
+    public function store{{modelName}}({{modelName}}Request $request);
+
+    public function show{{modelName}}({{modelName}} ${{modelName}});
+
+    public function edit{{modelName}}({{modelName}} ${{modelName}});
+
+    public function update{{modelName}}({{modelName}}Request $request, {{modelName}} ${{modelName}});
+
+    public function destroy{{modelName}}({{modelName}} ${{modelName}});
+}

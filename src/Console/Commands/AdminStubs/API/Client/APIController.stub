@@ -1,0 +1,34 @@
+<?php
+
+namespace App\Http\Controllers\API;
+
+use App\Models\Admin\{{modelName}};
+use App\Http\Resources\Client\{{modelName}}\{{modelName}}Collection;
+use App\Http\Resources\Client\{{modelName}}\{{modelName}}Resource;
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+
+class {{modelName}}ApiController extends Controller
+{
+ 
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        return new {{modelName}}Collection({{modelName}}::all());
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Admin\{{modelName}}  ${{modelNameSingularLowerCase}}
+     * @return \Illuminate\Http\Response
+     */
+    public function show({{modelName}} ${{modelNameSingularLowerCase}})
+    {
+        return new {{modelName}}Resource(${{modelNameSingularLowerCase}});
+    }
+}

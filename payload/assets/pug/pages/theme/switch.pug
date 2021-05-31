@@ -1,0 +1,360 @@
+- var theme_customizer      = true;
+- var tooltip               = true;
+- var sidebar               = true;
+- var scrollbar             = true;
+doctype html
+html(lang='en')
+  include ../../components/header-files
+  body
+    include ../../components/taptop
+    // page-wrapper Start
+    #pageWrapper.page-wrapper.compact-wrapper
+      include ../../components/header
+      // Page Body Start
+      .page-body-wrapper
+        include ../../components/sidebar
+        .page-body
+          .container-fluid
+            .page-title
+              .row
+                .col-6
+                  h3
+                    | Switch
+                .col-6
+                  ol.breadcrumb
+                    li.breadcrumb-item
+                      a(href='index.html')                                        
+                        i(data-feather="home")
+                    li.breadcrumb-item Form Widgets
+                    li.breadcrumb-item.active Switch
+          // Container-fluid starts                    
+          .container-fluid
+            .row
+              .col-sm-12.col-xl-6.col-lg-12.col-md-6
+                .card
+                  .card-header
+                    h5 Basic Switch
+                  .card-body.row.switch-showcase.height-equal
+                    .col-sm-
+                      .media.mb-2
+                        label.col-form-label.m-r-10 Bootstrap Switch
+                        .media-body.text-end
+                          .form-check.form-switch
+                            input#flexSwitchCheckDefault.form-check-input(type='checkbox')
+                      .media.mb-2
+                        label.col-form-label.m-r-10 Bootstrap Disabled
+                        .media-body.text-end
+                          .form-check.form-switch
+                            input#flexSwitchCheckDisabled.form-check-input(type='checkbox' disabled='')
+                      .media.mb-2
+                        label.col-form-label.m-r-10 Default Switch
+                        .media-body.text-end
+                          label.switch
+                            input(type='checkbox', checked='')
+                            span.switch-state
+                      .media.mb-2
+                        label.col-form-label.m-r-10 Unhecked Switch
+                        .media-body.text-end
+                          label.switch
+                            input(type='checkbox')
+                            span.switch-state
+                      .media.mb-2
+                        label.col-form-label.m-r-10 With Icon
+                        .media-body.text-end.icon-state
+                          label.switch
+                            input(type='checkbox', checked='')
+                            span.switch-state
+                      .media.mb-2
+                        label.col-form-label.m-r-10 Unhecked With Icon
+                        .media-body.text-end.icon-state
+                          label.switch
+                            input(type='checkbox')
+                            span.switch-state
+                      .media.mb-2
+                        label.col-form-label.m-r-10 Disabled State
+                        .media-body.text-end
+                          label.switch
+                            input(type='checkbox', disabled='')
+                            span.switch-state
+                      .media
+                        label.col-form-label.m-r-10 Disabled With Icon
+                        .media-body.text-end.icon-state
+                          label.switch
+                            input(type='checkbox', disabled='')
+                            span.switch-state
+              .col-sm-12.col-xl-6.col-lg-12.col-md-6
+                .card
+                  .card-header
+                    h5 Switch Color
+                  .card-body.row.switch-showcase.height-equal
+                    .col-sm-12
+                      .media.mb-2
+                        label.col-form-label.m-r-10 Bootstrap Switch
+                        .media-body.text-end
+                          .form-check.form-switch
+                            input#flexSwitchCheckChecked.form-check-input(type='checkbox' data-onstyle='secondary' checked='')
+                      .media.mb-2
+                        label.col-form-label.m-r-10 Disabled checked
+                        .media-body.text-end
+                          .form-check.form-switch
+                            input#flexSwitchCheckCheckedDisabled.form-check-input(type='checkbox' checked='' disabled='')
+                      .media.mb-2
+                        label.col-form-label.m-r-10 Primary Color
+                        .media-body.text-end.icon-state
+                          label.switch
+                            input(type='checkbox', checked='')
+                            span.switch-state.bg-primary
+                      .media.mb-2
+                        label.col-form-label.m-r-10 Secondary Color
+                        .media-body.text-end.icon-state
+                          label.switch
+                            input(type='checkbox', checked='')
+                            span.switch-state.bg-secondary
+                      .media.mb-2
+                        label.col-form-label.m-r-10 Success Color
+                        .media-body.text-end.icon-state
+                          label.switch
+                            input(type='checkbox', checked='')
+                            span.switch-state.bg-success
+                      .media.mb-2
+                        label.col-form-label.m-r-10 Info Color
+                        .media-body.text-end.icon-state
+                          label.switch
+                            input(type='checkbox', checked='')
+                            span.switch-state.bg-info
+                      .media.mb-2
+                        label.col-form-label.m-r-10 Warning Color
+                        .media-body.text-end.icon-state
+                          label.switch
+                            input(type='checkbox', checked='')
+                            span.switch-state.bg-warning
+                      .media
+                        label.col-form-label.m-r-10 Danger Color
+                        .media-body.text-end.icon-state
+                          label.switch
+                            input(type='checkbox', checked='')
+                            span.switch-state.bg-danger
+              .col-sm-12.col-xl-6.col-lg-12.col-md-6
+                .card
+                  .card-header
+                    h5 Switch Outline
+                  .card-body.row.switch-showcase
+                    .col-sm-12
+                      .media.mb-2
+                        label.col-form-label.m-r-10
+                          | Primary Color
+                        .media-body.text-end.icon-state.switch-outline
+                          label.switch
+                            input(type='checkbox', checked='')
+                            span.switch-state.bg-primary
+                      .media.mb-2
+                        label.col-form-label.m-r-10
+                          | Secondary Color
+                        .media-body.text-end.icon-state.switch-outline
+                          label.switch
+                            input(type='checkbox', checked='')
+                            span.switch-state.bg-secondary
+                      .media.mb-2
+                        label.col-form-label.m-r-10 Success Color
+                        .media-body.text-end.icon-state.switch-outline
+                          label.switch
+                            input(type='checkbox', checked='')
+                            span.switch-state.bg-success
+                      .media.mb-2
+                        label.col-form-label.m-r-10 Info Color
+                        .media-body.text-end.icon-state.switch-outline
+                          label.switch
+                            input(type='checkbox', checked='')
+                            span.switch-state.bg-info
+                      .media.mb-2
+                        label.col-form-label.m-r-10 Warning Color
+                        .media-body.text-end.icon-state.switch-outline
+                          label.switch
+                            input(type='checkbox', checked='')
+                            span.switch-state.bg-warning
+                      .media
+                        label.col-form-label.m-r-10 Danger Color
+                        .media-body.text-end.icon-state.switch-outline
+                          label.switch
+                            input(type='checkbox', checked='')
+                            span.switch-state.bg-danger
+              .col-sm-12.col-xl-6.col-lg-12.col-md-6
+                .card
+                  .card-header
+                    h5 Switch unchecked Outline
+                  .card-body.row.switch-showcase
+                    .col-sm-12
+                      .media.mb-2
+                        label.col-form-label.m-r-10
+                          | Primary Color
+                        .media-body.text-end.icon-state.switch-outline
+                          label.switch
+                            input(type='checkbox')
+                            span.switch-state.bg-primary
+                      .media.mb-2
+                        label.col-form-label.m-r-10
+                          | Secondary Color
+                        .media-body.text-end.icon-state.switch-outline
+                          label.switch
+                            input(type='checkbox')
+                            span.switch-state.bg-secondary
+                      .media.mb-2
+                        label.col-form-label.m-r-10 Success Color
+                        .media-body.text-end.icon-state.switch-outline
+                          label.switch
+                            input(type='checkbox')
+                            span.switch-state.bg-success
+                      .media.mb-2
+                        label.col-form-label.m-r-10 Info Color
+                        .media-body.text-end.icon-state.switch-outline
+                          label.switch
+                            input(type='checkbox')
+                            span.switch-state.bg-info
+                      .media.mb-2
+                        label.col-form-label.m-r-10 Warning Color
+                        .media-body.text-end.icon-state.switch-outline
+                          label.switch
+                            input(type='checkbox')
+                            span.switch-state.bg-warning
+                      .media
+                        label.col-form-label.m-r-10 Danger Color
+                        .media-body.text-end.icon-state.switch-outline
+                          label.switch
+                            input(type='checkbox')
+                            span.switch-state.bg-danger
+              .col-sm-12.col-xl-4
+                .card
+                  .card-header
+                    h5 Switch Sizing
+                  .card-body.row.switch-showcase
+                    .col-sm-12
+                      .media.mb-2
+                        label.col-form-label.m-r-10 Large Size
+                        .media-body.text-end.switch-lg
+                          label.switch
+                            input(type='checkbox', checked='')
+                            span.switch-state
+                      .media.mb-2
+                        label.col-form-label.m-r-10 Large Unhecked
+                        .media-body.text-end.switch-lg
+                          label.switch
+                            input(type='checkbox')
+                            span.switch-state
+                      .media.mb-2
+                        label.col-form-label.m-r-10 Normal Size
+                        .media-body.text-end
+                          label.switch
+                            input(type='checkbox', checked='')
+                            span.switch-state
+                      .media.mb-2
+                        label.col-form-label.m-r-10 Normal Unhecked
+                        .media-body.text-end
+                          label.switch
+                            input(type='checkbox')
+                            span.switch-state
+                      .media.mb-2
+                        label.col-form-label.m-r-10 Small Size
+                        .media-body.text-end.switch-sm
+                          label.switch
+                            input(type='checkbox', checked='')
+                            span.switch-state
+                      .media
+                        label.col-form-label.m-r-10 Small Size Unhecked
+                        .media-body.text-end.switch-sm
+                          label.switch
+                            input(type='checkbox')
+                            span.switch-state
+              .col-sm-12.col-xl-4
+                .card
+                  .card-header
+                    h5 Switch With icon
+                  .card-body.row.switch-showcase
+                    .col-sm-12
+                      .media.mb-2
+                        label.col-form-label.m-r-10 Large Size
+                        .media-body.text-end.switch-lg.icon-state
+                          label.switch
+                            input(type='checkbox', checked='')
+                            span.switch-state
+                      .media.mb-2
+                        label.col-form-label.m-r-10 Large Unhecked
+                        .media-body.text-end.switch-lg.icon-state
+                          label.switch
+                            input(type='checkbox')
+                            span.switch-state
+                      .media.mb-2
+                        label.col-form-label.m-r-10 Normal Size
+                        .media-body.text-end.icon-state
+                          label.switch
+                            input(type='checkbox', checked='')
+                            span.switch-state
+                      .media.mb-2
+                        label.col-form-label.m-r-10 Normal Unhecked
+                        .media-body.text-end.icon-state
+                          label.switch
+                            input(type='checkbox')
+                            span.switch-state
+                      .media.mb-2
+                        label.col-form-label.m-r-10 Small Size
+                        .media-body.text-end.switch-sm.icon-state
+                          label.switch
+                            input(type='checkbox', checked='')
+                            span.switch-state
+                      .media
+                        label.col-form-label.m-r-10 Small Size Unhecked
+                        .media-body.text-end.switch-sm.icon-state
+                          label.switch
+                            input(type='checkbox')
+                            span.switch-state
+              .col-sm-12.col-xl-4
+                .card
+                  .card-header
+                    h5 Switch With color
+                  .card-body.row.switch-showcase
+                    .col-sm-12
+                      .media.mb-2
+                        label.col-form-label.m-r-10
+                          | Primary Color (Disabled)
+                        .media-body.text-end.switch-lg.icon-state
+                          label.switch
+                            input(type='checkbox', checked='', disabled='')
+                            span.switch-state.bg-primary
+                      .media.mb-2
+                        label.col-form-label.m-r-10
+                          | Secondary Color
+                        .media-body.text-end.switch-lg.icon-state
+                          label.switch
+                            input(type='checkbox', checked='')
+                            span.switch-state.bg-secondary
+                      .media.mb-2
+                        label.col-form-label.m-r-10
+                          | Success Color
+                        .media-body.text-end.icon-state
+                          label.switch
+                            input(type='checkbox', checked='')
+                            span.switch-state.bg-success
+                      .media.mb-2
+                        label.col-form-label.m-r-10
+                          | Info Color
+                        .media-body.text-end.icon-state
+                          label.switch
+                            input(type='checkbox', checked='')
+                            span.switch-state.bg-info
+                      .media.mb-2
+                        label.col-form-label.m-r-10
+                          | Warning Color
+                        .media-body.text-end.switch-sm.icon-state
+                          label.switch
+                            input(type='checkbox', checked='')
+                            span.switch-state.bg-warning
+                      .media
+                        label.col-form-label.m-r-10
+                          | Danger Color
+                        .media-body.text-end.switch-sm.icon-state
+                          label.switch
+                            input(type='checkbox', checked='')
+                            span.switch-state.bg-danger
+
+          // Container-fluid Ends
+        include ../../components/footer
+    include ../../components/footer-files   

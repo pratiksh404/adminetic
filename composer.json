@@ -1,0 +1,66 @@
+{
+    "name": "pratiksh/adminetic",
+    "description": "Admin Panel Starter Kit",
+    "keywords": [
+        "pratiksh",
+        "adminetic"
+    ],
+    "homepage": "https://github.com/pratiksh/adminetic",
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Pratik Shrestha",
+            "email": "pratikdai404@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.4|^8.0",
+        "illuminate/support": "^8.0",
+        "drh2so4/thumbnail": "^1.0",
+        "laravel/socialite": "^5.2",
+        "laravel/ui": "^3.2",
+        "livewire/livewire": "^2.4",
+        "spatie/laravel-activitylog": "^3.17"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^6.0",
+        "phpunit/phpunit": "^9.0",
+        "barryvdh/laravel-debugbar": "^3.5",
+        "beyondcode/laravel-query-detector": "^1.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Pratiksh\\Adminetic\\": "src",
+            "Pratiksh\\Adminetic\\Database\\Seeds\\": "database/seeders/"
+        },
+         "files": [
+          "src/Helpers/AdminRouteHelper.php",
+          "src/Helpers/AdminHelper.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Pratiksh\\Adminetic\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Pratiksh\\Adminetic\\Providers\\AdmineticServiceProvider"
+            ],
+            "aliases": {
+                "Adminetic": "Pratiksh\\Adminetic\\Facades\\AdmineticFacade"
+            }
+        }
+    }
+}

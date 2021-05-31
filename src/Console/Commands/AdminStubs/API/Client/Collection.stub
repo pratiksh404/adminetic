@@ -1,0 +1,20 @@
+<?php
+
+namespace App\Http\Resources\Client\{{modelName}};
+
+use App\Http\Resources\Client\{{modelName}}\{{modelName}}Resource;
+use Illuminate\Http\Resources\Json\ResourceCollection;
+
+class {{modelName}}Collection extends ResourceCollection
+{
+    /**
+     * Transform the resource collection into an array.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return array
+     */
+    public function toArray($request)
+    {
+        return {{modelName}}Resource::collection($this->collection);
+    }
+}

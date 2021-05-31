@@ -1,0 +1,27 @@
+/**=====================
+    Scrollbar CSS Start
+==========================**/
+[data-simplebar] {
+    position: unset;
+}
+.simplebar-mask {
+    top: 100px;
+}
+.simplebar-track {
+    right: -2px;
+    &.simplebar-vertical {
+        top: 100px;
+        width: 10px;
+    }
+    &.simplebar-horizontal {
+        visibility: hidden !important;
+    }
+}
+.simplebar-scrollbar {
+    &:before {
+        background: rgba($primary-color, 0.2);
+    }
+}
+/**=====================
+     Scrollbar CSS Ends
+==========================**/

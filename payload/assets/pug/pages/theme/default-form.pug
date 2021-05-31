@@ -1,0 +1,188 @@
+- var theme_customizer      = true;
+- var tooltip               = true;
+- var sidebar               = true;
+- var scrollbar             = true;
+doctype html
+html(lang='en')
+  include ../../components/header-files
+  body
+    include ../../components/taptop
+    // page-wrapper Start
+    #pageWrapper.page-wrapper.compact-wrapper
+      include ../../components/header
+      // Page Body Start
+      .page-body-wrapper
+        include ../../components/sidebar
+        .page-body
+          .container-fluid
+            .page-title
+              .row
+                .col-6
+                  h3
+                    | Default Forms
+
+                .col-6
+                  ol.breadcrumb
+                    li.breadcrumb-item
+                      a(href='index.html')                                        
+                        i(data-feather="home")
+                    li.breadcrumb-item  Form Layout
+                    li.breadcrumb-item.active  Default Forms
+          // Container-fluid starts
+          .container-fluid
+            .row
+              .col-sm-12.col-xl-6
+                .row
+                  .col-sm-12
+                    .card
+                      .card-header
+                        h5 Default Form Layout
+                        span
+                          | Using the 
+                          a(href='#') card
+                          |  component, you can extend the default collapse behavior to create an accordion.
+                      .card-body
+                        form.theme-form
+                          .mb-3
+                            label.col-form-label.pt-0(for='exampleInputEmail1') Email address
+                            input#exampleInputEmail1.form-control(type='email' aria-describedby='emailHelp' placeholder='Enter email')
+                            small#emailHelp.form-text.text-muted We'll never share your email with anyone else.
+                          .mb-3
+                            label.col-form-label.pt-0(for='exampleInputPassword1') Password
+                            input#exampleInputPassword1.form-control(type='password' placeholder='Password')
+                          .checkbox.p-0
+                            input#dafault-checkbox(type='checkbox')
+                            label.mb-0(for='dafault-checkbox') Remember my preference
+                      .card-footer.text-end
+                        button.btn.btn-primary Submit
+                        button.btn.btn-secondary Cancel
+                  .col-sm-12
+                    .card
+                      .card-header
+                        h5 Horizontal Form Layout
+                        span
+                          | Using the 
+                          a(href='#') card
+                          |  component, you can extend the default collapse behavior to create an accordion.
+                      .card-body
+                        form.theme-form
+                          .mb-3.row
+                            label.col-sm-3.col-form-label(for='inputEmail3') Email
+                            .col-sm-9
+                              input#inputEmail3.form-control(type='email' placeholder='Email')
+                          .mb-3.row
+                            label.col-sm-3.col-form-label(for='inputPassword3') Password
+                            .col-sm-9
+                              input#inputPassword3.form-control(type='password' placeholder='Password')
+                          .mb-3.row
+                            label.col-sm-3.col-form-label(for='inputPassword3') Contact Number
+                            .col-sm-9
+                              input#inputnumber.form-control(type='number' placeholder='Contact')
+                          .mb-3.row
+                            label.col-sm-3.col-form-label(for='inputPassword3') Company name
+                            .col-sm-9
+                              input#url.form-control(type='text' placeholder='Company name')
+                          .mb-3.row
+                            label.col-sm-3.col-form-label(for='inputPassword3') Website
+                            .col-sm-9
+                              input#Website.form-control(type='url' placeholder='Website')
+                          fieldset.mb-3
+                            .row
+                              label.col-form-label.col-sm-3.pt-0 Radios
+                              .col-sm-9
+                                .form-check.radio.radio-primary
+                                  input#radio11.form-check-input(type='radio' name='radio1' value='option1')
+                                  label.form-check-label(for='radio11') Option 1
+                                .form-check.radio.radio-primary
+                                  input#radio22.form-check-input(type='radio' name='radio1' value='option1')
+                                  label.form-check-label(for='radio22') Option 2
+                                .form-check.radio.radio-primary
+                                  input#radio33.form-check-input(type='radio' name='radio1' value='option1' disabled='')
+                                  label.form-check-label(for='radio33') Disabled
+                                .form-check.radio.radio-primary
+                                  input#radio44.form-check-input(type='radio' name='radio1' value='option1' checked='')
+                                  label.form-check-label(for='radio44') Option 3
+                                .form-check.radio.radio-primary
+                                  input#radio55.form-check-input(type='radio' name='radio1' value='option1' checked='')
+                                  label.form-check-label(for='radio44') Option 4
+                          .row.mb-0
+                            label.col-sm-3.col-form-label.pb-0 Checkboxes
+                            .col-sm-9
+                              .mb-0
+                                .form-check.form-check-inline.checkbox.checkbox-primary
+                                  input#inline-form-1.form-check-input(type='checkbox')
+                                  label.form-check-label(for='inline-form-1') Option 1
+                                .form-check.form-check-inline.checkbox.checkbox-primary
+                                  input#inline-form-2.form-check-input(type='checkbox')
+                                  label.form-check-label(for='inline-form-2') Option 1
+                      .card-footer.text-end
+                        button.btn.btn-primary Submit
+                        button.btn.btn-secondary Cancel
+              .col-sm-12.col-xl-6
+                .row
+                  .col-sm-12
+                    .card
+                      .card-header
+                        h5 Mega form
+                      .card-body
+                        form.theme-form.mega-form
+                          h6 Account Information
+                          .mb-3
+                            label.col-form-label Your Name
+                            input.form-control(type='text' placeholder='your Name')
+                          .mb-3
+                            label.col-form-label Email Address
+                            input.form-control(type='email' placeholder='Enter email')
+                          .mb-3
+                            label.col-form-label Contact Number
+                            input.form-control(type='Number' placeholder='Enter contact number')
+                          hr.mt-4.mb-4
+                          h6 Company Information
+                          .mb-3
+                            label.col-form-label Company Name
+                            input.form-control(type='text', placeholder='Company Name')
+                          .mb-3
+                            label.col-form-label Website
+                            input.form-control(type='text', placeholder='Website')
+                        hr.mt-4.mb-4
+                        h6.pb-3.mb-0 Billing Information
+                        form.form-space.theme-form.row
+                          .col-auto
+                            input.form-control(type='text' placeholder='Name On Card')
+                          .col-auto
+                            input.form-control(type='text' name='inputPassword' placeholder='Card Number')
+                          .col-auto
+                            input.form-control(type='text' name='inputPassword' placeholder='Zip Code')
+                      .card-footer.text-end
+                        button.btn.btn-primary Submit
+                        button.btn.btn-secondary Cancel
+                  .col-xl-12
+                    .card
+                      .card-header
+                        h5 Inline Form
+                        span
+                          | Use
+                          code .form-inline
+                          | class in the form to style with inline fields.
+                      .card-body
+                        h6 Inline Form with Label
+                        form.row.theme-form.mt-3
+                          .col-xxl-4.mb-3.d-flex
+                            label.col-form-label.pe-2(for='inputInlineUsername') Username
+                            input#inputInlineUsername.form-control(type='text' name='inputUsername' placeholder='Username' autocomplete='off')
+                          .col-xxl-4.mb-3.d-flex
+                            label.col-form-label.pe-2(for='inputInlinePassword') Password
+                            input#inputInlinePassword.form-control(type='password' name='inputPassword' placeholder='Password' autocomplete='off')
+                          .col-xxl-4.mb-3.d-flex
+                            button.btn.btn-primary Login
+                        h6 Inline Form without Label
+                        form.row.row-cols-sm-3.theme-form.mt-3.form-bottom
+                          .mb-3.d-flex
+                            input.form-control(type='text' name='inputUnlabelUsername' placeholder='Username' autocomplete='off')
+                          .mb-3.d-flex
+                            input#inputUnlabelPassword.form-control(type='password' name='inputPassword' placeholder='Password' autocomplete='off')
+                          .mb-3.d-flex
+                            button.btn.btn-secondary Login
+          // Container-fluid Ends
+        include ../../components/footer
+    include ../../components/footer-files
