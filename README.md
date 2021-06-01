@@ -5,6 +5,7 @@
 [![Issues](https://img.shields.io/github/issues/pratiksh404/adminetic)](https://github.com/pratiksh404/adminetic_blog/issues) [![Stars](https://img.shields.io/github/stars/pratiksh404/adminetic)](https://github.com/pratiksh404/adminetic_blog/stargazers) [![License](https://img.shields.io/github/license/pratiksh404/adminetic)](https://github.com/pratiksh404/adminetic/blob/master/LICENSE)
 
 Headstart your project with adminetic admin panel with single command.
+Note : Package is in testing phase.
 
 #### Contains : -
 
