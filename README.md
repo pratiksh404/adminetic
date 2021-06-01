@@ -1,6 +1,6 @@
 # Adminetic Admin Panel
 
-![Adminetic](https://github.com/pratiksh404/adminetic/blob/master/payload/static/documentation/banner.jpg)
+![Adminetic](https://github.com/pratiksh404/adminetic/blob/main/payload/static/documentation/banner.png)
 
 [![Issues](https://img.shields.io/github/issues/pratiksh404/adminetic)](https://github.com/pratiksh404/adminetic_blog/issues) [![Stars](https://img.shields.io/github/stars/pratiksh404/adminetic)](https://github.com/pratiksh404/adminetic_blog/stargazers) [![License](https://img.shields.io/github/license/pratiksh404/adminetic)](https://github.com/pratiksh404/adminetic/blob/master/LICENSE)
 
@@ -87,9 +87,9 @@ This package was generated using the [Laravel Package Boilerplate](https://larav
 
 ### Admin Panel Screenshot
 
-![Adminetic](https://github.com/pratiksh404/adminetic/blob/master/payload/static/documentation/dashboard.jpg)
-![Adminetic](https://github.com/pratiksh404/adminetic/blob/master/payload/static/documentation/profile.jpg)
-![Adminetic](https://github.com/pratiksh404/adminetic/blob/master/payload/static/documentation/bread.jpg)
-![Adminetic](https://github.com/pratiksh404/adminetic/blob/master/payload/static/documentation/role.jpg)
-![Adminetic](https://github.com/pratiksh404/adminetic/blob/master/payload/static/documentation/activity.jpg)
-![Adminetic](https://github.com/pratiksh404/adminetic/blob/master/payload/static/documentation/login.jpg)
+![Adminetic](https://github.com/pratiksh404/adminetic/blob/main/payload/static/documentation/dashboard.jpg)
+![Adminetic](https://github.com/pratiksh404/adminetic/blob/main/payload/static/documentation/profile.jpg)
+![Adminetic](https://github.com/pratiksh404/adminetic/blob/main/payload/static/documentation/bread.jpg)
+![Adminetic](https://github.com/pratiksh404/adminetic/blob/main/payload/static/documentation/role.jpg)
+![Adminetic](https://github.com/pratiksh404/adminetic/blob/main/payload/static/documentation/activity.jpg)
+![Adminetic](https://github.com/pratiksh404/adminetic/blob/main/payload/static/documentation/login.jpg)
