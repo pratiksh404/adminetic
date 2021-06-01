@@ -15,11 +15,13 @@ class PermissionSeeder extends Seeder
      */
     public function run()
     {
-        Artisan::call('make:permission Role 2 --onlyFlags');
-        Artisan::call('make:permission Permission 2 --onlyFlags');
-        Artisan::call('make:permission User 2 --onlyFlags');
+        if (!config('adminetic.migrate_with_dummy', false)) {
+            Artisan::call('make:permission Role 2 --onlyFlags');
+            Artisan::call('make:permission Permission 2 --onlyFlags');
+            Artisan::call('make:permission User 2 --onlyFlags');
 
-        Artisan::call('make:permission Setting 2 --onlyFlags');
-        Artisan::call('make:permission Preference 2 --onlyFlags');
+            Artisan::call('make:permission Setting 2 --onlyFlags');
+            Artisan::call('make:permission Preference 2 --onlyFlags');
+        }
     }
 }

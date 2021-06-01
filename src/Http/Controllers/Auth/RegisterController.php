@@ -2,14 +2,15 @@
 
 namespace Pratiksh\Adminetic\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
-use App\Models\Admin\Preference;
-use App\Models\Admin\Role;
-use App\Providers\RouteServiceProvider;
 use App\Models\User;
-use Illuminate\Foundation\Auth\RegistersUsers;
+use App\Models\Admin\Role;
+use App\Models\Admin\Preference;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
+use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Foundation\Auth\RegistersUsers;
+use Pratiksh\Adminetic\Providers\AdmineticServiceProvider;
 
 class RegisterController extends Controller
 {

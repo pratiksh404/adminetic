@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\ResetsPasswords;
+use Pratiksh\Adminetic\Providers\AdmineticServiceProvider;
 
 class ResetPasswordController extends Controller
 {

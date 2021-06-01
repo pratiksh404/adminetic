@@ -87,11 +87,23 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Auth Configuration
+    |--------------------------------------------------------------------------
+    */
+    'login_view' => 'adminetic::admin.auth.login',
+    'register_view' => 'adminetic::admin.auth.register',
+
+    'default_user_role' => 'user',
+    'default_user_role_level' => 1,
+
+    /*
+    |--------------------------------------------------------------------------
     | Data Settings
     |--------------------------------------------------------------------------
     | 
     */
     'caching' => true,
+    'migrate_with_dummy' => false,
 
 
     // ASSETS DEPENDENCIES INJECTION

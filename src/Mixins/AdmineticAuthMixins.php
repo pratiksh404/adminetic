@@ -51,6 +51,26 @@ class AdmineticAuthMixins
                 if ($options['verify'] ?? false) {
                     $this->emailVerification();
                 }
+
+                // Socialite Login
+
+                /* OAuth Routes */
+                if (config('adminetic.enable_socialite', false)) {
+                    if (config('adminetic.github_socialite', true)) {
+                        $this->get('sign-in/github', 'Admin\SocialiteController@github')->name('sign_in_github');
+                        $this->get('sign-in/github/redirect', 'Admin\SocialiteController@githubRedirect')->name('sign_in_github_redirect');
+                    }
+
+                    if (config('adminetic.facebook_socialite', true)) {
+                        $this->get('sign-in/facebook', 'Admin\SocialiteController@facebook')->name('sign_in_facebook');
+                        $this->get('sign-in/facebook/redirect', 'Admin\SocialiteController@facebookRedirect')->name('sign_in_facebook_redirect');
+                    }
+
+                    if (config('adminetic.google_socialite', true)) {
+                        $this->get('sign-in/google', 'Admin\SocialiteController@google')->name('sign_in_google');
+                        $this->get('sign-in/google/redirect', 'Admin\SocialiteController@googleRedirect')->name('sign_in_google_redirect');
+                    }
+                }
             });
         };
     }

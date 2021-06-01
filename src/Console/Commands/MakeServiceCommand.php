@@ -34,7 +34,7 @@ class MakeServiceCommand extends GeneratorCommand
      */
     protected function getStub()
     {
-        return __DIR__ . '/admin_stubs/service.stub';
+        return __DIR__ . '/../../Console/Commands/AdminStubs/Service.stub';
     }
 
     /**

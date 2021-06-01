@@ -17,15 +17,17 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        $admin = User::create([
-            'name' => 'Admin User',
-            'email' => 'admin@admin.com',
-            'password' => Hash::make('admin123'),
-        ]);
+        if (!config('adminetic.migrate_with_dummy', false)) {
+            $admin = User::create([
+                'name' => 'Admin User',
+                'email' => 'admin@admin.com',
+                'password' => Hash::make('admin123'),
+            ]);
 
-        $role = Role::where('name', 'admin')->first();
+            $role = Role::where('name', 'admin')->first();
 
-        $admin->roles()->attach($role);
-        $admin->profile()->create();
+            $admin->roles()->attach($role);
+            $admin->profile()->create();
+        }
     }
 }

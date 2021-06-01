@@ -34,7 +34,7 @@ class MakeTraitCommand extends GeneratorCommand
      */
     protected function getStub()
     {
-        return __DIR__ . '/admin_stubs/trait.stub';
+        return __DIR__ . '/../../Console/Commands/AdminStubs/Trait.stub';
     }
 
     /**

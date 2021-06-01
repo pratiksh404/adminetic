@@ -2,19 +2,31 @@
 
 namespace Pratiksh\Adminetic\View\Components;
 
+use Exception;
 use Illuminate\Support\Str;
+
 use Illuminate\View\Component;
+use function PHPUnit\Framework\throwException;
 
 class Sidebar extends Component
 {
-    /**
-     * Create a new component instance.
-     *
-     * @return void
-     */
-    public function __construct()
+    public function myMenu()
     {
-        //
+        $myMenu = config('adminetic.myMenu', \App\Services\MyMenu::class);
+        if (class_exists($myMenu)) {
+            if (method_exists($myMenu, 'myMenu')) {
+                $menu = new $myMenu;
+                if (is_array($menu->myMenu())) {
+                    return $menu->myMenu();
+                } else {
+                    throw new Exception("myMenu method return type must be an array.");
+                }
+            } else {
+                throw new Exception("myMenu method is not found", 1);
+            }
+        } else {
+            throw new Exception("Given class namespace is not found");
+        }
     }
 
     public function initializeMenu()
@@ -139,13 +151,13 @@ class Sidebar extends Component
                         'condition' => auth()->user()->hasRole('admin')
                     ]
                 ]
-            ],
+            ]
         ];
 
-        return $menus;
+        return array_merge($menus, $this->myMenu() ?? array());
     }
 
-    private function indexCreateChildren($route, $class)
+    protected function indexCreateChildren($route, $class)
     {
         $name = Str::ucfirst($route);
         $plural = Str::plural($name);

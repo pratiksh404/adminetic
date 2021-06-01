@@ -14,39 +14,41 @@ class RoleSeeder extends Seeder
      */
     public function run()
     {
-        $roles = [
-            [
-                'name' => 'superadmin',
-                'description' => 'This is a super admin user',
-                'level' => 5
-            ],
-            [
-                'name' => 'admin',
-                'description' => 'This is an admin user',
-                'level' => 4
-            ],
-            [
-                'name' => 'moderator',
-                'description' => 'This is an moderator',
-                'level' => 3
-            ],
-            [
-                'name' => 'editor',
-                'description' => 'This is an editor',
-                'level' => 2
-            ],
-            [
-                'name' => 'user',
-                'description' => 'This is an normal user',
-                'level' => 1
-            ],
-            [
-                'name' => 'unverified',
-                'description' => 'This is an unverified user',
-                'level' => 0
-            ],
-        ];
+        if (!config('adminetic.migrate_with_dummy', false)) {
+            $roles = [
+                [
+                    'name' => 'superadmin',
+                    'description' => 'This is a super admin user',
+                    'level' => 5
+                ],
+                [
+                    'name' => 'admin',
+                    'description' => 'This is an admin user',
+                    'level' => 4
+                ],
+                [
+                    'name' => 'moderator',
+                    'description' => 'This is an moderator',
+                    'level' => 3
+                ],
+                [
+                    'name' => 'editor',
+                    'description' => 'This is an editor',
+                    'level' => 2
+                ],
+                [
+                    'name' => 'user',
+                    'description' => 'This is an normal user',
+                    'level' => 1
+                ],
+                [
+                    'name' => 'unverified',
+                    'description' => 'This is an unverified user',
+                    'level' => 0
+                ],
+            ];
 
-        DB::table('roles')->insert($roles);
+            DB::table('roles')->insert($roles);
+        }
     }
 }

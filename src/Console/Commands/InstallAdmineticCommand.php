@@ -11,7 +11,7 @@ class InstallAdmineticCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'install:adminetic {--a|assets : Installs only asset files} {--c|config : Installs only config file} {--f|view : Installs only view files} {--m|migration : Installs only migration files} {--d|dummy : Installs only seed files}';
+    protected $signature = 'install:adminetic';
 
     /**
      * The console command description.
@@ -37,67 +37,19 @@ class InstallAdmineticCommand extends Command
      */
     public function handle()
     {
-        if (!$this->option('config') && !$this->option('view') && !$this->option('config') && !$this->option('migration') && !$this->option('dummy') && !$this->option('assets')) {
-            $this->call('vendor:publish', [
-                '--tag' => ['adminetic-config']
-            ]);
-            $this->info("Adminetic config file published ... ✅");
-            $this->call('vendor:publish', [
-                '--tag' => ['adminetic-views']
-            ]);
-            $this->info("Adminetic view files published ... ✅");
-            $this->call('vendor:publish', [
-                '--tag' => ['adminetic-migrations']
-            ]);
-            $this->info("Adminetic migration files published ... ✅");
-            $this->call('vendor:publish', [
-                '--tag' => ['adminetic-seeders']
-            ]);
-            $this->info("Adminetic seeding files published ... ✅");
-            $this->call('vendor:publish', [
-                '--tag' => ['adminetic-assets-files']
-            ]);
-            $this->info("Adminetic asset files published ... ✅");
-            $this->call('vendor:publish', [
-                '--tag' => ['adminetic-static-files']
-            ]);
-            $this->info("Adminetic static files published ... ✅");
-            $this->info("Adminetic Installed");
-        } else {
-            if ($this->option('config')) {
-                $this->call('vendor:publish', [
-                    '--tag' => ['adminetic-config']
-                ]);
-                $this->info("Adminetic config file published ... ✅");
-            }
-            if ($this->option('view')) {
-                $this->call('vendor:publish', [
-                    '--tag' => ['adminetic-views']
-                ]);
-                $this->info("Adminetic view files published ... ✅");
-            }
-            if ($this->option('migration')) {
-                $this->call('vendor:publish', [
-                    '--tag' => ['adminetic-migrations']
-                ]);
-                $this->info("Adminetic migration files published ... ✅");
-            }
-            if ($this->option('dummy')) {
-                $this->call('vendor:publish', [
-                    '--tag' => ['adminetic-seeders']
-                ]);
-                $this->info("Adminetic seeding files published ... ✅");
-            }
-            if ($this->option('assets')) {
-                $this->call('vendor:publish', [
-                    '--tag' => ['adminetic-assets-files']
-                ]);
-                $this->info("Adminetic asset files published ... ✅");
-                $this->call('vendor:publish', [
-                    '--tag' => ['adminetic-static-files']
-                ]);
-                $this->info("Adminetic static files published ... ✅");
-            }
-        }
+        $this->call('vendor:publish', [
+            '--tag' => ['adminetic-config']
+        ]);
+        $this->info("Adminetic config file published ... ✅");
+        $this->call('vendor:publish', [
+            '--tag' => ['adminetic-assets-files']
+        ]);
+        $this->info("Adminetic asset files published ... ✅");
+        $this->call('vendor:publish', [
+            '--tag' => ['adminetic-static-files']
+        ]);
+        Artisan::call('make:service MyMenu');
+        $this->info("Adminetic static files published ... ✅");
+        $this->info("Adminetic Installed");
     }
 }

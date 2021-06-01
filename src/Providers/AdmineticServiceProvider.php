@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Route;
 use Pratiksh\Adminetic\Models\Setting;
 use Illuminate\Support\ServiceProvider;
+use Pratiksh\Adminetic\Console\Commands\AdmineticDummyCommand;
 use Pratiksh\Adminetic\Models\Permission;
 use Pratiksh\Adminetic\Policies\RolePolicy;
 use Pratiksh\Adminetic\Policies\UserPolicy;
@@ -205,7 +206,8 @@ class AdmineticServiceProvider extends ServiceProvider
             MakeServiceCommand::class,
             MakeSuperUserCommand::class,
             MakeTraitCommand::class,
-            InstallAdmineticCommand::class
+            InstallAdmineticCommand::class,
+            AdmineticDummyCommand::class
         ]);
     }
 
