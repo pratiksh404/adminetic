@@ -43,6 +43,8 @@ class IndexPage extends Component
     {
         if ($name == 'User') {
             $className = 'App\\Models\\' . Str::ucfirst($name);
+        } else if ($name == 'Permission' || $name == 'Preference' || $name == 'Profile' || $name == 'Role' || $name == 'Setting') {
+            $className = 'Pratiksh\\Adminetic\\Models\\Admin\\' . Str::ucfirst($name);
         } else {
             $className = 'App\\Models\\Admin\\' . Str::ucfirst($name);
         }

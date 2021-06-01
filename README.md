@@ -1,10 +1,21 @@
-# Very short description of the package
+# Adminetic Admin Panel
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/pratiksh/adminetic.svg?style=flat-square)](https://packagist.org/packages/pratiksh/adminetic)
-[![Total Downloads](https://img.shields.io/packagist/dt/pratiksh/adminetic.svg?style=flat-square)](https://packagist.org/packages/pratiksh/adminetic)
-![GitHub Actions](https://github.com/pratiksh/adminetic/actions/workflows/main.yml/badge.svg)
+![Adminetic](https://github.com/pratiksh404/adminetic/blob/master/payload/static/documentation/banner.jpg)
 
-This is where your description should go. Try and limit it to a paragraph or two, and maybe throw in a mention of what PSRs you support to avoid any confusion with users and contributors.
+[![Issues](https://img.shields.io/github/issues/pratiksh404/adminetic)](https://github.com/pratiksh404/adminetic_blog/issues) [![Stars](https://img.shields.io/github/stars/pratiksh404/adminetic)](https://github.com/pratiksh404/adminetic_blog/stargazers) [![License](https://img.shields.io/github/license/pratiksh404/adminetic)](https://github.com/pratiksh404/adminetic/blob/master/LICENSE)
+
+Headstart your project with adminetic admin panel with single command.
+
+#### Contains : -
+
+- User Management
+- Role and Permission Management
+- Activity Management
+- Auth Management
+- Setting Management
+- Preference Management
+- Theme Customization
+- Plugin Extensions
 
 ## Installation
 
@@ -14,11 +25,34 @@ You can install the package via composer:
 composer require pratiksh/adminetic
 ```
 
-## Usage
+Install Adminetic
 
-```php
-// Usage description here
+```sh
+php artisan install:adminetic
 ```
+
+Import Data
+
+```sh
+php artisan adminetic:dummy
+```
+
+Use adminetic auth route.
+In web.php paste following
+
+```sh
+Route::admineticAuth();
+```
+
+This allows you to have necessary login credential
+
+> Admin Credential
+> email : admin@admin.com
+> password: admin123
+
+## Notice
+
+Stay tuned for futher documentaion.
 
 ### Testing
 
@@ -40,8 +74,8 @@ If you discover any security related issues, please email pratikdai404@gmail.com
 
 ## Credits
 
--   [Pratik Shrestha](https://github.com/pratiksh)
--   [All Contributors](../../contributors)
+- [Pratik Shrestha](https://github.com/pratiksh)
+- [All Contributors](../../contributors)
 
 ## License
 
@@ -50,3 +84,12 @@ The MIT License (MIT). Please see [License File](LICENSE.md) for more informatio
 ## Laravel Package Boilerplate
 
 This package was generated using the [Laravel Package Boilerplate](https://laravelpackageboilerplate.com).
+
+### Admin Panel Screenshot
+
+![Adminetic](https://github.com/pratiksh404/adminetic/blob/master/payload/static/documentation/dashboard.jpg)
+![Adminetic](https://github.com/pratiksh404/adminetic/blob/master/payload/static/documentation/profile.jpg)
+![Adminetic](https://github.com/pratiksh404/adminetic/blob/master/payload/static/documentation/bread.jpg)
+![Adminetic](https://github.com/pratiksh404/adminetic/blob/master/payload/static/documentation/role.jpg)
+![Adminetic](https://github.com/pratiksh404/adminetic/blob/master/payload/static/documentation/activity.jpg)
+![Adminetic](https://github.com/pratiksh404/adminetic/blob/master/payload/static/documentation/login.jpg)

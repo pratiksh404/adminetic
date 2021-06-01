@@ -1,4 +1,4 @@
-@extends('admineitc::admin.layouts.app')
+@extends('adminetic::admin.layouts.app')
 
 @section('content')
     <x-adminetic-card title="All Activities">

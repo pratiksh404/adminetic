@@ -55,7 +55,7 @@ class ActivityController extends Controller
 
     private function isAuthorized(): bool
     {
-        return Auth::user()->hasRole('adminetic::admin') || Auth::user()->isSuperAdmin();
+        return Auth::user()->hasRole('admin') || Auth::user()->isSuperAdmin();
     }
 
     public function delete_all_activities()
