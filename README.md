@@ -32,6 +32,12 @@ Install Adminetic
 php artisan install:adminetic
 ```
 
+Migrate Database
+
+```sh
+php artisan migrate
+```
+
 Import Data
 
 ```sh

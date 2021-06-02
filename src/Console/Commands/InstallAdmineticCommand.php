@@ -3,6 +3,7 @@
 namespace Pratiksh\Adminetic\Console\Commands;
 
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Artisan;
 
 class InstallAdmineticCommand extends Command
 {
@@ -48,8 +49,26 @@ class InstallAdmineticCommand extends Command
         $this->call('vendor:publish', [
             '--tag' => ['adminetic-static-files']
         ]);
-        Artisan::call('make:service MyMenu');
         $this->info("Adminetic static files published ... ✅");
+        $this->addMyMenu();
         $this->info("Adminetic Installed");
+    }
+
+    private function addMyMenu()
+    {
+        $modelTemplate = file_get_contents(__DIR__ . "/../../Console/Commands/AdminStubs/MyMenu.stub");
+
+        $file = app_path("Services/MyMenu.php");
+        file_put_contents($file, $modelTemplate);
+        if (file_exists($file)) {
+            $this->info("MyMenu created successfully ... ✅");
+        } else {
+            $this->error("Failed to create MyMenu ...");
+        }
+    }
+
+    protected static function getStub($type)
+    {
+        return file_get_contents(__DIR__ . "/../../Console/Commands/AdminStubs/$type.stub");
     }
 }

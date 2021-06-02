@@ -98,6 +98,10 @@ class AdmineticDummyCommand extends Command
 
             $admin->roles()->attach($role);
             $admin->profile()->create();
+            $this->info('Dummy data seeded ... ✅');
+        } else {
+            $this->error('Dummy data seeding failed because seed on migration is turned on config file.');
+            $this->warning("Change to 'migrate_with_dummy' => false");
         }
     }
 }
