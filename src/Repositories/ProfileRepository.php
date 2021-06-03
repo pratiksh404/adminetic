@@ -3,9 +3,9 @@
 namespace Pratiksh\Adminetic\Repositories;
 
 use Illuminate\Support\Facades\Http;
-use Pratiksh\Adminetic\Models\Admin\Profile;
-use Pratiksh\Adminetic\Http\Requests\ProfileRequest;
 use Pratiksh\Adminetic\Contracts\ProfileRepositoryInterface;
+use Pratiksh\Adminetic\Http\Requests\ProfileRequest;
+use Pratiksh\Adminetic\Models\Admin\Profile;
 
 class ProfileRepository implements ProfileRepositoryInterface
 {
@@ -13,6 +13,7 @@ class ProfileRepository implements ProfileRepositoryInterface
     public function showProfile(Profile $profile)
     {
         $user = $profile->user;
+
         return compact('user', 'profile');
     }
 
@@ -21,6 +22,7 @@ class ProfileRepository implements ProfileRepositoryInterface
     {
         $countries = json_decode(Http::get('https://restcountries.eu/rest/v2/all'));
         $user = $profile->user;
+
         return compact('profile', 'countries', 'user');
     }
 
@@ -36,7 +38,7 @@ class ProfileRepository implements ProfileRepositoryInterface
     protected function uploadProfile($profile)
     {
         $profile_pic = [
-            'storage' => 'admin/profile/' . isset($profile->user->name) ? str_replace(' ', '_', strtolower($profile->user->name)) : '',
+            'storage' => 'admin/profile/'.isset($profile->user->name) ? str_replace(' ', '_', strtolower($profile->user->name)) : '',
             'width' => '222',
             'height' => '222',
             'quality' => '70',
@@ -45,9 +47,9 @@ class ProfileRepository implements ProfileRepositoryInterface
                     'thumbnail-name' => 'small',
                     'thumbnail-width' => '64',
                     'thumbnail-height' => '64',
-                    'thumbnail-quality' => '40'
-                ]
-            ]
+                    'thumbnail-quality' => '40',
+                ],
+            ],
         ];
         $profile->makeThumbnail('profile_pic', $profile_pic);
     }
@@ -55,6 +57,7 @@ class ProfileRepository implements ProfileRepositoryInterface
     protected function getCountries()
     {
         $countries = json_decode(Http::get('https://restcountries.eu/rest/v2/all'));
+
         return $countries;
     }
 }

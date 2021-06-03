@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Cache;
 use Pratiksh\Adminetic\Models\Admin\Profile;
 
 /**
- * Adminetic User
+ * Adminetic User.
  */
 trait AdmineticUser
 {

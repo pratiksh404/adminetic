@@ -2,8 +2,8 @@
 
 namespace Pratiksh\Adminetic\Contracts;
 
-use Pratiksh\Adminetic\Models\Admin\Profile;
 use Pratiksh\Adminetic\Http\Requests\ProfileRequest;
+use Pratiksh\Adminetic\Models\Admin\Profile;
 
 interface ProfileRepositoryInterface
 {

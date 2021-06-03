@@ -27,7 +27,7 @@ class PreferenceRequest extends FormRequest
             'preference' => 'required|max:60',
             'description' => 'required|max:100',
             'roles' => 'nullable',
-            'active' => 'required|boolean'
+            'active' => 'required|boolean',
         ];
     }
 }

@@ -3,9 +3,9 @@
 namespace Pratiksh\Adminetic\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use Pratiksh\Adminetic\Models\Admin\Profile;
-use Pratiksh\Adminetic\Http\Requests\ProfileRequest;
 use Pratiksh\Adminetic\Contracts\ProfileRepositoryInterface;
+use Pratiksh\Adminetic\Http\Requests\ProfileRequest;
+use Pratiksh\Adminetic\Models\Admin\Profile;
 
 class ProfileController extends Controller
 {
@@ -15,7 +15,6 @@ class ProfileController extends Controller
     {
         $this->profileRepositoryInterface = $profileRepositoryInterface;
     }
-
 
     /**
      * Display the specified resource.
@@ -49,6 +48,7 @@ class ProfileController extends Controller
     public function update(ProfileRequest $request, Profile $profile)
     {
         $this->profileRepositoryInterface->updateProfile($request, $profile);
+
         return redirect(adminEditRoute('profile', $profile->id))->withInfo('Profile Updated Sucessfully');
     }
 }

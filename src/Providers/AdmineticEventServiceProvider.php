@@ -2,17 +2,16 @@
 
 namespace Pratiksh\Adminetic\Providers;
 
+use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 use Pratiksh\Adminetic\Events\UserHasBeenRegistered;
 use Pratiksh\Adminetic\Listeners\SendAuthenticationDetailNotification;
-use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
-
 
 class AdmineticEventServiceProvider extends ServiceProvider
 {
     protected $listen = [
         UserHasBeenRegistered::class => [
-            SendAuthenticationDetailNotification::class
-        ]
+            SendAuthenticationDetailNotification::class,
+        ],
     ];
 
     /**

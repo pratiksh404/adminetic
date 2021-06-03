@@ -21,6 +21,7 @@ class ForgotPasswordController extends Controller
     use SendsPasswordResetEmails;
 
     // Overriding Default Email Reset Form
+
     /**
      * Display the form to request a password reset link.
      *

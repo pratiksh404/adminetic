@@ -3,8 +3,8 @@
 namespace Pratiksh\Adminetic\Contracts;
 
 use Illuminate\Http\Request;
-use Pratiksh\Adminetic\Models\Admin\Setting;
 use Pratiksh\Adminetic\Http\Requests\SettingRequest;
+use Pratiksh\Adminetic\Models\Admin\Setting;
 
 interface SettingRepositoryInterface
 {

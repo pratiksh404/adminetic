@@ -2,9 +2,8 @@
 
 namespace Pratiksh\Adminetic\Models\Admin;
 
-use Illuminate\Support\Facades\Cache;
 use Illuminate\Database\Eloquent\Model;
-use Pratiksh\Adminetic\Models\Admin\Role;
+use Illuminate\Support\Facades\Cache;
 use Spatie\Activitylog\Traits\LogsActivity;
 
 class Permission extends Model

@@ -7,7 +7,7 @@ use Pratiksh\Adminetic\Models\Admin\Preference;
 trait HasPreference
 {
     /**
-     * The preferences that belong to the User
+     * The preferences that belong to the User.
      */
     public function preferences()
     {

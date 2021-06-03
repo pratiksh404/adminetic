@@ -2,12 +2,10 @@
 
 namespace Pratiksh\Adminetic\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Pratiksh\Adminetic\Models\Admin\Preference;
-use Pratiksh\Adminetic\Http\Requests\PreferenceRequest;
 use Pratiksh\Adminetic\Contracts\PreferenceRepositoryInterface;
-
+use Pratiksh\Adminetic\Http\Requests\PreferenceRequest;
+use Pratiksh\Adminetic\Models\Admin\Preference;
 
 class PreferenceController extends Controller
 {
@@ -18,7 +16,6 @@ class PreferenceController extends Controller
         $this->preferenceRepositoryInterface = $preferenceRepositoryInterface;
         $this->authorizeResource(Preference::class, 'preference');
     }
-
 
     /**
      * Display a listing of the resource.
@@ -49,6 +46,7 @@ class PreferenceController extends Controller
     public function store(PreferenceRequest $request)
     {
         $this->preferenceRepositoryInterface->storePreference($request);
+
         return redirect(adminRedirectRoute('preference'))->withSuccess('Preference Created Successfully.');
     }
 
@@ -84,6 +82,7 @@ class PreferenceController extends Controller
     public function update(PreferenceRequest $request, Preference $preference)
     {
         $this->preferenceRepositoryInterface->updatePreference($request, $preference);
+
         return redirect(adminRedirectRoute('preference'))->withInfo('Preference Updated Successfully.');
     }
 
@@ -96,6 +95,7 @@ class PreferenceController extends Controller
     public function destroy(Preference $preference)
     {
         $this->preferenceRepositoryInterface->destroyPreference($preference);
+
         return redirect(adminRedirectRoute('preference'))->withFail('Preference Deleted Successfully.');
     }
 }

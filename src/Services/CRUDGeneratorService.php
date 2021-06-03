@@ -2,8 +2,8 @@
 
 namespace Pratiksh\Adminetic\Services;
 
-use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Str;
 use Pratiksh\Adminetic\Services\Helper\CommandHelper;
 
 class CRUDGeneratorService extends CommandHelper
@@ -23,18 +23,18 @@ class CRUDGeneratorService extends CommandHelper
             [
                 '{{modelName}}',
                 '{{modelNamePluralLowerCase}}',
-                '{{modelNameSingularLowerCase}}'
+                '{{modelNameSingularLowerCase}}',
             ],
             [
                 $name,
                 strtolower(Str::plural($name)),
-                strtolower($name)
+                strtolower($name),
             ],
             self::getStub('Controller')
         );
         $file = app_path("/Http/Controllers/Admin/{$name}Controller.php");
         file_put_contents(app_path("/Http/Controllers/Admin/{$name}Controller.php"), $controllerTemplate);
-        self::fileMadeSuccess($console, $file, "Controller");
+        self::fileMadeSuccess($console, $file, 'Controller');
     }
 
     // Make Model
@@ -44,29 +44,29 @@ class CRUDGeneratorService extends CommandHelper
             [
                 '{{modelName}}',
                 '{{modelNamePluralLowerCase}}',
-                '{{modelNameSingularLowerCase}}'
+                '{{modelNameSingularLowerCase}}',
             ],
             [
                 $name,
                 strtolower(Str::plural($name)),
-                strtolower($name)
+                strtolower($name),
             ],
             self::getStub('Model')
         );
         $file = app_path("/Models/Admin/{$name}.php");
         file_put_contents(app_path("/Models/Admin/{$name}.php"), $modelTemplate);
-        self::fileMadeSuccess($console, $file, "Model");
+        self::fileMadeSuccess($console, $file, 'Model');
     }
 
     // Make View
     protected static function makeViews($name, $console)
     {
         $lowername = strtolower($name);
-        if (!file_exists($path = resource_path('views/admin/' . $lowername))) {
+        if (! file_exists($path = resource_path('views/admin/'.$lowername))) {
             mkdir($path, 0777, true);
         }
 
-        if (!file_exists($path = resource_path('views/admin/layouts/modules/' . $lowername))) {
+        if (! file_exists($path = resource_path('views/admin/layouts/modules/'.$lowername))) {
             mkdir($path, 0777, true);
         }
 
@@ -92,7 +92,7 @@ class CRUDGeneratorService extends CommandHelper
         );
         $file = resource_path("views/admin/{$lowername}/index.blade.php");
         file_put_contents(resource_path("views/admin/{$lowername}/index.blade.php"), $modelTemplate);
-        self::fileMadeSuccess($console, $file, "Index file");
+        self::fileMadeSuccess($console, $file, 'Index file');
     }
 
     // Make Create View
@@ -110,7 +110,7 @@ class CRUDGeneratorService extends CommandHelper
 
         $file = resource_path("views/admin/{$lowername}/create.blade.php");
         file_put_contents(resource_path("views/admin/{$lowername}/create.blade.php"), $modelTemplate);
-        self::fileMadeSuccess($console, $file, "Create file");
+        self::fileMadeSuccess($console, $file, 'Create file');
     }
 
     // Make Edit View
@@ -128,7 +128,7 @@ class CRUDGeneratorService extends CommandHelper
 
         $file = resource_path("views/admin/{$lowername}/edit.blade.php");
         file_put_contents(resource_path("views/admin/{$lowername}/edit.blade.php"), $modelTemplate);
-        self::fileMadeSuccess($console, $file, "Edit file");
+        self::fileMadeSuccess($console, $file, 'Edit file');
     }
 
     // Make Layout Blades
@@ -136,35 +136,35 @@ class CRUDGeneratorService extends CommandHelper
     {
         $edit_add_file = resource_path("views/admin/layouts/modules/{$lowername}/edit_add.blade.php");
         file_put_contents(resource_path("views/admin/layouts/modules/{$lowername}/edit_add.blade.php"), '');
-        self::fileMadeSuccess($console, $edit_add_file, "Edit add extended file");
+        self::fileMadeSuccess($console, $edit_add_file, 'Edit add extended file');
 
         $script_file = resource_path("views/admin/layouts/modules/{$lowername}/scripts.blade.php");
         file_put_contents(resource_path("views/admin/layouts/modules/{$lowername}/scripts.blade.php"), '');
-        self::fileMadeSuccess($console, $script_file, "Script file");
+        self::fileMadeSuccess($console, $script_file, 'Script file');
     }
 
     // Make Other neccesary CRUD files
     protected static function makeOthers($name, $console)
     {
-        Artisan::call('make:migration create_' . strtolower(Str::plural($name)) . '_table --create=' . strtolower(Str::plural($name)));
-        $console->info("Migration file created named create_" . strtolower(Str::plural($name)) . "_table ... ✅");
+        Artisan::call('make:migration create_'.strtolower(Str::plural($name)).'_table --create='.strtolower(Str::plural($name)));
+        $console->info('Migration file created named create_'.strtolower(Str::plural($name)).'_table ... ✅');
 
-        Artisan::call('make:seeder ' . $name . 'Seeder');
-        $console->info("Seeder file created ... ✅");
+        Artisan::call('make:seeder '.$name.'Seeder');
+        $console->info('Seeder file created ... ✅');
 
-        Artisan::call('make:repo ' . $name);
-        $console->info("Repository and Interface created ... ✅");
+        Artisan::call('make:repo '.$name);
+        $console->info('Repository and Interface created ... ✅');
 
-        Artisan::call('make:request ' . $name . 'Request');
-        $console->info("Request file created ... ✅");
+        Artisan::call('make:request '.$name.'Request');
+        $console->info('Request file created ... ✅');
     }
 
     protected static function fileMadeSuccess($console, $file, $type)
     {
         if (file_exists($file)) {
-            $console->info($type . " created successfully ... ✅");
+            $console->info($type.' created successfully ... ✅');
         } else {
-            $console->error("Failed to create " . $type . " ...");
+            $console->error('Failed to create '.$type.' ...');
         }
     }
 }

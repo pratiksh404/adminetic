@@ -2,12 +2,11 @@
 
 namespace Pratiksh\Adminetic\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Pratiksh\Adminetic\Models\Admin\Setting;
-use Pratiksh\Adminetic\Http\Requests\SettingRequest;
+use Illuminate\Http\Request;
 use Pratiksh\Adminetic\Contracts\SettingRepositoryInterface;
-
+use Pratiksh\Adminetic\Http\Requests\SettingRequest;
+use Pratiksh\Adminetic\Models\Admin\Setting;
 
 class SettingController extends Controller
 {
@@ -18,7 +17,6 @@ class SettingController extends Controller
         $this->settingRepositoryInterface = $settingRepositoryInterface;
         $this->authorizeResource(Setting::class, 'setting');
     }
-
 
     /**
      * Display a listing of the resource.
@@ -49,6 +47,7 @@ class SettingController extends Controller
     public function store(SettingRequest $request)
     {
         $this->settingRepositoryInterface->storeSetting($request);
+
         return redirect(adminRedirectRoute('setting'))->withSuccess('Setting Created Successfully.');
     }
 
@@ -84,6 +83,7 @@ class SettingController extends Controller
     public function update(SettingRequest $request, Setting $setting)
     {
         $this->settingRepositoryInterface->updateSetting($request, $setting);
+
         return redirect(adminRedirectRoute('setting'))->withInfo('Setting Updated Successfully.');
     }
 
@@ -96,17 +96,17 @@ class SettingController extends Controller
     public function destroy(Setting $setting)
     {
         $this->settingRepositoryInterface->destroySetting($setting);
+
         return redirect(adminRedirectRoute('setting'))->withFail('Setting Deleted Successfully.');
     }
 
     /**
-     *
-     * Setting Store
-     *
+     * Setting Store.
      */
     public function setting_store(Request $request)
     {
         $this->settingRepositoryInterface->setting_store($request);
+
         return redirect(adminRedirectRoute('setting'))->withInfo('Settings Saved !.');
     }
 }

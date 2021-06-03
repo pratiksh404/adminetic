@@ -2,8 +2,8 @@
 
 namespace Pratiksh\Adminetic\Contracts;
 
-use Pratiksh\Adminetic\Models\Admin\Preference;
 use Pratiksh\Adminetic\Http\Requests\PreferenceRequest;
+use Pratiksh\Adminetic\Models\Admin\Preference;
 
 interface PreferenceRepositoryInterface
 {

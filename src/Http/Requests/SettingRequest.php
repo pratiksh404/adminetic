@@ -45,7 +45,7 @@ class SettingRequest extends FormRequest
             'boolean_value' => 'nullable|boolean',
             'setting_type' => 'required|numeric',
             'setting_group' => 'required|max:20',
-            'setting_custom' => 'nullable'
+            'setting_custom' => 'nullable',
         ];
     }
 }

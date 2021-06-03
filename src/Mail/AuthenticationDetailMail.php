@@ -3,7 +3,6 @@
 namespace Pratiksh\Adminetic\Mail;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
@@ -16,7 +15,6 @@ class AuthenticationDetailMail extends Mailable
     public $name;
 
     public $password;
-
 
     /**
      * Create a new message instance.
