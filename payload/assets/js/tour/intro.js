@@ -479,7 +479,7 @@
             this.parentNode.removeChild(this);
           }
         }.bind(overlayLayer), 500);
-      };
+      }
     }
 
     //remove all helper layers
@@ -921,7 +921,7 @@
       if (fixParents && fixParents.length > 0) {
         for (var i = fixParents.length - 1; i >= 0; i--) {
           fixParents[i].className = fixParents[i].className.replace(/introjs-fixParent/g, '').replace(/^\s+|\s+$/g, '');
-        };
+        }
       }
 
       //remove old classes if the element still exist
@@ -1620,7 +1620,7 @@
     } else {
       _populateHints.call(this, this._targetElement);
     }
-  };
+  }
 
   /**
    * Show a hint
@@ -1634,7 +1634,7 @@
     if (hint) {
       hint.className = hint.className.replace(/introjs\-hidehint/g, '');
     }
-  };
+  }
 
   /**
    * Removes all hint elements on the page
@@ -1651,7 +1651,7 @@
         _removeHint.call(this, hints[i].getAttribute('data-step'));
       }
     }
-  };
+  }
 
   /**
    * Remove one single hint element from the page
@@ -1667,7 +1667,7 @@
     if (hint) {
       hint.parentNode.removeChild(hint);
     }
-  };
+  }
 
   /**
    * Add all available hints to the page

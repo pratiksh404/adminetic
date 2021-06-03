@@ -19,7 +19,7 @@ X234=function(){this.x6756=[];this.animations=[];this.defaultValues=[];this.x888
 var amountOfDefaults=this.defaultValues.length;for(j=0;j<amountOfDefaults;j++){this.defaultValues[j].x9239(x8886);}
 var amountOfAnimations=this.animations.length;for(k=0;k<amountOfAnimations;k++){this.animations[k].x9239(x8886);}
 this.x8886=x8886;}
-X234.prototype.x9874=function(event){var jaralax=event.data.me;var y=jaralax.target.scrollTop();;var x8886=y/jaralax.scrollSpace;if(x8886>1){x8886=1;}
+X234.prototype.x9874=function(event){var jaralax=event.data.me;var y=jaralax.target.scrollTop();var x8886=y/jaralax.scrollSpace;if(x8886>1){x8886=1;}
 var amountOfDefaults=jaralax.defaultValues.length;for(j=0;j<amountOfDefaults;j++){jaralax.defaultValues[j].x9239(x8886);}
 var amountOfAnimations=jaralax.animations.length;for(k=0;k<amountOfAnimations;k++){jaralax.animations[k].x9239(x8886);}
 this.x8886=x8886;};X234.x8456=function(object){if(!object){throw new Error("no values set.");}

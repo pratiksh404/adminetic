@@ -18,4 +18,4 @@ function myFunction() {
     var copyText = document.getElementById("input_copy");
     copyText.select();
     document.execCommand("Copy");
-};
+}

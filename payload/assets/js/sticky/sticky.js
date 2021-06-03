@@ -56,7 +56,7 @@ var noteTemp =  '<div class="note">'
 var noteZindex = 1;
 function deleteNote(){
     $(this).parent('.note').hide("puff",{ percent: 133}, 250);
-};
+}
 function newNote() {
     $(noteTemp).hide().appendTo("#board").show("fade", 300).draggable().on('dragstart',
     function(){
@@ -66,7 +66,7 @@ function newNote() {
     $('textarea').autogrow();
     $('.note')
     return false; 
-};
+}
 (function($) {
     "use strict";
     $("#board").height($(document).height());

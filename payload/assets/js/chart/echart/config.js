@@ -105,7 +105,7 @@
             }
         });
         observer.observe(document.documentElement, {childList: true});
-    };
+    }
 
     // It is not a good solution.
     // Do not need it any more:
