@@ -3,7 +3,7 @@ function testAnim(x) {
     $('#animation-box').removeClass().addClass(x + ' animated').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
         $(this).removeClass();
     });
-};
+}
 var animate_custom = {
     init: function() {
         $('.js-triggeraNimation').click(function(e){
