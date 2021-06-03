@@ -2,12 +2,10 @@
 
 namespace Pratiksh\Adminetic\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Pratiksh\Adminetic\Models\Admin\Permission;
-use Pratiksh\Adminetic\Http\Requests\PermissionRequest;
 use Pratiksh\Adminetic\Contracts\PermissionRepositoryInterface;
-
+use Pratiksh\Adminetic\Http\Requests\PermissionRequest;
+use Pratiksh\Adminetic\Models\Admin\Permission;
 
 class PermissionController extends Controller
 {
@@ -18,7 +16,6 @@ class PermissionController extends Controller
         $this->permissionRepositoryInterface = $permissionRepositoryInterface;
         $this->authorizeResource(Permission::class, 'permission');
     }
-
 
     /**
      * Display a listing of the resource.
@@ -49,6 +46,7 @@ class PermissionController extends Controller
     public function store(PermissionRequest $request)
     {
         $this->permissionRepositoryInterface->storePermission($request);
+
         return redirect(adminRedirectRoute('permission'))->withSuccess('Permission Created Successfully.');
     }
 
@@ -84,6 +82,7 @@ class PermissionController extends Controller
     public function update(PermissionRequest $request, Permission $permission)
     {
         $this->permissionRepositoryInterface->updatePermission($request, $permission);
+
         return redirect(adminRedirectRoute('permission'))->withInfo('Permission Updated Successfully.');
     }
 
@@ -96,6 +95,7 @@ class PermissionController extends Controller
     public function destroy(Permission $permission)
     {
         $this->permissionRepositoryInterface->destroyPermission($permission);
+
         return redirect(adminRedirectRoute('permission'))->withFail('Permission Deleted Successfully.');
     }
 }

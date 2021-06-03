@@ -5,7 +5,6 @@ namespace Pratiksh\Adminetic\Console\Commands;
 use Illuminate\Console\Command;
 use Pratiksh\Adminetic\Services\MakeAPIResource;
 
-
 class MakeAPIResourceCommand extends Command
 {
     /**
@@ -43,13 +42,13 @@ class MakeAPIResourceCommand extends Command
 
         if ($this->option('rest')) {
             MakeAPIResource::makeRestAPI($name);
-            $this->info("Restful API Resource created for model" . $name);
+            $this->info('Restful API Resource created for model'.$name);
         } elseif ($this->option('client')) {
             MakeAPIResource::makeClientAPI($name);
-            $this->info("Client API created for model" . $name);
+            $this->info('Client API created for model'.$name);
         } else {
             MakeAPIResource::makeAPI($name);
-            $this->info("API Resource created for model" . $name);
+            $this->info('API Resource created for model'.$name);
         }
     }
 }

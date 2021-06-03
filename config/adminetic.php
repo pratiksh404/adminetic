@@ -19,7 +19,7 @@ return [
     |--------------------------------------------------------------------------
     | UI Configuration
     |--------------------------------------------------------------------------
-    | 
+    |
     */
 
     // Header
@@ -51,7 +51,7 @@ return [
     |--------------------------------------------------------------------------
     | Notify Configuraion
     |--------------------------------------------------------------------------
-    | 
+    |
     */
     'notify_icon' => 'fa fa-bell-o',
     'notify_type' => 'theme',
@@ -69,7 +69,7 @@ return [
     |--------------------------------------------------------------------------
     | Admin Dashboard Route Configurations
     |--------------------------------------------------------------------------
-    | 
+    |
     */
     'prefix' => 'admin',
     'middleware' => ['web', 'auth'],
@@ -100,11 +100,10 @@ return [
     |--------------------------------------------------------------------------
     | Data Settings
     |--------------------------------------------------------------------------
-    | 
+    |
     */
     'caching' => true,
     'migrate_with_dummy' => false,
-
 
     // ASSETS DEPENDENCIES INJECTION
     'plugins' => [
@@ -115,49 +114,49 @@ return [
                 [
                     'type' => 'css',
                     'active' => true,
-                    'location' => 'adminetic/assets/css/vendors/datatables.css'
+                    'location' => 'adminetic/assets/css/vendors/datatables.css',
                 ],
                 [
                     'type' => 'js',
                     'active' => true,
-                    'location' => 'adminetic/assets/js/datatable/datatables/jquery.dataTables.min.js'
+                    'location' => 'adminetic/assets/js/datatable/datatables/jquery.dataTables.min.js',
                 ],
                 [
                     'type' => 'js',
                     'active' => true,
-                    'location' => 'adminetic/assets/js/datatable/datatable-extension/dataTables.buttons.min.js'
+                    'location' => 'adminetic/assets/js/datatable/datatable-extension/dataTables.buttons.min.js',
                 ],
                 [
                     'type' => 'js',
                     'active' => true,
-                    'location' => 'adminetic/assets/js/datatable/datatable-extension/buttons.flash.min.js'
+                    'location' => 'adminetic/assets/js/datatable/datatable-extension/buttons.flash.min.js',
                 ],
                 [
                     'type' => 'js',
                     'active' => true,
-                    'location' => 'adminetic/assets/js/datatable/datatable-extension/jszip.min.js'
+                    'location' => 'adminetic/assets/js/datatable/datatable-extension/jszip.min.js',
                 ],
                 [
                     'type' => 'js',
                     'active' => true,
-                    'location' => 'adminetic/assets/js/datatable/datatable-extension/pdfmake.min.js'
+                    'location' => 'adminetic/assets/js/datatable/datatable-extension/pdfmake.min.js',
                 ],
                 [
                     'type' => 'js',
                     'active' => true,
-                    'location' => 'adminetic/assets/js/datatable/datatable-extension/vfs_fonts.js'
+                    'location' => 'adminetic/assets/js/datatable/datatable-extension/vfs_fonts.js',
                 ],
                 [
                     'type' => 'js',
                     'active' => true,
-                    'location' => 'adminetic/assets/js/datatable/datatable-extension/buttons.html5.min.js'
+                    'location' => 'adminetic/assets/js/datatable/datatable-extension/buttons.html5.min.js',
                 ],
                 [
                     'type' => 'js',
                     'active' => true,
-                    'location' => 'adminetic/assets/js/datatable/datatable-extension/buttons.print.min.js'
+                    'location' => 'adminetic/assets/js/datatable/datatable-extension/buttons.print.min.js',
                 ],
-            ]
+            ],
         ],
         [
             'name' => 'Icons',
@@ -166,29 +165,29 @@ return [
                 [
                     'type' => 'css',
                     'active' => true,
-                    'location' => 'adminetic/assets/css/font-awesome.css'
+                    'location' => 'adminetic/assets/css/font-awesome.css',
                 ],
                 [
                     'type' => 'css',
                     'active' => true,
-                    'location' => 'adminetic/assets/css/vendors/icofont.css'
+                    'location' => 'adminetic/assets/css/vendors/icofont.css',
                 ],
                 [
                     'type' => 'css',
                     'active' => true,
-                    'location' => 'adminetic/assets/css/vendors/themify.css'
+                    'location' => 'adminetic/assets/css/vendors/themify.css',
                 ],
                 [
                     'type' => 'css',
                     'active' => true,
-                    'location' => 'adminetic/assets/css/vendors/flag-icon.css'
+                    'location' => 'adminetic/assets/css/vendors/flag-icon.css',
                 ],
                 [
                     'type' => 'css',
                     'active' => true,
-                    'location' => 'adminetic/assets/css/vendors/feather-icon.css'
+                    'location' => 'adminetic/assets/css/vendors/feather-icon.css',
                 ],
-            ]
+            ],
         ],
         [
             'name' => 'Scrollbar',
@@ -197,19 +196,19 @@ return [
                 [
                     'type' => 'css',
                     'active' => true,
-                    'location' => 'adminetic/assets/css/vendors/scrollbar.css'
+                    'location' => 'adminetic/assets/css/vendors/scrollbar.css',
                 ],
                 [
                     'type' => 'js',
                     'active' => true,
-                    'location' => 'adminetic/assets/js/scrollbar/simplebar.js'
+                    'location' => 'adminetic/assets/js/scrollbar/simplebar.js',
                 ],
                 [
                     'type' => 'js',
                     'active' => true,
-                    'location' => 'adminetic/assets/js/scrollbar/custom.js'
+                    'location' => 'adminetic/assets/js/scrollbar/custom.js',
                 ],
-            ]
+            ],
         ],
         [
             'name' => 'Touchspin',
@@ -218,14 +217,14 @@ return [
                 [
                     'type' => 'js',
                     'active' => true,
-                    'location' => 'adminetic/assets/js/touchspin/touchspin.js'
+                    'location' => 'adminetic/assets/js/touchspin/touchspin.js',
                 ],
                 [
                     'type' => 'js',
                     'active' => true,
-                    'location' => 'adminetic/assets/js/touchspin/input-groups.min.js'
+                    'location' => 'adminetic/assets/js/touchspin/input-groups.min.js',
                 ],
-            ]
+            ],
         ],
         [
             'name' => 'Datepicker',
@@ -234,19 +233,19 @@ return [
                 [
                     'type' => 'css',
                     'active' => true,
-                    'location' => 'adminetic/assets/css/vendors/date-picker.css'
+                    'location' => 'adminetic/assets/css/vendors/date-picker.css',
                 ],
                 [
                     'type' => 'js',
                     'active' => true,
-                    'location' => 'adminetic/assets/js/datepicker/date-picker/datepicker.js'
+                    'location' => 'adminetic/assets/js/datepicker/date-picker/datepicker.js',
                 ],
                 [
                     'type' => 'js',
                     'active' => true,
-                    'location' => 'adminetic/assets/js/datepicker/date-picker/datepicker.en.js'
+                    'location' => 'adminetic/assets/js/datepicker/date-picker/datepicker.en.js',
                 ],
-            ]
+            ],
         ],
         [
             'name' => 'CKEditor',
@@ -255,14 +254,14 @@ return [
                 [
                     'type' => 'js',
                     'active' => true,
-                    'location' => 'adminetic/assets/js/editor/ckeditor/ckeditor.js'
+                    'location' => 'adminetic/assets/js/editor/ckeditor/ckeditor.js',
                 ],
                 [
                     'type' => 'js',
                     'active' => true,
-                    'location' => 'adminetic/assets/js/editor/ckeditor/styles.js'
+                    'location' => 'adminetic/assets/js/editor/ckeditor/styles.js',
                 ],
-            ]
+            ],
         ],
         [
             'name' => 'Summernote',
@@ -271,14 +270,14 @@ return [
                 [
                     'type' => 'css',
                     'active' => true,
-                    'location' => 'adminetic/assets/css/vendors/summernote.css'
+                    'location' => 'adminetic/assets/css/vendors/summernote.css',
                 ],
                 [
                     'type' => 'js',
                     'active' => true,
-                    'location' => 'adminetic/assets/js/editor/summernote/summernote.js'
+                    'location' => 'adminetic/assets/js/editor/summernote/summernote.js',
                 ],
-            ]
+            ],
         ],
         [
             'name' => 'Select2',
@@ -287,14 +286,14 @@ return [
                 [
                     'type' => 'css',
                     'active' => true,
-                    'location' => 'adminetic/assets/css/vendors/select2.css'
+                    'location' => 'adminetic/assets/css/vendors/select2.css',
                 ],
                 [
                     'type' => 'js',
                     'active' => true,
-                    'location' => 'adminetic/assets/js/select2/select2.full.min.js'
+                    'location' => 'adminetic/assets/js/select2/select2.full.min.js',
                 ],
-            ]
+            ],
         ],
         [
             'name' => 'ACE Editor',
@@ -303,14 +302,14 @@ return [
                 [
                     'type' => 'js',
                     'active' => true,
-                    'location' => 'adminetic/assets/js/editor/ace-editor/ace.js'
+                    'location' => 'adminetic/assets/js/editor/ace-editor/ace.js',
                 ],
                 [
                     'type' => 'js',
                     'active' => true,
-                    'location' => 'adminetic/assets/js/editor/ace-editor/mode-html.js'
+                    'location' => 'adminetic/assets/js/editor/ace-editor/mode-html.js',
                 ],
-            ]
+            ],
         ],
         [
             'name' => 'Notify',
@@ -319,9 +318,9 @@ return [
                 [
                     'type' => 'js',
                     'active' => true,
-                    'location' => 'adminetic/assets/js/notify/bootstrap-notify.min.js'
+                    'location' => 'adminetic/assets/js/notify/bootstrap-notify.min.js',
                 ],
-            ]
+            ],
         ],
         [
             'name' => 'Card',
@@ -330,9 +329,9 @@ return [
                 [
                     'type' => 'js',
                     'active' => true,
-                    'location' => 'adminetic/assets/js/custom-card/custom-card.js'
+                    'location' => 'adminetic/assets/js/custom-card/custom-card.js',
                 ],
-            ]
+            ],
         ],
     ],
 ];

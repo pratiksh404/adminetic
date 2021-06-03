@@ -3,7 +3,6 @@
 namespace Pratiksh\Adminetic\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\VerifiesEmails;
 use Pratiksh\Adminetic\Providers\AdmineticServiceProvider;
 

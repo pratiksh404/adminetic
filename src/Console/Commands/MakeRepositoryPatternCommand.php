@@ -44,6 +44,6 @@ class MakeRepositoryPatternCommand extends Command
 
         RepositoryPatternService::ImplementNow($name, $makeRequest);
 
-        $this->info("Repository pattern implemented for model " . $name);
+        $this->info('Repository pattern implemented for model '.$name);
     }
 }

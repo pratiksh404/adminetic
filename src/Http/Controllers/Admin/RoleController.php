@@ -2,13 +2,12 @@
 
 namespace Pratiksh\Adminetic\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Pratiksh\Adminetic\Models\Admin\Role;
-use Pratiksh\Adminetic\Models\Admin\Permission;
-use Pratiksh\Adminetic\Http\Requests\RoleRequest;
+use Illuminate\Http\Request;
 use Pratiksh\Adminetic\Contracts\RoleRepositoryInterface;
-
+use Pratiksh\Adminetic\Http\Requests\RoleRequest;
+use Pratiksh\Adminetic\Models\Admin\Permission;
+use Pratiksh\Adminetic\Models\Admin\Role;
 
 class RoleController extends Controller
 {
@@ -19,7 +18,6 @@ class RoleController extends Controller
         $this->roleRepositoryInterface = $roleRepositoryInterface;
         $this->authorizeResource(Role::class, 'role');
     }
-
 
     /**
      * Display a listing of the resource.
@@ -50,6 +48,7 @@ class RoleController extends Controller
     public function store(RoleRequest $request)
     {
         $this->roleRepositoryInterface->storeRole($request);
+
         return redirect(adminRedirectRoute('role'))->withSuccess('Role Created Successfully.');
     }
 
@@ -85,6 +84,7 @@ class RoleController extends Controller
     public function update(RoleRequest $request, Role $role)
     {
         $this->roleRepositoryInterface->updateRole($request, $role);
+
         return redirect(adminRedirectRoute('role'))->withInfo('Role Updated Successfully.');
     }
 
@@ -97,6 +97,7 @@ class RoleController extends Controller
     public function destroy(Role $role)
     {
         $this->roleRepositoryInterface->destroyRole($role);
+
         return redirect(adminRedirectRoute('role'))->withFail('Role Deleted Successfully.');
     }
 
@@ -111,7 +112,7 @@ class RoleController extends Controller
             'add' => 1,
             'delete' => 1,
             'role_id' => $role->id,
-            'model' => request()->model
+            'model' => request()->model,
         ]);
 
         return redirect(adminShowRoute('role', $role->id))->withSuccess('Permission create for new module');
@@ -120,6 +121,7 @@ class RoleController extends Controller
     public function detachModulePermssion(Role $role, Permission $permission)
     {
         $permission->delete();
+
         return redirect(adminShowRoute('role', $role->id))->withSuccess('Permission detached for module');
     }
 
@@ -128,29 +130,30 @@ class RoleController extends Controller
         $permission = Permission::find($request->permission);
         if ($request->type == 1) {
             $permission->update([
-                'browse' => $request->flag
+                'browse' => $request->flag,
             ]);
         }
         if ($request->type == 2) {
             $permission->update([
-                'read' => $request->flag
+                'read' => $request->flag,
             ]);
         }
         if ($request->type == 3) {
             $permission->update([
-                'edit' => $request->flag
+                'edit' => $request->flag,
             ]);
         }
         if ($request->type == 4) {
             $permission->update([
-                'add' => $request->flag
+                'add' => $request->flag,
             ]);
         }
         if ($request->type == 5) {
             $permission->update([
-                'delete' => $request->flag
+                'delete' => $request->flag,
             ]);
         }
-        return json_encode(array('statusCode' => 200, 'success' => 'Permission Updated'));
+
+        return json_encode(['statusCode' => 200, 'success' => 'Permission Updated']);
     }
 }

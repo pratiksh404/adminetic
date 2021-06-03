@@ -2,8 +2,8 @@
 
 namespace Pratiksh\Adminetic\Contracts;
 
-use Pratiksh\Adminetic\Models\Admin\Role;
 use Pratiksh\Adminetic\Http\Requests\RoleRequest;
+use Pratiksh\Adminetic\Models\Admin\Role;
 
 interface RoleRepositoryInterface
 {

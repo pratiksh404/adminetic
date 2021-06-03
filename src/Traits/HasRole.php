@@ -11,6 +11,7 @@ trait HasRole
     {
         return $this->belongsToMany(Role::class)->withTimeStamps();
     }
+
     // Check is user has given role
     public function hasRole($role)
     {
@@ -21,6 +22,7 @@ trait HasRole
     public function isSuperAdmin()
     {
         $roles = $this->roles->pluck('name')->toArray();
+
         return in_array('superadmin', $roles);
     }
 
@@ -28,7 +30,7 @@ trait HasRole
     public function userCanDo($model, $bread)
     {
         /*   $permissions = $this->permissions->whereIn('role_id', $this->roles->pluck('id')->toArray())->where('model', trim($model))->get([$bread]); */
-        $can = array();
+        $can = [];
         foreach ($this->roles as $role) {
             $permissions = $role->permissions->whereIn('role_id', $role->id)->whereIn('model', trim($model))->pluck([$bread]);
             if ($permissions) {
@@ -37,6 +39,7 @@ trait HasRole
                 }
             }
         }
+
         return in_array(1, $can);
     }
 }

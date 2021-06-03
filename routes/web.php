@@ -1,15 +1,15 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Pratiksh\Adminetic\Http\Controllers\Admin\RoleController;
-use Pratiksh\Adminetic\Http\Controllers\Admin\UserController;
-use Pratiksh\Adminetic\Http\Controllers\Admin\ProfileController;
-use Pratiksh\Adminetic\Http\Controllers\Admin\SettingController;
 use Pratiksh\Adminetic\Http\Controllers\Admin\ActivityController;
 use Pratiksh\Adminetic\Http\Controllers\Admin\DashboardController;
+use Pratiksh\Adminetic\Http\Controllers\Admin\EditorUploadController;
 use Pratiksh\Adminetic\Http\Controllers\Admin\PermissionController;
 use Pratiksh\Adminetic\Http\Controllers\Admin\PreferenceController;
-use Pratiksh\Adminetic\Http\Controllers\Admin\EditorUploadController;
+use Pratiksh\Adminetic\Http\Controllers\Admin\ProfileController;
+use Pratiksh\Adminetic\Http\Controllers\Admin\RoleController;
+use Pratiksh\Adminetic\Http\Controllers\Admin\SettingController;
+use Pratiksh\Adminetic\Http\Controllers\Admin\UserController;
 
 Route::get('dashboard', [DashboardController::class, 'dashboard'])->name('home');
 
@@ -17,11 +17,11 @@ Route::get('dashboard', [DashboardController::class, 'dashboard'])->name('home')
 Route::resource('user', UserController::class);
 
 Route::resource('profile', ProfileController::class, [
-    'only' => ['show', 'edit', 'update']
+    'only' => ['show', 'edit', 'update'],
 ]);
 
 Route::resource('activity', ActivityController::class, [
-    'only' => ['index', 'show', 'destroy']
+    'only' => ['index', 'show', 'destroy'],
 ]);
 
 Route::resource('role', RoleController::class);
@@ -31,7 +31,6 @@ Route::resource('permission', PermissionController::class);
 Route::resource('setting', SettingController::class);
 
 Route::resource('preference', PreferenceController::class);
-
 
 /* ================================================= */
 

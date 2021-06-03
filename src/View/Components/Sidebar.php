@@ -4,9 +4,7 @@ namespace Pratiksh\Adminetic\View\Components;
 
 use Exception;
 use Illuminate\Support\Str;
-
 use Illuminate\View\Component;
-use function PHPUnit\Framework\throwException;
 
 class Sidebar extends Component
 {
@@ -19,13 +17,13 @@ class Sidebar extends Component
                 if (is_array($menu->myMenu())) {
                     return $menu->myMenu();
                 } else {
-                    throw new Exception("myMenu method return type must be an array.");
+                    throw new Exception('myMenu method return type must be an array.');
                 }
             } else {
-                throw new Exception("myMenu method is not found", 1);
+                throw new Exception('myMenu method is not found', 1);
             }
         } else {
-            throw new Exception("Given class namespace is not found");
+            throw new Exception('Given class namespace is not found');
         }
     }
 
@@ -46,9 +44,9 @@ class Sidebar extends Component
                 'conditions' => [
                     [
                         'type' => 'and',
-                        'condition' => auth()->user()->hasRole('admin')
-                    ]
-                ]
+                        'condition' => auth()->user()->hasRole('admin'),
+                    ],
+                ],
             ],
             [
                 'type' => 'menu',
@@ -57,19 +55,19 @@ class Sidebar extends Component
                 'is_active' => request()->routeIs('user*') ? 'active' : '',
                 'pill' => [
                     'is_active' => 'badge badge-info badge-air-info',
-                    'value' => \App\Models\User::count()
+                    'value' => \App\Models\User::count(),
                 ],
                 'conditions' => [
                     [
                         'type' => 'or',
-                        'condition' => auth()->user()->can('view-any', \App\Models\User::class)
+                        'condition' => auth()->user()->can('view-any', \App\Models\User::class),
                     ],
                     [
                         'type' => 'or',
-                        'condition' => auth()->user()->can('create', \App\Models\User::class)
-                    ]
+                        'condition' => auth()->user()->can('create', \App\Models\User::class),
+                    ],
                 ],
-                'children' => $this->indexCreateChildren('user', \App\Models\User::class)
+                'children' => $this->indexCreateChildren('user', \App\Models\User::class),
             ],
             [
                 'type' => 'menu',
@@ -79,14 +77,14 @@ class Sidebar extends Component
                 'conditions' => [
                     [
                         'type' => 'or',
-                        'condition' => auth()->user()->can('view-any', \Pratiksh\Adminetic\Models\Admin\Role::class)
+                        'condition' => auth()->user()->can('view-any', \Pratiksh\Adminetic\Models\Admin\Role::class),
                     ],
                     [
                         'type' => 'or',
-                        'condition' => auth()->user()->can('create', \Pratiksh\Adminetic\Models\Admin\Role::class)
-                    ]
+                        'condition' => auth()->user()->can('create', \Pratiksh\Adminetic\Models\Admin\Role::class),
+                    ],
                 ],
-                'children' => $this->indexCreateChildren('role', \Pratiksh\Adminetic\Models\Admin\Role::class)
+                'children' => $this->indexCreateChildren('role', \Pratiksh\Adminetic\Models\Admin\Role::class),
             ],
             [
                 'type' => 'menu',
@@ -96,14 +94,14 @@ class Sidebar extends Component
                 'conditions' => [
                     [
                         'type' => 'or',
-                        'condition' => auth()->user()->can('view-any', \Pratiksh\Adminetic\Models\Admin\Permission::class)
+                        'condition' => auth()->user()->can('view-any', \Pratiksh\Adminetic\Models\Admin\Permission::class),
                     ],
                     [
                         'type' => 'or',
-                        'condition' => auth()->user()->can('create', \Pratiksh\Adminetic\Models\Admin\Permission::class)
-                    ]
+                        'condition' => auth()->user()->can('create', \Pratiksh\Adminetic\Models\Admin\Permission::class),
+                    ],
                 ],
-                'children' => $this->indexCreateChildren('permission', \Pratiksh\Adminetic\Models\Admin\Permission::class)
+                'children' => $this->indexCreateChildren('permission', \Pratiksh\Adminetic\Models\Admin\Permission::class),
             ],
             [
                 'type' => 'menu',
@@ -113,14 +111,14 @@ class Sidebar extends Component
                 'conditions' => [
                     [
                         'type' => 'or',
-                        'condition' => auth()->user()->can('view-any', \Pratiksh\Adminetic\Models\Admin\Setting::class)
+                        'condition' => auth()->user()->can('view-any', \Pratiksh\Adminetic\Models\Admin\Setting::class),
                     ],
                     [
                         'type' => 'or',
-                        'condition' => auth()->user()->can('create', \Pratiksh\Adminetic\Models\Admin\Setting::class)
-                    ]
+                        'condition' => auth()->user()->can('create', \Pratiksh\Adminetic\Models\Admin\Setting::class),
+                    ],
                 ],
-                'children' => $this->indexCreateChildren('setting', \Pratiksh\Adminetic\Models\Admin\Setting::class)
+                'children' => $this->indexCreateChildren('setting', \Pratiksh\Adminetic\Models\Admin\Setting::class),
             ],
             [
                 'type' => 'menu',
@@ -130,14 +128,14 @@ class Sidebar extends Component
                 'conditions' => [
                     [
                         'type' => 'or',
-                        'condition' => auth()->user()->can('view-any', \Pratiksh\Adminetic\Models\Admin\Preference::class)
+                        'condition' => auth()->user()->can('view-any', \Pratiksh\Adminetic\Models\Admin\Preference::class),
                     ],
                     [
                         'type' => 'or',
-                        'condition' => auth()->user()->can('create', \Pratiksh\Adminetic\Models\Admin\Preference::class)
-                    ]
+                        'condition' => auth()->user()->can('create', \Pratiksh\Adminetic\Models\Admin\Preference::class),
+                    ],
                 ],
-                'children' => $this->indexCreateChildren('preference', \Pratiksh\Adminetic\Models\Admin\Preference::class)
+                'children' => $this->indexCreateChildren('preference', \Pratiksh\Adminetic\Models\Admin\Preference::class),
             ],
             [
                 'type' => 'link',
@@ -148,13 +146,13 @@ class Sidebar extends Component
                 'conditions' => [
                     [
                         'type' => 'and',
-                        'condition' => auth()->user()->hasRole('admin')
-                    ]
-                ]
-            ]
+                        'condition' => auth()->user()->hasRole('admin'),
+                    ],
+                ],
+            ],
         ];
 
-        return array_merge($menus, $this->myMenu() ?? array());
+        return array_merge($menus, $this->myMenu() ?? []);
     }
 
     protected function indexCreateChildren($route, $class)
@@ -162,32 +160,33 @@ class Sidebar extends Component
         $name = Str::ucfirst($route);
         $plural = Str::plural($name);
 
-        $children =  [
+        $children = [
             [
                 'type' => 'submenu',
-                'name' => 'All ' . $plural,
-                'is_active' => request()->routeIs($route . '.index') ? 'active' : '',
+                'name' => 'All '.$plural,
+                'is_active' => request()->routeIs($route.'.index') ? 'active' : '',
                 'link' => adminRedirectRoute($route),
                 'conditions' => [
                     [
                         'type' => 'or',
-                        'condition' => auth()->user()->can('view-any', $class)
-                    ]
+                        'condition' => auth()->user()->can('view-any', $class),
+                    ],
                 ],
             ],
             [
                 'type' => 'submenu',
-                'name' => 'Create ' . $route,
-                'is_active' => request()->routeIs($route . '.create') ? 'active' : '',
+                'name' => 'Create '.$route,
+                'is_active' => request()->routeIs($route.'.create') ? 'active' : '',
                 'link' => adminCreateRoute($route),
                 'conditions' => [
                     [
                         'type' => 'or',
-                        'condition' => auth()->user()->can('create', $class)
-                    ]
+                        'condition' => auth()->user()->can('create', $class),
+                    ],
                 ],
-            ]
+            ],
         ];
+
         return $children;
     }
 
@@ -199,6 +198,7 @@ class Sidebar extends Component
     public function render()
     {
         $menus = $this->initializeMenu();
+
         return view('adminetic::components.sidebar', compact('menus'));
     }
 }

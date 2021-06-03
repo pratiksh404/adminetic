@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 use App\Models\User;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Pratiksh\Adminetic\Models\Admin\Role;
 
@@ -17,7 +16,7 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        if (!config('adminetic.migrate_with_dummy', false)) {
+        if (! config('adminetic.migrate_with_dummy', false)) {
             $admin = User::create([
                 'name' => 'Admin User',
                 'email' => 'admin@admin.com',
