@@ -2,10 +2,10 @@
 
 namespace Pratiksh\Adminetic\Http\Livewire\Admin\Profile;
 
-use Livewire\Component;
-use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\Http;
 use Intervention\Image\Facades\Image;
+use Livewire\Component;
+use Livewire\WithFileUploads;
 use Pratiksh\Adminetic\Models\Admin\Profile;
 
 class EditProfile extends Component
@@ -53,6 +53,7 @@ class EditProfile extends Component
         $this->father_name = $profile->father_name;
         $this->mother_name = $profile->mother_name;
     }
+
     public function submit()
     {
         // Validate Data
@@ -84,12 +85,11 @@ class EditProfile extends Component
     protected function uploadProfile($profile)
     {
         if (isset($this->profile_pic)) {
-
             $profile->update([
-                'profile_pic' => $this->profile_pic->store('admin/user', 'public')
+                'profile_pic' => $this->profile_pic->store('admin/user', 'public'),
             ]);
             $image = Image::make($this->profile_pic->getRealPath());
-            $image->save(public_path('storage/' . $profile->profile_pic));
+            $image->save(public_path('storage/'.$profile->profile_pic));
         }
     }
 
@@ -97,6 +97,7 @@ class EditProfile extends Component
     {
         $this->emit('initializeProfile');
         $countries = json_decode(Http::get('https://restcountries.eu/rest/v2/all'));
+
         return view('adminetic::livewire.admin.profile.edit-profile', compact('countries'));
     }
 }

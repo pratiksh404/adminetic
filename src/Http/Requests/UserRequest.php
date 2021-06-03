@@ -23,10 +23,10 @@ class UserRequest extends FormRequest
      */
     public function rules()
     {
-        $id =  $this->user->id ?? '';
+        $id = $this->user->id ?? '';
         $rules = [
             'name' => 'required|max:100',
-            'email' => 'required|email|unique:users,email,' . $id,
+            'email' => 'required|email|unique:users,email,'.$id,
         ];
         if ($this->getMethod() == 'POST') {
             $rules += ['password' => 'required|min:8|max:30'];
@@ -37,6 +37,7 @@ class UserRequest extends FormRequest
                 $rules += ['password' => 'required|confirmed|min:8|max:30'];
             }
         }
+
         return $rules;
     }
 }

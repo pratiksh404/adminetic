@@ -2,14 +2,13 @@
 
 namespace Pratiksh\Adminetic\Http\Controllers\Auth;
 
-use App\Models\User;
-use App\Models\Admin\Role;
-use App\Models\Admin\Preference;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Hash;
-use App\Providers\RouteServiceProvider;
-use Illuminate\Support\Facades\Validator;
+use App\Models\Admin\Preference;
+use App\Models\Admin\Role;
+use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 use Pratiksh\Adminetic\Providers\AdmineticServiceProvider;
 
 class RegisterController extends Controller
@@ -82,7 +81,7 @@ class RegisterController extends Controller
             Role::create([
                 'name' => $default_user_role,
                 'description' => 'Default role for newly registered user.',
-                'level' => $default_user_role_level
+                'level' => $default_user_role_level,
             ]);
         }
         // Creating Profile
@@ -91,19 +90,20 @@ class RegisterController extends Controller
         $preferences = Preference::all();
         if (isset($preferences)) {
             foreach ($preferences as $preference) {
-                if (!isset($preference->roles)) {
+                if (! isset($preference->roles)) {
                     $user->preferences()->attach($preference->id, [
-                        'enabled' => $preference->active
+                        'enabled' => $preference->active,
                     ]);
                 } else {
                     if (array_intersect($user->roles->pluck('id')->toArray(), $preference->roles) != null) {
                         $user->preferences()->attach($preference->id, [
-                            'enabled' => $preference->active
+                            'enabled' => $preference->active,
                         ]);
                     }
                 }
             }
         }
+
         return $user;
     }
 

@@ -3,8 +3,8 @@
 namespace Pratiksh\Adminetic\Services;
 
 use Illuminate\Support\Str;
-use Pratiksh\Adminetic\Models\Admin\Role;
 use Pratiksh\Adminetic\Models\Admin\Permission;
+use Pratiksh\Adminetic\Models\Admin\Role;
 use Pratiksh\Adminetic\Services\Helper\CommandHelper;
 
 class MakePermission extends CommandHelper
@@ -23,6 +23,7 @@ class MakePermission extends CommandHelper
         foreach ($permissions as $permission) {
             if ($permission->name == $name) {
                 break;
+
                 return false;
             }
         }
@@ -37,7 +38,7 @@ class MakePermission extends CommandHelper
                     'add' => 1,
                     'delete' => 1,
                     'role_id' => $r->id,
-                    'model' => $name
+                    'model' => $name,
                 ]);
             }
         } else {
@@ -48,7 +49,7 @@ class MakePermission extends CommandHelper
                 'add' => 1,
                 'delete' => 1,
                 'role_id' => $role,
-                'model' => $name
+                'model' => $name,
             ]);
         }
     }
@@ -56,21 +57,21 @@ class MakePermission extends CommandHelper
     // Make a Policy
     protected static function makePolicy($name, $only_flags)
     {
-        if (!$only_flags) {
-            if (trim($name) != "User" || trim($name) != "user") {
-                if (!file_exists($path = app_path('Policies'))) {
+        if (! $only_flags) {
+            if (trim($name) != 'User' || trim($name) != 'user') {
+                if (! file_exists($path = app_path('Policies'))) {
                     mkdir($path, 0777, true);
                 }
                 $policyTemplate = str_replace(
                     [
                         '{{modelName}}',
                         '{{modelNamePluralLowerCase}}',
-                        '{{modelNameSingularLowerCase}}'
+                        '{{modelNameSingularLowerCase}}',
                     ],
                     [
                         $name,
                         strtolower(Str::plural($name)),
-                        strtolower($name)
+                        strtolower($name),
                     ],
                     self::getStub('Policy')
                 );

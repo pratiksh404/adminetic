@@ -2,11 +2,10 @@
 
 namespace Pratiksh\Adminetic\Http\Controllers\Admin;
 
-use Auth;
-use App\Models\User;
 use App\Http\Controllers\Controller;
-use Pratiksh\Adminetic\Http\Requests\UserRequest;
+use App\Models\User;
 use Pratiksh\Adminetic\Contracts\UserRepositoryInterface;
+use Pratiksh\Adminetic\Http\Requests\UserRequest;
 
 class UserController extends Controller
 {
@@ -17,7 +16,6 @@ class UserController extends Controller
         $this->userRepositoryInterface = $userRepositoryInterface;
         $this->authorizeResource(User::class, 'user');
     }
-
 
     /**
      * Display a listing of the resource.
@@ -48,6 +46,7 @@ class UserController extends Controller
     public function store(UserRequest $request)
     {
         $this->userRepositoryInterface->userStore($request);
+
         return redirect(adminRedirectRoute('user'))->withSuccess('User Created Sucessfully');
     }
 
@@ -83,6 +82,7 @@ class UserController extends Controller
     public function update(UserRequest $request, User $user)
     {
         $this->userRepositoryInterface->userUpdate($request, $user);
+
         return request()->has('from_profile') ? redirect(adminEditRoute('profile', $user->profile->id))->withInfo('User Updated Sucessfully') : redirect(adminRedirectRoute('user'))->withInfo('User Updated Sucessfully');
     }
 
@@ -95,6 +95,7 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         $this->userRepositoryInterface->userDestroy($user);
+
         return redirect(adminRedirectRoute('user'))->withFail('User Deleted Sucessfully');
     }
 }

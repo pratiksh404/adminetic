@@ -2,8 +2,8 @@
 
 namespace Pratiksh\Adminetic\Services;
 
-use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Str;
 use Pratiksh\Adminetic\Services\Helper\CommandHelper;
 
 class MakeAPIResource extends CommandHelper
@@ -28,25 +28,21 @@ class MakeAPIResource extends CommandHelper
     }
 
     /**
-     *
-     * Make Resource and Collection
-     *
+     * Make Resource and Collection.
      */
     protected static function makeResource($name)
     {
-        Artisan::call('make:resource ' . $name . 'Resource');
-        Artisan::call('make:resource ' . $name . '/' . $name . 'Collection');
+        Artisan::call('make:resource '.$name.'Resource');
+        Artisan::call('make:resource '.$name.'/'.$name.'Collection');
     }
 
     /**
-     *
-     * Make API Resourceful Controller
-     *
+     * Make API Resourceful Controller.
      */
     protected static function makeRestAPIController($name)
     {
         $lowername = strtolower($name);
-        if (!file_exists($path = app_path('Http/Controllers/Admin/API/Restful'))) {
+        if (! file_exists($path = app_path('Http/Controllers/Admin/API/Restful'))) {
             mkdir($path, 0777, true);
         }
 
@@ -54,12 +50,12 @@ class MakeAPIResource extends CommandHelper
             [
                 '{{modelName}}',
                 '{{modelNamePluralLowerCase}}',
-                '{{modelNameSingularLowerCase}}'
+                '{{modelNameSingularLowerCase}}',
             ],
             [
                 $name,
                 strtolower(Str::plural($name)),
-                strtolower($name)
+                strtolower($name),
             ],
             self::getStub('RestAPIController')
         );
@@ -67,26 +63,24 @@ class MakeAPIResource extends CommandHelper
     }
 
     /**
-     *
-     * Make API Resourceful Controller
-     *
+     * Make API Resourceful Controller.
      */
     protected static function makeAPIController($name)
     {
         $lowername = strtolower($name);
-        if (!file_exists($path = app_path('Http/Controllers/Admin/API'))) {
+        if (! file_exists($path = app_path('Http/Controllers/Admin/API'))) {
             mkdir($path, 0777, true);
         }
         $controllerTemplate = str_replace(
             [
                 '{{modelName}}',
                 '{{modelNamePluralLowerCase}}',
-                '{{modelNameSingularLowerCase}}'
+                '{{modelNameSingularLowerCase}}',
             ],
             [
                 $name,
                 strtolower(Str::plural($name)),
-                strtolower($name)
+                strtolower($name),
             ],
             self::getStub('APIController')
         );
@@ -94,13 +88,11 @@ class MakeAPIResource extends CommandHelper
     }
 
     /**
-     *
-     * Make Client API Resource
-     *
+     * Make Client API Resource.
      */
     protected static function makeClientAPIResource($name)
     {
-        if (!file_exists($path = app_path("/Http/Resources/Client/{$name}"))) {
+        if (! file_exists($path = app_path("/Http/Resources/Client/{$name}"))) {
             mkdir($path, 0777, true);
         }
         // Making Collection
@@ -108,12 +100,12 @@ class MakeAPIResource extends CommandHelper
             [
                 '{{modelName}}',
                 '{{modelNamePluralLowerCase}}',
-                '{{modelNameSingularLowerCase}}'
+                '{{modelNameSingularLowerCase}}',
             ],
             [
                 $name,
                 strtolower(Str::plural($name)),
-                strtolower($name)
+                strtolower($name),
             ],
             self::getStub('API/Client/Collection')
         );
@@ -124,31 +116,31 @@ class MakeAPIResource extends CommandHelper
             [
                 '{{modelName}}',
                 '{{modelNamePluralLowerCase}}',
-                '{{modelNameSingularLowerCase}}'
+                '{{modelNameSingularLowerCase}}',
             ],
             [
                 $name,
                 strtolower(Str::plural($name)),
-                strtolower($name)
+                strtolower($name),
             ],
             self::getStub('API/Client/Resource')
         );
         file_put_contents(app_path("/Http/Resources/Client/{$name}/{$name}Resource.php"), $clientResourceTemplate);
 
         // Making Controller
-        if (!file_exists($path = app_path('Http/Controllers/API'))) {
+        if (! file_exists($path = app_path('Http/Controllers/API'))) {
             mkdir($path, 0777, true);
         }
         $controllerTemplate = str_replace(
             [
                 '{{modelName}}',
                 '{{modelNamePluralLowerCase}}',
-                '{{modelNameSingularLowerCase}}'
+                '{{modelNameSingularLowerCase}}',
             ],
             [
                 $name,
                 strtolower(Str::plural($name)),
-                strtolower($name)
+                strtolower($name),
             ],
             self::getStub('API/Client/APIController')
         );

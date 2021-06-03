@@ -2,13 +2,11 @@
 
 namespace Pratiksh\Adminetic\Repositories;
 
-
 use Illuminate\Support\Facades\Cache;
-use Pratiksh\Adminetic\Models\Admin\Role;
-use Pratiksh\Adminetic\Models\Admin\Permission;
-use Pratiksh\Adminetic\Http\Requests\PermissionRequest;
 use Pratiksh\Adminetic\Contracts\PermissionRepositoryInterface;
-
+use Pratiksh\Adminetic\Http\Requests\PermissionRequest;
+use Pratiksh\Adminetic\Models\Admin\Permission;
+use Pratiksh\Adminetic\Models\Admin\Role;
 
 class PermissionRepository implements PermissionRepositoryInterface
 {
@@ -20,6 +18,7 @@ class PermissionRepository implements PermissionRepositoryInterface
                 return Permission::with('role')->get();
             }))
             : Permission::with('role')->get();
+
         return compact('permissions');
     }
 
@@ -27,6 +26,7 @@ class PermissionRepository implements PermissionRepositoryInterface
     public function createPermission()
     {
         $roles = Cache::get('roles', Role::all(['id', 'name']));
+
         return compact('roles');
     }
 
@@ -46,6 +46,7 @@ class PermissionRepository implements PermissionRepositoryInterface
     public function editPermission(Permission $permission)
     {
         $roles = Cache::get('roles', Role::all(['id', 'name']));
+
         return compact('permission', 'roles');
     }
 

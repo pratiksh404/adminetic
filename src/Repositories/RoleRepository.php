@@ -3,9 +3,9 @@
 namespace Pratiksh\Adminetic\Repositories;
 
 use Illuminate\Support\Facades\Cache;
-use Pratiksh\Adminetic\Models\Admin\Role;
-use Pratiksh\Adminetic\Http\Requests\RoleRequest;
 use Pratiksh\Adminetic\Contracts\RoleRepositoryInterface;
+use Pratiksh\Adminetic\Http\Requests\RoleRequest;
+use Pratiksh\Adminetic\Models\Admin\Role;
 
 class RoleRepository implements RoleRepositoryInterface
 {
@@ -17,6 +17,7 @@ class RoleRepository implements RoleRepositoryInterface
                 return Role::all();
             }))
             : Role::all();
+
         return compact('roles');
     }
 
@@ -35,10 +36,11 @@ class RoleRepository implements RoleRepositoryInterface
     // Role Show
     public function showRole(Role $role)
     {
-        $remaining_models = array();
+        $remaining_models = [];
         $all_models = getAllModelNames(app_path('Models'));
         $role_models = $role->permissions->pluck('model')->toArray();
         $remaining_models = array_diff($all_models, $role_models);
+
         return compact('role', 'remaining_models');
     }
 

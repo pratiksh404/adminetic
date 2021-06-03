@@ -1,19 +1,16 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateRoleUserTable extends Migration
 {
     /**
-     *
-     * Create Table
+     * Create Table.
      *
      *@return void
-     *
      */
-
     public function up()
     {
         Schema::create('role_user', function (Blueprint $table) {
@@ -25,13 +22,10 @@ class CreateRoleUserTable extends Migration
     }
 
     /**
-     *
-     * Drop Table
+     * Drop Table.
      *
      *@return void
-     *
      */
-
     public function down()
     {
         Schema::dropIfExists('role_user');

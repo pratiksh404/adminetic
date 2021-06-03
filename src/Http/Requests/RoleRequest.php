@@ -26,7 +26,7 @@ class RoleRequest extends FormRequest
         return [
             'name' => 'required|max:255',
             'level' => 'required|numeric',
-            'description' => 'sometimes|max:1000'
+            'description' => 'sometimes|max:1000',
         ];
     }
 }

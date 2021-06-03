@@ -4,13 +4,13 @@ namespace Pratiksh\Adminetic\Repositories;
 
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Cache;
-use Pratiksh\Adminetic\Models\Admin\Role;
-use Pratiksh\Adminetic\Models\Admin\Preference;
-use Pratiksh\Adminetic\Http\Requests\UserRequest;
-use Pratiksh\Adminetic\Events\UserHasBeenRegistered;
+use Illuminate\Support\Facades\Hash;
 use Pratiksh\Adminetic\Contracts\UserRepositoryInterface;
+use Pratiksh\Adminetic\Events\UserHasBeenRegistered;
+use Pratiksh\Adminetic\Http\Requests\UserRequest;
+use Pratiksh\Adminetic\Models\Admin\Preference;
+use Pratiksh\Adminetic\Models\Admin\Role;
 
 class UserRepository implements UserRepositoryInterface
 {
@@ -32,6 +32,7 @@ class UserRepository implements UserRepositoryInterface
     public function userCreate()
     {
         $roles = Cache::get('roles', Role::all(['id', 'name']));
+
         return compact('roles');
     }
 
@@ -44,7 +45,7 @@ class UserRepository implements UserRepositoryInterface
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
-            'password' => Hash::make($request->password)
+            'password' => Hash::make($request->password),
         ]);
         // User Registered Event
         event(new UserHasBeenRegistered($user, $request->password));
@@ -60,6 +61,7 @@ class UserRepository implements UserRepositoryInterface
     public function userShow(User $user)
     {
         $profile = $user->profile;
+
         return compact('user', 'profile');
     }
 
@@ -67,6 +69,7 @@ class UserRepository implements UserRepositoryInterface
     public function userEdit(User $user)
     {
         $roles = Cache::get('roles', Role::all(['id', 'name']));
+
         return compact('user', 'roles');
     }
 
@@ -76,13 +79,13 @@ class UserRepository implements UserRepositoryInterface
             $user->update([
                 'name' => $request->name,
                 'email' => $request->email,
-                'password' => Hash::make($request->password)
+                'password' => Hash::make($request->password),
             ]);
         } else {
             $user->update([
                 'name' => $request->name,
                 'email' => $request->email,
-                'password' => $user->password
+                'password' => $user->password,
             ]);
         }
         $this->syncRole($user);
@@ -128,14 +131,14 @@ class UserRepository implements UserRepositoryInterface
         $preferences = Preference::all();
         if (isset($preferences)) {
             foreach ($preferences as $preference) {
-                if (!isset($preference->roles)) {
+                if (! isset($preference->roles)) {
                     $user->preferences()->attach($preference->id, [
-                        'enabled' => $preference->active
+                        'enabled' => $preference->active,
                     ]);
                 } else {
                     if (array_intersect($user->roles->pluck('id')->toArray(), $preference->roles) != null) {
                         $user->preferences()->attach($preference->id, [
-                            'enabled' => $preference->active
+                            'enabled' => $preference->active,
                         ]);
                     }
                 }

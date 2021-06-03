@@ -4,10 +4,10 @@ namespace Pratiksh\Adminetic\Repositories;
 
 use App\Models\User;
 use Illuminate\Support\Facades\Cache;
-use Pratiksh\Adminetic\Models\Admin\Role;
-use Pratiksh\Adminetic\Models\Admin\Preference;
-use Pratiksh\Adminetic\Http\Requests\PreferenceRequest;
 use Pratiksh\Adminetic\Contracts\PreferenceRepositoryInterface;
+use Pratiksh\Adminetic\Http\Requests\PreferenceRequest;
+use Pratiksh\Adminetic\Models\Admin\Preference;
+use Pratiksh\Adminetic\Models\Admin\Role;
 
 class PreferenceRepository implements PreferenceRepositoryInterface
 {
@@ -19,6 +19,7 @@ class PreferenceRepository implements PreferenceRepositoryInterface
                 return Preference::latest()->get();
             }))
             : Preference::latest()->get();
+
         return compact('preferences');
     }
 
@@ -26,6 +27,7 @@ class PreferenceRepository implements PreferenceRepositoryInterface
     public function createPreference()
     {
         $roles = Cache::get('roles', Role::all());
+
         return compact('roles');
     }
 
@@ -37,14 +39,14 @@ class PreferenceRepository implements PreferenceRepositoryInterface
         $users = User::all();
         if (isset($users)) {
             foreach ($users as $user) {
-                if (!isset($preference->roles)) {
+                if (! isset($preference->roles)) {
                     $preference->users()->attach($user->id, [
-                        'enabled' => $preference->active
+                        'enabled' => $preference->active,
                     ]);
                 } else {
                     if (array_intersect($user->roles->pluck('id')->toArray(), $preference->roles) != null) {
                         $preference->users()->attach($user->id, [
-                            'enabled' => $preference->active
+                            'enabled' => $preference->active,
                         ]);
                     }
                 }
@@ -62,6 +64,7 @@ class PreferenceRepository implements PreferenceRepositoryInterface
     public function editPreference(Preference $preference)
     {
         $roles = Cache::get('roles', Role::all());
+
         return compact('preference', 'roles');
     }
 

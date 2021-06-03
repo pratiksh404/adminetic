@@ -2,10 +2,10 @@
 
 namespace Pratiksh\Adminetic\Http\Controllers\Admin;
 
-use Carbon\Carbon;
-use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Spatie\Activitylog\Models\Activity;
 
 class ActivityController extends Controller
@@ -19,6 +19,7 @@ class ActivityController extends Controller
     {
         if ($this->isAuthorized()) {
             $activities = Activity::latest()->get();
+
             return view('adminetic::admin.activity.index', compact('activities'));
         } else {
             abort(403);
@@ -36,7 +37,6 @@ class ActivityController extends Controller
         //
     }
 
-
     /**
      * Remove the specified resource from storage.
      *
@@ -47,6 +47,7 @@ class ActivityController extends Controller
     {
         if ($this->isAuthorized()) {
             $activity->delete();
+
             return redirect(adminRedirectRoute('activity'))->withFail('Activity Deleted !');
         } else {
             abort(403);
@@ -61,6 +62,7 @@ class ActivityController extends Controller
     public function delete_all_activities()
     {
         DB::table('activity_log')->delete();
+
         return redirect(adminRedirectRoute('activity'))->withSuccess('All Actitvities Deleted');
     }
 
@@ -69,6 +71,7 @@ class ActivityController extends Controller
         $start = new Carbon('first day of last month');
         $end = new Carbon('last day of last month');
         Activity::whereBetween('updated_at', [$start, $end])->delete();
+
         return redirect(adminRedirectRoute('activity'))->withSuccess('All activities of last month deleted.');
     }
 
@@ -76,6 +79,7 @@ class ActivityController extends Controller
     {
         $start = new Carbon('first day of last month');
         Activity::whereDate('updated_at', '<=', $start)->delete();
+
         return redirect(adminRedirectRoute('activity'))->withSuccess('All activities except this month.');
     }
 
@@ -83,6 +87,7 @@ class ActivityController extends Controller
     {
         $date = Carbon::now()->subMonths(2);
         Activity::whereDate('updated_at', '<=', $date)->delete();
+
         return redirect(adminRedirectRoute('activity'))->withSuccess('All activities deleted except last 2 months.');
     }
 
@@ -90,6 +95,7 @@ class ActivityController extends Controller
     {
         $date = Carbon::now()->subMonths(3);
         Activity::whereDate('updated_at', '<=', $date)->delete();
+
         return redirect(adminRedirectRoute('activity'))->withSuccess('All activities deleted except last 3 months.');
     }
 }
