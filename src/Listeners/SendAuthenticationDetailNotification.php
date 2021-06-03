@@ -3,8 +3,6 @@
 namespace Pratiksh\Adminetic\Listeners;
 
 use Illuminate\Support\Facades\Mail;
-use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Pratiksh\Adminetic\Mail\AuthenticationDetailMail;
 
 class SendAuthenticationDetailNotification

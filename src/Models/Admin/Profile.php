@@ -3,8 +3,8 @@
 namespace Pratiksh\Adminetic\Models\Admin;
 
 use App\Models\User;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
 class Profile extends Model
 {
@@ -14,7 +14,7 @@ class Profile extends Model
 
     // Attribute Casting
     protected $casts = [
-        'phone_no' => 'array'
+        'phone_no' => 'array',
     ];
 
     // Accessors
@@ -23,11 +23,9 @@ class Profile extends Model
         return isset($this->status) ? [
             1 => 'Active',
             2 => 'Inactive',
-            3 => 'Blocked'
+            3 => 'Blocked',
         ][$attribute] : null;
     }
-
-
 
     public function getBloodGroupAttribute($attribute)
     {

@@ -2,8 +2,6 @@
 
 namespace Pratiksh\Adminetic\Http\Controllers;
 
-use Illuminate\Http\Request;
-
 class HomeController extends Controller
 {
     /**

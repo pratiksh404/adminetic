@@ -6,7 +6,6 @@ use Illuminate\Console\Command;
 use Pratiksh\Adminetic\Models\Admin\Role;
 use Pratiksh\Adminetic\Services\MakePermission;
 
-
 class MakePermissionCommand extends Command
 {
     /**
@@ -46,8 +45,7 @@ class MakePermissionCommand extends Command
 
         $role = Role::find($role_id);
 
-        $only_flags = $this->option("onlyFlags") ?? 0;
-
+        $only_flags = $this->option('onlyFlags') ?? 0;
 
         if ($this->option('all')) {
             $for_all = $this->option('all');
@@ -57,14 +55,14 @@ class MakePermissionCommand extends Command
 
         if ($role_id == 0 && $for_all != 1) {
             $this->error('Role ID or --all flag must be given');
-        } else if ($role && $for_all) {
+        } elseif ($role && $for_all) {
             $this->error('Only one among role id aruguemwnt or --all flag option is accepted.');
         } else {
-            if (isset($role) && $role_id != 0 ? ($role->name == "superadmin") : false) {
-                $this->info("No permission is needed for Super Admin");
+            if (isset($role) && $role_id != 0 ? ($role->name == 'superadmin') : false) {
+                $this->info('No permission is needed for Super Admin');
             } else {
                 MakePermission::makePermission($name, $role_id, $for_all, $only_flags);
-                $this->info("Permission" . $only_flags ? "view and" : "flags made for model " . $name);
+                $this->info('Permission'.$only_flags ? 'view and' : 'flags made for model '.$name);
             }
         }
     }

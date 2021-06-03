@@ -2,8 +2,8 @@
 
 namespace Pratiksh\Adminetic\Contracts;
 
-use Pratiksh\Adminetic\Models\Admin\Permission;
 use Pratiksh\Adminetic\Http\Requests\PermissionRequest;
+use Pratiksh\Adminetic\Models\Admin\Permission;
 
 interface PermissionRepositoryInterface
 {

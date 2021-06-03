@@ -3,8 +3,8 @@
 namespace Pratiksh\Adminetic\Http\Livewire\Admin\Profile;
 
 use App\Models\User;
-use Livewire\Component;
 use Illuminate\Support\Facades\Hash;
+use Livewire\Component;
 
 class EditAccount extends Component
 {
@@ -33,20 +33,20 @@ class EditAccount extends Component
         $user = $this->user;
         $this->validate([
             'name' => 'required|min:6',
-            'email' => 'required|email|unique:users,email,' . $user->id,
+            'email' => 'required|email|unique:users,email,'.$user->id,
             'password' => 'nullable|confirmed|min:8|max:30',
         ]);
         if (isset($this->password)) {
             $user->update([
                 'name' => $this->name,
                 'email' => $this->email,
-                'password' => Hash::make($this->password)
+                'password' => Hash::make($this->password),
             ]);
         } else {
             $user->update([
                 'name' => $this->name,
                 'email' => $this->email,
-                'password' => $user->password
+                'password' => $user->password,
             ]);
         }
         $this->emit('account_updated');

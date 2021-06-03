@@ -3,8 +3,8 @@
 namespace Pratiksh\Adminetic\Policies;
 
 use App\Models\User;
-use Pratiksh\Adminetic\Models\Admin\Role;
 use Illuminate\Auth\Access\HandlesAuthorization;
+use Pratiksh\Adminetic\Models\Admin\Role;
 
 class RolePolicy
 {
@@ -16,7 +16,6 @@ class RolePolicy
             return true;
         }
     }
-
 
     /**
      * Determine whether the user can view any models.

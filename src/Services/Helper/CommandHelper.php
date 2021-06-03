@@ -6,6 +6,6 @@ class CommandHelper
 {
     protected static function getStub($type)
     {
-        return file_get_contents(__DIR__ . "/../../Console/Commands/AdminStubs/$type.stub");
+        return file_get_contents(__DIR__."/../../Console/Commands/AdminStubs/$type.stub");
     }
 }

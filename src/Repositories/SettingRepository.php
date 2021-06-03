@@ -5,9 +5,9 @@ namespace Pratiksh\Adminetic\Repositories;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Intervention\Image\Facades\Image;
-use Pratiksh\Adminetic\Models\Admin\Setting;
-use Pratiksh\Adminetic\Http\Requests\SettingRequest;
 use Pratiksh\Adminetic\Contracts\SettingRepositoryInterface;
+use Pratiksh\Adminetic\Http\Requests\SettingRequest;
+use Pratiksh\Adminetic\Models\Admin\Setting;
 
 class SettingRepository implements SettingRepositoryInterface
 {
@@ -21,6 +21,7 @@ class SettingRepository implements SettingRepositoryInterface
             : Setting::latest()->get();
 
         $setting_grouped = Setting::all()->groupBy('setting_group');
+
         return compact('settings', 'setting_grouped');
     }
 
@@ -28,6 +29,7 @@ class SettingRepository implements SettingRepositoryInterface
     public function createSetting()
     {
         $setting_groups = Setting::all()->pluck('setting_group')->toArray();
+
         return compact('setting_groups');
     }
 
@@ -47,6 +49,7 @@ class SettingRepository implements SettingRepositoryInterface
     public function editSetting(Setting $setting)
     {
         $setting_groups = Setting::all()->pluck('setting_group')->toArray();
+
         return compact('setting', 'setting_groups');
     }
 
@@ -70,7 +73,7 @@ class SettingRepository implements SettingRepositoryInterface
             if (isset($setting)) {
                 if ($key != '_token') {
                     $request->validate([
-                        $key => $this->getValidationRule($setting)
+                        $key => $this->getValidationRule($setting),
                     ]);
 
                     $this->store_setting_value($setting, $key, $value);
@@ -108,36 +111,36 @@ class SettingRepository implements SettingRepositoryInterface
     {
         if ($setting->getRawOriginal('setting_type') == 1 || $setting->getRawOriginal('setting_type') == 10) {
             $setting->update([
-                'string_value' => $value
+                'string_value' => $value,
             ]);
             if ($setting->getRawOriginal('setting_type') == 10) {
                 if (request()->has($key)) {
                     $setting->update([
-                        'string_value' => $value->store('admin/setting', 'public')
+                        'string_value' => $value->store('admin/setting', 'public'),
                     ]);
                     $image = Image::make($value->getRealPath());
-                    $image->save(public_path('storage/' . $setting->string_value));
+                    $image->save(public_path('storage/'.$setting->string_value));
                 }
             }
-        } else if ($setting->getRawOriginal('setting_type') == 2 || $setting->getRawOriginal('setting_type') == 6 || $setting->getRawOriginal('setting_type') == 7) {
+        } elseif ($setting->getRawOriginal('setting_type') == 2 || $setting->getRawOriginal('setting_type') == 6 || $setting->getRawOriginal('setting_type') == 7) {
             $setting->update([
-                'integer_value' => $value
+                'integer_value' => $value,
             ]);
-        } else if ($setting->getRawOriginal('setting_type') == 3 || $setting->getRawOriginal('setting_type') == 4) {
+        } elseif ($setting->getRawOriginal('setting_type') == 3 || $setting->getRawOriginal('setting_type') == 4) {
             $setting->update([
-                'text_value' => $value
+                'text_value' => $value,
             ]);
-        } else if ($setting->getRawOriginal('setting_type') == 5) {
+        } elseif ($setting->getRawOriginal('setting_type') == 5) {
             $setting->update([
-                'boolean_value' => $value
+                'boolean_value' => $value,
             ]);
-        } else if ($setting->getRawOriginal('setting_type') == 8 || $setting->getRawOriginal('setting_type') == 9) {
+        } elseif ($setting->getRawOriginal('setting_type') == 8 || $setting->getRawOriginal('setting_type') == 9) {
             $setting->update([
-                'setting_json' => $value
+                'setting_json' => $value,
             ]);
         } else {
             $setting->update([
-                'string_value' => $value
+                'string_value' => $value,
             ]);
         }
     }
