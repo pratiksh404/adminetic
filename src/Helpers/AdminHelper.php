@@ -31,7 +31,7 @@ if (!function_exists('getAllModelNames')) {
 if (!function_exists('validImageFolder')) {
     function validImageFolder($name, $default = 'default')
     {
-        return strtolower(str_replace([' ', '-', '$', '<', '>', '&', '{', '}', '*', '\\', '/', ':' . ';', ',', "'", '"'], '_', $name ?? trim($default)));
+        return strtolower(str_replace([' ', '-', '$', '<', '>', '&', '{', '}', '*', '\\', '/', ':', '.', ';', ',', "'", '"'], '_', $name ?? trim($default)));
     }
 }
 

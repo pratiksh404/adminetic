@@ -2,7 +2,7 @@
 
 ![Adminetic](https://github.com/pratiksh404/adminetic/blob/main/payload/static/documentation/banner.png)
 
-[![Issues](https://img.shields.io/github/issues/pratiksh404/adminetic)](https://github.com/pratiksh404/adminetic_blog/issues) [![Stars](https://img.shields.io/github/stars/pratiksh404/adminetic)](https://github.com/pratiksh404/adminetic_blog/stargazers) [![License](https://img.shields.io/github/license/pratiksh404/adminetic)](https://github.com/pratiksh404/adminetic/blob/master/LICENSE)
+[![Stars](https://img.shields.io/github/stars/pratiksh404/adminetic)](https://github.com/pratiksh404/adminetic/stargazers) [![Downloads](https://img.shields.io/packagist/dt/pratiksh/adminetic.svg?style=flat-square)](https://packagist.org/packages/pratiksh/thumbnail) [![StyleCI](https://github.styleci.io/repos/372560942/shield?branch=main)](https://github.styleci.io/repos/372560942?branch=main) [![Build Status](https://scrutinizer-ci.com/g/pratiksh404/adminetic/badges/build.png?b=main)](https://scrutinizer-ci.com/g/pratiksh404/adminetic/build-status/main) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/pratiksh404/adminetic/badges/quality-score.png?b=main)](https://scrutinizer-ci.com/g/pratiksh404/adminetic/?branch=main) [![CodeFactor](https://www.codefactor.io/repository/github/pratiksh404/adminetic/badge)](https://www.codefactor.io/repository/github/pratiksh404/adminetic) [![License](https://img.shields.io/github/license/pratiksh404/adminetic)](//packagist.org/packages/drh2so4/thumbnail)
 
 Headstart your project with adminetic admin panel with single command.
 

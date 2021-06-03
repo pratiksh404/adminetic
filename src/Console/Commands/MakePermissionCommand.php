@@ -64,7 +64,7 @@ class MakePermissionCommand extends Command
                 $this->info("No permission is needed for Super Admin");
             } else {
                 MakePermission::makePermission($name, $role_id, $for_all, $only_flags);
-                $this->info("Permission" . $only_flags ? "view and" : "" . "flags made for model " . $name);
+                $this->info("Permission" . $only_flags ? "view and" : "flags made for model " . $name);
             }
         }
     }
