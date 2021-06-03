@@ -39,7 +39,7 @@ class RepositoryPatternService extends CommandHelper
                 strtolower(Str::plural($name))
             ],
 
-            self::GetStubs('RepositoryInterface')
+            self::getStub('RepositoryInterface')
         );
 
         file_put_contents(app_path("/Contracts/{$name}RepositoryInterface.php"), $template);
@@ -58,7 +58,7 @@ class RepositoryPatternService extends CommandHelper
                 strtolower($name),
                 strtolower(Str::plural($name))
             ],
-            self::GetStubs('Repository')
+            self::getStub('Repository')
         );
 
         file_put_contents(app_path("/Repositories/{$name}Repository.php"), $template);

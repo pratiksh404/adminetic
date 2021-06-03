@@ -44,7 +44,7 @@ class RoleController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\RoleRequestt  $request
+     * @param  \Pratiksh\Adminetic\Http\Requests\RoleRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function store(RoleRequest $request)
@@ -56,7 +56,7 @@ class RoleController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Role  $role
+     * @param  \Pratiksh\Adminetic\Models\Admin\Role  $role
      * @return \Illuminate\Http\Response
      */
     public function show(Role $role)
@@ -67,7 +67,7 @@ class RoleController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Role  $role
+     * @param  \Pratiksh\Adminetic\Models\Admin\Role  $role
      * @return \Illuminate\Http\Response
      */
     public function edit(Role $role)
@@ -78,8 +78,8 @@ class RoleController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\RoleRequestt  $request
-     * @param  \App\Models\Role  $role
+     * @param  \Pratiksh\Adminetic\Http\Requests\RoleRequest  $request
+     * @param  \Pratiksh\Adminetic\Models\Admin\Role  $role
      * @return \Illuminate\Http\Response
      */
     public function update(RoleRequest $request, Role $role)
@@ -91,7 +91,7 @@ class RoleController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Role  $role
+     * @param  \Pratiksh\Adminetic\Models\Admin\Role  $role
      * @return \Illuminate\Http\Response
      */
     public function destroy(Role $role)

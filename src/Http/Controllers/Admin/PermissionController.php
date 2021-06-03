@@ -43,7 +43,7 @@ class PermissionController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\PermissionRequestt  $request
+     * @param  \Pratiksh\Adminetic\Http\Requests\PermissionRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function store(PermissionRequest $request)
@@ -55,7 +55,7 @@ class PermissionController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Permission  $permission
+     * @param  \Pratiksh\Adminetic\Models\Admin\Permission  $permission
      * @return \Illuminate\Http\Response
      */
     public function show(Permission $permission)
@@ -66,7 +66,7 @@ class PermissionController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Permission  $permission
+     * @param  \Pratiksh\Adminetic\Models\Admin\Permission  $permission
      * @return \Illuminate\Http\Response
      */
     public function edit(Permission $permission)
@@ -77,8 +77,8 @@ class PermissionController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\PermissionRequest  $request
-     * @param  \App\Models\Permission  $permission
+     * @param  \Pratiksh\Adminetic\Http\Requests\PermissionRequest  $request
+     * @param  \Pratiksh\Adminetic\Models\Admin\Permission  $permission
      * @return \Illuminate\Http\Response
      */
     public function update(PermissionRequest $request, Permission $permission)
@@ -90,7 +90,7 @@ class PermissionController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Permission  $permission
+     * @param  \Pratiksh\Adminetic\Models\Admin\Permission  $permission
      * @return \Illuminate\Http\Response
      */
     public function destroy(Permission $permission)

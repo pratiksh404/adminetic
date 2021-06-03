@@ -3,12 +3,16 @@
     <div class="social mt-4">
         <div class="btn-showcase d-flex justify-content-center">
             @if (config('adminetic.github_socialite', true))
-                <a class="btn btn-light" href="{{ route('sign_in_github') }}">
-                    <i class="fa fa-github"></i> Github </a>
+                @if (env('GITHUB_CLIENT_ID') != null && env('GITHUB_CLIENT_SECRET') != null)
+                    <a class="btn btn-light" href="{{ route('sign_in_github') }}">
+                        <i class="fa fa-github"></i> Github </a>
+                @endif
             @endif
             @if (config('adminetic.facebook_socialite', true))
-                <a class="btn btn-light" href="{{ route('sign_in_facebook') }}">
-                    <i class="fa fa-facebook"></i> Facebook </a>
+                @if (env('FACEBOOK_CLIENT_ID') != null && env('FACEBOOK_CLIENT_SECRET') != null)
+                    <a class="btn btn-light" href="{{ route('sign_in_facebook') }}">
+                        <i class="fa fa-facebook"></i> Facebook </a>
+                @endif
             @endif
         </div>
     </div>

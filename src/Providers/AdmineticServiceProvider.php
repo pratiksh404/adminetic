@@ -307,7 +307,7 @@ class AdmineticServiceProvider extends ServiceProvider
      */
     protected function registerLivewire()
     {
-        Livewire::component('admin.user-preference', UserPreferences::class);
+        Livewire::component('admin.user-preferences', UserPreferences::class);
         Livewire::component('admin.profile.edit-account', EditAccount::class);
         Livewire::component('admin.profile.edit-profile', EditProfile::class);
     }

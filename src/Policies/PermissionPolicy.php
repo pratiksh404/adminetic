@@ -33,7 +33,7 @@ class PermissionPolicy
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Admin\Permission  $permission
+     * @param  \Pratiksh\Adminetic\Models\Admin\Permission  $permission
      * @return mixed
      */
     public function view(User $user, Permission $permission)
@@ -56,7 +56,7 @@ class PermissionPolicy
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Admin\Permission  $permission
+     * @param  \Pratiksh\Adminetic\Models\Admin\Permission  $permission
      * @return mixed
      */
     public function update(User $user, Permission $permission)
@@ -68,7 +68,7 @@ class PermissionPolicy
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Admin\Permission  $permission
+     * @param  \Pratiksh\Adminetic\Models\Admin\Permission  $permission
      * @return mixed
      */
     public function delete(User $user, Permission $permission)
@@ -80,7 +80,7 @@ class PermissionPolicy
      * Determine whether the user can restore the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Admin\Permission  $permission
+     * @param  \Pratiksh\Adminetic\Models\Admin\Permission  $permission
      * @return mixed
      */
     public function restore(User $user, Permission $permission)
@@ -92,7 +92,7 @@ class PermissionPolicy
      * Determine whether the user can permanently delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Admin\Permission  $permission
+     * @param  \Pratiksh\Adminetic\Models\Admin\Permission  $permission
      * @return mixed
      */
     public function forceDelete(User $user, Permission $permission)

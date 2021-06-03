@@ -14,7 +14,7 @@
                             <td>{{ $setting->setting_type }}</td>
                             <td>{{ $setting->setting_group }}</td>
                             <td>
-                                <x-admin.action :model="$setting" route="setting" />
+                                <x-adminetic-action :model="$setting" route="setting" />
                             </td>
                         </tr>
                     @endforeach

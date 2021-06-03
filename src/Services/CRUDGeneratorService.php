@@ -19,6 +19,9 @@ class CRUDGeneratorService extends CommandHelper
     // Make Controller
     protected static function makeController($name, $console)
     {
+        if (!file_exists($path = app_path("/Http/Controllers/Admin"))) {
+            mkdir($path, 0777, true);
+        }
         $controllerTemplate = str_replace(
             [
                 '{{modelName}}',
@@ -40,6 +43,9 @@ class CRUDGeneratorService extends CommandHelper
     // Make Model
     protected static function makeModel($name, $console)
     {
+        if (!file_exists($path = app_path("/Models/Admin"))) {
+            mkdir($path, 0777, true);
+        }
         $modelTemplate = str_replace(
             [
                 '{{modelName}}',

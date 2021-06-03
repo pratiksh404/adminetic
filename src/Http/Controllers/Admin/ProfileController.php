@@ -20,7 +20,7 @@ class ProfileController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Admin\Profile  $profile
+     * @param  \Pratiksh\Adminetic\Models\Admin\Profile  $profile
      * @return \Illuminate\Http\Response
      */
     public function show(Profile $profile)
@@ -31,7 +31,7 @@ class ProfileController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Admin\Profile  $profile
+     * @param  \Pratiksh\Adminetic\Models\Admin\Profile  $profile
      * @return \Illuminate\Http\Response
      */
     public function edit(Profile $profile)
@@ -42,8 +42,8 @@ class ProfileController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\ProfileRequest  $request
-     * @param  \App\Models\Admin\Profile  $profile
+     * @param  \Pratiksh\Adminetic\Http\Requests\ProfileRequest  $request
+     * @param  \Pratiksh\Adminetic\Models\Admin\Profile  $profile
      * @return \Illuminate\Http\Response
      */
     public function update(ProfileRequest $request, Profile $profile)

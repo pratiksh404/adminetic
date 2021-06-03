@@ -5,10 +5,16 @@
 [![Issues](https://img.shields.io/github/issues/pratiksh404/adminetic)](https://github.com/pratiksh404/adminetic_blog/issues) [![Stars](https://img.shields.io/github/stars/pratiksh404/adminetic)](https://github.com/pratiksh404/adminetic_blog/stargazers) [![License](https://img.shields.io/github/license/pratiksh404/adminetic)](https://github.com/pratiksh404/adminetic/blob/master/LICENSE)
 
 Headstart your project with adminetic admin panel with single command.
-Note : Package is in testing phase.
+
+For detailed documentaion visit [Adminetic Documentation](https://pratikdai404.gitbook.io/adminetic/)
 
 #### Contains : -
 
+- CRUD Scaffold Generator
+- ACL Generator(BREAD Control)
+- Super Admin Generator
+- Repo Pattern Generator
+- API Scaffold Generator
 - User Management
 - Role and Permission Management
 - Activity Management
@@ -24,6 +30,18 @@ You can install the package via composer:
 
 ```bash
 composer require pratiksh/adminetic
+```
+
+Add AdmineticUser Trait.
+In your user model,
+
+```sh
+use Pratiksh\Adminetic\Traits\AdmineticUser;
+class User extends Authenticatable
+{
+    use AdmineticUser;
+    ....
+}
 ```
 
 Install Adminetic

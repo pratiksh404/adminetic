@@ -43,7 +43,7 @@ class PreferenceController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\PreferenceRequestt  $request
+     * @param  \Pratiksh\Adminetic\Http\Requests\PreferenceRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function store(PreferenceRequest $request)
@@ -55,7 +55,7 @@ class PreferenceController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Preference  $preference
+     * @param  \Pratiksh\Adminetic\Models\Admin\Preference  $preference
      * @return \Illuminate\Http\Response
      */
     public function show(Preference $preference)
@@ -66,7 +66,7 @@ class PreferenceController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Preference  $preference
+     * @param  \Pratiksh\Adminetic\Models\Admin\Preference  $preference
      * @return \Illuminate\Http\Response
      */
     public function edit(Preference $preference)
@@ -77,8 +77,8 @@ class PreferenceController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\PreferenceRequest  $request
-     * @param  \App\Models\Preference  $preference
+     * @param  \Pratiksh\Adminetic\Http\Requests\PreferenceRequest  $request
+     * @param  \Pratiksh\Adminetic\Models\Admin\Preference  $preference
      * @return \Illuminate\Http\Response
      */
     public function update(PreferenceRequest $request, Preference $preference)
@@ -90,7 +90,7 @@ class PreferenceController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Preference  $preference
+     * @param  \Pratiksh\Adminetic\Models\Admin\Preference  $preference
      * @return \Illuminate\Http\Response
      */
     public function destroy(Preference $preference)

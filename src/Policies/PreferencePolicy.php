@@ -2,8 +2,8 @@
 
 namespace Pratiksh\Adminetic\Policies;
 
-use App\Models\Admin\Preference;
 use App\Models\User;
+use Pratiksh\Adminetic\Models\Admin\Preference;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class PreferencePolicy
@@ -33,7 +33,7 @@ class PreferencePolicy
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Admin\Preference  $preference
+     * @param  \Pratiksh\Adminetic\Models\Admin\Preference  $preference
      * @return mixed
      */
     public function view(User $user, Preference $preference)
@@ -56,7 +56,7 @@ class PreferencePolicy
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Admin\Preference  $preference
+     * @param  \Pratiksh\Adminetic\Models\Admin\Preference  $preference
      * @return mixed
      */
     public function update(User $user, Preference $preference)
@@ -68,7 +68,7 @@ class PreferencePolicy
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Admin\Preference  $preference
+     * @param  \Pratiksh\Adminetic\Models\Admin\Preference  $preference
      * @return mixed
      */
     public function delete(User $user, Preference $preference)
@@ -80,7 +80,7 @@ class PreferencePolicy
      * Determine whether the user can restore the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Admin\Preference  $preference
+     * @param  \Pratiksh\Adminetic\Models\Admin\Preference  $preference
      * @return mixed
      */
     public function restore(User $user, Preference $preference)
@@ -92,7 +92,7 @@ class PreferencePolicy
      * Determine whether the user can permanently delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Admin\Preference  $preference
+     * @param  \Pratiksh\Adminetic\Models\Admin\Preference  $preference
      * @return mixed
      */
     public function forceDelete(User $user, Preference $preference)

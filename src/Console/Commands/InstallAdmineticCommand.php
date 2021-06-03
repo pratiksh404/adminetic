@@ -58,6 +58,10 @@ class InstallAdmineticCommand extends Command
     {
         $modelTemplate = file_get_contents(__DIR__ . "/../../Console/Commands/AdminStubs/MyMenu.stub");
 
+        if (!file_exists($path = app_path('Services'))) {
+            mkdir($path, 0777, true);
+        }
+
         $file = app_path("Services/MyMenu.php");
         file_put_contents($file, $modelTemplate);
         if (file_exists($file)) {
