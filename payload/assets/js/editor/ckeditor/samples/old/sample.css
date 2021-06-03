@@ -105,7 +105,7 @@ h2.samples
 {
 	color: #000000;
 	font-size: 130%;
-	margin: 15px 0 0 0;
+	margin: 15px 0 0;
 	padding: 0;
 }
 
@@ -171,7 +171,7 @@ pre.samples
 
 #footer hr
 {
-	margin: 10px 0 15px 0;
+	margin: 10px 0 15px;
 	height: 1px;
 	border: solid 1px gray;
 	border-bottom: none;
@@ -179,7 +179,7 @@ pre.samples
 
 #footer p
 {
-	margin: 0 10px 10px 10px;
+	margin: 0 10px 10px;
 	float: left;
 }
 
@@ -243,7 +243,7 @@ label
    added to it, so we can style it differently. */
 .cke_editable.cke_editable_inline.cke_focus
 {
-	box-shadow: inset 0px 0px 20px 3px #ddd, inset 0 0 1px #000;
+	box-shadow: inset 0 0 20px 3px #ddd, inset 0 0 1px #000;
 	outline: none;
 	background: #eee;
 	cursor: text;

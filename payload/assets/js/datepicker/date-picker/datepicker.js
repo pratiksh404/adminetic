@@ -1,5 +1,5 @@
 "use strict";
-;(function (window, $, undefined) { ;(function () {
+(function (window, $, undefined) { (function () {
     var VERSION = '2.2.3',
         pluginName = 'datepicker',
         autoInitSelector = '.datepicker-here',
@@ -1493,7 +1493,7 @@
 
 })();
 
-;(function () {
+(function () {
     var templates = {
         days:'' +
         '<div class="datepicker--days datepicker--body">' +
@@ -1805,7 +1805,7 @@
     };
 })();
 
-;(function () {
+(function () {
     var template = '' +
         '<div class="datepicker--nav-action" data-action="prev">#{prevHtml}</div>' +
         '<div class="datepicker--nav-title">#{title}</div>' +
@@ -1951,7 +1951,7 @@
 
 })();
 
-;(function () {
+(function () {
     var template = '<div class="datepicker--time">' +
         '<div class="datepicker--time-current">' +
         '   <span class="datepicker--time-current-hours">#{hourVisible}</span>' +

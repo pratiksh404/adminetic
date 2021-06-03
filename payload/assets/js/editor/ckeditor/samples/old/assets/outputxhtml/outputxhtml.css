@@ -15,7 +15,7 @@ body
 	color: #000000;
 	background-color: #ffffff;
 	padding: 5px;
-	margin: 0px;
+	margin: 0;
 }
 
 /**
@@ -193,7 +193,7 @@ code
 
 kbd
 {
-	padding: 0px 1px 0px 1px;
+	padding: 0 1px;
 	border-width: 1px 2px 2px 1px;
 	border-style: solid;
 }
