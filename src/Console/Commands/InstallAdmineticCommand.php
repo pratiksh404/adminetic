@@ -56,9 +56,9 @@ class InstallAdmineticCommand extends Command
 
     private function addMyMenu()
     {
-        $modelTemplate = file_get_contents(__DIR__ . '/../../Console/Commands/AdminStubs/MyMenu.stub');
+        $modelTemplate = file_get_contents(__DIR__.'/../../Console/Commands/AdminStubs/MyMenu.stub');
 
-        if (!file_exists($path = app_path('Services'))) {
+        if (! file_exists($path = app_path('Services'))) {
             mkdir($path, 0777, true);
         }
 
@@ -73,6 +73,6 @@ class InstallAdmineticCommand extends Command
 
     protected static function getStub($type)
     {
-        return file_get_contents(__DIR__ . "/../../Console/Commands/AdminStubs/$type.stub");
+        return file_get_contents(__DIR__."/../../Console/Commands/AdminStubs/$type.stub");
     }
 }
