@@ -35,8 +35,6 @@
             @endif
             <br>
             <div class="row">
-
-                {{ $description ?? 'List of all ' . $plural_name . ' in the system' }}
                 <div class="d-flex justify-content-end">
                     <a href="{{ adminRedirectRoute($route) }}"
                         class="btn btn-primary btn-sm btn-air-primary">Back</a>

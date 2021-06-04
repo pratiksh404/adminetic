@@ -82,7 +82,7 @@
             @if ($setting->getRawOriginal('setting_type') == 4)
                 <script>
                     // Heavy Text Editor
-                    CKEDITOR.replace("{{ $setting->setting_name }}", {
+                    CKEDITOR.replace("{{ $setting->getRawOriginal('setting_name') }}", {
                         filebrowserUploadUrl: "{{ route('ckeditor.upload', ['_token' => csrf_token()]) }}",
                         filebrowserUploadMethod: 'form',
                         embed_provider: '//ckeditor.iframe.ly/api/oembed?url={url}&callback={callback}',
