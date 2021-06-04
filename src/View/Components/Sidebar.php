@@ -54,7 +54,7 @@ class Sidebar extends Component
                 'icon' => 'fa fa-users',
                 'is_active' => request()->routeIs('user*') ? 'active' : '',
                 'pill' => [
-                    'is_active' => 'badge badge-info badge-air-info',
+                    'class' => 'badge badge-info badge-air-info',
                     'value' => \App\Models\User::count(),
                 ],
                 'conditions' => [
@@ -163,8 +163,8 @@ class Sidebar extends Component
         $children = [
             [
                 'type' => 'submenu',
-                'name' => 'All '.$plural,
-                'is_active' => request()->routeIs($route.'.index') ? 'active' : '',
+                'name' => 'All ' . $plural,
+                'is_active' => request()->routeIs($route . '.index') ? 'active' : '',
                 'link' => adminRedirectRoute($route),
                 'conditions' => [
                     [
@@ -175,8 +175,8 @@ class Sidebar extends Component
             ],
             [
                 'type' => 'submenu',
-                'name' => 'Create '.$route,
-                'is_active' => request()->routeIs($route.'.create') ? 'active' : '',
+                'name' => 'Create ' . $route,
+                'is_active' => request()->routeIs($route . '.create') ? 'active' : '',
                 'link' => adminCreateRoute($route),
                 'conditions' => [
                     [

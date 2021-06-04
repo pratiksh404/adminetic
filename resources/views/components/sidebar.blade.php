@@ -18,7 +18,7 @@
                            @if (isset($menu['conditions']) ? getCondition($menu['conditions']) : true)
                                <li class="sidebar-list">
                                    @isset($menu['pill'])
-                                       <label class="{{ $menu['pill']['is_active'] }}">{{ $menu['pill']['value'] }}</label>
+                                       <label class="{{ $menu['pill']['class'] ?? '' }}">{{ $menu['pill']['value'] }}</label>
                                    @endisset
                                    <a class="sidebar-link sidebar-title link-nav" href="{{ $menu['link'] }}">
                                        <i class="{{ $menu['icon'] ?? 'fa fa-bars' }}">
@@ -30,7 +30,7 @@
                        @if (isset($menu['conditions']) ? getCondition($menu['conditions']) : true)
                            <li class="sidebar-list">
                                @isset($menu['pill'])
-                                   <label class="{{ $menu['pill']['is_active'] }}">{{ $menu['pill']['value'] }}</label>
+                                   <label class="{{ $menu['pill']['class'] ?? '' }}">{{ $menu['pill']['value'] }}</label>
                                @endisset
                                <a class="sidebar-link sidebar-title {{ $menu['is_active'] ?? '' }}" href="#">
                                    <i class="{{ $menu['icon'] ?? 'fa fa-bars' }}"></i>
