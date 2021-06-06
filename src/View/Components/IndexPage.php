@@ -19,7 +19,7 @@ class IndexPage extends Component
      *
      * @return void
      */
-    public function __construct($name, $property = '', $route, $icon = null)
+    public function __construct($name, $route, $property = '', $icon = null)
     {
         $this->name = Str::ucfirst($name);
         $this->plural_name = Str::plural(Str::ucfirst($name));
