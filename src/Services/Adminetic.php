@@ -266,7 +266,7 @@ class Adminetic
                         'type' => 'js',
                         'active' => true,
                         'location' => 'adminetic/assets/js/custom-card/custom-card.js',
-                    ]
+                    ],
                 ],
             ],
         ];
@@ -462,8 +462,8 @@ class Adminetic
         $children = [
             [
                 'type' => 'submenu',
-                'name' => 'All ' . $plural,
-                'is_active' => request()->routeIs($route . '.index') ? 'active' : '',
+                'name' => 'All '.$plural,
+                'is_active' => request()->routeIs($route.'.index') ? 'active' : '',
                 'link' => adminRedirectRoute($route),
                 'conditions' => [
                     [
@@ -474,8 +474,8 @@ class Adminetic
             ],
             [
                 'type' => 'submenu',
-                'name' => 'Create ' . $route,
-                'is_active' => request()->routeIs($route . '.create') ? 'active' : '',
+                'name' => 'Create '.$route,
+                'is_active' => request()->routeIs($route.'.create') ? 'active' : '',
                 'link' => adminCreateRoute($route),
                 'conditions' => [
                     [
