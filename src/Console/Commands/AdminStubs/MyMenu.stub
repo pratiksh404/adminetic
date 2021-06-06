@@ -3,8 +3,9 @@
 namespace App\Services;
 
 use Pratiksh\Adminetic\Services\Helper\SidebarHelper;
+use Pratiksh\Adminetic\Contracts\SidebarInterface;
 
-class MyMenu extends SidebarHelper
+class MyMenu extends SidebarHelper implements SidebarInterface
 {
     public function myMenu(): array
     {

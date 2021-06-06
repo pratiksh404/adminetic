@@ -44,9 +44,11 @@ use Pratiksh\Adminetic\Repositories\ProfileRepository;
 use Pratiksh\Adminetic\Repositories\RoleRepository;
 use Pratiksh\Adminetic\Repositories\SettingRepository;
 use Pratiksh\Adminetic\Repositories\UserRepository;
+use Pratiksh\Adminetic\Services\Adminetic;
 use Pratiksh\Adminetic\View\Components\Action;
 use Pratiksh\Adminetic\View\Components\Card;
 use Pratiksh\Adminetic\View\Components\CreatePage;
+use Pratiksh\Adminetic\View\Components\EditAddButton;
 use Pratiksh\Adminetic\View\Components\EditPage;
 use Pratiksh\Adminetic\View\Components\IndexPage;
 use Pratiksh\Adminetic\View\Components\ShowPage;
@@ -111,6 +113,8 @@ class AdmineticServiceProvider extends ServiceProvider
         Route::mixin(new AdmineticAuthMixins());
         // Register Package Service Providers
         $this->app->register(AdmineticEventServiceProvider::class);
+        // Register Facades
+        $this->getFacades();
     }
 
     /**
@@ -122,26 +126,26 @@ class AdmineticServiceProvider extends ServiceProvider
     {
         // Publish Config File
         $this->publishes([
-            __DIR__.'/../../config/adminetic.php' => config_path('adminetic.php'),
+            __DIR__ . '/../../config/adminetic.php' => config_path('adminetic.php'),
         ], 'adminetic-config');
         // Publish View Files
         $this->publishes([
-            __DIR__.'/../../resources/views' => resource_path('views/vendor/adminetic'),
+            __DIR__ . '/../../resources/views' => resource_path('views/vendor/adminetic'),
         ], 'adminetic-views');
         // Publish Migration Files
         $this->publishes([
-            __DIR__.'/../../database/migrations' => database_path('migrations'),
+            __DIR__ . '/../../database/migrations' => database_path('migrations'),
         ], 'adminetic-migrations');
         // Publish Database Seeds
         $this->publishes([
-            __DIR__.'/../../database/seeders' => database_path('seeders'),
+            __DIR__ . '/../../database/seeders' => database_path('seeders'),
         ], 'adminetic-seeders');
         $this->publishes([
-            __DIR__.'/../../payload/assets' => public_path('adminetic/assets'),
+            __DIR__ . '/../../payload/assets' => public_path('adminetic/assets'),
         ], 'adminetic-assets-files');
         // Publish Static Files
         $this->publishes([
-            __DIR__.'/../../payload/static' => public_path('adminetic/static'),
+            __DIR__ . '/../../payload/static' => public_path('adminetic/static'),
         ], 'adminetic-static-files');
     }
 
@@ -152,8 +156,8 @@ class AdmineticServiceProvider extends ServiceProvider
      */
     protected function registerResource()
     {
-        $this->loadMigrationsFrom(__DIR__.'/../../database/migrations'); // Loading Migration Files
-        $this->loadViewsFrom(__DIR__.'/../../resources/views', 'adminetic'); // Loading Views Files
+        $this->loadMigrationsFrom(__DIR__ . '/../../database/migrations'); // Loading Migration Files
+        $this->loadViewsFrom(__DIR__ . '/../../resources/views', 'adminetic'); // Loading Views Files
         $this->registerRoutes();
     }
 
@@ -165,7 +169,7 @@ class AdmineticServiceProvider extends ServiceProvider
     protected function registerRoutes()
     {
         Route::group($this->routeConfiguration(), function () {
-            $this->loadRoutesFrom(__DIR__.'/../../routes/web.php');
+            $this->loadRoutesFrom(__DIR__ . '/../../routes/web.php');
         });
     }
 
@@ -266,6 +270,7 @@ class AdmineticServiceProvider extends ServiceProvider
             EditPage::class,
             IndexPage::class,
             ShowPage::class,
+            EditAddButton::class,
         ]);
     }
 
@@ -289,5 +294,17 @@ class AdmineticServiceProvider extends ServiceProvider
         Livewire::component('admin.user-preferences', UserPreferences::class);
         Livewire::component('admin.profile.edit-account', EditAccount::class);
         Livewire::component('admin.profile.edit-profile', EditProfile::class);
+    }
+
+    /**
+     *
+     * Facades
+     *
+     */
+    protected function getFacades()
+    {
+        $this->app->bind('adminetic', function ($app) {
+            return new Adminetic();
+        });
     }
 }

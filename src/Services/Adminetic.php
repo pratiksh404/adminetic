@@ -2,7 +2,489 @@
 
 namespace Pratiksh\Adminetic\Services;
 
+use Exception;
+use App\Models\User;
+use Illuminate\Support\Str;
+use Pratiksh\Adminetic\Models\Admin\Role;
+use Pratiksh\Adminetic\Models\Admin\Setting;
+use Pratiksh\Adminetic\Models\Admin\Permission;
+use Pratiksh\Adminetic\Models\Admin\Preference;
+
 class Adminetic
 {
-    // Build your next great package.
+    public function user()
+    {
+        $user = config('auth.providers.users.model');
+        return new $user;
+    }
+
+    public function assets(): array
+    {
+        $client_assets = $this->getClientAssets();
+        $default_assets = $this->getDefaultAssets();
+        $allAssets = array_merge($default_assets, $client_assets);
+
+        $assets = array_unique($allAssets, SORT_REGULAR);
+        return $assets;
+    }
+
+    public function menus(): array
+    {
+        $client_menus = $this->clientMenus();
+        $adminetic_menus = $this->admineticMenus();
+        $plugin_menus = $this->pluginMenus();
+        $allmenus = array_merge($adminetic_menus, $client_menus, $plugin_menus);
+        return $allmenus;
+    }
+
+    public function getClientAssets(): array
+    {
+        return config('adminetic.assets', array());
+    }
+
+    public function getDefaultAssets(): array
+    {
+        return [
+            [
+                'name' => 'Datatables',
+                'active' => true,
+                'files' => [
+                    [
+                        'type' => 'css',
+                        'active' => true,
+                        'location' => 'adminetic/assets/css/vendors/datatables.css',
+                    ],
+                    [
+                        'type' => 'js',
+                        'active' => true,
+                        'location' => 'adminetic/assets/js/datatable/datatables/jquery.dataTables.min.js',
+                    ],
+                    [
+                        'type' => 'js',
+                        'active' => true,
+                        'location' => 'adminetic/assets/js/datatable/datatable-extension/dataTables.buttons.min.js',
+                    ],
+                    [
+                        'type' => 'js',
+                        'active' => true,
+                        'location' => 'adminetic/assets/js/datatable/datatable-extension/buttons.flash.min.js',
+                    ],
+                    [
+                        'type' => 'js',
+                        'active' => true,
+                        'location' => 'adminetic/assets/js/datatable/datatable-extension/jszip.min.js',
+                    ],
+                    [
+                        'type' => 'js',
+                        'active' => true,
+                        'location' => 'adminetic/assets/js/datatable/datatable-extension/pdfmake.min.js',
+                    ],
+                    [
+                        'type' => 'js',
+                        'active' => true,
+                        'location' => 'adminetic/assets/js/datatable/datatable-extension/vfs_fonts.js',
+                    ],
+                    [
+                        'type' => 'js',
+                        'active' => true,
+                        'location' => 'adminetic/assets/js/datatable/datatable-extension/buttons.html5.min.js',
+                    ],
+                    [
+                        'type' => 'js',
+                        'active' => true,
+                        'location' => 'adminetic/assets/js/datatable/datatable-extension/buttons.print.min.js',
+                    ],
+                ],
+            ],
+            [
+                'name' => 'Icons',
+                'active' => true,
+                'files' => [
+                    [
+                        'type' => 'css',
+                        'active' => true,
+                        'location' => 'adminetic/assets/css/font-awesome.css',
+                    ],
+                    [
+                        'type' => 'css',
+                        'active' => true,
+                        'location' => 'adminetic/assets/css/vendors/icofont.css',
+                    ],
+                    [
+                        'type' => 'css',
+                        'active' => true,
+                        'location' => 'adminetic/assets/css/vendors/themify.css',
+                    ],
+                    [
+                        'type' => 'css',
+                        'active' => true,
+                        'location' => 'adminetic/assets/css/vendors/flag-icon.css',
+                    ],
+                    [
+                        'type' => 'css',
+                        'active' => true,
+                        'location' => 'adminetic/assets/css/vendors/feather-icon.css',
+                    ],
+                ],
+            ],
+            [
+                'name' => 'Scrollbar',
+                'active' => true,
+                'files' => [
+                    [
+                        'type' => 'css',
+                        'active' => true,
+                        'location' => 'adminetic/assets/css/vendors/scrollbar.css',
+                    ],
+                    [
+                        'type' => 'js',
+                        'active' => true,
+                        'location' => 'adminetic/assets/js/scrollbar/simplebar.js',
+                    ],
+                    [
+                        'type' => 'js',
+                        'active' => true,
+                        'location' => 'adminetic/assets/js/scrollbar/custom.js',
+                    ],
+                ],
+            ],
+            [
+                'name' => 'Touchspin',
+                'active' => true,
+                'files' => [
+                    [
+                        'type' => 'js',
+                        'active' => true,
+                        'location' => 'adminetic/assets/js/touchspin/touchspin.js',
+                    ],
+                    [
+                        'type' => 'js',
+                        'active' => true,
+                        'location' => 'adminetic/assets/js/touchspin/input-groups.min.js',
+                    ],
+                ],
+            ],
+            [
+                'name' => 'Datepicker',
+                'active' => true,
+                'files' => [
+                    [
+                        'type' => 'css',
+                        'active' => true,
+                        'location' => 'adminetic/assets/css/vendors/date-picker.css',
+                    ],
+                    [
+                        'type' => 'js',
+                        'active' => true,
+                        'location' => 'adminetic/assets/js/datepicker/date-picker/datepicker.js',
+                    ],
+                    [
+                        'type' => 'js',
+                        'active' => true,
+                        'location' => 'adminetic/assets/js/datepicker/date-picker/datepicker.en.js',
+                    ],
+                ],
+            ],
+            [
+                'name' => 'CKEditor',
+                'active' => true,
+                'files' => [
+                    [
+                        'type' => 'js',
+                        'active' => true,
+                        'location' => 'adminetic/assets/js/editor/ckeditor/ckeditor.js',
+                    ],
+                    [
+                        'type' => 'js',
+                        'active' => true,
+                        'location' => 'adminetic/assets/js/editor/ckeditor/styles.js',
+                    ],
+                ],
+            ],
+            [
+                'name' => 'Summernote',
+                'active' => true,
+                'files' => [
+                    [
+                        'type' => 'css',
+                        'active' => true,
+                        'location' => 'adminetic/assets/css/vendors/summernote.css',
+                    ],
+                    [
+                        'type' => 'js',
+                        'active' => true,
+                        'location' => 'adminetic/assets/js/editor/summernote/summernote.js',
+                    ],
+                ],
+            ],
+            [
+                'name' => 'Select2',
+                'active' => true,
+                'files' => [
+                    [
+                        'type' => 'css',
+                        'active' => true,
+                        'location' => 'adminetic/assets/css/vendors/select2.css',
+                    ],
+                    [
+                        'type' => 'js',
+                        'active' => true,
+                        'location' => 'adminetic/assets/js/select2/select2.full.min.js',
+                    ],
+                ],
+            ],
+            [
+                'name' => 'ACE Editor',
+                'active' => false,
+                'files' => [
+                    [
+                        'type' => 'js',
+                        'active' => true,
+                        'location' => 'adminetic/assets/js/editor/ace-editor/ace.js',
+                    ],
+                    [
+                        'type' => 'js',
+                        'active' => true,
+                        'location' => 'adminetic/assets/js/editor/ace-editor/mode-html.js',
+                    ],
+                ],
+            ],
+            [
+                'name' => 'Notify',
+                'active' => true,
+                'files' => [
+                    [
+                        'type' => 'js',
+                        'active' => true,
+                        'location' => 'adminetic/assets/js/notify/bootstrap-notify.min.js',
+                    ],
+                ],
+            ],
+            [
+                'name' => 'Card',
+                'active' => true,
+                'files' => [
+                    [
+                        'type' => 'js',
+                        'active' => true,
+                        'location' => 'adminetic/assets/js/custom-card/custom-card.js',
+                    ],
+                ],
+            ],
+        ];
+    }
+
+    public function getPluginAssets(): array
+    {
+        $pluginAssets = array();
+        if (count($this->getAdapters()) > 0) {
+            foreach ($this->getAdapters() as $adapter) {
+                $pluginAssets = array_merge($pluginAssets, $adapter->assets());
+            }
+        }
+        return $pluginAssets;
+    }
+
+    public function admineticMenus(): array
+    {
+        return [
+            [
+                'type' => 'breaker',
+                'name' => 'General',
+                'description' => 'Administration Control',
+            ],
+            [
+                'type' => 'link',
+                'name' => 'Dashboard',
+                'icon' => 'fa fa-home',
+                'link' => route('home'),
+                'is_active' => request()->routeIs('home') ? 'active' : '',
+                'conditions' => [
+                    [
+                        'type' => 'and',
+                        'condition' => auth()->user()->hasRole('admin'),
+                    ],
+                ],
+            ],
+            [
+                'type' => 'menu',
+                'name' => 'User Management',
+                'icon' => 'fa fa-users',
+                'is_active' => request()->routeIs('user*') ? 'active' : '',
+                'pill' => [
+                    'class' => 'badge badge-info badge-air-info',
+                    'value' => \App\Models\User::count(),
+                ],
+                'conditions' => [
+                    [
+                        'type' => 'or',
+                        'condition' => auth()->user()->can('view-any', \App\Models\User::class),
+                    ],
+                    [
+                        'type' => 'or',
+                        'condition' => auth()->user()->can('create', \App\Models\User::class),
+                    ],
+                ],
+                'children' => $this->indexCreateChildren('user', \App\Models\User::class),
+            ],
+            [
+                'type' => 'menu',
+                'name' => 'Role',
+                'icon' => 'fa fa-black-tie',
+                'is_active' => request()->routeIs('role*') ? 'active' : '',
+                'conditions' => [
+                    [
+                        'type' => 'or',
+                        'condition' => auth()->user()->can('view-any', \Pratiksh\Adminetic\Models\Admin\Role::class),
+                    ],
+                    [
+                        'type' => 'or',
+                        'condition' => auth()->user()->can('create', \Pratiksh\Adminetic\Models\Admin\Role::class),
+                    ],
+                ],
+                'children' => $this->indexCreateChildren('role', \Pratiksh\Adminetic\Models\Admin\Role::class),
+            ],
+            [
+                'type' => 'menu',
+                'name' => 'Permission',
+                'icon' => 'fa fa-check',
+                'is_active' => request()->routeIs('permission*') ? 'active' : '',
+                'conditions' => [
+                    [
+                        'type' => 'or',
+                        'condition' => auth()->user()->can('view-any', \Pratiksh\Adminetic\Models\Admin\Permission::class),
+                    ],
+                    [
+                        'type' => 'or',
+                        'condition' => auth()->user()->can('create', \Pratiksh\Adminetic\Models\Admin\Permission::class),
+                    ],
+                ],
+                'children' => $this->indexCreateChildren('permission', \Pratiksh\Adminetic\Models\Admin\Permission::class),
+            ],
+            [
+                'type' => 'menu',
+                'name' => 'Setting',
+                'icon' => 'fa fa-cog',
+                'is_active' => request()->routeIs('setting*') ? 'active' : '',
+                'conditions' => [
+                    [
+                        'type' => 'or',
+                        'condition' => auth()->user()->can('view-any', \Pratiksh\Adminetic\Models\Admin\Setting::class),
+                    ],
+                    [
+                        'type' => 'or',
+                        'condition' => auth()->user()->can('create', \Pratiksh\Adminetic\Models\Admin\Setting::class),
+                    ],
+                ],
+                'children' => $this->indexCreateChildren('setting', \Pratiksh\Adminetic\Models\Admin\Setting::class),
+            ],
+            [
+                'type' => 'menu',
+                'name' => 'Preference',
+                'icon' => 'fa fa-wrench',
+                'is_active' => request()->routeIs('preference*') ? 'active' : '',
+                'conditions' => [
+                    [
+                        'type' => 'or',
+                        'condition' => auth()->user()->can('view-any', \Pratiksh\Adminetic\Models\Admin\Preference::class),
+                    ],
+                    [
+                        'type' => 'or',
+                        'condition' => auth()->user()->can('create', \Pratiksh\Adminetic\Models\Admin\Preference::class),
+                    ],
+                ],
+                'children' => $this->indexCreateChildren('preference', \Pratiksh\Adminetic\Models\Admin\Preference::class),
+            ],
+            [
+                'type' => 'link',
+                'name' => 'Activities',
+                'icon' => 'fa fa-book',
+                'is_active' => request()->routeIs('activity*') ? 'active' : '',
+                'link' => adminRedirectRoute('activity'),
+                'conditions' => [
+                    [
+                        'type' => 'and',
+                        'condition' => auth()->user()->hasRole('admin'),
+                    ],
+                ],
+            ],
+        ];
+    }
+
+    public function clientMenus(): array
+    {
+        $myMenu = config('adminetic.myMenu', \App\Services\MyMenu::class);
+        if (class_exists($myMenu)) {
+            if (method_exists($myMenu, 'myMenu')) {
+                $menu = new $myMenu;
+                if (is_array($menu->myMenu())) {
+                    return $menu->myMenu();
+                } else {
+                    throw new Exception('myMenu method return type must be an array.');
+                }
+            } else {
+                throw new Exception('myMenu method is not found', 1);
+            }
+        } else {
+            throw new Exception('Given class namespace is not found');
+        }
+    }
+
+    public function pluginMenus(): array
+    {
+        $pluginMenu = array();
+        if (count($this->getAdapters()) > 0) {
+            foreach ($this->getAdapters() as $adapter) {
+                $pluginMenu = array_merge($pluginMenu, $adapter->myMenu());
+            }
+        }
+        return $pluginMenu;
+    }
+
+    public function getAdapters(): array
+    {
+        $adapters = array();
+        foreach (config('adminetic.adapters', array()) as $adapter) {
+            if (class_exists($adapter)) {
+                $init_adapter = new $adapter;
+                $adapters[] = $init_adapter;
+            }
+        }
+        return $adapters;
+    }
+
+    private function indexCreateChildren($route, $class)
+    {
+        $name = Str::ucfirst($route);
+        $plural = Str::plural($name);
+
+        $children = [
+            [
+                'type' => 'submenu',
+                'name' => 'All ' . $plural,
+                'is_active' => request()->routeIs($route . '.index') ? 'active' : '',
+                'link' => adminRedirectRoute($route),
+                'conditions' => [
+                    [
+                        'type' => 'or',
+                        'condition' => auth()->user()->can('view-any', $class),
+                    ],
+                ],
+            ],
+            [
+                'type' => 'submenu',
+                'name' => 'Create ' . $route,
+                'is_active' => request()->routeIs($route . '.create') ? 'active' : '',
+                'link' => adminCreateRoute($route),
+                'conditions' => [
+                    [
+                        'type' => 'or',
+                        'condition' => auth()->user()->can('create', $class),
+                    ],
+                ],
+            ],
+        ];
+
+        return $children;
+    }
 }

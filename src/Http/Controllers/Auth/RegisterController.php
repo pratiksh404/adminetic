@@ -90,7 +90,7 @@ class RegisterController extends Controller
         $preferences = Preference::all();
         if (isset($preferences)) {
             foreach ($preferences as $preference) {
-                if (! isset($preference->roles)) {
+                if (!isset($preference->roles)) {
                     $user->preferences()->attach($preference->id, [
                         'enabled' => $preference->active,
                     ]);
