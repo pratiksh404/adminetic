@@ -16,7 +16,7 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        if (!config('adminetic.migrate_with_dummy', false)) {
+        if (! config('adminetic.migrate_with_dummy', false)) {
             $admin = Adminetic::user()->create([
                 'name' => 'Admin User',
                 'email' => 'admin@admin.com',
