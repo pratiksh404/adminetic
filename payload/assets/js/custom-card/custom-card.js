@@ -47,15 +47,7 @@ var customcard = {
             var html_chield = html_source.find(".card-body");
             html_chield.toggleClass("show-source");
             $(this).toggleClass("fa-eye");
-        }), $(document).ready(function(){
-            var clipboard = new ClipboardJS('.btn-clipboard');
-            clipboard.on('success', function(e) {
-                e.querySelector();
-                e.clearSelection();
-            });
-            clipboard.on('error', function(e) {
-            });
-        });     
+        })    
            }
 };
 

@@ -2,6 +2,9 @@
 
 namespace Pratiksh\Adminetic\Http\Controllers;
 
+use Exception;
+use Illuminate\Routing\Controller;
+
 class HomeController extends Controller
 {
     /**
@@ -21,6 +24,17 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $view = null;
+        $dashboard = \App\Services\MyDashboard::class;
+        if (class_exists($dashboard)) {
+            if (method_exists($dashboard, 'view')) {
+                $my_dashboard = new $dashboard;
+                $view = $my_dashboard->view();
+            } else {
+                throw new Exception('view method is not found', 1);
+            }
+        }
+
+        return $view ?? view('adminetic::admin.dashboard.index');
     }
 }

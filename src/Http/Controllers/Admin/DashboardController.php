@@ -2,6 +2,7 @@
 
 namespace Pratiksh\Adminetic\Http\Controllers\Admin;
 
+use Exception;
 use App\Http\Controllers\Controller;
 
 class DashboardController extends Controller

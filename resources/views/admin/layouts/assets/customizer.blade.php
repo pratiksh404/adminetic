@@ -236,84 +236,84 @@
         '                <ul class="sidebar-type layout-grid layout-types">' +
         '                    <li data-attr="compact-sidebar">' +
         '                        <div class="layout-img"> <a href="javascript:void(0)"><img' +
-        '                                    src="{{ asset('adminetic/assets/images/landing/layout-images/dubai.jpg') }}"' +
+        '                                    src="{{ asset('adminetic/assets/img/layouts/dubai.jpg') }}"' +
         '                                    class="img-fluid" alt="" /></a>' +
         '                            <h6>Dubai</h6>' +
         '                        </div>' +
         '                    </li>' +
         '                    <li data-attr="material-layout">' +
         '                        <div class="layout-img"> <a href="javascript:void(0)"><img' +
-        '                                    src="{{ asset('adminetic/assets/images/landing/layout-images/los.jpg') }}"' +
+        '                                    src="{{ asset('adminetic/assets/img/layouts/los.jpg') }}"' +
         '                                    class="img-fluid" alt="" /></a>' +
         '                            <h6>Los Angeles</h6>' +
         '                        </div>' +
         '                    </li>' +
         '                    <li data-attr="dark-sidebar">' +
         '                        <div class="layout-img"> <a href="javascript:void(0)"><img' +
-        '                                    src="{{ asset('adminetic/assets/images/landing/layout-images/paris.jpg') }}"' +
+        '                                    src="{{ asset('adminetic/assets/img/layouts/paris.jpg') }}"' +
         '                                    class="img-fluid" alt="" /></a>' +
         '                            <h6>Paris</h6>' +
         '                        </div>' +
         '                    </li>' +
         '                    <li data-attr="compact-wrap">' +
         '                        <div class="layout-img"> <a href="javascript:void(0)"><img' +
-        '                                    src="{{ asset('adminetic/assets/images/landing/layout-images/tokyo.jpg') }}"' +
+        '                                    src="{{ asset('adminetic/assets/img/layouts/tokyo.jpg') }}"' +
         '                                    class="img-fluid" alt="" /></a>' +
         '                            <h6>Tokyo</h6>' +
         '                        </div>' +
         '                    </li>' +
         '                    <li data-attr="compact-small">' +
         '                        <div class="layout-img"> <a href="javascript:void(0)"><img' +
-        '                                    src="{{ asset('adminetic/assets/images/landing/layout-images/moscow.jpg') }}"' +
+        '                                    src="{{ asset('adminetic/assets/img/layouts/moscow.jpg') }}"' +
         '                                    class="img-fluid" alt="" /></a>' +
         '                            <h6>Moscow</h6>' +
         '                        </div>' +
         '                    </li>' +
         '                    <li data-attr="enterprice-type">' +
         '                        <div class="layout-img"> <a href="javascript:void(0)"><img' +
-        '                                    src="{{ asset('adminetic/assets/images/landing/layout-images/singapore.jpg') }}"' +
+        '                                    src="{{ asset('adminetic/assets/img/layouts/singapore.jpg') }}"' +
         '                                    class="img-fluid" alt="" /></a>' +
         '                            <h6>Singapore</h6>' +
         '                        </div>' +
         '                    </li>' +
         '                    <li data-attr="box-layout" class="box-layout">' +
         '                        <div class="layout-img"> <a href="javascript:void(0)"><img' +
-        '                                    src="{{ asset('adminetic/assets/images/landing/layout-images/newyork.jpg') }}"' +
+        '                                    src="{{ asset('adminetic/assets/img/layouts/newyork.jpg') }}"' +
         '                                    class="img-fluid" alt="" /></a>' +
         '                            <h6>New York</h6>' +
         '                        </div>' +
         '                    </li>' +
         '                    <li data-attr="advance-type">' +
         '                        <div class="layout-img"> <a href="javascript:void(0)"><img' +
-        '                                    src="{{ asset('adminetic/assets/images/landing/layout-images/barc.jpg') }}"' +
+        '                                    src="{{ asset('adminetic/assets/img/layouts/barc.jpg') }}"' +
         '                                    class="img-fluid" alt="" /></a>' +
         '                            <h6>Barcelona</h6>' +
         '                        </div>' +
         '                    </li>' +
         '                    <li data-attr="color-sidebar">' +
         '                        <div class="layout-img"> <a href="javascript:void(0)"><img' +
-        '                                    src="{{ asset('adminetic/assets/images/landing/layout-images/madrid.jpg') }}"' +
+        '                                    src="{{ asset('adminetic/assets/img/layouts/madrid.jpg') }}"' +
         '                                    class="img-fluid" alt="" /></a>' +
         '                            <h6>Madrid</h6>' +
         '                        </div>' +
         '                    </li>' +
         '                    <li data-attr="material-icon">' +
         '                        <div class="layout-img"> <a href="javascript:void(0)"><img' +
-        '                                    src="{{ asset('adminetic/assets/images/landing/layout-images/romo.jpg') }}"' +
+        '                                    src="{{ asset('adminetic/assets/img/layouts/romo.jpg') }}"' +
         '                                    class="img-fluid" alt="" /></a>' +
         '                            <h6>Rome</h6>' +
         '                        </div>' +
         '                    </li>' +
         '                    <li data-attr="modern-layout">' +
         '                        <div class="layout-img"> <a href="javascript:void(0)"><img' +
-        '                                    src="{{ asset('adminetic/assets/images/landing/layout-images/seoul.jpg') }}"' +
+        '                                    src="{{ asset('adminetic/assets/img/layouts/seoul.jpg') }}"' +
         '                                    class="img-fluid" alt="" /></a>' +
         '                            <h6>Seoul</h6>' +
         '                        </div>' +
         '                    </li>' +
         '                    <li class="only-body" data-attr="default-body">' +
         '                        <div class="layout-img"> <a href="javascript:void(0)"><img' +
-        '                                    src="{{ asset('adminetic/assets/images/landing/layout-images/london.jpg') }}"' +
+        '                                    src="{{ asset('adminetic/assets/img/layouts/london.jpg') }}"' +
         '                                    class="img-fluid" alt="" /></a>' +
         '                            <h6>London</h6>' +
         '                        </div>' +
