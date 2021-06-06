@@ -42,7 +42,7 @@ class AdmineticDummyCommand extends Command
      */
     public function handle()
     {
-        if (!config('adminetic.migrate_with_dummy', false)) {
+        if (! config('adminetic.migrate_with_dummy', false)) {
             // Generating Roles
             $roles = [
                 [

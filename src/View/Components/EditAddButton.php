@@ -18,7 +18,6 @@ class EditAddButton extends Component
      */
     public function __construct($model, $name)
     {
-
         $this->model = $model;
         $this->name = Str::ucfirst($name);
     }

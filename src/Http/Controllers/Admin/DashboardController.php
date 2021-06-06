@@ -18,6 +18,7 @@ class DashboardController extends Controller
                 throw new Exception('view method is not found', 1);
             }
         }
+
         return $view ?? view('adminetic::admin.dashboard.index');
     }
 }

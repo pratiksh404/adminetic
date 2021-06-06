@@ -3,18 +3,14 @@
 namespace Pratiksh\Adminetic\Services;
 
 use Exception;
-use App\Models\User;
 use Illuminate\Support\Str;
-use Pratiksh\Adminetic\Models\Admin\Role;
-use Pratiksh\Adminetic\Models\Admin\Setting;
-use Pratiksh\Adminetic\Models\Admin\Permission;
-use Pratiksh\Adminetic\Models\Admin\Preference;
 
 class Adminetic
 {
     public function user()
     {
         $user = config('auth.providers.users.model');
+
         return new $user;
     }
 
@@ -25,6 +21,7 @@ class Adminetic
         $allAssets = array_merge($default_assets, $client_assets);
 
         $assets = array_unique($allAssets, SORT_REGULAR);
+
         return $assets;
     }
 
@@ -34,12 +31,13 @@ class Adminetic
         $adminetic_menus = $this->admineticMenus();
         $plugin_menus = $this->pluginMenus();
         $allmenus = array_merge($adminetic_menus, $client_menus, $plugin_menus);
+
         return $allmenus;
     }
 
     public function getClientAssets(): array
     {
-        return config('adminetic.assets', array());
+        return config('adminetic.assets', []);
     }
 
     public function getDefaultAssets(): array
@@ -276,12 +274,13 @@ class Adminetic
 
     public function getPluginAssets(): array
     {
-        $pluginAssets = array();
+        $pluginAssets = [];
         if (count($this->getAdapters()) > 0) {
             foreach ($this->getAdapters() as $adapter) {
                 $pluginAssets = array_merge($pluginAssets, $adapter->assets());
             }
         }
+
         return $pluginAssets;
     }
 
@@ -432,24 +431,26 @@ class Adminetic
 
     public function pluginMenus(): array
     {
-        $pluginMenu = array();
+        $pluginMenu = [];
         if (count($this->getAdapters()) > 0) {
             foreach ($this->getAdapters() as $adapter) {
                 $pluginMenu = array_merge($pluginMenu, $adapter->myMenu());
             }
         }
+
         return $pluginMenu;
     }
 
     public function getAdapters(): array
     {
-        $adapters = array();
-        foreach (config('adminetic.adapters', array()) as $adapter) {
+        $adapters = [];
+        foreach (config('adminetic.adapters', []) as $adapter) {
             if (class_exists($adapter)) {
                 $init_adapter = new $adapter;
                 $adapters[] = $init_adapter;
             }
         }
+
         return $adapters;
     }
 
@@ -461,8 +462,8 @@ class Adminetic
         $children = [
             [
                 'type' => 'submenu',
-                'name' => 'All ' . $plural,
-                'is_active' => request()->routeIs($route . '.index') ? 'active' : '',
+                'name' => 'All '.$plural,
+                'is_active' => request()->routeIs($route.'.index') ? 'active' : '',
                 'link' => adminRedirectRoute($route),
                 'conditions' => [
                     [
@@ -473,8 +474,8 @@ class Adminetic
             ],
             [
                 'type' => 'submenu',
-                'name' => 'Create ' . $route,
-                'is_active' => request()->routeIs($route . '.create') ? 'active' : '',
+                'name' => 'Create '.$route,
+                'is_active' => request()->routeIs($route.'.create') ? 'active' : '',
                 'link' => adminCreateRoute($route),
                 'conditions' => [
                     [

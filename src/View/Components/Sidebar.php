@@ -7,7 +7,6 @@ use Illuminate\View\Component;
 
 class Sidebar extends Component
 {
-
     /**
      * Get the view / contents that represent the component.
      *
@@ -15,7 +14,7 @@ class Sidebar extends Component
      */
     public function render()
     {
-        $menus = Adminetic::menus() ?? array();
+        $menus = Adminetic::menus() ?? [];
 
         return view('adminetic::components.sidebar', compact('menus'));
     }

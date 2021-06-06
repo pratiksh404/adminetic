@@ -39,7 +39,7 @@ class PreferenceRepository implements PreferenceRepositoryInterface
         $users = User::all();
         if (isset($users)) {
             foreach ($users as $user) {
-                if (!isset($preference->roles)) {
+                if (! isset($preference->roles)) {
                     $preference->users()->attach($user->id, [
                         'enabled' => $preference->active,
                     ]);
