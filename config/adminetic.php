@@ -80,7 +80,7 @@ return [
     |--------------------------------------------------------------------------
     |
     */
-    'enable_socialite' => true,
+    'enable_socialite' => false,
     'github_socialite' => true,
     'facebook_socialite' => true,
 
