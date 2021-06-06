@@ -83,7 +83,6 @@ return [
     'enable_socialite' => true,
     'github_socialite' => true,
     'facebook_socialite' => true,
-    'google_socialite' => false,
 
     /*
     |--------------------------------------------------------------------------
