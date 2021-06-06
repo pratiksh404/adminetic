@@ -48,9 +48,26 @@ class MyMenu extends SidebarHelper implements SidebarInterface
                 ]
             ],
             [
-                'type' => 'link',
+                'type' => 'menu',
                 'name' => 'Documentation',
-                'link' => 'https://docs.pixelstrap.com/cuba/all_in_one/document/index.html',
+                'conditions' => [
+                    [
+                        'type' => 'or',
+                        'condition' => env('APP_ENV') == 'local'
+                    ],
+                ],
+                'children' => [
+                    [
+                        'type' => 'submenu',
+                        'name' => 'Frontend Docs',
+                        'link' => 'https://docs.pixelstrap.com/cuba/all_in_one/document/index.html',
+                    ],
+                    [
+                        'type' => 'submenu',
+                        'name' => 'Adminetic Docs',
+                        'link' => 'https://pratikdai404.gitbook.io/adminetic/',
+                    ],
+                ]
             ],
             [
                 'type' => 'link',
