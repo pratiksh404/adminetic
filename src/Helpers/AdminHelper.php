@@ -1,6 +1,6 @@
 <?php
 
-if (! function_exists('getClassesList')) {
+if (!function_exists('getClassesList')) {
     function getClassesList($dir)
     {
         $classes = \File::allFiles($dir);
@@ -15,7 +15,7 @@ if (! function_exists('getClassesList')) {
         return $classes;
     }
 }
-if (! function_exists('getAllModelNames')) {
+if (!function_exists('getAllModelNames')) {
     function getAllModelNames($dir)
     {
         $modelNames = [];
@@ -29,92 +29,92 @@ if (! function_exists('getAllModelNames')) {
     }
 }
 
-if (! function_exists('validImageFolder')) {
+if (!function_exists('validImageFolder')) {
     function validImageFolder($name, $default = 'default')
     {
         return strtolower(str_replace([' ', '-', '$', '<', '>', '&', '{', '}', '*', '\\', '/', ':', '.', ';', ',', "'", '"'], '_', $name ?? trim($default)));
     }
 }
 
-if (! function_exists('getImagePlaceholder')) {
+if (!function_exists('getImagePlaceholder')) {
     function getImagePlaceholder()
     {
         return asset('adminetic/static/placeholder.png');
     }
 }
 
-if (! function_exists('getVerticalImagePlaceholder')) {
+if (!function_exists('getVerticalImagePlaceholder')) {
     function getVerticalImagePlaceholder()
     {
         return asset('adminetic/static/vertical_placeholder.jpg');
     }
 }
 
-if (! function_exists('getSliderPlaceholder')) {
+if (!function_exists('getSliderPlaceholder')) {
     function getSliderPlaceholder()
     {
         return asset('adminetic/static/slider.jpg');
     }
 }
 
-if (! function_exists('getFoodImagePlaceholder')) {
+if (!function_exists('getFoodImagePlaceholder')) {
     function getFoodImagePlaceholder()
     {
         return asset('adminetic/static/food_placeholder.jpg');
     }
 }
 
-if (! function_exists('getProfilePlaceholder')) {
+if (!function_exists('getProfilePlaceholder')) {
     function getProfilePlaceholder($p = null)
     {
         $profile = $p ?? Auth::user()->profile;
 
-        return isset($profile->profile_pic) ? (Illuminate\Support\Str::contains($profile->profile_pic, ['https://', 'http://']) ? $profile->profile_pic : asset('storage/'.$profile->profile_pic)) : asset('adminetic/static/profile.jpg');
+        return isset($profile->profile_pic) ? (Illuminate\Support\Str::contains($profile->profile_pic, ['https://', 'http://']) ? $profile->profile_pic : asset('storage/' . $profile->profile_pic)) : asset('adminetic/static/profile.jpg');
     }
 }
 
-if (! function_exists('getFavicon')) {
+if (!function_exists('getFavicon')) {
     function getFavicon()
     {
-        return setting('favicon') ? (asset('storage/'.setting('favicon'))) : 'adminetic/static/favicon.png';
+        return setting('favicon') ? (asset('storage/' . setting('favicon'))) : asset('adminetic/static/favicon.png');
     }
 }
-if (! function_exists('getLogo')) {
+if (!function_exists('getLogo')) {
     function getLogo()
     {
-        return setting('logo') ? (asset('storage/'.setting('logo'))) : 'adminetic/static/logo.png';
+        return setting('logo') ? (asset('storage/' . setting('logo'))) : asset('adminetic/static/logo.png');
     }
 }
 
-if (! function_exists('getLogoBanner')) {
+if (!function_exists('getLogoBanner')) {
     function getLogoBanner()
     {
-        return setting('logo_banner') ? (asset('storage/'.setting('logo_banner'))) : asset('adminetic/static/logo_banner.jpg');
+        return setting('logo_banner') ? (asset('storage/' . setting('logo_banner'))) : asset('adminetic/static/logo_banner.jpg');
     }
 }
 
-if (! function_exists('getLazyLoadImg')) {
+if (!function_exists('getLazyLoadImg')) {
     function getLazyLoadImg()
     {
         return asset('website/assets/images/image-bg.svg');
     }
 }
 
-if (! function_exists('random_color_part')) {
+if (!function_exists('random_color_part')) {
     function random_color_part()
     {
         return str_pad(dechex(mt_rand(0, 255)), 2, '0', STR_PAD_LEFT);
     }
 }
 
-if (! function_exists('random_color')) {
+if (!function_exists('random_color')) {
     function random_color()
     {
-        return random_color_part().random_color_part().random_color_part();
+        return random_color_part() . random_color_part() . random_color_part();
     }
 }
 
-if (! function_exists('setting')) {
+if (!function_exists('setting')) {
     function setting($setting_name, $default = null)
     {
         $valid_setting_name = strtolower(str_replace(' ', '_', $setting_name));
@@ -124,7 +124,7 @@ if (! function_exists('setting')) {
     }
 }
 
-if (! function_exists('preference')) {
+if (!function_exists('preference')) {
     function preference($preference_name, bool $default = null)
     {
         $valid_preference_name = strtolower(str_replace(' ', '_', $preference_name));
@@ -138,11 +138,11 @@ if (! function_exists('preference')) {
     }
 }
 
-if (! function_exists('getCondition')) {
+if (!function_exists('getCondition')) {
     function getCondition($conditions)
     {
         $result = null;
-        if (! isset($conditions)) {
+        if (!isset($conditions)) {
             return false;
         }
 
