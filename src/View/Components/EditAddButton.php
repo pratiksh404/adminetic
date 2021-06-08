@@ -29,6 +29,6 @@ class EditAddButton extends Component
      */
     public function render()
     {
-        return view('adminetic::components.edit.edit-add-button');
+        return view('adminetic::components.edit-add-button');
     }
 }
