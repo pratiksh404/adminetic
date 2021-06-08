@@ -4,9 +4,12 @@ namespace Pratiksh\Adminetic\Services;
 
 use Exception;
 use Illuminate\Support\Str;
+use Pratiksh\Adminetic\Traits\SidebarHelper;
 
 class Adminetic
 {
+    use SidebarHelper;
+
     public function user()
     {
         $user = config('auth.providers.users.model');
@@ -437,8 +440,33 @@ class Adminetic
                 $pluginMenu = array_merge($pluginMenu, $adapter->myMenu());
             }
         }
-
         return $pluginMenu;
+    }
+
+    public function getHeaderData(): array
+    {
+        $headerData = [];
+        if (count($this->getAdapters()) > 0) {
+            foreach ($this->getAdapters() as $adapter) {
+                if (method_exists($adapter, 'headerData')) {
+                    $headerData = array_merge($headerData, $adapter->headerData());
+                }
+            }
+        }
+        return $headerData;
+    }
+
+    public function getFooterData(): array
+    {
+        $footerData = [];
+        if (count($this->getAdapters()) > 0) {
+            foreach ($this->getAdapters() as $adapter) {
+                if (method_exists($adapter, 'footerData')) {
+                    $footerData = array_merge($footerData, $adapter->footerData());
+                }
+            }
+        }
+        return $footerData;
     }
 
     public function getAdapters(): array
@@ -462,8 +490,8 @@ class Adminetic
         $children = [
             [
                 'type' => 'submenu',
-                'name' => 'All '.$plural,
-                'is_active' => request()->routeIs($route.'.index') ? 'active' : '',
+                'name' => 'All ' . $plural,
+                'is_active' => request()->routeIs($route . '.index') ? 'active' : '',
                 'link' => adminRedirectRoute($route),
                 'conditions' => [
                     [
@@ -474,8 +502,8 @@ class Adminetic
             ],
             [
                 'type' => 'submenu',
-                'name' => 'Create '.$route,
-                'is_active' => request()->routeIs($route.'.create') ? 'active' : '',
+                'name' => 'Create ' . $route,
+                'is_active' => request()->routeIs($route . '.create') ? 'active' : '',
                 'link' => adminCreateRoute($route),
                 'conditions' => [
                     [

@@ -26,7 +26,7 @@
     <!-- page-wrapper Start-->
     <div class="page-wrapper compact-wrapper" id="pageWrapper">
         <!-- Page Header Start-->
-        @include('adminetic::admin.layouts.components.header')
+        @includeFirst(['admin.layouts.components.header','adminetic::admin.layouts.components.header'],Adminetic::getHeaderData())
         <!-- Page Header Ends                              -->
         <!-- Page Body Start-->
         <div class="page-body-wrapper">
@@ -38,7 +38,7 @@
                 @yield('content')
             </div>
             <!-- footer start-->
-            @include('adminetic::admin.layouts.components.footer')
+            @includeFirst(['admin.layouts.components.footer','adminetic::admin.layouts.components.footer'],Adminetic::getFooterData())
         </div>
     </div>
     {{-- ASSET SCRIPTS --}}
