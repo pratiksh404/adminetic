@@ -2,7 +2,7 @@
 
 namespace Pratiksh\Adminetic\Console\Commands;
 
-use Adminetic;
+use App\Models\User;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\DB;
@@ -42,7 +42,7 @@ class AdmineticDummyCommand extends Command
      */
     public function handle()
     {
-        if (! config('adminetic.migrate_with_dummy', false)) {
+        if (!config('adminetic.migrate_with_dummy', false)) {
             // Generating Roles
             $roles = [
                 [
@@ -88,7 +88,7 @@ class AdmineticDummyCommand extends Command
             Artisan::call('make:permission Preference 2 --onlyFlags');
 
             // Generating User
-            $admin = Adminetic::user()->create([
+            $admin = User::create([
                 'name' => 'Admin User',
                 'email' => 'admin@admin.com',
                 'password' => Hash::make('admin123'),

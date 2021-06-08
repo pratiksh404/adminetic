@@ -1,6 +1,6 @@
 <?php
 
-use Adminetic;
+use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Artisan;
@@ -39,7 +39,7 @@ class CreatePermissionsTable extends Migration
             Artisan::call('make:permission Setting 2 --onlyFlags');
             Artisan::call('make:permission Preference 2 --onlyFlags');
 
-            $admin = Adminetic::user()->create([
+            $admin = User::create([
                 'name' => 'Admin User',
                 'email' => 'admin@admin.com',
                 'password' => Hash::make('admin123'),
