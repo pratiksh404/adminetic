@@ -63,6 +63,8 @@ Import Data
 php artisan adminetic:dummy
 ```
 
+Note: If we enable migrate_wth_dummy in adminetic config file dummy data are seeded on migration. Then above command can be avoided.
+
 Use adminetic auth route.
 In web.php paste following
 

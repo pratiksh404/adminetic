@@ -3,15 +3,16 @@
 namespace Pratiksh\Adminetic\Traits;
 
 use Illuminate\Support\Facades\Cache;
-use Pratiksh\Adminetic\Models\Admin\Profile;
+use Pratiksh\Adminetic\Traits\HasSlack;
 use Spatie\Activitylog\Traits\LogsActivity;
+use Pratiksh\Adminetic\Models\Admin\Profile;
 
 /**
  * Adminetic User.
  */
 trait AdmineticUser
 {
-    use HasPreference, HasRole, LogsActivity;
+    use HasPreference, HasRole, HasSlack, LogsActivity;
 
     // Forget cache on updating or saving and deleting
     public static function boot()
