@@ -3,9 +3,8 @@
 namespace Pratiksh\Adminetic\Traits;
 
 use Illuminate\Support\Facades\Cache;
-use Pratiksh\Adminetic\Traits\HasSlack;
-use Spatie\Activitylog\Traits\LogsActivity;
 use Pratiksh\Adminetic\Models\Admin\Profile;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 /**
  * Adminetic User.
