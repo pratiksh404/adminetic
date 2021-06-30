@@ -104,7 +104,7 @@ class Adminetic
                     [
                         'type' => 'css',
                         'active' => true,
-                        'location' => 'adminetic/assets/css/font-awesome.css',
+                        'location' => 'adminetic/assets/css/fontawesome-all.min.css',
                     ],
                     [
                         'type' => 'css',
@@ -332,7 +332,7 @@ class Adminetic
             [
                 'type' => 'menu',
                 'name' => 'Role',
-                'icon' => 'fa fa-black-tie',
+                'icon' => 'fab fa-black-tie',
                 'is_active' => request()->routeIs('role*') ? 'active' : '',
                 'conditions' => [
                     [

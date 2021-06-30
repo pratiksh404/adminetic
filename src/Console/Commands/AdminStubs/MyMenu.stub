@@ -74,7 +74,7 @@ class MyMenu implements SidebarInterface
             [
                 'type' => 'link',
                 'name' => 'Github',
-                'icon' => 'fa fa-github',
+                'icon' => 'fab fa-github',
                 'link' => 'https://github.com/pratiksh404/admineticl',
             ],
         ];
