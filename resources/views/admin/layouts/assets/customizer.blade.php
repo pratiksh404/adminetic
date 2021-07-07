@@ -1,6 +1,6 @@
 <script>
     if (localStorage.getItem("color"))
-        $("#color").attr("href", "{{ env('APP_URL') }}/assets/css/" + localStorage.getItem("color") + ".css");
+        $("#color").attr("href", "{{ env('APP_URL') }}/adminetic/assets/css/" + localStorage.getItem("color") + ".css");
     if (localStorage.getItem("dark"))
         $("body").attr("class", "dark-only");
 
