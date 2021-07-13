@@ -1,11 +1,11 @@
 <div>
     <form wire:submit.prevent="submit">
         @if (!empty($errors))
-            @if (count($errors) > 0)
-                @foreach ($errors->all() as $error)
-                    {{ $error }}
-                @endforeach
-            @endif
+        @if (count($errors) > 0)
+        @foreach ($errors->all() as $error)
+        {{ $error }}
+        @endforeach
+        @endif
         @endif
         <div class="row">
             <div class="col-lg-4">
@@ -59,9 +59,9 @@
                         <select wire:model.defer="phone_no" name="phone_no[]" class="form-control" id="phone_no"
                             multiple="">
                             @if (isset($phone_no))
-                                @foreach ($phone_no as $phone)
-                                    <option value="{{ $phone }}" selected>{{ $phone }}</option>
-                                @endforeach
+                            @foreach ($phone_no as $phone)
+                            <option value="{{ $phone }}" selected>{{ $phone }}</option>
+                            @endforeach
                             @endif
                         </select>
                         @error('phone') <span class="text-danger">{{ $message }}</span> @enderror
@@ -108,8 +108,8 @@
                 <div class="row" wire:ignore>
                     <div class="col-lg-12">
                         <label for="birthday" class="form-label">Birthday</label>
-                        <input type="text" wire:model.defer="birthday" id="birthday" class="form-control"
-                            placeholder="Select Year" value="{{ $birthday ?? old('birthday') }}">
+                        <input type="text" wire:model.defer="birthday" id="birthday" class="form-control birthday"
+                            placeholder="Select Year" value="{{ $birthday }}">
                         @error('birthday') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>
                 </div>
@@ -119,11 +119,11 @@
                         <label class="form-label" for="country">Country</label>
                         <select class="form-control select2" wire:model.defer="country" id="country" style="width:100%">
                             @if (isset($countries))
-                                @foreach ($countries as $country)
-                                    <option value="{{ $country->name }}"
-                                        {{ isset($country) ? ($country->name == $country ? 'selected' : '') : ($country->name == 'Nepal' ? 'selected' : '') }}>
-                                        {{ $country->name }}</option>
-                                @endforeach
+                            @foreach ($countries as $country)
+                            <option value="{{ $country->name }}"
+                                {{ isset($country) ? ($country->name == $country ? 'selected' : '') : ($country->name == 'Nepal' ? 'selected' : '') }}>
+                                {{ $country->name }}</option>
+                            @endforeach
                             @endif
                         </select>
                         @error('country') <span class="text-danger">{{ $message }}</span> @enderror
@@ -217,8 +217,8 @@
         </div>
     </form>
     @push('livewire_third_party')
-        <script>
-            $(function() {
+    <script>
+        $(function() {
                 initializeProfile();
                 Livewire.on('initializeProfile', function() {
                     initializeProfile();
@@ -267,15 +267,16 @@
                         tokenSeparators: [',', ' ']
                     });
                     // Select Year
-                    $('#birthday').datepicker({
-                        language: 'en',
-                        maxDate: new Date(getMinDate()),
-                        format: "yyyy-mm-dd",
-                        onSelect: function(birthday) {
-                            @this.set('birthday', birthday);
-                        }
+
+                    $('#birthday').daterangepicker({parentEl: $('#birthday').parent(),
+                    singleDatePicker: true,
+                    showDropdowns: true,
+                 maxDate: getMinDate(),
+                    locale: {
+                    format: 'YYYY-MM-DD'
+                    },
                     });
-                    $("#birthday").datepicker("setDate", "{{ $birthday }}");
+        
                     $('#country').on('change', function() {
                         var data = $('#country').select2("val");
                         @this.set('country', data);
@@ -299,10 +300,10 @@
                 }
             });
 
-        </script>
+    </script>
 
-        <script>
-            function readURL(input) {
+    <script>
+        function readURL(input) {
                 if (input.files && input.files[0]) {
                     var reader = new FileReader();
                     reader.onload = function(e) {
@@ -313,6 +314,6 @@
                 }
             }
 
-        </script>
+    </script>
     @endpush
 </div>

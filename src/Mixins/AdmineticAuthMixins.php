@@ -17,6 +17,9 @@ class AdmineticAuthMixins
             $namespace = "Pratiksh\Adminetic\Http\Controllers";
 
             $this->group(['namespace' => $namespace], function () use ($options) {
+                if ($options['home'] ?? true) {
+                    $this->view('/', 'adminetic::welcome');
+                }
                 // Login Routes...
                 if ($options['login'] ?? true) {
                     $this->get('login', 'Auth\LoginController@showLoginForm')->name('login');

@@ -104,7 +104,7 @@ class Adminetic
                     [
                         'type' => 'css',
                         'active' => true,
-                        'location' => 'adminetic/assets/css/fontawesome-all.min.css',
+                        'location' => 'adminetic/assets/css/font-awesome.css',
                     ],
                     [
                         'type' => 'css',
@@ -166,23 +166,23 @@ class Adminetic
                 ],
             ],
             [
-                'name' => 'Datepicker',
+                'name' => 'Daterange Picker',
                 'active' => true,
                 'files' => [
                     [
                         'type' => 'css',
                         'active' => true,
-                        'location' => 'adminetic/assets/css/vendors/date-picker.css',
+                        'location' => 'adminetic/assets/css/vendors/daterange-picker.css',
                     ],
                     [
                         'type' => 'js',
                         'active' => true,
-                        'location' => 'adminetic/assets/js/datepicker/date-picker/datepicker.js',
+                        'location' => 'adminetic/assets/js/datepicker/daterange-picker/moment.min.js',
                     ],
                     [
                         'type' => 'js',
                         'active' => true,
-                        'location' => 'adminetic/assets/js/datepicker/date-picker/datepicker.en.js',
+                        'location' => 'adminetic/assets/js/datepicker/daterange-picker/daterangepicker.js',
                     ],
                 ],
             ],
@@ -332,7 +332,7 @@ class Adminetic
             [
                 'type' => 'menu',
                 'name' => 'Role',
-                'icon' => 'fab fa-black-tie',
+                'icon' => 'fa fa-black-tie',
                 'is_active' => request()->routeIs('role*') ? 'active' : '',
                 'conditions' => [
                     [
@@ -493,8 +493,8 @@ class Adminetic
         $children = [
             [
                 'type' => 'submenu',
-                'name' => 'All '.$plural,
-                'is_active' => request()->routeIs($route.'.index') ? 'active' : '',
+                'name' => 'All ' . $plural,
+                'is_active' => request()->routeIs($route . '.index') ? 'active' : '',
                 'link' => adminRedirectRoute($route),
                 'conditions' => [
                     [
@@ -505,8 +505,8 @@ class Adminetic
             ],
             [
                 'type' => 'submenu',
-                'name' => 'Create '.$route,
-                'is_active' => request()->routeIs($route.'.create') ? 'active' : '',
+                'name' => 'Create ' . $route,
+                'is_active' => request()->routeIs($route . '.create') ? 'active' : '',
                 'link' => adminCreateRoute($route),
                 'conditions' => [
                     [
