@@ -21,7 +21,8 @@ class Adminetic
     {
         $client_assets = $this->getClientAssets();
         $default_assets = $this->getDefaultAssets();
-        $allAssets = array_merge($default_assets, $client_assets);
+        $getPluginAssets = $this->getPluginAssets();
+        $allAssets = array_merge($default_assets, $client_assets, $getPluginAssets);
 
         $assets = array_unique($allAssets, SORT_REGULAR);
 
