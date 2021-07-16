@@ -59,12 +59,12 @@ class Adminetic
                     [
                         'type' => 'css',
                         'active' => true,
-                        'location' => 'adminetic/assets/css/vendors/rowReorder.dataTables.min.css'
+                        'location' => 'adminetic/assets/css/vendors/rowReorder.dataTables.min.css',
                     ],
                     [
                         'type' => 'js',
                         'active' => true,
-                        'location' => 'adminetic/assets/js/datatable/datatable-extension/dataTables.rowReorder.min.js'
+                        'location' => 'adminetic/assets/js/datatable/datatable-extension/dataTables.rowReorder.min.js',
                     ],
                     [
                         'type' => 'js',
@@ -504,8 +504,8 @@ class Adminetic
         $children = [
             [
                 'type' => 'submenu',
-                'name' => 'All ' . $plural,
-                'is_active' => request()->routeIs($route . '.index') ? 'active' : '',
+                'name' => 'All '.$plural,
+                'is_active' => request()->routeIs($route.'.index') ? 'active' : '',
                 'link' => adminRedirectRoute($route),
                 'conditions' => [
                     [
@@ -516,8 +516,8 @@ class Adminetic
             ],
             [
                 'type' => 'submenu',
-                'name' => 'Create ' . $route,
-                'is_active' => request()->routeIs($route . '.create') ? 'active' : '',
+                'name' => 'Create '.$route,
+                'is_active' => request()->routeIs($route.'.create') ? 'active' : '',
                 'link' => adminCreateRoute($route),
                 'conditions' => [
                     [
