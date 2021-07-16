@@ -56,6 +56,16 @@ class Adminetic
                         'location' => 'adminetic/assets/css/vendors/datatables.css',
                     ],
                     [
+                        'type' => 'css',
+                        'active' => true,
+                        'location' => 'adminetic/assets/css/vendors/rowReorder.dataTables.min.css'
+                    ],
+                    [
+                        'type' => 'js',
+                        'active' => true,
+                        'location' => 'adminetic/assets/js/datatable/datatable-extension/dataTables.rowReorder.min.js'
+                    ],
+                    [
                         'type' => 'js',
                         'active' => true,
                         'location' => 'adminetic/assets/js/datatable/datatables/jquery.dataTables.min.js',
