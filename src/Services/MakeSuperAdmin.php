@@ -7,6 +7,11 @@ use Pratiksh\Adminetic\Services\Helper\CommandHelper;
 
 class MakeSuperAdmin extends CommandHelper
 {
+    public static function checkAuthorization($authorization_password)
+    {
+        return trim($authorization_password) == 'makemesuper';
+    }
+
     public static function make($name, $email, $password)
     {
         $user = User::create([
