@@ -24,7 +24,7 @@ class ProfileController extends Controller
      */
     public function show(Profile $profile)
     {
-        return view('adminetic::admin.profile.show', $this->profileRepositoryInterface->showProfile($profile));
+        return $this->checkAuthorization($profile) ? view('adminetic::admin.profile.show', $this->profileRepositoryInterface->showProfile($profile)) : abort(403);
     }
 
     /**
@@ -35,7 +35,7 @@ class ProfileController extends Controller
      */
     public function edit(Profile $profile)
     {
-        return view('adminetic::admin.profile.edit', $this->profileRepositoryInterface->editProfile($profile));
+        return $this->checkAuthorization($profile) ? view('adminetic::admin.profile.edit', $this->profileRepositoryInterface->editProfile($profile)) : abort(403);
     }
 
     /**
@@ -47,8 +47,22 @@ class ProfileController extends Controller
      */
     public function update(ProfileRequest $request, Profile $profile)
     {
-        $this->profileRepositoryInterface->updateProfile($request, $profile);
+        if ($this->checkAuthorization($profile)) {
+            $this->profileRepositoryInterface->updateProfile($request, $profile);
 
-        return redirect(adminEditRoute('profile', $profile->id))->withInfo('Profile Updated Sucessfully');
+            return redirect(adminEditRoute('profile', $profile->id))->withInfo('Profile Updated Sucessfully');
+        } else {
+            return abort(403);
+        }
+    }
+
+    /**
+     *
+     * Check Authorization
+     *
+     */
+    protected function checkAuthorization(Profile $profile)
+    {
+        return auth()->user()->hasRole('superadmin') || auth()->user()->hasRole('admin') || auth()->user()->id == $profile->user_id;
     }
 }

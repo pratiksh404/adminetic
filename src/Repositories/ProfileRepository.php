@@ -20,7 +20,7 @@ class ProfileRepository implements ProfileRepositoryInterface
     // Edit Profile
     public function editProfile(Profile $profile)
     {
-        $countries = json_decode(Http::get('https://restcountries.eu/rest/v2/all'));
+        $countries = $this->getCountries();
         $user = $profile->user;
 
         return compact('profile', 'countries', 'user');
@@ -38,7 +38,7 @@ class ProfileRepository implements ProfileRepositoryInterface
     protected function uploadProfile($profile)
     {
         $profile_pic = [
-            'storage' => 'admin/profile/'.isset($profile->user->name) ? str_replace(' ', '_', strtolower($profile->user->name)) : '',
+            'storage' => 'admin/profile/' . isset($profile->user->name) ? str_replace(' ', '_', strtolower($profile->user->name)) : '',
             'width' => '222',
             'height' => '222',
             'quality' => '70',
