@@ -57,9 +57,7 @@ class ProfileController extends Controller
     }
 
     /**
-     *
-     * Check Authorization
-     *
+     * Check Authorization.
      */
     protected function checkAuthorization(Profile $profile)
     {
