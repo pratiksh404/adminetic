@@ -21,6 +21,7 @@
 
 <body>
     {{-- Loading Spinner --}}
+    @if (config('adminetic.loader_enabled',true))
     <div class="loader-wrapper">
         <div class="loader-index"><span></span></div>
         <svg>
@@ -32,6 +33,7 @@
             </filter>
         </svg>
     </div>
+    @endif
     {{-- Loading Spinner End --}}
     <!-- tap on top starts-->
     <div class="tap-top"><i data-feather="chevrons-up"></i></div>
