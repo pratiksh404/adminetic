@@ -45,6 +45,8 @@ class AdmineticResetCommand extends Command
         $this->info('Dumping Seeding ... ');
         Artisan::call('db:seed');
         $this->info('Optimizing ... ');
+        Artisan::call('view:clear');
+        Artisan::call('cache:clear');
         Artisan::call('optimize');
     }
 }
