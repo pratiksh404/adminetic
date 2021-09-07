@@ -26,10 +26,10 @@ class UserRequest extends FormRequest
         $id = $this->user->id ?? '';
         $rules = [
             'name' => 'required|max:100',
-            'email' => 'required|email|unique:users,email,'.$id,
+            'email' => 'required|email|unique:users,email,' . $id,
         ];
         if ($this->getMethod() == 'POST') {
-            $rules += ['password' => 'required|min:8|max:30'];
+            $rules += ['password' => 'required|confirmed|min:8|max:30'];
         }
 
         if ($this->getMethod() == 'PATCH' || $this->getMethod() == 'PUT') {
