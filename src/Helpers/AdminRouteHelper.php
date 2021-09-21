@@ -3,8 +3,7 @@
 /**
  *Application Administration Base URL.
  *
- * @param string $route
- *
+ * @param  string  $route
  *@return string
  */
 if (! function_exists('adminBaseUrl')) {
@@ -18,7 +17,6 @@ if (! function_exists('adminBaseUrl')) {
  * Redirected Route.
  *
  *@param string $route
- *
  *@return string
  */
 if (! function_exists('adminRedirectRoute')) {
@@ -32,7 +30,6 @@ if (! function_exists('adminRedirectRoute')) {
  * Create View Route.
  *
  *@param string $route
- *
  *@return string
  */
 if (! function_exists('adminCreateRoute')) {
@@ -47,7 +44,6 @@ if (! function_exists('adminCreateRoute')) {
  *
  *@param string $route
  *@param int $id
- *
  *@return return_type
  */
 if (! function_exists('adminShowRoute')) {
@@ -62,7 +58,6 @@ if (! function_exists('adminShowRoute')) {
  *
  *@param string $route
  *@param int $id
- *
  *@return string
  */
 if (! function_exists('adminEditRoute')) {
@@ -76,7 +71,6 @@ if (! function_exists('adminEditRoute')) {
  *Store Route.
  *
  *@param string $route
- *
  *@return string
  */
 if (! function_exists('adminStoreRoute')) {
@@ -91,7 +85,6 @@ if (! function_exists('adminStoreRoute')) {
  *
  *@param string $route
  *@param int $id
- *
  *@return string
  */
 if (! function_exists('adminUpdateRoute')) {
@@ -106,7 +99,6 @@ if (! function_exists('adminUpdateRoute')) {
  *
  *@param string $route
  *@param int $id
- *
  *@return string
  */
 if (! function_exists('adminDeleteRoute')) {
