@@ -17,7 +17,7 @@ class UserRepository implements UserRepositoryInterface
     // User Index
     public function userIndex()
     {
-        $users = config('coderz.caching', true)
+        $users = config('adminetic.caching', true)
             ? (Cache::has('users') ? Cache::get('users') : Cache::rememberForever('users', function () {
                 return User::with('roles', 'profile')->get();
             }))
@@ -131,7 +131,7 @@ class UserRepository implements UserRepositoryInterface
         $preferences = Preference::all();
         if (isset($preferences)) {
             foreach ($preferences as $preference) {
-                if (! isset($preference->roles)) {
+                if (!isset($preference->roles)) {
                     $user->preferences()->attach($preference->id, [
                         'enabled' => $preference->active,
                     ]);

@@ -12,7 +12,7 @@ class {{modelName}}Repository implements {{modelName}}RepositoryInterface
     // {{modelName}} Index
     public function index{{modelName}}()
     {
-        ${{modelNamePluralLowerCase}} = config('coderz.caching', true)
+        ${{modelNamePluralLowerCase}} = config('adminetic.caching', true)
             ? (Cache::has('{{modelNamePluralLowerCase}}') ? Cache::get('{{modelNamePluralLowerCase}}') : Cache::rememberForever('{{modelNamePluralLowerCase}}', function () {
                 return {{modelName}}::latest()->get();
             }))

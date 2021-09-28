@@ -13,7 +13,7 @@ class PermissionRepository implements PermissionRepositoryInterface
     // Permission Index
     public function indexPermission()
     {
-        $permissions = config('coderz.caching', true)
+        $permissions = config('adminetic.caching', true)
             ? (Cache::has('permissions') ? Cache::get('permissions') : Cache::rememberForever('permissions', function () {
                 return Permission::with('role')->get();
             }))

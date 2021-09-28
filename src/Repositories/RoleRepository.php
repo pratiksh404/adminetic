@@ -12,7 +12,7 @@ class RoleRepository implements RoleRepositoryInterface
     // Role Index
     public function indexRole()
     {
-        $roles = config('coderz.caching', true)
+        $roles = config('adminetic.caching', true)
             ? (Cache::has('roles') ? Cache::get('roles') : Cache::rememberForever('roles', function () {
                 return Role::all();
             }))

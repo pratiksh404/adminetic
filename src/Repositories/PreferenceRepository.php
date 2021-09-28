@@ -14,7 +14,7 @@ class PreferenceRepository implements PreferenceRepositoryInterface
     // Preference Index
     public function indexPreference()
     {
-        $preferences = config('coderz.caching', true)
+        $preferences = config('adminetic.caching', true)
             ? (Cache::has('preferences') ? Cache::get('preferences') : Cache::rememberForever('preferences', function () {
                 return Preference::latest()->get();
             }))
@@ -39,7 +39,7 @@ class PreferenceRepository implements PreferenceRepositoryInterface
         $users = User::all();
         if (isset($users)) {
             foreach ($users as $user) {
-                if (! isset($preference->roles)) {
+                if (!isset($preference->roles)) {
                     $preference->users()->attach($user->id, [
                         'enabled' => $preference->active,
                     ]);

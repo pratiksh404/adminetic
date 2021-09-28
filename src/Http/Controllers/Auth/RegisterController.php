@@ -76,8 +76,8 @@ class RegisterController extends Controller
         if ($role) {
             $user->roles()->attach($role);
         } else {
-            $default_user_role = config('coderz.default_user_role', 'user');
-            $default_user_role_level = config('coderz.default_user_role_level', 1);
+            $default_user_role = config('adminetic.default_user_role', 'user');
+            $default_user_role_level = config('adminetic.default_user_role_level', 1);
             Role::create([
                 'name' => $default_user_role,
                 'description' => 'Default role for newly registered user.',
@@ -90,7 +90,7 @@ class RegisterController extends Controller
         $preferences = Preference::all();
         if (isset($preferences)) {
             foreach ($preferences as $preference) {
-                if (! isset($preference->roles)) {
+                if (!isset($preference->roles)) {
                     $user->preferences()->attach($preference->id, [
                         'enabled' => $preference->active,
                     ]);

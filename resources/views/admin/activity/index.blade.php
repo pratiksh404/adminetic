@@ -56,7 +56,7 @@
                                 <td>{{ $activity->subject_type }}</td>
                                 <td>{{ $activity->subject_id }}</td>
                                 <td><a
-                                        href="{{ url(config('coderz.prefix', 'admin') . '/' . 'user/' . $activity->causer_id) }}">{{ $activity->causer_id }}</a>
+                                        href="{{ url(config('adminetic.prefix', 'admin') . '/' . 'user/' . $activity->causer_id) }}">{{ $activity->causer_id }}</a>
                                 </td>
                                 <td>{{ $activity->created_at->diffForHumans() }}</td>
                                 <td>

@@ -14,7 +14,7 @@ class SettingRepository implements SettingRepositoryInterface
     // Setting Index
     public function indexSetting()
     {
-        $settings = config('coderz.caching', true)
+        $settings = config('adminetic.caching', true)
             ? (Cache::has('settings') ? Cache::get('settings') : Cache::rememberForever('settings', function () {
                 return Setting::latest()->get();
             }))
@@ -119,7 +119,7 @@ class SettingRepository implements SettingRepositoryInterface
                         'string_value' => $value->store('admin/setting', 'public'),
                     ]);
                     $image = Image::make($value->getRealPath());
-                    $image->save(public_path('storage/'.$setting->string_value));
+                    $image->save(public_path('storage/' . $setting->string_value));
                 }
             }
         } elseif ($setting->getRawOriginal('setting_type') == 2 || $setting->getRawOriginal('setting_type') == 6 || $setting->getRawOriginal('setting_type') == 7) {
