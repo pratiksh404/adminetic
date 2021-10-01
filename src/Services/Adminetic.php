@@ -115,7 +115,7 @@ class Adminetic
                     [
                         'type' => 'css',
                         'active' => true,
-                        'location' => 'adminetic/assets/css/font-awesome.css',
+                        'location' => 'adminetic/assets/css/fontawesome-all.min.css',
                     ],
                     [
                         'type' => 'css',
@@ -504,8 +504,8 @@ class Adminetic
         $children = [
             [
                 'type' => 'submenu',
-                'name' => 'All '.$plural,
-                'is_active' => request()->routeIs($route.'.index') ? 'active' : '',
+                'name' => 'All ' . $plural,
+                'is_active' => request()->routeIs($route . '.index') ? 'active' : '',
                 'link' => adminRedirectRoute($route),
                 'conditions' => [
                     [
@@ -516,8 +516,8 @@ class Adminetic
             ],
             [
                 'type' => 'submenu',
-                'name' => 'Create '.$route,
-                'is_active' => request()->routeIs($route.'.create') ? 'active' : '',
+                'name' => 'Create ' . $route,
+                'is_active' => request()->routeIs($route . '.create') ? 'active' : '',
                 'link' => adminCreateRoute($route),
                 'conditions' => [
                     [
