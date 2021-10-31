@@ -343,7 +343,7 @@ class Adminetic
             [
                 'type' => 'menu',
                 'name' => 'Role',
-                'icon' => 'fa fa-black-tie',
+                'icon' => 'fa fa-user-tie',
                 'is_active' => request()->routeIs('role*') ? 'active' : '',
                 'conditions' => [
                     [
@@ -504,8 +504,8 @@ class Adminetic
         $children = [
             [
                 'type' => 'submenu',
-                'name' => 'All '.$plural,
-                'is_active' => request()->routeIs($route.'.index') ? 'active' : '',
+                'name' => 'All ' . $plural,
+                'is_active' => request()->routeIs($route . '.index') ? 'active' : '',
                 'link' => adminRedirectRoute($route),
                 'conditions' => [
                     [
@@ -516,8 +516,8 @@ class Adminetic
             ],
             [
                 'type' => 'submenu',
-                'name' => 'Create '.$route,
-                'is_active' => request()->routeIs($route.'.create') ? 'active' : '',
+                'name' => 'Create ' . $route,
+                'is_active' => request()->routeIs($route . '.create') ? 'active' : '',
                 'link' => adminCreateRoute($route),
                 'conditions' => [
                     [
