@@ -11,7 +11,7 @@ use Pratiksh\Adminetic\Http\Controllers\Admin\RoleController;
 use Pratiksh\Adminetic\Http\Controllers\Admin\SettingController;
 use Pratiksh\Adminetic\Http\Controllers\Admin\UserController;
 
-Route::get('dashboard', [DashboardController::class, 'dashboard'])->name('home');
+Route::get('dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
 
 // Resource Controller
 Route::resource('user', UserController::class);

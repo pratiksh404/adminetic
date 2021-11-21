@@ -310,7 +310,7 @@ class Adminetic
                 'type' => 'link',
                 'name' => 'Dashboard',
                 'icon' => 'fa fa-home',
-                'link' => route('home'),
+                'link' => route('dashboard'),
                 'is_active' => request()->routeIs('home') ? 'active' : '',
                 'conditions' => [
                     [
@@ -504,8 +504,8 @@ class Adminetic
         $children = [
             [
                 'type' => 'submenu',
-                'name' => 'All '.$plural,
-                'is_active' => request()->routeIs($route.'.index') ? 'active' : '',
+                'name' => 'All ' . $plural,
+                'is_active' => request()->routeIs($route . '.index') ? 'active' : '',
                 'link' => adminRedirectRoute($route),
                 'conditions' => [
                     [
@@ -516,8 +516,8 @@ class Adminetic
             ],
             [
                 'type' => 'submenu',
-                'name' => 'Create '.$route,
-                'is_active' => request()->routeIs($route.'.create') ? 'active' : '',
+                'name' => 'Create ' . $route,
+                'is_active' => request()->routeIs($route . '.create') ? 'active' : '',
                 'link' => adminCreateRoute($route),
                 'conditions' => [
                     [

@@ -1,7 +1,7 @@
 <div class="sidebar-wrapper">
     <div>
         <div class="logo-wrapper">
-            <a href="{{ route('home') }}">
+            <a href="{{ route('dashboard') }}">
                 <img class="img-fluid for-light"
                     src="{{ asset(isset($setting->logo) ? 'storage/' . $setting->logo : 'adminetic/static/logo.png') }}"
                     alt="Light Logo">
@@ -13,7 +13,7 @@
             <div class="toggle-sidebar"><i class="status_toggle middle sidebar-toggle" data-feather="grid">
                 </i></div>
         </div>
-        <div class="logo-icon-wrapper"><a href="{{ route('home') }}"><img class="img-fluid"
+        <div class="logo-icon-wrapper"><a href="{{ route('dashboard') }}"><img class="img-fluid"
                     src="{{ asset(isset($setting->favicon) ? 'storage/' . $setting->favicon : 'adminetic/static/favicon.png') }}"
                     alt="favicon"></a>
         </div>
@@ -21,7 +21,7 @@
             <div class="left-arrow" id="left-arrow"><i data-feather="arrow-left"></i></div>
             <div id="sidebar-menu">
                 <ul class="sidebar-links" id="simple-bar">
-                    <li class="back-btn"><a href="{{ route('home') }}"><img class="img-fluid"
+                    <li class="back-btn"><a href="{{ route('dashboard') }}"><img class="img-fluid"
                                 src="{{ asset(isset($setting->favicon) ? 'storage/' . $setting->favicon : 'adminetic/static/favicon.png') }}"
                                 alt="favicon"></a>
                         <div class="mobile-back text-end"><span>Back</span><i class="fa fa-angle-right ps-2"

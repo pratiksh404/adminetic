@@ -121,7 +121,7 @@
         }
     });
     $(".mode").on("click", function () {
-        $('.mode i').toggleClass("fa-moon-o").toggleClass("fa-lightbulb-o");
+        $('.mode i').toggleClass("fa-moon").toggleClass("fa-lightbulb");
         $('body').toggleClass("dark-only");
         var color = $(this).attr("data-attr");
         localStorage.setItem('body', 'dark-only');

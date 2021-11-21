@@ -9,7 +9,7 @@
             </div>
             <div class="col-6">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{ route('home') }}"> <i data-feather="home"></i></a>
+                    <li class="breadcrumb-item"><a href="{{ route('dashboard') }}"> <i data-feather="home"></i></a>
                     </li>
                     <li class="breadcrumb-item active">My Profile</li>
                 </ol>
@@ -66,14 +66,14 @@
                     </tr>
                     <tr>
                         <td><b>Verified : </b></td>
-                        <td><span
-                                class="badge badge-{{ isset($user->email_verified_at) ? 'success' : 'danger' }}">{{ isset($user->email_verified_at) ? 'Yes' : 'No' }}</span>
+                        <td><span class="badge badge-{{ isset($user->email_verified_at) ? 'success' : 'danger' }}">{{
+                                isset($user->email_verified_at) ? 'Yes' : 'No' }}</span>
                         </td>
                     </tr>
                     <tr>
                         <td><b>Active : </b></td>
-                        <td><span
-                                class="badge badge-{{ $profile->getRawOriginal('status') ? 'success' : 'danger' }}">{{ $profile->getRawOriginal('status') ? 'Active' : 'Inactive' }}</span>
+                        <td><span class="badge badge-{{ $profile->getRawOriginal('status') ? 'success' : 'danger' }}">{{
+                                $profile->getRawOriginal('status') ? 'Active' : 'Inactive' }}</span>
                         </td>
                     </tr>
                 </tbody>
@@ -113,8 +113,8 @@
             @if(View::exists($tab['view']))
             <li class="nav-item"><a class="nav-link" id="tab{{$loop->index}}-info-tab" data-bs-toggle="tab"
                     href="#info-tab{{$loop->index}}" role="tab" aria-controls="info-tab{{$loop->index}}"
-                    aria-selected="false"><i
-                        class="{{$tab['icon'] ?? 'fa-plus-square'}}"></i>{{$tab['name'] ?? $loop->index}}</a></li>
+                    aria-selected="false"><i class="{{$tab['icon'] ?? 'fa-plus-square'}}"></i>{{$tab['name'] ??
+                    $loop->index}}</a></li>
             @endif
             @endforeach
             @endif

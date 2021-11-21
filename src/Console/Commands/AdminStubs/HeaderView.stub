@@ -18,7 +18,7 @@
         @endif
         <div class="header-logo-wrapper col-auto p-0">
             <div class="logo-wrapper">
-                <a href="{{ route('home') }}">
+                <a href="{{ route('dashboard') }}">
                     <img class="img-fluid"
                         src="{{ asset(setting('logo') ? 'storage/' . setting('logo') : 'adminetic/static/logo.png') }}"
                         alt="Logo">

@@ -20,7 +20,7 @@ class ShowPage extends Component
      */
     public function __construct($name, $route, $model)
     {
-        $this->name = $name;
+        $this->name = Str::ucfirst($name);
         $this->route = $route ?? Str::plural(str_replace(' ', '_', $name));
         $this->model = $model;
     }

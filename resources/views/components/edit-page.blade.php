@@ -7,7 +7,7 @@
                 </div>
                 <div class="col-6">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{ route('home') }}"> <i data-feather="home"></i></a>
+                        <li class="breadcrumb-item"><a href="{{ route('dashboard') }}"> <i data-feather="home"></i></a>
                         </li>
                         <li class="breadcrumb-item"><a href="{{ adminRedirectRoute($route) }}">{{ $name }}</a>
                         </li>
@@ -21,17 +21,17 @@
         <div class="card-header {{ config('adminetic.card_header', 'b-l-warning border-3') }}">
             <h5>@isset($icon) <i class="{{ $icon }} me-2"></i> @endisset Edit {{ $name ?? 'N/A' }}</h5>
             @if (config('adminetic.card_action_enabled', true))
-                <div class="card-header-right">
-                    @if (isset($actions))
-                        {{ $actions }}
-                    @else
-                        <ul class="list-unstyled card-option">
-                            <li><i class="fa fa-spin fa-cog"></i></li>
-                            <li><i class="icofont icofont-maximize full-card"></i></li>
-                            <li><i class="icofont icofont-minus minimize-card"></i></li>
-                        </ul>
-                    @endif
-                </div>
+            <div class="card-header-right">
+                @if (isset($actions))
+                {{ $actions }}
+                @else
+                <ul class="list-unstyled card-option">
+                    <li><i class="fa fa-spin fa-cog"></i></li>
+                    <li><i class="icofont icofont-maximize full-card"></i></li>
+                    <li><i class="icofont icofont-minus minimize-card"></i></li>
+                </ul>
+                @endif
+            </div>
             @endif
             <br>
             <div class="row">
@@ -44,7 +44,7 @@
                     <a href="{{ adminRedirectRoute($route) }}"><button
                             class="btn btn-primary btn-air-primary">Back</button></a>
                     @isset($buttons)
-                        {{ $buttons }}
+                    {{ $buttons }}
                     @endisset
                 </div>
             </div>

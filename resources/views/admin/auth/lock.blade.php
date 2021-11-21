@@ -7,7 +7,7 @@
     <div class="col-xl-5 p-0">
         <div class="login-card">
             <div>
-                <a class="logo text-start" href="{{ route('home') }}">
+                <a class="logo text-start" href="{{ route('dashboard') }}">
                     <img class="img-fluid for-light"
                         src="{{ asset(setting('logo') ? 'storage/' . setting('logo') : 'adminetic/static/logo.png') }}"
                         alt="Light Logo">
