@@ -3,9 +3,9 @@
 namespace Pratiksh\Adminetic\Http\Livewire\Admin\User;
 
 use App\Models\User;
+use Illuminate\Support\Facades\Cache;
 use Livewire\Component;
 use Livewire\WithPagination;
-use Illuminate\Support\Facades\Cache;
 use Pratiksh\Adminetic\Models\Admin\Role;
 
 class UserTable extends Component
@@ -33,6 +33,7 @@ class UserTable extends Component
     {
         $users = $this->getUsers();
         $roles = Cache::get('roles', Role::latest()->get());
+
         return view('adminetic::livewire.admin.user.user-table', compact('users', 'roles'));
     }
 
@@ -47,9 +48,9 @@ class UserTable extends Component
             case 2:
                 $this->resetPage();
                 $search = $this->search ?? null;
-                $data = $default->where('name', 'like', '%' . $search . '%')
-                    ->orWhere('email', 'like', '%' . $search . '%');
-                $this->information = 'Showing search results for "' . $search . '"';
+                $data = $default->where('name', 'like', '%'.$search.'%')
+                    ->orWhere('email', 'like', '%'.$search.'%');
+                $this->information = 'Showing search results for "'.$search.'"';
                 break;
             case 3:
                 $this->resetPage();
@@ -62,6 +63,7 @@ class UserTable extends Component
                 $data = $default->latest();
                 break;
         }
+
         return $data->paginate(10);
     }
 }
