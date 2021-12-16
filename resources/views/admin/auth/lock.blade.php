@@ -8,12 +8,8 @@
         <div class="login-card">
             <div>
                 <a class="logo text-start" href="{{ route('dashboard') }}">
-                    <img class="img-fluid for-light"
-                        src="{{ asset(setting('logo') ? 'storage/' . setting('logo') : 'adminetic/static/logo.png') }}"
-                        alt="Light Logo">
-                    <img class="img-fluid for-dark"
-                        src="{{ asset(setting('dark_logo') ? 'storage/' . setting('dark_logo') : 'adminetic/static/logo_dark.png') }}"
-                        alt="Dark Logo">
+                    <img class="img-fluid for-light" src="{{ logo() }}" alt="Light Logo">
+                    <img class="img-fluid for-dark" src="{{ dark_logo() ?? logo() }}" alt="Dark Logo">
                 </a>
             </div>
             <div class="login-main">

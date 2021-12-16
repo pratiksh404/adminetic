@@ -17,15 +17,7 @@ class UserRepository implements UserRepositoryInterface
     // User Index
     public function userIndex()
     {
-        $users = config('adminetic.caching', true)
-            ? (Cache::has('users') ? Cache::get('users') : Cache::rememberForever('users', function () {
-                return User::with('roles', 'profile')->get();
-            }))
-            : User::with('roles', 'profile')->get();
-
-        $roles = Cache::get('roles', Role::all(['id', 'name']));
-
-        return compact('users', 'roles');
+        return [];
     }
 
     // User Create
@@ -131,7 +123,7 @@ class UserRepository implements UserRepositoryInterface
         $preferences = Preference::all();
         if (isset($preferences)) {
             foreach ($preferences as $preference) {
-                if (! isset($preference->roles)) {
+                if (!isset($preference->roles)) {
                     $user->preferences()->attach($preference->id, [
                         'enabled' => $preference->active,
                     ]);

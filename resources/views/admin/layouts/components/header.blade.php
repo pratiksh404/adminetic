@@ -6,8 +6,7 @@
                 <div class="Typeahead Typeahead--twitterUsers">
                     <div class="u-posRelative">
                         <input class="demo-input Typeahead-input form-control-plaintext w-100" type="text"
-                            placeholder="Search {{ $setting->title ?? config('adminetic.name', 'Adminetic') }} .."
-                            name="q" title="" autofocus>
+                            placeholder="Search {{ title() }} .." name="q" title="{{ title() }}" autofocus>
                         <div class="spinner-border Typeahead-spinner" role="status"><span
                                 class="sr-only">Loading...</span></div><i class="close-search" data-feather="x"></i>
                     </div>
@@ -19,9 +18,7 @@
         <div class="header-logo-wrapper col-auto p-0">
             <div class="logo-wrapper">
                 <a href="{{ route('dashboard') }}">
-                    <img class="img-fluid"
-                        src="{{ asset(setting('logo') ? 'storage/' . setting('logo') : 'adminetic/static/logo.png') }}"
-                        alt="Logo">
+                    <img class="img-fluid" src="{{ logo() }}" alt="Logo">
                 </a>
             </div>
             <div class="toggle-sidebar"><i class="status_toggle middle sidebar-toggle" data-feather="align-center"></i>

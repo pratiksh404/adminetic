@@ -14,6 +14,7 @@ return [
     'favicon' => 'adminetic/static/favicon.png',
     'description' => 'Laravel Adminetic Admin Panel Upgrade.',
     'admin_home' => '/admin/dashboard',
+    'dark_mode' => false,
 
     /*
     |--------------------------------------------------------------------------
@@ -40,6 +41,14 @@ return [
     'dark_light_toggle' => true,
     'fullscreen_expander' => true,
     'profile' => true,
+
+    /*
+    |--------------------------------------------------------------------------
+    | Sidebar Configuration
+    |--------------------------------------------------------------------------
+    */
+    'default_menu_icon' => 'fa fa-bars',
+    'default_submenu_icon' => 'fa fa-angle-double-right',
 
     /*
     |--------------------------------------------------------------------------

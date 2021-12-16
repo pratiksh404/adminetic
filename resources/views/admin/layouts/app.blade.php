@@ -6,22 +6,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
-        content="{{ $setting->meta_description ?? config('adminetic.description', 'Laravel Adminetic Admin Panel Upgrade.') }}">
+        content="{{ setting('descrption', config('adminetic.description', 'Laravel Adminetic Admin Panel Upgrade.'))}}">
     <meta name="author" content="Pratik Shrestha">
-    <link rel="icon"
-        href="{{ asset(setting('favicon') ? 'storage/' . setting('favicon') : config('adminetic.favicon', 'static/favicon.png')) }}"
-        type="image/x-icon">
-    <link rel="shortcut icon"
-        href="{{ asset(setting('favicon') ? 'storage/' . setting('favicon') : config('adminetic.favicon', 'static/favicon.png')) }}"
-        type="image/x-icon">
-    <title>{{ $title ?? ($setting->title ?? config('adminetic.name', 'Adminetic')) }}</title>
+    <link rel="icon" href="{{ favicon() }}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ favicon() }}" type="image/x-icon">
+    <title>{{ $title ?? title() }}</title>
     {{-- ASSET LINKS --}}
     @include('adminetic::admin.layouts.assets.links')
 </head>
 
 <body>
     {{-- Loading Spinner --}}
-    @if (config('adminetic.loader_enabled',true))
+    @if (loader_enabled())
     <div class="loader-wrapper">
         <div class="loader-index"><span></span></div>
         <svg>

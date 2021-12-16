@@ -375,10 +375,11 @@ class Adminetic
                 'children' => $this->indexCreateChildren('permission', \Pratiksh\Adminetic\Models\Admin\Permission::class),
             ],
             [
-                'type' => 'menu',
+                'type' => 'link',
                 'name' => 'Setting',
                 'icon' => 'fa fa-cog',
-                'is_active' => request()->routeIs('setting*') ? 'active' : '',
+                'link' => route('dashboard'),
+                'is_active' => request()->routeIs('home') ? 'active' : '',
                 'conditions' => [
                     [
                         'type' => 'or',
@@ -388,8 +389,7 @@ class Adminetic
                         'type' => 'or',
                         'condition' => auth()->user()->can('create', \Pratiksh\Adminetic\Models\Admin\Setting::class),
                     ],
-                ],
-                'children' => $this->indexCreateChildren('setting', \Pratiksh\Adminetic\Models\Admin\Setting::class),
+                ]
             ],
             [
                 'type' => 'menu',
@@ -504,8 +504,8 @@ class Adminetic
         $children = [
             [
                 'type' => 'submenu',
-                'name' => 'All '.$plural,
-                'is_active' => request()->routeIs($route.'.index') ? 'active' : '',
+                'name' => 'All ' . $plural,
+                'is_active' => request()->routeIs($route . '.index') ? 'active' : '',
                 'link' => adminRedirectRoute($route),
                 'conditions' => [
                     [
@@ -516,8 +516,8 @@ class Adminetic
             ],
             [
                 'type' => 'submenu',
-                'name' => 'Create '.$route,
-                'is_active' => request()->routeIs($route.'.create') ? 'active' : '',
+                'name' => 'Create ' . $route,
+                'is_active' => request()->routeIs($route . '.create') ? 'active' : '',
                 'link' => adminCreateRoute($route),
                 'conditions' => [
                     [
