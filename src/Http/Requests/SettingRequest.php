@@ -38,7 +38,7 @@ class SettingRequest extends FormRequest
     public function rules()
     {
         return [
-            'setting_name' => 'required|max:20',
+            'setting_name' => 'required|max:255',
             'string_value' => 'nullable|max:255',
             'integer_value' => 'nullable|numeric',
             'text_value' => 'nullable|max:65000',
