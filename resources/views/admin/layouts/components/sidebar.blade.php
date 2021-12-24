@@ -2,8 +2,8 @@
     <div>
         <div class="logo-wrapper">
             <a href="{{ route('dashboard') }}">
-                <img class="img-fluid for-light" src="{{ logo() }}" alt="Light Logo">
-                <img class="img-fluid for-dark" src="{{ dark_logo() }}" alt="Dark Logo">
+                <img class="for-light" src="{{ logo() }}" height="50" alt="Light Logo">
+                <img class="for-dark" src="{{ dark_logo() }}" height="50" alt="Dark Logo">
             </a>
             <div class="back-btn"><i class="fa fa-angle-left"></i></div>
             <div class="toggle-sidebar"><i class="status_toggle middle sidebar-toggle" data-feather="grid">
