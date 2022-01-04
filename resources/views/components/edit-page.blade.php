@@ -35,14 +35,22 @@
             @endif
             <br>
             <div class="row">
-                {{ $description ?? 'Edit ' . $name . ' in the system' }} <br>
+                {{ $description ?? ''}} <br>
                 <span class="text-secondary">The field labels marked with * are required
                     input fields.</span>
                 <div class="d-flex justify-content-end">
-                    <a href="{{ adminCreateRoute($route, $model->id) }}"><button
-                            class="btn btn-success btn-air-success">Create</button></a>
-                    <a href="{{ adminRedirectRoute($route) }}"><button
-                            class="btn btn-primary btn-air-primary">Back</button></a>
+                    <div class="btn-group" role="group">
+                        <button class="btn btn-primary btn-air-primary dropdown-toggle show" id="actions" type="button"
+                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Actions</button>
+                        <div class="dropdown-menu show" aria-labelledby="actions"
+                            style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate3d(0px, 37px, 0px);"
+                            data-popper-placement="bottom-start">
+                            <a class="dropdown-item" href="{{ adminRedirectRoute($route) }}" title="All {{$name}}">All
+                                {{$name}}</a>
+                            <a class="dropdown-item" href="{{ adminCreateRoute($route, $model->id) }}"
+                                title="Create new {{$name}}">Create new {{$name}}</a>
+                        </div>
+                    </div>
                     @isset($buttons)
                     {{ $buttons }}
                     @endisset

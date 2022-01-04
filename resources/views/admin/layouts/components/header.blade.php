@@ -18,7 +18,7 @@
         <div class="header-logo-wrapper col-auto p-0">
             <div class="logo-wrapper">
                 <a href="{{ route('dashboard') }}">
-                    <img class="img-fluid" src="{{ logo() }}" alt="Logo">
+                    <img class="img-fluid" src="{{ logo() }}" alt="Logo" width="50">
                 </a>
             </div>
             <div class="toggle-sidebar"><i class="status_toggle middle sidebar-toggle" data-feather="align-center"></i>
@@ -267,7 +267,7 @@
                             data-feather="maximize"></i></a></li>
                 @endif
                 @if (config('adminetic.profile', true))
-                <li class="profile-nav onhover-dropdown p-0 me-0">
+                <li class="onhover-dropdown p-0 me-0">
                     <div class="media profile-media">
                         <img class="b-r-10 img-fluid" src="{{ getProfilePlaceholder() }}"
                             alt="{{ auth()->user()->name }}" height="37" width="37">

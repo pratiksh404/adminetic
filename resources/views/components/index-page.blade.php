@@ -33,7 +33,9 @@
             @endif
             <br>
             <div class="row">
-                {{ $description ?? 'List of all ' . $plural_name . ' in the system' }}
+                <div class="mb-3">
+                    {{ $description ?? 'List of all ' . $plural_name . ' in the system' }}
+                </div>
                 <div class="d-flex justify-content-end">
                     <a href="{{ adminCreateRoute($route) }}" class="btn btn-primary">Create
                         {{ $name ?? '' }}</a>
@@ -43,7 +45,8 @@
                 </div>
             </div>
         </div>
-        <div class="card-body {{ config('adminetic.card_body', '') . ' ' . ($bg_color ?? '') }}">
+        <div class="card-body {{ config('adminetic.card_body', '') . ' ' . ($bg_color ?? '') }}"
+            style="overflow-x:auto">
             {{ $content ?? '' }}
         </div>
     </div>

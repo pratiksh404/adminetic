@@ -36,9 +36,22 @@
             <br>
             <div class="row">
                 <div class="d-flex justify-content-end">
-                    <a href="{{ adminRedirectRoute($route) }}" class="btn btn-primary btn-sm btn-air-primary">Back</a>
-                    <a href="{{ adminEditRoute($route, $model->id) }}" class="btn btn-info btn-sm btn-air-info">Edit</a>
-                    <a href="{{ adminCreateRoute($route) }}" class="btn btn-success btn-sm btn-air-success">Create</a>
+                    <div class="btn-group" role="group">
+                        <button class="btn btn-primary btn-air-primary dropdown-toggle show" id="actions" type="button"
+                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Actions</button>
+                        <div class="dropdown-menu show" aria-labelledby="actions"
+                            style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate3d(0px, 37px, 0px);"
+                            data-popper-placement="bottom-start">
+                            <a class="dropdown-item" href="{{ adminRedirectRoute($route) }}" title="All {{$name}}">All
+                                {{$name}}</a>
+                            <a class="dropdown-item" href="{{ adminEditRoute($route, $model->id) }}"
+                                title="Edit {{$name}}">Edit
+                                {{$name}}</a>
+                            <a class="dropdown-item" href="{{ adminCreateRoute($route, $model->id) }}"
+                                title="Create new {{$name}}">Create
+                                new {{$name}}</a>
+                        </div>
+                    </div>
                     @isset($buttons)
                     {{ $buttons }}
                     @endisset

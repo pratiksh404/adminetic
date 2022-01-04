@@ -10,14 +10,14 @@
                 </i></div>
         </div>
         <div class="logo-icon-wrapper"><a href="{{ route('dashboard') }}"><img class="img-fluid" src="{{ favicon() }}"
-                    alt="favicon"></a>
+                    width="50" alt="favicon"></a>
         </div>
         <nav class="sidebar-main">
             <div class="left-arrow" id="left-arrow"><i data-feather="arrow-left"></i></div>
             <div id="sidebar-menu">
                 <ul class="sidebar-links" id="simple-bar">
                     <li class="back-btn"><a href="{{ route('dashboard') }}"><img class="img-fluid" src="{{ favicon() }}"
-                                alt="favicon"></a>
+                                width="50" alt="favicon"></a>
                         <div class="mobile-back text-end"><span>Back</span><i class="fa fa-angle-right ps-2"
                                 aria-hidden="true"></i></div>
                     </li>

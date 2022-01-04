@@ -35,7 +35,7 @@
             @endif
             <br>
             <div class="row">
-                {{ $description ?? 'Create ' . $name . ' in the system' }} <br>
+                {{ $description ?? ''}} <br>
                 <span class="text-secondary">The field labels marked with * are required
                     input fields.</span>
                 <div class="d-flex justify-content-end">
