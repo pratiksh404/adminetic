@@ -1,16 +1,16 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Pratiksh\Adminetic\Http\Controllers\Admin\RoleController;
-use Pratiksh\Adminetic\Http\Controllers\Admin\UserController;
-use Pratiksh\Adminetic\Http\Controllers\Auth\BouncerController;
-use Pratiksh\Adminetic\Http\Controllers\Admin\ProfileController;
-use Pratiksh\Adminetic\Http\Controllers\Admin\SettingController;
 use Pratiksh\Adminetic\Http\Controllers\Admin\ActivityController;
 use Pratiksh\Adminetic\Http\Controllers\Admin\DashboardController;
+use Pratiksh\Adminetic\Http\Controllers\Admin\EditorUploadController;
 use Pratiksh\Adminetic\Http\Controllers\Admin\PermissionController;
 use Pratiksh\Adminetic\Http\Controllers\Admin\PreferenceController;
-use Pratiksh\Adminetic\Http\Controllers\Admin\EditorUploadController;
+use Pratiksh\Adminetic\Http\Controllers\Admin\ProfileController;
+use Pratiksh\Adminetic\Http\Controllers\Admin\RoleController;
+use Pratiksh\Adminetic\Http\Controllers\Admin\SettingController;
+use Pratiksh\Adminetic\Http\Controllers\Admin\UserController;
+use Pratiksh\Adminetic\Http\Controllers\Auth\BouncerController;
 
 Route::get('dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
 
