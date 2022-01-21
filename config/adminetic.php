@@ -128,5 +128,5 @@ return [
     'adapters' => [],
 
     // Bouncer
-    'default_bouncer_credential' => 'adminetic,'
+    'default_bouncer_credential' => 'adminetic,',
 ];
