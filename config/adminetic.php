@@ -126,4 +126,7 @@ return [
 
     // Plugin Adapters
     'adapters' => [],
+
+    // Bouncer
+    'default_bouncer_credential' => 'adminetic,'
 ];

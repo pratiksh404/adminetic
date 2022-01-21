@@ -37,9 +37,9 @@
             <div class="row">
                 <div class="d-flex justify-content-end">
                     <div class="btn-group" role="group">
-                        <button class="btn btn-primary btn-air-primary dropdown-toggle show" id="actions" type="button"
-                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Actions</button>
-                        <div class="dropdown-menu show" aria-labelledby="actions"
+                        <button class="btn btn-primary btn-air-primary dropdown-toggle" id="actions" type="button"
+                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Actions</button>
+                        <div class="dropdown-menu" aria-labelledby="actions"
                             style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate3d(0px, 37px, 0px);"
                             data-popper-placement="bottom-start">
                             <a class="dropdown-item" href="{{ adminRedirectRoute($route) }}" title="All {{$name}}">All

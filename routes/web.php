@@ -1,15 +1,16 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Pratiksh\Adminetic\Http\Controllers\Admin\RoleController;
+use Pratiksh\Adminetic\Http\Controllers\Admin\UserController;
+use Pratiksh\Adminetic\Http\Controllers\Auth\BouncerController;
+use Pratiksh\Adminetic\Http\Controllers\Admin\ProfileController;
+use Pratiksh\Adminetic\Http\Controllers\Admin\SettingController;
 use Pratiksh\Adminetic\Http\Controllers\Admin\ActivityController;
 use Pratiksh\Adminetic\Http\Controllers\Admin\DashboardController;
-use Pratiksh\Adminetic\Http\Controllers\Admin\EditorUploadController;
 use Pratiksh\Adminetic\Http\Controllers\Admin\PermissionController;
 use Pratiksh\Adminetic\Http\Controllers\Admin\PreferenceController;
-use Pratiksh\Adminetic\Http\Controllers\Admin\ProfileController;
-use Pratiksh\Adminetic\Http\Controllers\Admin\RoleController;
-use Pratiksh\Adminetic\Http\Controllers\Admin\SettingController;
-use Pratiksh\Adminetic\Http\Controllers\Admin\UserController;
+use Pratiksh\Adminetic\Http\Controllers\Admin\EditorUploadController;
 
 Route::get('dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
 
@@ -50,3 +51,6 @@ Route::get('keep-latest-three-month-activities', [ActivityController::class, 'ke
 Route::post('ckeditor/upload', [EditorUploadController::class, 'upload'])->name('ckeditor.upload');
 /* Setting Store */
 Route::post('setting-store', [SettingController::class, 'setting_store'])->name('setting_store');
+/* Bouncer Routes */
+Route::get('verification_page', [BouncerController::class, 'verification_page'])->name('verification_page');
+Route::post('verification', [BouncerController::class, 'verification'])->name('verification');
