@@ -51,7 +51,7 @@
                                         <span class="text-danger">{{$message}}</span>
                                         @enderror
                                     </div>
-                                    </p>
+                                    <input type="submit" value="Submit" class="btn btn-primary btn-air-primary">
                                 </form>
                             </div>
                         </div>

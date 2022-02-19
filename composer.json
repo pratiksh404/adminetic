@@ -17,12 +17,11 @@
     ],
     "require": {
         "php": "^7.4|^8.0",
-        "illuminate/support": "^8.0",
         "drh2so4/thumbnail": "^1.0",
         "laravel/socialite": "^5.2",
         "laravel/ui": "^3.2",
         "livewire/livewire": "^2.4",
-        "spatie/laravel-activitylog": "^3.17"
+        "spatie/laravel-activitylog": "^3.0|^4.0"
     },
     "require-dev": {
         "orchestra/testbench": "^6.0",
