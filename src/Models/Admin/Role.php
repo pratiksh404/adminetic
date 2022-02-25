@@ -6,8 +6,8 @@ use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Cache;
-use Spatie\Activitylog\Traits\LogsActivity;
 use Spatie\Activitylog\LogOptions;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 class Role extends Model
 {
@@ -50,7 +50,6 @@ class Role extends Model
 
     // Logs
     protected static $logName = 'role';
-
 
     public function getActivitylogOptions(): LogOptions
     {
