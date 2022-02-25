@@ -5,6 +5,7 @@ namespace Pratiksh\Adminetic\Models\Admin;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Cache;
 use Spatie\Activitylog\Traits\LogsActivity;
+use Spatie\Activitylog\LogOptions;
 
 class Setting extends Model
 {
@@ -34,6 +35,11 @@ class Setting extends Model
 
     // Logs
     protected static $logName = 'setting';
+
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults();
+    }
 
     // Casts
     public $casts = [

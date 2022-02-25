@@ -127,6 +127,9 @@ return [
     // Plugin Adapters
     'adapters' => [],
 
+    // Profile Tabs
+    'profile_tab' => null,
+
     // Bouncer
-    'default_bouncer_credential' => 'adminetic,',
+    'default_bouncer_credential' => 'adminetic',
 ];

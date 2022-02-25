@@ -5,6 +5,7 @@ namespace App\Models\Admin;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Activitylog\Traits\LogsActivity;
+use Spatie\Activitylog\LogOptions;
 
 class {{modelName}} extends Model
 {
@@ -34,4 +35,9 @@ class {{modelName}} extends Model
 
     // Logs
     protected static $logName = '{{modelNameSingularLowerCase}}';
+
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults();
+    }
 }
