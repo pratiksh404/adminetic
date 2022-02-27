@@ -34,7 +34,6 @@ composer require pratiksh/adminetic
 ```
 
 Add AdmineticUser Trait.
-`Note: Version v1.7.2 and greater will have necessary dependencies already implement`
 In your user model,
 
 ```sh
@@ -67,7 +66,6 @@ php artisan adminetic:dummy
 Note: If we enable migrate_wth_dummy in adminetic config file dummy data are seeded on migration. Then above command can be avoided.
 
 Use adminetic auth route.
-`Note: Version v1.7.2 and greater will have necessary dependencies already implement`
 In web.php paste following
 
 ```sh
