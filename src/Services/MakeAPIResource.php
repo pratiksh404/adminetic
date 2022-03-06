@@ -2,7 +2,6 @@
 
 namespace Pratiksh\Adminetic\Services;
 
-use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Str;
 use Pratiksh\Adminetic\Services\Helper\CommandHelper;
 
@@ -34,7 +33,7 @@ class MakeAPIResource extends CommandHelper
      */
     protected static function makeRestAPIController($name, $path)
     {
-        if (!file_exists($dir_path = app_path('Http/Controllers/Admin/API/Restful'))) {
+        if (! file_exists($dir_path = app_path('Http/Controllers/Admin/API/Restful'))) {
             mkdir($dir_path, 0777, true);
         }
 
@@ -56,7 +55,6 @@ class MakeAPIResource extends CommandHelper
         file_put_contents(app_path("/Http/Controllers/Admin/API/Restful/{$name}RestAPIController.php"), $controllerTemplate);
     }
 
-
     /**
      * Make Client API Resource.
      */
@@ -65,7 +63,7 @@ class MakeAPIResource extends CommandHelper
         // Making API Resource
         self::makeAPIResource($name, $path);
         // Making Controller
-        if (!file_exists($dir_path = app_path('Http/Controllers/Admin/API/Client'))) {
+        if (! file_exists($dir_path = app_path('Http/Controllers/Admin/API/Client'))) {
             mkdir($dir_path, 0777, true);
         }
         $controllerTemplate = str_replace(
@@ -88,7 +86,7 @@ class MakeAPIResource extends CommandHelper
 
     protected static function makeAPIResource($name, $path)
     {
-        if (!file_exists($dir_path = app_path("/Http/Resources/{$name}"))) {
+        if (! file_exists($dir_path = app_path("/Http/Resources/{$name}"))) {
             mkdir($dir_path, 0777, true);
         }
         // Making Collection
