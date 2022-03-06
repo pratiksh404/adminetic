@@ -43,25 +43,27 @@ class MakeAPIResourceCommand extends Command
         $path = $this->getModelPath($given_name);
         if ($this->option('rest')) {
             MakeAPIResource::makeRestAPI($name, $path);
-            $this->info('Restful API Resource created for model ' . $name);
+            $this->info('Restful API Resource created for model '.$name);
         } elseif ($this->option('client')) {
             MakeAPIResource::makeClientAPI($name, $path);
-            $this->info('Client API created for model ' . $name);
+            $this->info('Client API created for model '.$name);
         } else {
             MakeAPIResource::makeAPI($name, $path);
-            $this->info('API Resource created for model ' . $name);
+            $this->info('API Resource created for model '.$name);
         }
     }
 
     public function getModelName($given_name)
     {
-        $explode_path = preg_split("#/#", $given_name);
+        $explode_path = preg_split('#/#', $given_name);
+
         return end($explode_path);
     }
 
     public function getModelPath($given_name)
     {
-        $explode_path = preg_split("#/#", $given_name);
-        return count($explode_path) > 1 ? str_replace('/', '\\', $given_name) : ("App\\Models\\Admin\\" . $given_name);
+        $explode_path = preg_split('#/#', $given_name);
+
+        return count($explode_path) > 1 ? str_replace('/', '\\', $given_name) : ('App\\Models\\Admin\\'.$given_name);
     }
 }
