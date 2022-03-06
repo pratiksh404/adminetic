@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Resources\Client\{{modelName}};
+namespace App\Http\Resources\{{modelName}};
 
-use App\Http\Resources\Client\{{modelName}}\{{modelName}}Resource;
+use App\Http\Resources\{{modelName}}\{{modelName}}Resource;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
 class {{modelName}}Collection extends ResourceCollection

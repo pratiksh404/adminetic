@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\API;
+namespace App\Http\Controllers\Admin\API\Client;
 
-use App\Models\Admin\{{modelName}};
-use App\Http\Resources\Client\{{modelName}}\{{modelName}}Collection;
-use App\Http\Resources\Client\{{modelName}}\{{modelName}}Resource;
+use {{modelPath}};
+use App\Http\Resources\{{modelName}}\{{modelName}}Collection;
+use App\Http\Resources\{{modelName}}\{{modelName}}Resource;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class {{modelName}}ApiController extends Controller
+class {{modelName}}ClientAPIController extends Controller
 {
  
     /**
@@ -24,7 +24,7 @@ class {{modelName}}ApiController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Admin\{{modelName}}  ${{modelNameSingularLowerCase}}
+     * @param  {{modelPath}}  ${{modelNameSingularLowerCase}}
      * @return \Illuminate\Http\Response
      */
     public function show({{modelName}} ${{modelNameSingularLowerCase}})
