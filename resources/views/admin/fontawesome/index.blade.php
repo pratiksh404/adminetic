@@ -5,7 +5,7 @@
     <div class="page-title">
         <div class="row">
             <div class="col-6">
-                <h3>My Profile</h3>
+                <h3><i class="fa fa-font"></i> Font Awesome</h3>
             </div>
             <div class="col-6">
                 <ol class="breadcrumb">
