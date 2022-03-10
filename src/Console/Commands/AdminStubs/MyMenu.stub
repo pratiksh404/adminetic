@@ -77,6 +77,12 @@ class MyMenu implements SidebarInterface
                 'icon' => 'fab fa-github',
                 'link' => 'https://github.com/pratiksh404/admineticl',
             ],
+            [
+                'type' => 'link',
+                'name' => 'Font Awesome',
+                'icon' => 'fa fa-font"',
+                'link' => route('fontawesome),
+            ],
         ];
     }
 }

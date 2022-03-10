@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Pratiksh\Adminetic\Http\Controllers\Admin\ActivityController;
 use Pratiksh\Adminetic\Http\Controllers\Admin\DashboardController;
 use Pratiksh\Adminetic\Http\Controllers\Admin\EditorUploadController;
+use Pratiksh\Adminetic\Http\Controllers\Admin\FontAwesomeController;
 use Pratiksh\Adminetic\Http\Controllers\Admin\PermissionController;
 use Pratiksh\Adminetic\Http\Controllers\Admin\PreferenceController;
 use Pratiksh\Adminetic\Http\Controllers\Admin\ProfileController;
@@ -54,3 +55,5 @@ Route::post('setting-store', [SettingController::class, 'setting_store'])->name(
 /* Bouncer Routes */
 Route::get('verification_page', [BouncerController::class, 'verification_page'])->name('verification_page');
 Route::post('verification', [BouncerController::class, 'verification'])->name('verification');
+/* Font Awesome Routes */
+Route::get('fontawesome', [FontAwesomeController::class, 'index'])->name('fontawesome');
