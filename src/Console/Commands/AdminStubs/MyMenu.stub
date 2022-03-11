@@ -81,7 +81,7 @@ class MyMenu implements SidebarInterface
                 'type' => 'link',
                 'name' => 'Font Awesome',
                 'icon' => 'fa fa-font"',
-                'link' => route('fontawesome),
+                'link' => route('fontawesome'),
             ],
         ];
     }
