@@ -5,6 +5,7 @@ namespace Pratiksh\Adminetic\Traits;
 use Illuminate\Support\Facades\Cache;
 use Pratiksh\Adminetic\Models\Admin\Profile;
 use Spatie\Activitylog\Traits\LogsActivity;
+use Spatie\Activitylog\LogOptions;
 
 /**
  * Adminetic User.
@@ -35,6 +36,11 @@ trait AdmineticUser
 
     // Logs
     protected static $logName = 'user';
+
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults();
+    }
 
     // Relations
 
