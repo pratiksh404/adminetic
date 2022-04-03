@@ -22,7 +22,9 @@
 <!-- Theme js-->
 <script src="{{ asset('adminetic/assets/js/script.js') }}"></script>
 @if(Route::is('dashboard') )
+@if (auth()->user()->hasRole('admin') || auth()->user()->hasRole('superadmin'))
 @include('adminetic::admin.layouts.assets.customizer')
+@endif
 @endif
 {{-- Livewire --}}
 @livewireScripts
