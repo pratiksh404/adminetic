@@ -1,7 +1,7 @@
 <script>
     if (localStorage.getItem("color"))
         $("#color").attr("href", "{{ env('APP_URL') }}/adminetic/assets/css/" + localStorage.getItem("color") + ".css");
-    if ({{darkMode() ?? 0}})
+    if ({{darkMode() ? 1 : 0}})
         $("body").attr("class", "dark-only");
 
     var customizer = '<div class="customizer-links">' +
