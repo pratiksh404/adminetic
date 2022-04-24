@@ -46,20 +46,20 @@
                     <h5 class="modal-title" id="exampleModalLabel">Delete Item !</h5>
                     <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
-                    Are you sure you want to delete this item.
-                    <br>
-                    <form action="{{ adminDeleteRoute(trim($route), $model->id) }}" method="POST">
-                        @method('DELETE')
-                        @csrf
+                <form action="{{ adminDeleteRoute(trim($route), $model->id) }}" method="POST">
+                    @method('DELETE')
+                    @csrf
+                    <div class="modal-body">
+                        Are you sure you want to delete this item.
+                        <br>
 
-                </div>
-                <div class="modal-footer">
-                    <button class="close btn grey btn-danger btn-air-danger" type="button" data-bs-dismiss="modal"
-                        aria-label="Close">Close </button>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="close btn grey btn-danger btn-air-danger" type="button" data-bs-dismiss="modal"
+                            aria-label="Close">Close </button>
 
-                    <button type="submit" class="btn btn-danger btn-air-danger">Yes Delete It !</button>
-                </div>
+                        <button type="submit" class="btn btn-danger btn-air-danger">Yes Delete It !</button>
+                    </div>
                 </form>
                 @endif
             </div>
