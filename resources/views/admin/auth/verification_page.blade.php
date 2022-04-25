@@ -44,7 +44,7 @@
                                         <label class="col-form-label">Enter your Password</label>
                                         <div class="form-input position-relative">
                                             <input class="form-control" type="password" name="verfication_code"
-                                                required="" placeholder="*********">
+                                                id="verfication_code" required="" placeholder="*********">
                                             <div class="show-hide"><span class="show"> </span></div>
                                         </div>
                                         @error('verfication_code')
@@ -89,7 +89,9 @@
                     
                             @if (Session::has('fail'))
                                 notifiable('Success',"{{ Session::get('fail') }}",'danger');
-                            @endif  
+                            @endif 
+                            
+                            $('#verfication_code').focus();
                     
                             function notifiable(title, message, type) {
                                 var notify_allow_dismiss = Boolean({{ config('adminetic.notify_allow_dismiss', true) }});

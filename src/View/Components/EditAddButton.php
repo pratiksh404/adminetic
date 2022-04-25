@@ -11,15 +11,18 @@ class EditAddButton extends Component
 
     public $name;
 
+    public $confirm;
+
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($model, $name)
+    public function __construct($model, $name, $confirm = false)
     {
         $this->model = $model;
         $this->name = Str::ucfirst($name);
+        $this->confirm = $confirm;
     }
 
     /**
