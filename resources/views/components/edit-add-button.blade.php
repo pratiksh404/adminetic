@@ -26,7 +26,7 @@
         </div>
     </div>
     @else
-    <input type="submit"
+    <input type="submit" id="{{config('adminetic.double_click_protection',true) ? 'adminetic-submit' : ''}}"
         class="btn btn-{{ isset($model) ? 'warning' : 'primary' }} btn-air-{{ isset($model) ? 'warning' : 'primary' }}"
         value="{{ isset($model) ? 'Edit ' . $name : 'Add ' . $name }}">
     @endif

@@ -59,6 +59,13 @@ $(document).ready(function() {
       $('.texteditor').summernote({
             height: 300,
             tabsize: 2
-        });
+    });
+
+    // Disable Double Submit Click Event By Disabling the Button Once Clicked
+    $('#adminetic-submit').on('click',function(){
+                $(this).prop('disabled',true);
+                $(this).val('Processing...');
+                $('#adminetic-form').submit();
+    });
 });
 /* ==================================================================================== */

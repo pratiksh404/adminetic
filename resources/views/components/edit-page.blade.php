@@ -58,7 +58,8 @@
             </div>
         </div>
         <div class="card-body {{ config('adminetic.card_body', '') . ' ' . ($bg_color ?? '') }}">
-            <form action="{{ adminUpdateRoute($route, $model->id) }}" method="post" enctype="multipart/form-data"
+            <form id="{{config('adminetic.double_click_protection',true) ? 'adminetic-form' : ''}}"
+                action="{{ adminUpdateRoute($route, $model->id) }}" method="post" enctype="multipart/form-data"
                 class="{{ $formclass ?? '' }}" id="{{ $formid ?? '' }}">
                 @method('PATCH')
                 @csrf

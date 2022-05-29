@@ -1,4 +1,4 @@
-<div class="page-header">
+<div class="page-header {{config('adminetic.default_menu_collapse',false) ? 'close_icon' : ''}}">
     <div class="header-wrapper row m-0">
         @if (config('adminetic.search', false))
         <form class="form-inline search-full col" action="#" method="get">

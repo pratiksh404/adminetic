@@ -1,4 +1,4 @@
-<div class="sidebar-wrapper">
+<div class="sidebar-wrapper {{config('adminetic.default_menu_collapse',false) ? 'close_icon' : ''}}">
     <div>
         <div class="logo-wrapper">
             <a href="{{ route('dashboard') }}">

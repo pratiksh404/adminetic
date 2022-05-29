@@ -300,128 +300,7 @@ class Adminetic
 
     public function admineticMenus(): array
     {
-        return [
-            [
-                'type' => 'breaker',
-                'name' => 'General',
-                'description' => 'Administration Control',
-            ],
-            [
-                'type' => 'link',
-                'name' => 'Dashboard',
-                'icon' => 'fa fa-home',
-                'link' => route('dashboard'),
-                'is_active' => request()->routeIs('home') ? 'active' : '',
-                'conditions' => [
-                    [
-                        'type' => 'and',
-                        'condition' => auth()->user()->hasRole('admin'),
-                    ],
-                ],
-            ],
-            [
-                'type' => 'menu',
-                'name' => 'User Management',
-                'icon' => 'fa fa-users',
-                'is_active' => request()->routeIs('user*') ? 'active' : '',
-                'pill' => [
-                    'class' => 'badge badge-info badge-air-info',
-                    'value' => \App\Models\User::count(),
-                ],
-                'conditions' => [
-                    [
-                        'type' => 'or',
-                        'condition' => auth()->user()->can('view-any', \App\Models\User::class),
-                    ],
-                    [
-                        'type' => 'or',
-                        'condition' => auth()->user()->can('create', \App\Models\User::class),
-                    ],
-                ],
-                'children' => $this->indexCreateChildren('user', \App\Models\User::class),
-            ],
-            [
-                'type' => 'menu',
-                'name' => 'Role',
-                'icon' => 'fa fa-user-tie',
-                'is_active' => request()->routeIs('role*') ? 'active' : '',
-                'conditions' => [
-                    [
-                        'type' => 'or',
-                        'condition' => auth()->user()->can('view-any', \Pratiksh\Adminetic\Models\Admin\Role::class),
-                    ],
-                    [
-                        'type' => 'or',
-                        'condition' => auth()->user()->can('create', \Pratiksh\Adminetic\Models\Admin\Role::class),
-                    ],
-                ],
-                'children' => $this->indexCreateChildren('role', \Pratiksh\Adminetic\Models\Admin\Role::class),
-            ],
-            [
-                'type' => 'menu',
-                'name' => 'Permission',
-                'icon' => 'fa fa-check',
-                'is_active' => request()->routeIs('permission*') ? 'active' : '',
-                'conditions' => [
-                    [
-                        'type' => 'or',
-                        'condition' => auth()->user()->can('view-any', \Pratiksh\Adminetic\Models\Admin\Permission::class),
-                    ],
-                    [
-                        'type' => 'or',
-                        'condition' => auth()->user()->can('create', \Pratiksh\Adminetic\Models\Admin\Permission::class),
-                    ],
-                ],
-                'children' => $this->indexCreateChildren('permission', \Pratiksh\Adminetic\Models\Admin\Permission::class),
-            ],
-            [
-                'type' => 'link',
-                'name' => 'Setting',
-                'icon' => 'fa fa-cog',
-                'link' => adminRedirectRoute('setting'),
-                'is_active' => request()->routeIs('home') ? 'active' : '',
-                'conditions' => [
-                    [
-                        'type' => 'or',
-                        'condition' => auth()->user()->can('view-any', \Pratiksh\Adminetic\Models\Admin\Setting::class),
-                    ],
-                    [
-                        'type' => 'or',
-                        'condition' => auth()->user()->can('create', \Pratiksh\Adminetic\Models\Admin\Setting::class),
-                    ],
-                ],
-            ],
-            [
-                'type' => 'menu',
-                'name' => 'Preference',
-                'icon' => 'fa fa-wrench',
-                'is_active' => request()->routeIs('preference*') ? 'active' : '',
-                'conditions' => [
-                    [
-                        'type' => 'or',
-                        'condition' => auth()->user()->can('view-any', \Pratiksh\Adminetic\Models\Admin\Preference::class),
-                    ],
-                    [
-                        'type' => 'or',
-                        'condition' => auth()->user()->can('create', \Pratiksh\Adminetic\Models\Admin\Preference::class),
-                    ],
-                ],
-                'children' => $this->indexCreateChildren('preference', \Pratiksh\Adminetic\Models\Admin\Preference::class),
-            ],
-            [
-                'type' => 'link',
-                'name' => 'Activities',
-                'icon' => 'fa fa-book',
-                'is_active' => request()->routeIs('activity*') ? 'active' : '',
-                'link' => adminRedirectRoute('activity'),
-                'conditions' => [
-                    [
-                        'type' => 'and',
-                        'condition' => auth()->user()->hasRole('admin'),
-                    ],
-                ],
-            ],
-        ];
+        return [];
     }
 
     public function clientMenus(): array
@@ -504,8 +383,8 @@ class Adminetic
         $children = [
             [
                 'type' => 'submenu',
-                'name' => 'All '.$plural,
-                'is_active' => request()->routeIs($route.'.index') ? 'active' : '',
+                'name' => 'All ' . $plural,
+                'is_active' => request()->routeIs($route . '.index') ? 'active' : '',
                 'link' => adminRedirectRoute($route),
                 'conditions' => [
                     [
@@ -516,8 +395,8 @@ class Adminetic
             ],
             [
                 'type' => 'submenu',
-                'name' => 'Create '.$route,
-                'is_active' => request()->routeIs($route.'.create') ? 'active' : '',
+                'name' => 'Create ' . $route,
+                'is_active' => request()->routeIs($route . '.create') ? 'active' : '',
                 'link' => adminCreateRoute($route),
                 'conditions' => [
                     [

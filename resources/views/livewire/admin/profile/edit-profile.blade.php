@@ -84,20 +84,20 @@
                         <div class="m-t-15 m-checkbox-inline custom-radio-ml">
                             <div class="form-check form-check-inline radio radio-primary">
                                 <input class="form-check-input" id="radioinline1" type="radio" wire:model.defer="gender"
-                                    value="1" data-bs-original-title="" title=""
-                                    {{ isset($gender) ? ($gender == 1 ? 'checked' : '') : '' }}>
+                                    value="1" data-bs-original-title="" title="" {{ isset($gender) ? ($gender==1
+                                    ? 'checked' : '' ) : '' }}>
                                 <label class="form-check-label mb-0" for="radioinline1">Male</label>
                             </div>
                             <div class="form-check form-check-inline radio radio-primary">
                                 <input class="form-check-input" id="radioinline2" type="radio" wire:model.defer="gender"
-                                    value="2" data-bs-original-title="" title=""
-                                    {{ isset($gender) ? ($gender == 2 ? 'checked' : '') : '' }}>
+                                    value="2" data-bs-original-title="" title="" {{ isset($gender) ? ($gender==2
+                                    ? 'checked' : '' ) : '' }}>
                                 <label class="form-check-label mb-0" for="radioinline2">Female</label>
                             </div>
                             <div class="form-check form-check-inline radio radio-primary">
                                 <input class="form-check-input" id="radioinline3" type="radio" wire:model.defer="gender"
-                                    value="3" data-bs-original-title="" title=""
-                                    {{ isset($gender) ? ($gender == 3 ? 'checked' : '') : '' }}>
+                                    value="3" data-bs-original-title="" title="" {{ isset($gender) ? ($gender==3
+                                    ? 'checked' : '' ) : '' }}>
                                 <label class="form-check-label mb-0" for="radioinline3">Other</label>
                             </div>
                         </div>
@@ -119,10 +119,9 @@
                         <label class="form-label" for="country">Country</label>
                         <select class="form-control select2" wire:model.defer="country" id="country" style="width:100%">
                             @if (isset($countries))
-                            @foreach ($countries as $country)
-                            <option value="{{ $country->name }}"
-                                {{ isset($country) ? ($country->name == $country ? 'selected' : '') : ($country->name == 'Nepal' ? 'selected' : '') }}>
-                                {{ $country->name }}</option>
+                            @foreach ($countries as $country_name)
+                            <option value="{{ $country_name }}">
+                                {{ $country_name }}</option>
                             @endforeach
                             @endif
                         </select>
@@ -135,18 +134,18 @@
                         <label class="form-label" for="martial_status">Martial Status</label> <br>
                         <select class="form-control" wire:model.defer="martial_status">
                             <option selected disabled>Select Martial Status..</option>
-                            <option value="1"
-                                {{ isset($martial_status) ? ($martial_status == 1 ? 'selected' : '') : '' }}>
+                            <option value="1" {{ isset($martial_status) ? ($martial_status==1 ? 'selected' : '' ) : ''
+                                }}>
                                 Married
                             </option>
-                            <option value="2"
-                                {{ isset($martial_status) ? ($martial_status == 2 ? 'selected' : '') : '' }}>
+                            <option value="2" {{ isset($martial_status) ? ($martial_status==2 ? 'selected' : '' ) : ''
+                                }}>
                                 Unmarried</option>
-                            <option value="3"
-                                {{ isset($martial_status) ? ($martial_status == 3 ? 'selected' : '') : '' }}>
+                            <option value="3" {{ isset($martial_status) ? ($martial_status==3 ? 'selected' : '' ) : ''
+                                }}>
                                 Divorced</option>
-                            <option value="4"
-                                {{ isset($martial_status) ? ($martial_status == 4 ? 'selected' : '') : '' }}>
+                            <option value="4" {{ isset($martial_status) ? ($martial_status==4 ? 'selected' : '' ) : ''
+                                }}>
                                 Widowed
                             </option>
                         </select>
@@ -156,28 +155,28 @@
                         <label class="form-label" for="blood_group">Blood Group</label>
                         <select class="form-control" wire:model.defer="blood_group" style="width:100%">
                             <option selected disabled>Select Blood Group..</option>
-                            <option value="1" {{ isset($blood_group) ? ($blood_group == 1 ? 'selected' : '') : '' }}>
+                            <option value="1" {{ isset($blood_group) ? ($blood_group==1 ? 'selected' : '' ) : '' }}>
                                 A
                             </option>
-                            <option value="2" {{ isset($blood_group) ? ($blood_group == 2 ? 'selected' : '') : '' }}>
+                            <option value="2" {{ isset($blood_group) ? ($blood_group==2 ? 'selected' : '' ) : '' }}>
                                 B
                             </option>
-                            <option value="3" {{ isset($blood_group) ? ($blood_group == 3 ? 'selected' : '') : '' }}>
+                            <option value="3" {{ isset($blood_group) ? ($blood_group==3 ? 'selected' : '' ) : '' }}>
                                 A+
                             </option>
-                            <option value="4" {{ isset($blood_group) ? ($blood_group == 4 ? 'selected' : '') : '' }}>
+                            <option value="4" {{ isset($blood_group) ? ($blood_group==4 ? 'selected' : '' ) : '' }}>
                                 B+
                             </option>
-                            <option value="5" {{ isset($blood_group) ? ($blood_group == 5 ? 'selected' : '') : '' }}>
+                            <option value="5" {{ isset($blood_group) ? ($blood_group==5 ? 'selected' : '' ) : '' }}>
                                 AB
                             </option>
-                            <option value="6" {{ isset($blood_group) ? ($blood_group == 6 ? 'selected' : '') : '' }}>
+                            <option value="6" {{ isset($blood_group) ? ($blood_group==6 ? 'selected' : '' ) : '' }}>
                                 AB+
                             </option>
-                            <option value="7" {{ isset($blood_group) ? ($blood_group == 7 ? 'selected' : '') : '' }}>
+                            <option value="7" {{ isset($blood_group) ? ($blood_group==7 ? 'selected' : '' ) : '' }}>
                                 O+
                             </option>
-                            <option value="8" {{ isset($blood_group) ? ($blood_group == 8 ? 'selected' : '') : '' }}>
+                            <option value="8" {{ isset($blood_group) ? ($blood_group==8 ? 'selected' : '' ) : '' }}>
                                 O-
                             </option>
                         </select>

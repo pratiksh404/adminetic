@@ -16,7 +16,9 @@ class BouncerMiddleware
      */
     public function handle(Request $request, Closure $next, $password = null)
     {
-        if (! in_array(url()->current(), session()->get('verified_routes') ?? [])) {
+        if (auth()->user()->isSuperAdmin()) {
+            return $next($request);
+        } elseif (!in_array(url()->current(), session()->get('verified_routes') ?? [])) {
             session()->put('destination_password', $password);
             session()->put('destination_route', url()->current());
             session()->put('destination_route_name', $request->route()->getName());

@@ -23,6 +23,7 @@ return [
     |
     */
     'loader_enabled' => true,
+    'double_click_protection' => true,
 
     /*
     |--------------------------------------------------------------------------
@@ -49,6 +50,7 @@ return [
     */
     'default_menu_icon' => 'fa fa-bars',
     'default_submenu_icon' => 'fa fa-angle-double-right',
+    'default_menu_collapse' => false,
 
     /*
     |--------------------------------------------------------------------------
