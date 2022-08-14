@@ -49,7 +49,7 @@ class SocialiteController extends Controller
 
         $user = User::where('email', $socialiteuser->email)->first();
 
-        if (! isset($user)) {
+        if (!isset($user)) {
             $user = User::create([
                 'name' => $socialiteuser->name,
                 'email' => $socialiteuser->email,
@@ -79,7 +79,7 @@ class SocialiteController extends Controller
             $preferences = Preference::all();
             if (isset($preferences)) {
                 foreach ($preferences as $preference) {
-                    if (! isset($preference->roles)) {
+                    if (!isset($preference->roles)) {
                         $user->preferences()->attach($preference->id, [
                             'enabled' => $preference->active,
                         ]);
@@ -94,11 +94,11 @@ class SocialiteController extends Controller
             }
             Auth::login($user, true);
 
-            return redirect(adminRedirectRoute('dashboard'));
+            return redirect(adminRedirectRoute(config('adminetic.oauth_redirect_route_name', 'dashboard')));
         } else {
             Auth::login($user, true);
 
-            return redirect(adminRedirectRoute('dashboard'));
+            return redirect(adminRedirectRoute(config('adminetic.oauth_redirect_route_name', 'dashboard')));
         }
     }
 }

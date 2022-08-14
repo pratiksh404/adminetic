@@ -111,6 +111,7 @@ return [
     'enable_socialite' => false,
     'github_socialite' => true,
     'facebook_socialite' => true,
+    'oauth_redirect_route_name' => 'dashboard',
 
     /*
     |--------------------------------------------------------------------------
