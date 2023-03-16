@@ -1,5 +1,5 @@
 <div>
-    <div class="container-fluid">
+    <div class="container-fluid" style="margin-top: 100px;">
         <div class="page-title">
             <div class="row">
                 <div class="col-6">
@@ -7,9 +7,11 @@
                 </div>
                 <div class="col-6">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{ route('dashboard') }}"> <i data-feather="home"></i></a>
+                        <li class="breadcrumb-item"><a class="router" href="{{ route('dashboard') }}"> <i
+                                    data-feather="home"></i></a>
                         </li>
-                        <li class="breadcrumb-item"><a href="{{ adminRedirectRoute($route) }}">{{ $name }}</a>
+                        <li class="breadcrumb-item"><a class="router" href="{{ adminRedirectRoute($route) }}">{{ $name
+                                }}</a>
                         </li>
                         <li class="breadcrumb-item active">Edit {{ $name }}</li>
                     </ol>
@@ -39,15 +41,17 @@
                 <span class="text-secondary">The field labels marked with * are required
                     input fields.</span>
                 <div class="d-flex justify-content-end">
+                    <a class="router btn btn-primary btn-air-primary" href="{{ adminRedirectRoute($route) }}">Back</a>
                     <div class="btn-group" role="group">
                         <button class="btn btn-primary btn-air-primary dropdown-toggle" id="actions" type="button"
                             data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Actions</button>
                         <div class="dropdown-menu" aria-labelledby="actions"
                             style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate3d(0px, 37px, 0px);"
                             data-popper-placement="bottom-start">
-                            <a class="dropdown-item" href="{{ adminRedirectRoute($route) }}" title="All {{$name}}">All
+                            <a class="dropdown-item router" href="{{ adminRedirectRoute($route) }}"
+                                title="All {{$name}}">All
                                 {{$name}}</a>
-                            <a class="dropdown-item" href="{{ adminCreateRoute($route, $model->id) }}"
+                            <a class="dropdown-item router" href="{{ adminCreateRoute($route, $model->id) }}"
                                 title="Create new {{$name}}">Create new {{$name}}</a>
                         </div>
                     </div>
@@ -58,9 +62,8 @@
             </div>
         </div>
         <div class="card-body {{ config('adminetic.card_body', '') . ' ' . ($bg_color ?? '') }}">
-            <form id="{{config('adminetic.double_click_protection',true) ? 'adminetic-form' : ''}}"
-                action="{{ adminUpdateRoute($route, $model->id) }}" method="post" enctype="multipart/form-data"
-                class="{{ $formclass ?? '' }}" id="{{ $formid ?? '' }}">
+            <form id="admin-form" action="{{ adminUpdateRoute($route, $model->id) }}" method="POST" serverMethod="PATCH"
+                enctype="multipart/form-data" class="{{ $formclass ?? '' }}" id="{{ $formid ?? '' }}">
                 @method('PATCH')
                 @csrf
                 {{ $content ?? '' }}

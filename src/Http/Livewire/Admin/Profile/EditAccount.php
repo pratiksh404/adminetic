@@ -33,7 +33,7 @@ class EditAccount extends Component
         $user = $this->user;
         $this->validate([
             'name' => 'required|min:6',
-            'email' => 'required|email|unique:users,email,'.$user->id,
+            'email' => 'required|email|unique:users,email,' . $user->id,
             'password' => 'nullable|confirmed|min:8|max:30',
         ]);
         if (isset($this->password)) {

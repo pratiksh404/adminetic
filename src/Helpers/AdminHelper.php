@@ -1,6 +1,17 @@
 <?php
 
-if (! function_exists('getClassesList')) {
+use App\Events\PushNotificationEvent;
+use App\Events\GeneralPushNotificationEvent;
+use Pratiksh\Adminetic\Models\Admin\Setting;
+
+if (!function_exists('spa')) {
+    function spa()
+    {
+        return setting('spa', config('adminetic.spa', true));
+    }
+}
+
+if (!function_exists('getClassesList')) {
     function getClassesList($dir)
     {
         $classes = \File::allFiles($dir);
@@ -15,7 +26,7 @@ if (! function_exists('getClassesList')) {
         return $classes;
     }
 }
-if (! function_exists('getAllModelNames')) {
+if (!function_exists('getAllModelNames')) {
     function getAllModelNames($dir)
     {
         $modelNames = [];
@@ -29,131 +40,131 @@ if (! function_exists('getAllModelNames')) {
     }
 }
 
-if (! function_exists('validImageFolder')) {
+if (!function_exists('validImageFolder')) {
     function validImageFolder($name, $default = 'default')
     {
         return strtolower(str_replace([' ', '-', '$', '<', '>', '&', '{', '}', '*', '\\', '/', ':', '.', ';', ',', "'", '"'], '_', $name ?? trim($default)));
     }
 }
 
-if (! function_exists('getImagePlaceholder')) {
+if (!function_exists('getImagePlaceholder')) {
     function getImagePlaceholder()
     {
         return asset('adminetic/static/placeholder.png');
     }
 }
 
-if (! function_exists('getVerticalImagePlaceholder')) {
+if (!function_exists('getVerticalImagePlaceholder')) {
     function getVerticalImagePlaceholder()
     {
         return asset('adminetic/static/vertical_placeholder.jpg');
     }
 }
 
-if (! function_exists('getSliderPlaceholder')) {
+if (!function_exists('getSliderPlaceholder')) {
     function getSliderPlaceholder()
     {
         return asset('adminetic/static/slider.jpg');
     }
 }
 
-if (! function_exists('getFoodImagePlaceholder')) {
+if (!function_exists('getFoodImagePlaceholder')) {
     function getFoodImagePlaceholder()
     {
         return asset('adminetic/static/food_placeholder.jpg');
     }
 }
 
-if (! function_exists('getProfilePlaceholder')) {
+if (!function_exists('getProfilePlaceholder')) {
     function getProfilePlaceholder($p = null)
     {
         $profile = $p ?? Auth::user()->profile ?? Auth::user()->profile()->create();
 
-        return isset($profile->profile_pic) ? (Illuminate\Support\Str::contains($profile->profile_pic, ['https://', 'http://']) ? $profile->profile_pic : asset('storage/'.$profile->profile_pic)) : asset('adminetic/static/profile.jpg');
+        return isset($profile->profile_pic) ? (Illuminate\Support\Str::contains($profile->profile_pic, ['https://', 'http://']) ? $profile->profile_pic : asset('storage/' . $profile->profile_pic)) : asset('adminetic/static/profile.gif');
     }
 }
 
-if (! function_exists('title')) {
+if (!function_exists('title')) {
     function title()
     {
         return setting('title', config('adminetic.name', 'Adminetic'));
     }
 }
 
-if (! function_exists('loader_enabled')) {
+if (!function_exists('loader_enabled')) {
     function loader_enabled()
     {
         return setting('loader_enabled', config('adminetic.loader_enabled', true));
     }
 }
 
-if (! function_exists('favicon')) {
+if (!function_exists('favicon')) {
     function favicon()
     {
-        return setting('favicon') ? (asset('storage/'.setting('favicon'))) : asset('adminetic/static/favicon.png');
+        return getImg(!is_null(setting('favicon')) ? setting('favicon') : 'adminetic/static/favicon.png', 'adminetic/static/favicon.png');
     }
 }
 
-if (! function_exists('logo')) {
+if (!function_exists('logo')) {
     function logo()
     {
-        return setting('logo') ? (asset('storage/'.setting('logo'))) : asset('adminetic/static/logo.png');
+        return getImg(!is_null(setting('logo')) ? setting('logo') : 'adminetic/static/logo.png', 'adminetic/static/logo.png');
     }
 }
 
-if (! function_exists('dark_logo')) {
+if (!function_exists('dark_logo')) {
     function dark_logo()
     {
-        return setting('dark_logo') ? (asset('storage/'.setting('dark_logo'))) : asset('adminetic/static/logo_dark.png');
+        return getImg(!is_null(setting('dark_logo')) ? setting('dark_logo') : 'adminetic/static/dark_logo.png', 'adminetic/static/dark_logo.png');
     }
 }
 
-if (! function_exists('getLogoBanner')) {
+if (!function_exists('getLogoBanner')) {
     function getLogoBanner()
     {
-        return setting('logo_banner') ? (asset('storage/'.setting('logo_banner'))) : asset('adminetic/static/logo_banner.jpg');
+        return getImg(!is_null(setting('logo_banner')) ? setting('logo_banner') : 'adminetic/static/logo_banner.png', 'adminetic/static/logo_banner.png');
     }
 }
 
-if (! function_exists('login_register_bg_image')) {
+if (!function_exists('login_register_bg_image')) {
     function login_register_bg_image()
     {
-        return setting('login_register_bg_image') ? (asset('storage/'.setting('login_register_bg_image'))) : asset('adminetic/static/login_register_bg_img.jpg');
+        return getImg(!is_null(setting('login_register_bg_image')) ? setting('login_register_bg_image') : 'adminetic/static/login_register_bg_img.jpg', 'adminetic/static/login_register_bg_img.jpg');
     }
 }
 
-if (! function_exists('getLazyLoadImg')) {
+if (!function_exists('getLazyLoadImg')) {
     function getLazyLoadImg()
     {
         return asset('adminetic/static/loader.svg');
     }
 }
 
-if (! function_exists('random_color_part')) {
+if (!function_exists('random_color_part')) {
     function random_color_part()
     {
         return str_pad(dechex(mt_rand(0, 255)), 2, '0', STR_PAD_LEFT);
     }
 }
 
-if (! function_exists('random_color')) {
+if (!function_exists('random_color')) {
     function random_color()
     {
-        return random_color_part().random_color_part().random_color_part();
+        return random_color_part() . random_color_part() . random_color_part();
     }
 }
 
-if (! function_exists('setting')) {
+if (!function_exists('setting')) {
     function setting($setting_name, $default = null)
     {
         $valid_setting_name = strtolower(str_replace(' ', '_', $setting_name));
-        $setting = \Pratiksh\Adminetic\Models\Admin\Setting::where('setting_name', $valid_setting_name)->first();
+        $setting = Setting::where('setting_name', $valid_setting_name)->first();
 
         return isset($setting->value) ? $setting->value : ($default ?? null);
     }
 }
 
-if (! function_exists('preference')) {
+if (!function_exists('preference')) {
     function preference($preference_name, bool $default = null)
     {
         $valid_preference_name = strtolower(str_replace(' ', '_', $preference_name));
@@ -167,25 +178,39 @@ if (! function_exists('preference')) {
     }
 }
 
-if (! function_exists('deleteImage')) {
+if (!function_exists('deleteImage')) {
     function deleteImage($image)
     {
-        $image ? (\Illuminate\Support\Facades\File::exists(public_path('storage/'.$image)) ? \Illuminate\Support\Facades\File::delete(public_path('storage/'.$image)) : '') : '';
+        $image ? (\Illuminate\Support\Facades\File::exists(public_path('storage/' . $image)) ? \Illuminate\Support\Facades\File::delete(public_path('storage/' . $image)) : '') : '';
     }
 }
 
-if (! function_exists('darkMode')) {
+if (!function_exists('api_paginate_limit')) {
+    function api_paginate_limit($default = null)
+    {
+        return setting('api_paginate_limit', $default ?? config('adminetic.api_paginate_limit', 10));
+    }
+}
+
+if (!function_exists('api_collection_return_paginate')) {
+    function api_collection_return_paginate()
+    {
+        return setting('api_collection_return_paginate', config('adminetic.api_collection_return_paginate', true));
+    }
+}
+
+if (!function_exists('darkMode')) {
     function darkMode()
     {
         return setting('dark_mode', config('adminetic.dark_mode', false));
     }
 }
 
-if (! function_exists('getCondition')) {
+if (!function_exists('getCondition')) {
     function getCondition($conditions)
     {
         $result = null;
-        if (! isset($conditions)) {
+        if (!isset($conditions)) {
             return false;
         }
 
@@ -208,5 +233,55 @@ if (! function_exists('getCondition')) {
         } else {
             return false;
         }
+    }
+}
+
+if (!function_exists('getImg')) {
+    function getImg($img, $default)
+    {
+        if (isset($img)) {
+            if (file_exists(public_path('storage/' . $img))) {
+                return asset('storage/' . $img);
+            } elseif (file_exists(public_path($img))) {
+                return asset($img);
+            } else {
+                return asset($default);
+            }
+        } else {
+            return asset($default);
+        }
+    }
+}
+
+
+
+
+if (!function_exists('setEnvValue')) {
+    function setEnvValue(array $values)
+    {
+
+        $envFile = app()->environmentFilePath();
+        $str = file_get_contents($envFile);
+
+        if (count($values) > 0) {
+            foreach ($values as $envKey => $envValue) {
+
+                $str .= "\n"; // In case the searched variable is in the last line without \n
+                $keyPosition = strpos($str, "{$envKey}=");
+                $endOfLinePosition = strpos($str, "\n", $keyPosition);
+                $oldLine = substr($str, $keyPosition, $endOfLinePosition - $keyPosition);
+
+                // If key does not exist, add it
+                if (!$keyPosition || !$endOfLinePosition || !$oldLine) {
+                    $str .= "{$envKey}={$envValue}\n";
+                } else {
+                    $str = str_replace($oldLine, "{$envKey}={$envValue}", $str);
+                }
+            }
+        }
+
+        $str = substr($str, 0, -1);
+        if (!file_put_contents($envFile, $str)) return false;
+        return true;
     }
 }

@@ -10,11 +10,12 @@
 {{-- Plugin Injection --}}
 @include('adminetic::admin.layouts.assets.plugin_scripts')
 <script src="{{ asset('adminetic/assets/js/sidebar-menu.js') }}"></script>
+<script src="{{ asset('adminetic/assets/js/scrollbar/simplebar.js') }}"></script>
 {{-- End Plugin Injection --}}
-{{-- CUSTOM --}}
-<script src="{{ asset('adminetic/assets/custom/custom.js') }}"></script>
 {{-- Notifiable --}}
 @include('adminetic::admin.layouts.components.notify')
+{{-- Notifications --}}
+@include('adminetic::admin.layouts.assets.notification')
 {{-- CKEditor --}}
 @include('adminetic::admin.layouts.assets.ckeditor')
 {{-- Inline Custom --}}
@@ -26,6 +27,11 @@
 @include('adminetic::admin.layouts.assets.customizer')
 @endif
 @endif
+@include('adminetic::admin.layouts.assets.rolewise_theme_selector')
+@include('adminetic::admin.layouts.assets.router')
 {{-- Livewire --}}
 @livewireScripts
 @stack('livewire_third_party')
+{{-- CUSTOM --}}
+<script src="{{ asset('adminetic/assets/custom/custom.js') }}"></script>
+@include('adminetic::admin.layouts.assets.custom')

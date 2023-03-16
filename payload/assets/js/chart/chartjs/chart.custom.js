@@ -42,9 +42,9 @@ var barData = {
     labels: ["January", "February", "March", "April", "May", "June", "July"],
     datasets: [{
         label: "My First dataset",
-        fillColor: "rgba(145, 46, 252, 0.4)",
+        fillColor: "rgba(115, 102 ,255, 0.4)",
         strokeColor: CubaAdminConfig.primary,
-        highlightFill: "rgba(145, 46, 252, 0.6)",
+        highlightFill: "rgba(115, 102 ,255, 0.6)",
         highlightStroke: CubaAdminConfig.primary ,
         data: [35, 59, 80, 81, 56, 55, 40]
     }, {
@@ -120,7 +120,7 @@ var lineGraphData = {
     labels: ["January", "February", "March", "April", "May", "June", "July"],
     datasets: [{
         label: "My First dataset",
-        fillColor: "rgba(145, 46, 252, 0.3",
+        fillColor: "rgba(115, 102 ,255, 0.3)",
         strokeColor: CubaAdminConfig.primary ,
         pointColor: CubaAdminConfig.primary ,
         pointStrokeColor: "#fff",
@@ -161,12 +161,12 @@ var radarData = {
     labels: ["Ford", "Chevy", "Toyota", "Honda", "Mazda"],
     datasets: [{
         label: "My First dataset",
-        fillColor: "rgba(145, 46, 252, 0.4)",
+        fillColor: "rgba(115, 102 ,255, 0.4)",
         strokeColor: CubaAdminConfig.primary,
         pointColor: CubaAdminConfig.primary,
         pointStrokeColor: CubaAdminConfig.primary,
         pointHighlightFill: CubaAdminConfig.primary ,
-        pointHighlightStroke: "rgba(145, 46, 252, 0.4)",
+        pointHighlightStroke: "rgba(115, 102 ,255, 0.4)",
         data: [12, 3, 5, 18, 7]
     }]
 };
@@ -268,7 +268,7 @@ var myLineChart = {
         pointColor: CubaAdminConfig.secondary ,
         data: [20, 40, 10, 20, 40, 30, 40, 10, 20]
     }, {
-        fillColor: "rgb(145, 46, 252, 0.2)",
+        fillColor: "rgba(115, 102 ,255, 0.2)",
         strokeColor: CubaAdminConfig.primary ,
         pointColor: CubaAdminConfig.primary ,
         data: [60, 10, 40, 30, 80, 30, 20, 90, 0]

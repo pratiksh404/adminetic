@@ -1,5 +1,5 @@
 <div>
-    <div class="container-fluid">
+    <div class="container-fluid" style="margin-top: 100px;">
         <div class="page-title">
             <div class="row">
                 <div class="col-6">
@@ -7,9 +7,11 @@
                 </div>
                 <div class="col-6">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{ route('dashboard') }}"> <i data-feather="home"></i></a>
+                        <li class="breadcrumb-item"><a class="router" href="{{ route('dashboard') }}"> <i
+                                    data-feather="home"></i></a>
                         </li>
-                        <li class="breadcrumb-item"><a href="{{ adminRedirectRoute($route) }}">{{ $name }}</a>
+                        <li class="breadcrumb-item"><a class="router" href="{{ adminRedirectRoute($route) }}">{{ $name
+                                }}</a>
                         </li>
                         <li class="breadcrumb-item active">Create {{ $name }}</li>
                     </ol>
@@ -39,8 +41,7 @@
                 <span class="text-secondary">The field labels marked with * are required
                     input fields.</span>
                 <div class="d-flex justify-content-end">
-                    <a href="{{ adminRedirectRoute($route) }}"><button
-                            class="btn btn-primary btn-air-primary">Back</button></a>
+                    <a class="router btn btn-primary btn-air-primary" href="{{ adminRedirectRoute($route) }}">Back</a>
                     @isset($buttons)
                     {{ $buttons }}
                     @endisset
@@ -48,9 +49,8 @@
             </div>
         </div>
         <div class="card-body {{ config('adminetic.card_body', '') . ' ' . ($bg_color ?? '') }}">
-            <form id="{{config('adminetic.double_click_protection',true) ? 'adminetic-form' : ''}}"
-                action="{{ adminStoreRoute($route) }}" method="post" enctype="multipart/form-data"
-                class="{{ $formclass ?? '' }}" id="{{ $formid ?? '' }}">
+            <form id="admin-form" action="{{ adminStoreRoute($route) }}" method="POST" serverMethod="POST"
+                enctype="multipart/form-data" class="{{ $formclass ?? '' }}" id="{{ $formid ?? '' }}">
                 @csrf
                 {{ $content ?? '' }}
             </form>

@@ -1,5 +1,5 @@
 "use strict";
-(function ($) { $.fn.datepicker.language['en'] = {
+;(function ($) { $.fn.datepicker.language['en'] = {
     days: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
     daysShort: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
     daysMin: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],

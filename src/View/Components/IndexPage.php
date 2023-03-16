@@ -42,11 +42,11 @@ class IndexPage extends Component
     protected function makeDynamicClass($name)
     {
         if ($name == 'User') {
-            $className = 'App\\Models\\'.Str::ucfirst($name);
+            $className = 'App\\Models\\' . Str::ucfirst($name);
         } elseif ($name == 'Permission' || $name == 'Preference' || $name == 'Profile' || $name == 'Role' || $name == 'Setting') {
-            $className = 'Pratiksh\\Adminetic\\Models\\Admin\\'.Str::ucfirst($name);
+            $className = 'Pratiksh\\Adminetic\\Models\\Admin\\' . Str::ucfirst($name);
         } else {
-            $className = 'App\\Models\\Admin\\'.Str::ucfirst($name);
+            $className = 'App\\Models\\Admin\\' . Str::ucfirst($name);
         }
 
         return new  $className;

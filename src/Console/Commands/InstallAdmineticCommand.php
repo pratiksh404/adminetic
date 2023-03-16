@@ -46,15 +46,15 @@ class InstallAdmineticCommand extends Command
           /_/    \_\__,_|_| |_| |_|_|_| |_|\___|\__|_|\___|                                                                                                 
         ");
         $this->call('vendor:publish', [
-            '--tag' => ['adminetic-config'],
+            '--tag' => ['admin.config'],
         ]);
         $this->info('Adminetic config file published ... ✅');
         $this->call('vendor:publish', [
-            '--tag' => ['adminetic-assets-files'],
+            '--tag' => ['admin.assets-files'],
         ]);
         $this->info('Adminetic asset files published ... ✅');
         $this->call('vendor:publish', [
-            '--tag' => ['adminetic-static-files'],
+            '--tag' => ['admin.static-files'],
         ]);
         $this->info('Adminetic static files published ... ✅');
         $this->addMyMenu();
@@ -72,7 +72,7 @@ class InstallAdmineticCommand extends Command
 
     private function addAdminServiceProvider()
     {
-        $adminServiceProviderTemplate = file_get_contents(__DIR__.'/../../Console/Commands/AdminStubs/AdminServiceProvider.stub');
+        $adminServiceProviderTemplate = file_get_contents(__DIR__ . '/../../Console/Commands/AdminStubs/AdminServiceProvider.stub');
         $adminServiceProviderfile = app_path('Providers/AdminServiceProvider.php');
         file_put_contents($adminServiceProviderfile, $adminServiceProviderTemplate);
         if (file_exists($adminServiceProviderfile)) {
@@ -84,9 +84,9 @@ class InstallAdmineticCommand extends Command
 
     private function addMyMenu()
     {
-        $modelTemplate = file_get_contents(__DIR__.'/../../Console/Commands/AdminStubs/MyMenu.stub');
+        $modelTemplate = file_get_contents(__DIR__ . '/../../Console/Commands/AdminStubs/MyMenu.stub');
 
-        if (! file_exists($path = app_path('Services'))) {
+        if (!file_exists($path = app_path('Services'))) {
             mkdir($path, 0777, true);
         }
 
@@ -101,16 +101,16 @@ class InstallAdmineticCommand extends Command
 
     private function addMyDashboard()
     {
-        $myDashboardTemplate = file_get_contents(__DIR__.'/../../Console/Commands/AdminStubs/MyDashboard.stub');
-        $myDashboardIndexTemplate = file_get_contents(__DIR__.'/../../Console/Commands/AdminStubs/DashboardIndex.stub');
+        $myDashboardTemplate = file_get_contents(__DIR__ . '/../../Console/Commands/AdminStubs/MyDashboard.stub');
+        $myDashboardIndexTemplate = file_get_contents(__DIR__ . '/../../Console/Commands/AdminStubs/DashboardIndex.stub');
 
-        if (! file_exists($path = app_path('Services'))) {
+        if (!file_exists($path = app_path('Services'))) {
             mkdir($path, 0777, true);
         }
-        if (! file_exists($path = resource_path('views/admin/dashboard'))) {
+        if (!file_exists($path = resource_path('views/admin/dashboard'))) {
             mkdir($path, 0777, true);
         }
-        if (! file_exists($path = resource_path('views/admin/layouts/modules/dashboard'))) {
+        if (!file_exists($path = resource_path('views/admin/layouts/modules/dashboard'))) {
             mkdir($path, 0777, true);
         }
         $myDashboardIndexfile = resource_path('views/admin/dashboard/index.blade.php');
@@ -139,9 +139,9 @@ class InstallAdmineticCommand extends Command
 
     protected function addHeader()
     {
-        $myHeaderTemplate = file_get_contents(__DIR__.'/../../Console/Commands/AdminStubs/HeaderView.stub');
+        $myHeaderTemplate = file_get_contents(__DIR__ . '/../../Console/Commands/AdminStubs/HeaderView.stub');
 
-        if (! file_exists($path = resource_path('views/admin/layouts/components'))) {
+        if (!file_exists($path = resource_path('views/admin/layouts/components'))) {
             mkdir($path, 0777, true);
         }
 
@@ -156,9 +156,9 @@ class InstallAdmineticCommand extends Command
 
     protected function addFooter()
     {
-        $myFooterTemplate = file_get_contents(__DIR__.'/../../Console/Commands/AdminStubs/FooterView.stub');
+        $myFooterTemplate = file_get_contents(__DIR__ . '/../../Console/Commands/AdminStubs/FooterView.stub');
 
-        if (! file_exists($path = resource_path('views/admin/layouts/components'))) {
+        if (!file_exists($path = resource_path('views/admin/layouts/components'))) {
             mkdir($path, 0777, true);
         }
 
@@ -173,6 +173,6 @@ class InstallAdmineticCommand extends Command
 
     protected static function getStub($type)
     {
-        return file_get_contents(__DIR__."/../../Console/Commands/AdminStubs/$type.stub");
+        return file_get_contents(__DIR__ . "/../../Console/Commands/AdminStubs/$type.stub");
     }
 }

@@ -131,7 +131,7 @@ function activeDiv(index){
 		for(i=0;i<elems.length;i++) {
 		   elems[i].src =  window.URL.createObjectURL(input.files[0]);
 		}
-  }
+  };
 
 $('.update-contact').on('click', function(e) {
 	$("#v-pills-tabContent").show();
@@ -147,7 +147,7 @@ $('.edit-information').on('click', function(e) {
 
 function history(index) {
     $("#right-history").toggleClass("show");
-}
+};
 
 $(".closehistory").click(function(){
 	$("#right-history").removeClass("show");

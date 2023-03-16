@@ -12,7 +12,7 @@ class MakeAPIResourceCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'make:api {name : Model Class (Singular), e.g role, Place, Car, Post}  {--rest} {--client}';
+    protected $signature = 'make:api {name : Model Class (Singular), e.g role, Place, Car, Post}  {--rest} {--client} {--v=v1}';
 
     /**
      * The console command description.
@@ -41,15 +41,16 @@ class MakeAPIResourceCommand extends Command
         $given_name = $this->argument('name');
         $name = $this->getModelName($given_name);
         $path = $this->getModelPath($given_name);
+        $version = $this->option('v');
         if ($this->option('rest')) {
-            MakeAPIResource::makeRestAPI($name, $path);
-            $this->info('Restful API Resource created for model '.$name);
+            MakeAPIResource::makeRestAPI($name, $path, $version);
+            $this->info('Restful API Resource created for model ' . $name);
         } elseif ($this->option('client')) {
-            MakeAPIResource::makeClientAPI($name, $path);
-            $this->info('Client API created for model '.$name);
+            MakeAPIResource::makeClientAPI($name, $path, $version);
+            $this->info('Client API created for model ' . $name);
         } else {
-            MakeAPIResource::makeAPI($name, $path);
-            $this->info('API Resource created for model '.$name);
+            MakeAPIResource::makeAPI($name, $path, $version);
+            $this->info('API Resource created for model ' . $name);
         }
     }
 
@@ -64,6 +65,6 @@ class MakeAPIResourceCommand extends Command
     {
         $explode_path = preg_split('#/#', $given_name);
 
-        return count($explode_path) > 1 ? str_replace('/', '\\', $given_name) : ('App\\Models\\Admin\\'.$given_name);
+        return count($explode_path) > 1 ? str_replace('/', '\\', $given_name) : ('App\\Models\\Admin\\' . $given_name);
     }
 }

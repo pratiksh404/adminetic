@@ -2,8 +2,8 @@
 
 namespace Pratiksh\Adminetic\Services;
 
-use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Artisan;
 use Pratiksh\Adminetic\Services\Helper\CommandHelper;
 
 class CRUDGeneratorService extends CommandHelper
@@ -19,7 +19,7 @@ class CRUDGeneratorService extends CommandHelper
     // Make Controller
     protected static function makeController($name, $console)
     {
-        if (! file_exists($path = app_path('/Http/Controllers/Admin'))) {
+        if (!file_exists($path = app_path('/Http/Controllers/Admin'))) {
             mkdir($path, 0777, true);
         }
         $controllerTemplate = str_replace(
@@ -43,7 +43,7 @@ class CRUDGeneratorService extends CommandHelper
     // Make Model
     protected static function makeModel($name, $console)
     {
-        if (! file_exists($path = app_path('/Models/Admin'))) {
+        if (!file_exists($path = app_path('/Models/Admin'))) {
             mkdir($path, 0777, true);
         }
         $modelTemplate = str_replace(
@@ -68,11 +68,11 @@ class CRUDGeneratorService extends CommandHelper
     protected static function makeViews($name, $console)
     {
         $lowername = strtolower($name);
-        if (! file_exists($path = resource_path('views/admin/'.$lowername))) {
+        if (!file_exists($path = resource_path('views/admin/' . $lowername))) {
             mkdir($path, 0777, true);
         }
 
-        if (! file_exists($path = resource_path('views/admin/layouts/modules/'.$lowername))) {
+        if (!file_exists($path = resource_path('views/admin/layouts/modules/' . $lowername))) {
             mkdir($path, 0777, true);
         }
 
@@ -171,25 +171,25 @@ class CRUDGeneratorService extends CommandHelper
     // Make Other neccesary CRUD files
     protected static function makeOthers($name, $console)
     {
-        Artisan::call('make:migration create_'.strtolower(Str::plural($name)).'_table --create='.strtolower(Str::plural($name)));
-        $console->info('Migration file created named create_'.strtolower(Str::plural($name)).'_table ... ✅');
+        Artisan::call('make:migration create_' . strtolower(Str::plural($name)) . '_table --create=' . strtolower(Str::plural($name)));
+        $console->info('Migration file created named create_' . strtolower(Str::plural($name)) . '_table ... ✅');
 
-        Artisan::call('make:seeder '.$name.'Seeder');
+        Artisan::call('make:seeder ' . $name . 'Seeder');
         $console->info('Seeder file created ... ✅');
 
-        Artisan::call('make:repo '.$name);
+        Artisan::call('make:repo ' . $name);
         $console->info('Repository and Interface created ... ✅');
 
-        Artisan::call('make:request '.$name.'Request');
+        Artisan::call('make:request ' . $name . 'Request');
         $console->info('Request file created ... ✅');
     }
 
     protected static function fileMadeSuccess($console, $file, $type)
     {
         if (file_exists($file)) {
-            $console->info($type.' created successfully ... ✅');
+            $console->info($type . ' created successfully ... ✅');
         } else {
-            $console->error('Failed to create '.$type.' ...');
+            $console->error('Failed to create ' . $type . ' ...');
         }
     }
 }

@@ -1,4 +1,4 @@
-@extends('adminetic::admin.layouts.app')
+@extends(request()->header('layout') ?? 'adminetic::admin.layouts.app')
 
 @section('content')
 <div class="container-fluid">

@@ -1,11 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Admin\API\Restful;
+namespace App\Http\Controllers\Api\{{version}}\Restful;
 
 use {{modelPath}};
+use App\Http\Resources\{{version}}\{{modelName}}\{{modelName}}Collection;
+use App\Http\Resources\{{version}}\{{modelName}}\{{modelName}}Resource;
 use App\Http\Requests\{{modelName}}Request;
-use App\Http\Controllers\Controller;
+use Pratiksh\Adminetic\Http\Controllers\Api\Controller;
 use App\Contracts\{{modelName}}RepositoryInterface;
+use Illuminate\Http\Request;
 
 class {{modelName}}RestAPIController extends Controller
 {
@@ -23,32 +26,210 @@ class {{modelName}}RestAPIController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+
+    /**
+     * @OA\Get(
+     *      path="/api/{{version_lc}}/{{modelNameSingularLowerCase}}/all",
+     *      operationId="get{{modelName}}HomeResource",
+     *      tags={"{{modelName}}"},
+     *      summary="Get list of all resource required for {{modelName}} index page",
+     *      security={ {"bearer": {} }},
+     *      @OA\Response(
+     *          response=200,
+     *          description="Successful operation"
+     *       ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Unauthenticated",
+     *      ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Forbidden"
+     *      )
+     *     )
+     */
+    public function all()
     {
         return response()->json($this->{{modelNameSingularLowerCase}}RepositoryInterface->index{{modelName}}(), 200);
+    }
+
+    /**
+     * @OA\Post(
+     *      path="/api/{{version_lc}}/{{modelNameSingularLowerCase}}/get",
+     *      operationId="filter{{modelName}}",
+     *      tags={"{{modelName}}"},
+     *      summary="Filter and get {{modelName}}",
+     *      description="Filter's {{modelName}} Data",
+     *      security={ {"bearer": {} }},
+     *     @OA\RequestBody(
+     *         @OA\JsonContent(
+                       @OA\Property(property="where",nullable=true,default="",example="[ ['name' ,'=', 'Bob'],['age' ,'>=', 20] ]"),
+     *                 @OA\Property(property="orWhere",nullable=true,default="",example="[ ['name' ,'=', 'Bob'],['age' ,'>=', 20] ]"),
+     *                 @OA\Property(property="orderBy",nullable=true,default="",example="name"),
+     *                 @OA\Property(property="order",nullable=true,default="",example="asc"),
+     *                 @OA\Property(property="limit",nullable=true,default="",example="5"),
+     *                 @OA\Property(property="paginate",nullable=true,default="",example=true),
+     *           ),
+     *    ),
+     *      @OA\Response(
+     *          response=201,
+     *          description="Successful operation",
+     *          @OA\JsonContent(
+     *            {{swagger_json_content}}
+     *         )
+     *       ),
+     *      @OA\Response(
+     *          response=400,
+     *          description="Bad Request"
+     *      ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Unauthenticated",
+     *      ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Forbidden"
+     *      )
+     * )
+     */
+    public function get(Request $request)
+    {
+        $query = $this->filter($request, {{modelName}}::query());
+
+        return new {{modelName}}Collection((api_collection_return_paginate() && ($request->paginate ?? api_collection_return_paginate()))
+            ? $query->paginate(api_paginate_limit($request->paginate_limit ?? null))
+            : $query->get());
+    }
+    
+     /**
+     * @OA\Get(
+     *      path="/api/{{version_lc}}/{{modelNameSingularLowerCase}}",
+     *      operationId="get{{modelName}}List",
+     *      tags={"{{modelName}}"},
+     *      summary="Get list of {{modelName}}",
+     *      security={ {"bearer": {} }},
+     *      @OA\Response(
+     *          response=200,
+     *          description="Successful operation",
+     *       ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Unauthenticated",
+     *      ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Forbidden"
+     *      )
+     *     )
+     */
+    public function index()
+    {
+         return new {{modelName}}Collection(api_collection_return_paginate() 
+         ? {{modelName}}::paginate(api_paginate_limit())
+          : {{modelName}}::all());
     }
 
     /**
      * Store a newly created resource in storage.
      *
      * @param  \App\Http\Requests\{{modelName}}Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \App\Http\Resources\{{version}}\{{modelName}}\{{modelName}}Resource
+     */
+
+    /**
+     * @OA\Post(
+     *      path="/api/{{version_lc}}/{{modelNameSingularLowerCase}}",
+     *      operationId="store{{modelName}}",
+     *      tags={"{{modelName}}"},
+     *      summary="Store new {{modelName}}",
+     *      description="Returns {{modelName}} Data",
+     *      security={ {"bearer": {} }},
+     *     @OA\RequestBody(
+     *         @OA\JsonContent(),
+     *         @OA\MediaType(
+     *            mediaType="multipart/form-data",
+     *            @OA\Schema(
+     *               type="object",
+     *               required={ {{required_fields}} },
+     *               {{swagger_json_content}}
+     *            ),
+     *        ),
+     *    ),
+     *      @OA\Response(
+     *          response=201,
+     *          description="Successful operation",
+     *          @OA\JsonContent(
+     *            {{swagger_json_content}}
+     *         )
+     *       ),
+     *      @OA\Response(
+     *          response=400,
+     *          description="Bad Request"
+     *      ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Unauthenticated",
+     *      ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Forbidden"
+     *      )
+     * )
      */
     public function store({{modelName}}Request $request)
     {
         ${{modelNameSingularLowerCase}} = $this->{{modelNameSingularLowerCase}}RepositoryInterface->store{{modelName}}($request);
-        return response()->json(${{modelNameSingularLowerCase}}, 200);
+        return new {{modelName}}Resource(${{modelNameSingularLowerCase}});
     }
 
     /**
      * Display the specified resource.
      *
      * @param  \{{modelPath}}  ${{modelNameSingularLowerCase}}
-     * @return \Illuminate\Http\Response
+     * @return \App\Http\Resources\{{version}}\{{modelName}}\{{modelName}}Resource
+     */
+
+     /**
+     * @OA\Get(
+     *      path="/api/{{version_lc}}/{{modelNameSingularLowerCase}}/{id}",
+     *      operationId="get{{modelName}}ById",
+     *      tags={"{{modelName}}"},
+     *      summary="Get {{modelName}} information",
+     *      description="Returns {{modelName}} Data",
+     *      security={ {"bearer": {} }},
+     *      @OA\Parameter(
+     *          name="id",
+     *          description="{{modelName}} id",
+     *          required=true,
+     *          in="path",
+     *          @OA\Schema(
+     *              type="integer"
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=200,
+     *          description="Successful operation",
+     *          @OA\JsonContent(
+     *            {{swagger_json_content}}
+     *         )
+     *       ),
+     *      @OA\Response(
+     *          response=400,
+     *          description="Bad Request"
+     *      ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Unauthenticated",
+     *      ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Forbidden"
+     *      )
+     * )
      */
     public function show({{modelName}} ${{modelNameSingularLowerCase}})
     {
-         return response()->json(${{modelNameSingularLowerCase}}, 200);
+         return new {{modelName}}Resource(${{modelNameSingularLowerCase}});
     }
 
     /**
@@ -56,24 +237,114 @@ class {{modelName}}RestAPIController extends Controller
      *
      * @param  \App\Http\Requests\{{modelName}}Request  $request
      * @param  \{{modelPath}}  ${{modelNameSingularLowerCase}}
-     * @return \Illuminate\Http\Response
+     * @return \App\Http\Resources\{{version}}\{{modelName}}\{{modelName}}Resource
+     */
+
+    /**
+     * @OA\Put(
+     *      path="/api/{{version_lc}}/{{modelNameSingularLowerCase}}/{id}",
+     *      operationId="update{{modelName}}",
+     *      tags={"{{modelName}}"},
+     *      summary="Update existing {{modelName}}",
+     *      description="Returns updated {{modelName}} data",
+     *      security={ {"bearer": {} }},
+     *      @OA\Parameter(
+     *          name="id",
+     *          description="{{modelName}} id",
+     *          required=true,
+     *          in="path",
+     *          @OA\Schema(
+     *              type="integer"
+     *          )
+     *      ),
+     *     @OA\RequestBody(
+     *         @OA\JsonContent(),
+     *         @OA\MediaType(
+     *            mediaType="multipart/form-data",
+     *            @OA\Schema(
+     *               type="object",
+     *               required={ {{required_fields}} },
+     *               {{swagger_json_content}}
+     *            ),
+     *        ),
+     *    ),
+     *      @OA\Response(
+     *          response=202,
+     *          description="Successful operation",
+     *          @OA\JsonContent(
+     *            {{swagger_json_content}}
+     *         )
+     *       ),
+     *      @OA\Response(
+     *          response=400,
+     *          description="Bad Request"
+     *      ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Unauthenticated",
+     *      ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Forbidden"
+     *      ),
+     *      @OA\Response(
+     *          response=404,
+     *          description="Resource Not Found"
+     *      )
+     * )
      */
     public function update({{modelName}}Request $request, {{modelName}} ${{modelNameSingularLowerCase}})
     {
          $this->{{modelNameSingularLowerCase}}RepositoryInterface->update{{modelName}}($request, ${{modelNameSingularLowerCase}});
-         return response()->json(${{modelNameSingularLowerCase}}, 200);
+         return new {{modelName}}Resource(${{modelNameSingularLowerCase}});
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param  \{{modelPath}}  ${{modelNameSingularLowerCase}}
-     * @return \Illuminate\Http\Response
+     * @return \App\Http\Resources\{{version}}\{{modelName}}\{{modelName}}Resource
+     */
+
+    /**
+     * @OA\Delete(
+     *      path="/api/{{version_lc}}/{{modelNameSingularLowerCase}}/{id}",
+     *      operationId="delete{{modelName}}",
+     *      tags={"{{modelName}}"},
+     *      summary="Delete existing {{modelName}}",
+     *      description="Deletes a record and returns no content",
+     *      security={ {"bearer": {} }},
+     *      @OA\Parameter(
+     *          name="id",
+     *          description="{{modelName}} id",
+     *          required=true,
+     *          in="path",
+     *          @OA\Schema(
+     *              type="integer"
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=204,
+     *          description="Successful operation"
+     *       ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Unauthenticated",
+     *      ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Forbidden"
+     *      ),
+     *      @OA\Response(
+     *          response=404,
+     *          description="Resource Not Found"
+     *      )
+     * )
      */
     public function destroy({{modelName}} ${{modelNameSingularLowerCase}})
     {
          $deleted_item = ${{modelNameSingularLowerCase}};
          ${{modelNameSingularLowerCase}}->delete();
-          return response()->json($deleted_item, 200);
+          return new {{modelName}}Resource($deleted_item);
     }
 }

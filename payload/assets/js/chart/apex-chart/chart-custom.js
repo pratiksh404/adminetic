@@ -2269,7 +2269,7 @@ var options8 = {
                 width: 200
             },
             legend: {
-                position: 'bottom'
+                show: false
             }
         }
     }],
@@ -2297,7 +2297,7 @@ var options9 = {
                 width: 200
             },
             legend: {
-                position: 'bottom'
+                show: false
             }
         }
     }],
@@ -2402,6 +2402,29 @@ var options11 = {
     },
     series: [44, 55, 67, 83],
     labels: ['Apples', 'Oranges', 'Bananas', 'Berries'],
+    responsive: [{
+        breakpoint: 480,
+        options: {
+            chart: {
+                height: 250,
+            },
+            legend: {
+                show: false
+            },
+            plotOptions: {
+                radialBar: {
+                    dataLabels: {
+                        name: {
+                            offsetY: -1,
+                        },
+                        value: {
+                            offsetY: 4,
+                        },
+                    }
+                }
+            }
+        }
+    }],
     colors:[ CubaAdminConfig.secondary , '#51bb25', '#f8d62b', CubaAdminConfig.primary ]
 
 

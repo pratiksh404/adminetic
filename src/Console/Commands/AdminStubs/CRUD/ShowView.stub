@@ -1,11 +1,11 @@
-@extends('adminetic::admin.layouts.app')
+@extends(request()->header('layout') ??  request()->header('layout') ?? 'adminetic::admin.layouts.app')
 
 @section('content')
-    <x-adminetic-show-page name="{{modelNameSinglularLowerCase}}" route="{{modelNameSinglularLowerCase}}" :model="${{modelNameSinglularLowerCase}}">
+    <x-admin.show-page name="{{modelNameSinglularLowerCase}}" route="{{modelNameSinglularLowerCase}}" :model="${{modelNameSinglularLowerCase}}">
         <x-slot name="content">
        
         </x-slot>
-    </x-adminetic-show-page>
+    </x-admin.show-page>
 
 @endsection
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Resources\{{modelName}};
+namespace App\Http\Resources\{{version}}\{{modelName}};
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -19,7 +19,7 @@ class {{modelName}}Resource extends JsonResource
             'id' => (string) $this->id,
             'attributes' => parent::toArray($request),
             'links' => [
-                'self' => adminShowRoute('{{modelNameSingularLowerCase}}', $this->id)
+                'self' => route('api.{{modelNameSingularLowerCase}}.show', $this->id)
             ]
         ];
     }

@@ -25,10 +25,10 @@ class UserPreferences extends Component
 
     public function preferenceChanged(User $user, Preference $preference)
     {
-        $user->preferences()->updateExistingPivot($preference->id, ['enabled' => ! $this->enabled], false);
+        $user->preferences()->updateExistingPivot($preference->id, ['enabled' => !$this->enabled], false);
 
         $this->preference = $preference;
-        $this->enabled = ! $this->enabled;
+        $this->enabled = !$this->enabled;
     }
 
     public function render()

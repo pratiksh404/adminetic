@@ -97,9 +97,9 @@ class UserRepository implements UserRepositoryInterface
     public function userEditRoute($user)
     {
         if (Auth::user()->id == $user->id) {
-            return view('admin.profile.edit', compact('user'));
+            return view('adminetic::admin.profile.edit', compact('user'));
         } else {
-            return view('admin.user.edit', $this->userEdit($user));
+            return view('adminetic::admin.user.edit', $this->userEdit($user));
         }
     }
 
@@ -123,7 +123,7 @@ class UserRepository implements UserRepositoryInterface
         $preferences = Preference::all();
         if (isset($preferences)) {
             foreach ($preferences as $preference) {
-                if (! isset($preference->roles)) {
+                if (!isset($preference->roles)) {
                     $user->preferences()->attach($preference->id, [
                         'enabled' => $preference->active,
                     ]);

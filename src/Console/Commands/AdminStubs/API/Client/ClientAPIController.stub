@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Admin\API\Client;
+namespace App\Http\Controllers\Api\{{version}}\Client;
 
 use {{modelPath}};
-use App\Http\Resources\{{modelName}}\{{modelName}}Collection;
-use App\Http\Resources\{{modelName}}\{{modelName}}Resource;
+use App\Http\Resources\{{version}}\{{modelName}}\{{modelName}}Collection;
+use App\Http\Resources\{{version}}\{{modelName}}\{{modelName}}Resource;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -14,7 +14,7 @@ class {{modelName}}ClientAPIController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \App\Http\Resources\{{version}}\{{modelName}}\{{modelName}}Collection
      */
     public function index()
     {
@@ -25,7 +25,7 @@ class {{modelName}}ClientAPIController extends Controller
      * Display the specified resource.
      *
      * @param  {{modelPath}}  ${{modelNameSingularLowerCase}}
-     * @return \Illuminate\Http\Response
+     * @return \App\Http\Resources\{{version}}\{{modelName}}\{{modelName}}Resource
      */
     public function show({{modelName}} ${{modelNameSingularLowerCase}})
     {

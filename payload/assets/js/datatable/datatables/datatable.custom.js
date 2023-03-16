@@ -266,6 +266,10 @@ $(document).ready(function() {
     $('#data-source-4').DataTable({
         "processing": true,
         "serverSide": true,
+        columnDefs: [ {
+        targets: -1,
+        visible: false
+        } ],
         "ajax": "../assets/json/server-side.json"
     } );
 

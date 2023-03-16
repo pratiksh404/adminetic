@@ -34,7 +34,7 @@ class MakeServiceCommand extends GeneratorCommand
      */
     protected function getStub()
     {
-        return __DIR__.'/../../Console/Commands/AdminStubs/Service.stub';
+        return __DIR__ . '/../../Console/Commands/AdminStubs/Service.stub';
     }
 
     /**
@@ -45,6 +45,6 @@ class MakeServiceCommand extends GeneratorCommand
      */
     protected function getDefaultNamespace($rootNamespace)
     {
-        return $rootNamespace.'\Services';
+        return $rootNamespace . '\Services';
     }
 }

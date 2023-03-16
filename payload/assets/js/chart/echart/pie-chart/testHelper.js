@@ -529,7 +529,7 @@
         var type = typeof value;
         var typeStr = objToString.call(value);
 
-        return TYPED_ARRAY[objToString.call(value)]
+        return !!TYPED_ARRAY[objToString.call(value)]
             ? 'typedArray'
             : typeof type === 'function'
             ? 'function'

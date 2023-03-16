@@ -139,7 +139,7 @@ function drawBasic() {
         title: 'Indian Language Use',
         legend: 'none',
         width:'100%',
-        height: 400,
+        height: 300,
         pieSliceText: 'label',
         slices: {  4: {offset: 0.2},
           12: {offset: 0.3},

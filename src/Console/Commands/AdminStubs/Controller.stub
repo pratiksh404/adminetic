@@ -26,7 +26,7 @@ class {{modelName}}Controller extends Controller
      */
     public function index()
     {
-        return view('admin.{{modelNameSingularLowerCase}}.index', $this->{{modelNameSingularLowerCase}}RepositoryInterface->index{{modelName}}());
+        return view('adminetic::admin.{{modelNameSingularLowerCase}}.index', $this->{{modelNameSingularLowerCase}}RepositoryInterface->index{{modelName}}());
     }
 
     /**
@@ -36,7 +36,7 @@ class {{modelName}}Controller extends Controller
      */
     public function create()
     {
-        return view('admin.{{modelNameSingularLowerCase}}.create');
+        return view('adminetic::admin.{{modelNameSingularLowerCase}}.create');
     }
 
     /**
@@ -59,7 +59,7 @@ class {{modelName}}Controller extends Controller
      */
     public function show({{modelName}} ${{modelNameSingularLowerCase}})
     {
-        return view('admin.{{modelNameSingularLowerCase}}.show', $this->{{modelNameSingularLowerCase}}RepositoryInterface->show{{modelName}}(${{modelNameSingularLowerCase}}));
+        return view('adminetic::admin.{{modelNameSingularLowerCase}}.show', $this->{{modelNameSingularLowerCase}}RepositoryInterface->show{{modelName}}(${{modelNameSingularLowerCase}}));
     }
 
     /**
@@ -70,7 +70,7 @@ class {{modelName}}Controller extends Controller
      */
     public function edit({{modelName}} ${{modelNameSingularLowerCase}})
     {
-        return view('admin.{{modelNameSingularLowerCase}}.edit', $this->{{modelNameSingularLowerCase}}RepositoryInterface->edit{{modelName}}(${{modelNameSingularLowerCase}}));
+        return view('adminetic::admin.{{modelNameSingularLowerCase}}.edit', $this->{{modelNameSingularLowerCase}}RepositoryInterface->edit{{modelName}}(${{modelNameSingularLowerCase}}));
     }
 
     /**

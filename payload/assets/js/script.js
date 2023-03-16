@@ -16,25 +16,25 @@
 
 
 
-    if ($('.page-wrapper').hasClass('horizontal-wrapper')){
+    if ($('.page-wrapper').hasClass('horizontal-wrapper')) {
 
         $(".sidebar-list").hover(
             function () {
-              $(this).addClass("hoverd");
+                $(this).addClass("hoverd");
             },
             function () {
-              $(this).removeClass("hoverd");
+                $(this).removeClass("hoverd");
             }
         );
         $(window).on('scroll', function () {
             if ($(this).scrollTop() < 600) {
                 $(".sidebar-list").removeClass("hoverd");
-            }         
-        });   
-      }
+            }
+        });
+    }
 
     /*----------------------------------------
-     passward show hide
+     password show hide
      ----------------------------------------*/
     $('.show-hide').show();
     $('.show-hide span').addClass('show');
@@ -112,7 +112,6 @@
 
     $('body').keydown(function (e) {
         if (e.keyCode == 27) {
-            $('.search-full input').val('');
             $('.form-control-search input').val('');
             $('.page-wrapper').removeClass('offcanvas-bookmark');
             $('.search-full').removeClass('open');
@@ -121,10 +120,29 @@
         }
     });
     $(".mode").on("click", function () {
-        $('.mode i').toggleClass("fa-moon").toggleClass("fa-lightbulb");
-        $('body').toggleClass("dark-only");
-        var color = $(this).attr("data-attr");
-        localStorage.setItem('body', 'dark-only');
+        const bodyModeDark = $("body").hasClass("dark-only")
+
+        if (!bodyModeDark) {
+            $(".mode").addClass("active")
+            localStorage.setItem("mode", "dark-only")
+            $("body").addClass("dark-only")
+            $("body").removeClass("light")
+        }
+        if (bodyModeDark) {
+
+            $(".mode").removeClass("active")
+            localStorage.setItem("mode", "light")
+            $("body").removeClass("dark-only")
+            $("body").addClass("light")
+        }
+
+    })
+    $("body").addClass(localStorage.getItem("mode") ? localStorage.getItem("mode") : "light")
+    $(".mode").addClass(localStorage.getItem("mode") === "dark-only" ? "active" : " ")
+
+    // sidebar filter
+    $('.md-sidebar .md-sidebar-toggle ').on('click', function (e) {
+        $(".md-sidebar .md-sidebar-aside ").toggleClass("open");
     });
 
 })(jQuery);
@@ -149,27 +167,6 @@ $('.tap-top').click(function () {
     }, 600);
     return false;
 });
-
-function toggleFullScreen() {
-    if ((document.fullScreenElement && document.fullScreenElement !== null) ||
-        (!document.mozFullScreen && !document.webkitIsFullScreen)) {
-        if (document.documentElement.requestFullScreen) {
-            document.documentElement.requestFullScreen();
-        } else if (document.documentElement.mozRequestFullScreen) {
-            document.documentElement.mozRequestFullScreen();
-        } else if (document.documentElement.webkitRequestFullScreen) {
-            document.documentElement.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);
-        }
-    } else {
-        if (document.cancelFullScreen) {
-            document.cancelFullScreen();
-        } else if (document.mozCancelFullScreen) {
-            document.mozCancelFullScreen();
-        } else if (document.webkitCancelFullScreen) {
-            document.webkitCancelFullScreen();
-        }
-    }
-}
 (function ($, window, document, undefined) {
     "use strict";
     var $ripple = $(".js-ripple");
@@ -260,73 +257,78 @@ function translate(tnum) {
 }
 
 var trans = [{
-        en: 'General',
-        np: 'सामान्य'
-    }, {
-        en: 'Dashboards,widgets & layout.',
-        pt: 'PainÃ©is, widgets e layout.',
-        es: 'Paneloj, fenestraÄµoj kaj aranÄo.',
-        fr: "Tableaux de bord, widgets et mise en page.",
-        de: 'Dashboards, widgets en lay-out.',
-        cn: 'ä»ªè¡¨æ¿ï¼Œå°å·¥å…·å’Œå¸ƒå±€ã€‚',
-        ae: 'Ù„ÙˆØ­Ø§Øª Ø§Ù„Ù…Ø¹Ù„ÙˆÙ…Ø§Øª ÙˆØ§Ù„Ø£Ø¯ÙˆØ§Øª ÙˆØ§Ù„ØªØ®Ø·ÙŠØ·.'
-    }, {
-        en: 'Dashboards',
-        pt: 'PainÃ©is',
-        es: 'Paneloj',
-        fr: 'Tableaux',
-        de: 'Dashboards',
-        cn: ' ä»ªè¡¨æ¿ ',
-        ae: 'ÙˆØ­Ø§Øª Ø§Ù„Ù‚ÙŠØ§Ø¯Ø© '
-    }, {
-        en: 'Default',
-        pt: 'PadrÃ£o',
-        es: 'Vaikimisi',
-        fr: 'DÃ©faut',
-        de: 'Standaard',
-        cn: 'é›»å­å•†å‹™',
-        ae: 'ÙˆØ¥ÙØªØ±Ø§Ø¶ÙŠ'
-    }, {
-        en: 'Ecommerce',
-        pt: 'ComÃ©rcio eletrÃ´nico',
-        es: 'Komerco',
-        fr: 'Commerce Ã©lectronique',
-        de: 'E-commerce',
-        cn: 'é›»å­å•†å‹™',
-        ae: 'ÙˆØ§Ù„ØªØ¬Ø§Ø±Ø© Ø§Ù„Ø¥Ù„ÙƒØªØ±ÙˆÙ†ÙŠØ©'
-    }, {
-        en: 'Widgets',
-        pt: 'Ferramenta',
-        es: 'Vidin',
-        fr: 'Widgets',
-        de: 'Widgets',
-        cn: 'å°éƒ¨ä»¶',
-        ae: 'ÙˆØ§Ù„Ø­Ø§Ø¬ÙŠØ§Øª'
-    }, {
-        en: 'Page layout',
-        pt: 'Layout da pÃ¡gina',
-        es: 'PaÄa aranÄo',
-        fr: 'Tableaux',
-        de: 'Mise en page',
-        cn: 'é é¢ä½ˆå±€',
-        ae: 'ÙˆØªØ®Ø·ÙŠØ· Ø§Ù„ØµÙØ­Ø©'
-    }, {
-        en: 'Applications',
-        pt: 'FormulÃ¡rios',
-        es: 'Aplikoj',
-        fr: 'Applications',
-        de: 'Toepassingen',
-        cn: 'æ‡‰ç”¨é ˜åŸŸ',
-        ae: 'ÙˆØ§Ù„ØªØ·Ø¨ÙŠÙ‚Ø§Øª'
-    }, {
-        en: 'Ready to use Apps',
-        pt: 'Pronto para usar aplicativos',
-        es: 'Preta uzi Apps',
-        fr: ' Applications prÃªtes Ã  lemploi ',
-        de: 'Klaar om apps te gebruiken',
-        cn: 'ä»ªè¡¨æ¿',
-        ae: 'Ø¬Ø§Ù‡Ø² Ù„Ø§Ø³ØªØ®Ø¯Ø§Ù… Ø§Ù„ØªØ·Ø¨ÙŠÙ‚Ø§Øª'
-    },
+    en: 'General',
+    pt: 'Geral',
+    es: 'Generalo',
+    fr: 'GÃ©nÃ©rale',
+    de: 'Generel',
+    cn: 'ä¸€èˆ¬',
+    ae: 'Ø­Ø¬Ù†Ø±Ø§Ù„ Ù„ÙˆØ§Ø¡'
+}, {
+    en: 'Dashboards,widgets & layout.',
+    pt: 'PainÃ©is, widgets e layout.',
+    es: 'Paneloj, fenestraÄµoj kaj aranÄo.',
+    fr: "Tableaux de bord, widgets et mise en page.",
+    de: 'Dashboards, widgets en lay-out.',
+    cn: 'ä»ªè¡¨æ¿ï¼Œå°å·¥å…·å’Œå¸ƒå±€ã€‚',
+    ae: 'Ù„ÙˆØ­Ø§Øª Ø§Ù„Ù…Ø¹Ù„ÙˆÙ…Ø§Øª ÙˆØ§Ù„Ø£Ø¯ÙˆØ§Øª ÙˆØ§Ù„ØªØ®Ø·ÙŠØ·.'
+}, {
+    en: 'Dashboards',
+    pt: 'PainÃ©is',
+    es: 'Paneloj',
+    fr: 'Tableaux',
+    de: 'Dashboards',
+    cn: ' ä»ªè¡¨æ¿ ',
+    ae: 'ÙˆØ­Ø§Øª Ø§Ù„Ù‚ÙŠØ§Ø¯Ø© '
+}, {
+    en: 'Default',
+    pt: 'PadrÃ£o',
+    es: 'Vaikimisi',
+    fr: 'DÃ©faut',
+    de: 'Standaard',
+    cn: 'é›»å­å•†å‹™',
+    ae: 'ÙˆØ¥ÙØªØ±Ø§Ø¶ÙŠ'
+}, {
+    en: 'Ecommerce',
+    pt: 'ComÃ©rcio eletrÃ´nico',
+    es: 'Komerco',
+    fr: 'Commerce Ã©lectronique',
+    de: 'E-commerce',
+    cn: 'é›»å­å•†å‹™',
+    ae: 'ÙˆØ§Ù„ØªØ¬Ø§Ø±Ø© Ø§Ù„Ø¥Ù„ÙƒØªØ±ÙˆÙ†ÙŠØ©'
+}, {
+    en: 'Widgets',
+    pt: 'Ferramenta',
+    es: 'Vidin',
+    fr: 'Widgets',
+    de: 'Widgets',
+    cn: 'å°éƒ¨ä»¶',
+    ae: 'ÙˆØ§Ù„Ø­Ø§Ø¬ÙŠØ§Øª'
+}, {
+    en: 'Page layout',
+    pt: 'Layout da pÃ¡gina',
+    es: 'PaÄa aranÄo',
+    fr: 'Tableaux',
+    de: 'Mise en page',
+    cn: 'é é¢ä½ˆå±€',
+    ae: 'ÙˆØªØ®Ø·ÙŠØ· Ø§Ù„ØµÙØ­Ø©'
+}, {
+    en: 'Applications',
+    pt: 'FormulÃ¡rios',
+    es: 'Aplikoj',
+    fr: 'Applications',
+    de: 'Toepassingen',
+    cn: 'æ‡‰ç”¨é ˜åŸŸ',
+    ae: 'ÙˆØ§Ù„ØªØ·Ø¨ÙŠÙ‚Ø§Øª'
+}, {
+    en: 'Ready to use Apps',
+    pt: 'Pronto para usar aplicativos',
+    es: 'Preta uzi Apps',
+    fr: ' Applications prÃªtes Ã  lemploi ',
+    de: 'Klaar om apps te gebruiken',
+    cn: 'ä»ªè¡¨æ¿',
+    ae: 'Ø¬Ø§Ù‡Ø² Ù„Ø§Ø³ØªØ®Ø¯Ø§Ù… Ø§Ù„ØªØ·Ø¨ÙŠÙ‚Ø§Øª'
+},
 
 ];
 
@@ -360,10 +362,10 @@ $(".onhover-dropdown").on("click", function () {
 //     });
 // }
 
-$("#flip-btn").click(function(){
+$("#flip-btn").click(function () {
     $(".flip-card-inner").addClass("flipped")
 });
 
-$("#flip-back").click(function(){
+$("#flip-back").click(function () {
     $(".flip-card-inner").removeClass("flipped")
 })

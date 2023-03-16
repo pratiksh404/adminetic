@@ -13,12 +13,15 @@
         deleteConfirm: "Do you really want to delete the client?",
         controller: db,
         fields: [
-        { name: "Name", type: "text", width: 150 },
-        { name: "Age", type: "number", width: 50 },
-        { name: "Address", type: "text", width: 200 },
-        { name: "Country", type: "select", items: db.countries, valueField: "Id", textField: "Name" },
-        { name: "Married", type: "checkbox", title: "Is Married", sorting: false },
-        { type: "control" }
+            { name: "Task", type: "text", width: 150 },
+            { name: "Email", type: "text", width: 200 },
+            { name: "Phone", type: "text", width: 150 },
+            { name: "Assign", type: "text", width: 160 },
+            { name: "Date", type: "text", width: 150 },
+            { name: "Price", type: "text", width: 100 },
+            { name: "Status", type: "html", width: 150 },
+            { name: "Progress", type: "text", width: 100 },
+            { type: "control" , width: 80 },
         ]
     });
     $("#sorting-table").jsGrid({
@@ -28,11 +31,13 @@
         selecting: false,
         controller: db,
         fields: [
-        { name: "Name", type: "text", width: 150 },
-        { name: "Age", type: "number", width: 50 },
-        { name: "Address", type: "text", width: 200 },
-        { name: "Country", type: "select", items: db.countries, valueField: "Id", textField: "Name" },
-        { name: "Married", type: "checkbox", title: "Is Married" }
+            { name: "Id", type: "text", width: 50 },
+            { name: "Product", type: "text", width: 150 },
+            { name: "Order Id", type: "text", width: 100 },
+            { name: "Price", type: "text", width: 100 },
+            { name: "Quantity", type: "text", title: "Quantity", width: 90 },
+            { name: "Shipped", type: "text", width: 150 },
+            { name: "Total", type: "text", width: 100 },
         ]
     });
     $("#sort").click ( function() {
@@ -65,11 +70,15 @@
                         });
             },
             align: "center",
-            width: 50
+            width: 80
             },
-            { name: "Name", type: "text", width: 150 },
-            { name: "Age", type: "number", width: 50 },
-            { name: "Address", type: "text", width: 200 }
+            { name: "Id", type: "text", width: 50 },
+            { name: "Employee Name", type: "Text", width: 150 },
+            { name: "Salary", type: "text", width: 100 },
+            { name: "Skill", type: "text", width: 60 },
+            { name: "Office", type: "text", width: 100 },
+            { name: "Hours", type: "text", width: 80 },
+            { name: "Experience", type: "text", width: 110 },
         ]
     });
     var selectedItems = [];

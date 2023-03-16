@@ -1,7 +1,7 @@
-@extends('adminetic::admin.layouts.app')
+@extends(request()->header('layout') ??  request()->header('layout') ?? 'adminetic::admin.layouts.app')
 
 @section('content')
-<x-adminetic-index-page name="{{modelNameSinglularLowerCase}}" route="{{modelNameSinglularLowerCase}}">
+<x-admin.index-page name="{{modelNameSinglularLowerCase}}" route="{{modelNameSinglularLowerCase}}">
     <x-slot name="content">
         {{-- ================================Card================================ --}}
         <table class="table table-striped table-bordered datatable">
@@ -18,7 +18,7 @@
                     <td></td>
                     <td></td>
                     <td>
-                        <x-adminetic-action :model="${{modelNameSinglularLowerCase}}" route="{{modelNameSinglularLowerCase}}" />
+                        <x-admin.action :model="${{modelNameSinglularLowerCase}}" route="{{modelNameSinglularLowerCase}}" />
                     </td>
                 </tr>
                 @endforeach
@@ -33,7 +33,7 @@
         </table>
         {{-- =================================================================== --}}
     </x-slot>
-</x-adminetic-index-page>
+</x-admin.index-page>
 @endsection
 
 @section('custom_js')

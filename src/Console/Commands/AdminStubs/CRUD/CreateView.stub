@@ -1,13 +1,13 @@
-@extends('adminetic::admin.layouts.app')
+@extends(request()->header('layout') ??  request()->header('layout') ?? 'adminetic::admin.layouts.app')
 
 @section('content')
-<x-adminetic-create-page name="{{modelNameSinglularLowerCase}}" route="{{modelNameSinglularLowerCase}}">
+<x-admin.create-page name="{{modelNameSinglularLowerCase}}" route="{{modelNameSinglularLowerCase}}">
     <x-slot name="content">
         {{-- ================================Form================================ --}}
         @include('admin.layouts.modules.{{modelNameSinglularLowerCase}}.edit_add')
         {{-- =================================================================== --}}
     </x-slot>
-</x-adminetic-create-page>
+</x-admin.create-page>
 @endsection
 
 @section('custom_js')

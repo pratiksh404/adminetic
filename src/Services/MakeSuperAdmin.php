@@ -3,7 +3,7 @@
 namespace Pratiksh\Adminetic\Services;
 
 use App\Models\User;
-use Pratiksh\Adminetic\Models\Admin\Role;
+use App\Models\Admin\Role;
 use Pratiksh\Adminetic\Services\Helper\CommandHelper;
 
 class MakeSuperAdmin extends CommandHelper

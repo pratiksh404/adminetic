@@ -131,7 +131,7 @@ var palette = renderer.create('<div class="note-color-palette"/>', function ($no
                 'data-value="', color, '" ',
                 'title="', colorName, '" ',
                 'aria-label="', colorName, '" ',
-                'data-toggle="button" tabindex="-1"></button>'
+                'data-bs-toggle="button" tabindex="-1"></button>'
             ].join(''));
         }
         contents.push('<div class="note-color-row">' + buttons.join('') + '</div>');
@@ -158,7 +158,7 @@ var dialog = renderer.create('<div class="modal" aria-hidden="false" tabindex="-
         (options.title
             ? '    <div class="modal-header">' +
                 '      <h4 class="modal-title">' + options.title + '</h4>' +
-                '      <button type="button" class="close" data-dismiss="modal" aria-label="Close" aria-hidden="true">&times;</button>' +
+                '      <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close" aria-hidden="true">&times;</button>' +
                 '    </div>' : ''),
         '    <div class="modal-body">' + options.body + '</div>',
         (options.footer

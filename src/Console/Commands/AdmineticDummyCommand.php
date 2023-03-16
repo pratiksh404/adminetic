@@ -4,9 +4,9 @@ namespace Pratiksh\Adminetic\Console\Commands;
 
 use App\Models\User;
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Artisan;
 use Pratiksh\Adminetic\Models\Admin\Role;
 
 class AdmineticDummyCommand extends Command
@@ -42,7 +42,7 @@ class AdmineticDummyCommand extends Command
      */
     public function handle()
     {
-        if (! config('adminetic.migrate_with_dummy', false)) {
+        if (!config('adminetic.migrate_with_dummy', false)) {
             // Generating Roles
             $roles = [
                 [

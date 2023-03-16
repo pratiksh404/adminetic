@@ -4,12 +4,13 @@
             <!-- Outline Round Floating button -->
             @if (auth()->user()->can('update', $model) &&
             $edit)
-            <a href="{{ adminEditRoute(trim($route), $model->id) }}" class="btn btn-warning btn-air-warning btn-sm p-2"
-                title="Edit" data-toggle="tooltip" placement="top"><i class="fa fa-edit"></i></a>
+            <a href="{{ adminEditRoute(trim($route), $model->id) }}"
+                class="router btn btn-warning btn-air-warning btn-sm p-2" title="Edit" data-toggle="tooltip"
+                placement="top"><i class="fa fa-edit"></i></a>
             @endif
             @if (auth()->user()->can('view', $model) &&
             $show)
-            <a href="{{ adminShowRoute(trim($route), $model->id) }}" class="btn btn-info btn-air-info btn-sm p-2"
+            <a href="{{ adminShowRoute(trim($route), $model->id) }}" class="router btn btn-info btn-air-info btn-sm p-2"
                 data-toggle="tooltip" placement="top" title="Show"><i class="fa fa-eye"></i></a>
             @endif
             @if (auth()->user()->can('delete', $model) &&
@@ -46,7 +47,8 @@
                     <h5 class="modal-title" id="exampleModalLabel">Delete Item !</h5>
                     <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="{{ adminDeleteRoute(trim($route), $model->id) }}" method="POST">
+                <form id="admin-form" action="{{ adminDeleteRoute(trim($route), $model->id) }}" method="POST"
+                    serverMethod="DELETE">
                     @method('DELETE')
                     @csrf
                     <div class="modal-body">

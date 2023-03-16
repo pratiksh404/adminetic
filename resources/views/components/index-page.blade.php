@@ -1,5 +1,5 @@
 <div>
-    <div class="container-fluid">
+    <div class="container-fluid mt-3" style="margin-top: 100px;">
         <div class="page-title">
             <div class="row">
                 <div class="col-6">
@@ -7,7 +7,8 @@
                 </div>
                 <div class="col-6">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{ route('dashboard') }}"> <i data-feather="home"></i></a>
+                        <li class="breadcrumb-item"><a class="router" href="{{ route('dashboard') }}"> <i
+                                    data-feather="home"></i></a>
                         </li>
                         <li class="breadcrumb-item active">{{ $name }}</li>
                     </ol>
@@ -37,7 +38,7 @@
                     {{ $description ?? 'List of all ' . $plural_name . ' in the system' }}
                 </div>
                 <div class="d-flex justify-content-end">
-                    <a href="{{ adminCreateRoute($route) }}" class="btn btn-primary">Create
+                    <a href="{{ adminCreateRoute($route) }}" class="btn btn-primary router">Create
                         {{ $name ?? '' }}</a>
                     @isset($buttons)
                     {{ $buttons }}

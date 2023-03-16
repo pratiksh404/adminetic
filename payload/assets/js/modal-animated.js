@@ -1,7 +1,7 @@
 "use strict";
 function testAnim(x) {
     $('.modal .modal-dialog').attr('class', 'modal-dialog  ' + x + '  animated');
-}
+};
 var modal_animate_custom = {
     init: function() {
         $('#myModal').on('show.bs.modal', function (e) {
@@ -12,7 +12,6 @@ var modal_animate_custom = {
             var anim = $('#exit').val();
             testAnim(anim);
         })
-        $("a").tooltip();
     }
 };
 (function($) {
