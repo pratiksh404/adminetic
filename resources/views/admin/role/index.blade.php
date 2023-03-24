@@ -24,8 +24,8 @@
                         <x-adminetic-action :model="$role" route="role">
                             <x-slot name="buttons">
                                 <a href="{{ adminShowRoute('role', $role->id) }}"
-                                    class="btn btn-info btn-air-info btn-sm p-2" data-toggle="tooltip" placement="top"
-                                    title="Role's Permissions"><i class="feather icon-unlock"></i></a>
+                                    class="btn btn-info btn-air-info btn-sm p-2 router" data-toggle="tooltip"
+                                    placement="top" title="Role's Permissions"><i class="feather icon-unlock"></i></a>
                             </x-slot>
                         </x-adminetic-action>
                     </td>

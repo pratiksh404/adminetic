@@ -4,7 +4,7 @@
 <x-adminetic-create-page name="permission" route="permission">
     <x-slot name="content">
         {{-- ================================Form================================ --}}
-        @include('adminetic::admin.layouts.modules.permission.edit_add')
+        @include('adminetic::admin.layouts.modules.permission.form')
         {{-- =================================================================== --}}
     </x-slot>
 </x-adminetic-create-page>

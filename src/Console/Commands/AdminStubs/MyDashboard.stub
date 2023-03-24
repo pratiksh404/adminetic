@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-use App\Contracts\DashboardInterface;
+use Pratiksh\Adminetic\Contracts\DashboardInterface;
 
 class MyDashboard implements DashboardInterface
 {

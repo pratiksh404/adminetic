@@ -4,7 +4,7 @@
 <x-adminetic-edit-page name="role" route="role" :model="$role">
     <x-slot name="content">
         {{-- ================================Form================================ --}}
-        @include('adminetic::admin.layouts.modules.role.edit_add')
+        @include('adminetic::admin.layouts.modules.role.form')
         {{-- =================================================================== --}}
     </x-slot>
 </x-adminetic-edit-page>

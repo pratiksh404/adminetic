@@ -4,7 +4,7 @@
 <x-adminetic-create-page name="setting" route="setting">
     <x-slot name="content">
         {{-- ================================Form================================ --}}
-        @include('adminetic::admin.layouts.modules.setting.edit_add')
+        @include('adminetic::admin.layouts.modules.setting.form')
         {{-- =================================================================== --}}
     </x-slot>
 </x-adminetic-create-page>

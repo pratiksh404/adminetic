@@ -86,7 +86,7 @@
             <div class="row">
                 @foreach ($user->preferences as $preference)
                 <div class="col-lg-6">
-                    @livewire('admin.user-preferences', ['user' =>
+                    @livewire('admin.user.user-preferences', ['user' =>
                     $user,'preference' => $preference],
                     key($preference->id))
                 </div>

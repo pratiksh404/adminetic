@@ -9,68 +9,53 @@
     </x-slot>
     <x-slot name="content">
         {{-- ================================Form================================ --}}
-        <div class="col-12">
-            <div class="table-responsive">
-                <table class="table mt-1">
-                    <thead>
-                        <tr>
-                            <th>Module Permission</th>
-                            <th>Browse</th>
-                            <th>Read</th>
-                            <th>Edit</th>
-                            <th>Add</th>
-                            <th>Delete</th>
-                            <th>Delete Permission</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($role->permissions as $permission)
-                        <tr>
-                            <td>{{ $permission->model ?? '' }}</td>
-                            <td>
-                                <div class="custom-control custom-checkbox"><input type="checkbox" name="browse"
-                                        value="{{ $permission->browse }}" {{ $permission->browse ? 'checked' : '' }}
-                                    id="browse"
-                                    data-role="{{ $role->id }}" data-permission="{{ $permission->id }}">
-                                </div>
-                            </td>
-                            <td>
-                                <div class="custom-control custom-checkbox"><input type="checkbox" name="read"
-                                        value="{{ $permission->read }}" {{ $permission->read ? 'checked' : '' }}
-                                    id="read" data-role="{{ $role->id }}"
-                                    data-permission="{{ $permission->id }}">
-                                </div>
-                            </td>
-                            <td>
-                                <div class="custom-control custom-checkbox"><input type="checkbox" name="edit"
-                                        value="{{ $permission->edit }}" {{ $permission->edit ? 'checked' : '' }}
-                                    id="edit"
-                                    data-role="{{ $role->id }}" data-permission="{{ $permission->id }}">
-                                </div>
-                            </td>
-                            <td>
-                                <div class="custom-control custom-checkbox"><input type="checkbox" name="add"
-                                        value="{{ $permission->add }}" {{ $permission->add ? 'checked' : '' }}
-                                    id="add" data-role="{{ $role->id }}"
-                                    data-permission="{{ $permission->id }}">
-                                </div>
-                            </td>
-                            <td>
-                                <div class="custom-control custom-checkbox"><input type="checkbox" name="delete"
-                                        value="{{ $permission->delete }}" {{ $permission->delete ? 'checked' : '' }}
-                                    id="delete"
-                                    data-role="{{ $role->id }}" data-permission="{{ $permission->id }}">
-                                </div>
-                            </td>
-                            <td>
-                                <a href="{{ adminUpdateRoute('detach_role_module_permission', $role->id . '/' . $permission->id) }}"
-                                    class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
-                            </td>
-                        </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+
+        <div style="overflow-x:auto">
+            <div class="row text-center mb-2">
+                <div class="col-5">Module</div>
+                <div class="col-1">Browse</div>
+                <div class="col-1">Read</div>
+                <div class="col-1">Edit</div>
+                <div class="col-1">Add</div>
+                <div class="col-1">Delete</div>
+                <div class="col-2"><i class="fa fa-trash"></i></div>
             </div>
+            <hr>
+            @foreach ($role->permissions as $permission)
+            <div class="row text-center mb-2">
+                <div class="col-5">{{ $permission->model ?? '' }}</div>
+                <div class="custom-control custom-checkbox col-1"><input type="checkbox" name="browse"
+                        value="{{ $permission->browse }}" {{ $permission->browse ? 'checked' : '' }}
+                    id="browse"
+                    data-role="{{ $role->id }}" data-permission="{{ $permission->id }}">
+                </div>
+                <div class="custom-control custom-checkbox col-1"><input type="checkbox" name="read"
+                        value="{{ $permission->read }}" {{ $permission->read ? 'checked' : '' }}
+                    id="read" data-role="{{ $role->id }}"
+                    data-permission="{{ $permission->id }}">
+                </div>
+                <div class="custom-control custom-checkbox col-1"><input type="checkbox" name="edit"
+                        value="{{ $permission->edit }}" {{ $permission->edit ? 'checked' : '' }}
+                    id="edit"
+                    data-role="{{ $role->id }}" data-permission="{{ $permission->id }}">
+                </div>
+                <div class="custom-control custom-checkbox col-1"><input type="checkbox" name="add"
+                        value="{{ $permission->add }}" {{ $permission->add ? 'checked' : '' }}
+                    id="add" data-role="{{ $role->id }}"
+                    data-permission="{{ $permission->id }}">
+                </div>
+
+                <div class="custom-control custom-checkbox col-1"><input type="checkbox" name="delete"
+                        value="{{ $permission->delete }}" {{ $permission->delete ? 'checked' : '' }}
+                    id="delete"
+                    data-role="{{ $role->id }}" data-permission="{{ $permission->id }}">
+                </div>
+                <div class="col-2">
+                    <a href="{{ adminUpdateRoute('detach_role_module_permission', $role->id . '/' . $permission->id) }}"
+                        class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
+                </div>
+            </div>
+            @endforeach
         </div>
         {{-- =================================================================== --}}
 

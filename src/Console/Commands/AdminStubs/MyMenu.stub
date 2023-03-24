@@ -2,8 +2,8 @@
 
 namespace App\Services;
 
-use App\Traits\SidebarHelper;
-use App\Contracts\SidebarInterface;
+use Pratiksh\Adminetic\Traits\SidebarHelper;
+use Pratiksh\Adminetic\Contracts\SidebarInterface;
 
 class MyMenu implements SidebarInterface
 {
@@ -59,14 +59,14 @@ class MyMenu implements SidebarInterface
                 'conditions' => [
                     [
                         'type' => 'or',
-                        'condition' => auth()->user()->can('view-any', \App\Models\Admin\Role::class),
+                        'condition' => auth()->user()->can('view-any', \Pratiksh\Adminetic\Models\Admin\Role::class),
                     ],
                     [
                         'type' => 'or',
-                        'condition' => auth()->user()->can('create', \App\Models\Admin\Role::class),
+                        'condition' => auth()->user()->can('create', \Pratiksh\Adminetic\Models\Admin\Role::class),
                     ],
                 ],
-                'children' => $this->indexCreateChildren('role', \App\Models\Admin\Role::class),
+                'children' => $this->indexCreateChildren('role', \Pratiksh\Adminetic\Models\Admin\Role::class),
             ],
             [
                 'type' => 'menu',
@@ -76,14 +76,14 @@ class MyMenu implements SidebarInterface
                 'conditions' => [
                     [
                         'type' => 'or',
-                        'condition' => auth()->user()->can('view-any', \App\Models\Admin\Permission::class),
+                        'condition' => auth()->user()->can('view-any', \Pratiksh\Adminetic\Models\Admin\Permission::class),
                     ],
                     [
                         'type' => 'or',
-                        'condition' => auth()->user()->can('create', \App\Models\Admin\Permission::class),
+                        'condition' => auth()->user()->can('create', \Pratiksh\Adminetic\Models\Admin\Permission::class),
                     ],
                 ],
-                'children' => $this->indexCreateChildren('permission', \App\Models\Admin\Permission::class),
+                'children' => $this->indexCreateChildren('permission', \Pratiksh\Adminetic\Models\Admin\Permission::class),
             ],
             [
                 'type' => 'link',
@@ -94,11 +94,11 @@ class MyMenu implements SidebarInterface
                 'conditions' => [
                     [
                         'type' => 'or',
-                        'condition' => auth()->user()->can('view-any', \App\Models\Admin\Setting::class),
+                        'condition' => auth()->user()->can('view-any', \Pratiksh\Adminetic\Models\Admin\Setting::class),
                     ],
                     [
                         'type' => 'or',
-                        'condition' => auth()->user()->can('create', \App\Models\Admin\Setting::class),
+                        'condition' => auth()->user()->can('create', \Pratiksh\Adminetic\Models\Admin\Setting::class),
                     ],
                 ],
             ],
@@ -110,21 +110,21 @@ class MyMenu implements SidebarInterface
                 'conditions' => [
                     [
                         'type' => 'or',
-                        'condition' => auth()->user()->can('view-any', \App\Models\Admin\Preference::class),
+                        'condition' => auth()->user()->can('view-any', \Pratiksh\Adminetic\Models\Admin\Preference::class),
                     ],
                     [
                         'type' => 'or',
-                        'condition' => auth()->user()->can('create', \App\Models\Admin\Preference::class),
+                        'condition' => auth()->user()->can('create', \Pratiksh\Adminetic\Models\Admin\Preference::class),
                     ],
                 ],
-                'children' => $this->indexCreateChildren('preference', \App\Models\Admin\Preference::class),
+                'children' => $this->indexCreateChildren('preference', \Pratiksh\Adminetic\Models\Admin\Preference::class),
             ],
             [
                 'type' => 'link',
                 'name' => 'Activities',
                 'icon' => 'fa fa-book',
-                'is_active' => request()->routeIs('activity*') ? 'active' : '',
-                'link' => adminRedirectRoute('activity'),
+                'is_active' => request()->routeIs('activities*') ? 'active' : '',
+                'link' => adminRedirectRoute('activities'),
                 'conditions' => [
                     [
                         'type' => 'and',
@@ -195,13 +195,25 @@ class MyMenu implements SidebarInterface
                 'type' => 'link',
                 'name' => 'Github',
                 'icon' => 'fab fa-github',
-                'link' => 'https://github.com/pratiksh404/admineticl',
+                'link' => 'https://github.com/pratiksh404/adminetic',
+                'conditions' => [
+                    [
+                        'type' => 'or',
+                        'condition' => env('APP_ENV') == 'local'
+                    ],
+                ],
             ],
             [
                 'type' => 'link',
                 'name' => 'Font Awesome',
-                'icon' => 'fa fa-font"',
+                'icon' => 'fa fa-font',
                 'link' => route('fontawesome'),
+                'conditions' => [
+                    [
+                        'type' => 'or',
+                        'condition' => env('APP_ENV') == 'local'
+                    ],
+                ],
             ],
         ];
     }

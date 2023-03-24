@@ -177,6 +177,28 @@ class Adminetic
                 ],
             ],
             [
+                'name' => 'Animate',
+                'active' => true,
+                'files' => [
+                    [
+                        'type' => 'css',
+                        'active' => true,
+                        'location' => 'adminetic/assets/css/vendors/animate.css',
+                    ],
+                ],
+            ],
+            [
+                'name' => 'Print This',
+                'active' => true,
+                'files' => [
+                    [
+                        'type' => 'js',
+                        'active' => true,
+                        'location' => 'adminetic/assets/js/printThis.js',
+                    ],
+                ],
+            ],
+            [
                 'name' => 'Daterange Picker',
                 'active' => true,
                 'files' => [

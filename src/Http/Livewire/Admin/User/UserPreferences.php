@@ -1,6 +1,6 @@
 <?php
 
-namespace Pratiksh\Adminetic\Http\Livewire\Admin;
+namespace Pratiksh\Adminetic\Http\Livewire\Admin\User;
 
 use App\Models\User;
 use Livewire\Component;
@@ -33,6 +33,6 @@ class UserPreferences extends Component
 
     public function render()
     {
-        return view('adminetic::livewire.admin.user-preferences');
+        return view('adminetic::livewire.admin.user.user-preferences');
     }
 }

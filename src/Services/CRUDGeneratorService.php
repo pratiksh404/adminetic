@@ -14,6 +14,7 @@ class CRUDGeneratorService extends CommandHelper
         self::makeModel($name, $console);
         self::makeViews($name, $console);
         self::makeOthers($name, $console);
+        self::addFileContent($name, $console);
     }
 
     // Make Controller
@@ -159,9 +160,9 @@ class CRUDGeneratorService extends CommandHelper
     // Make Layout Blades
     protected static function createLayoutBlades($lowername, $console)
     {
-        $edit_add_file = resource_path("views/admin/layouts/modules/{$lowername}/edit_add.blade.php");
-        file_put_contents(resource_path("views/admin/layouts/modules/{$lowername}/edit_add.blade.php"), '');
-        self::fileMadeSuccess($console, $edit_add_file, 'Edit add extended file');
+        $form_file = resource_path("views/admin/layouts/modules/{$lowername}/form.blade.php");
+        file_put_contents(resource_path("views/admin/layouts/modules/{$lowername}/form.blade.php"), '');
+        self::fileMadeSuccess($console, $form_file, 'Edit add extended file');
 
         $script_file = resource_path("views/admin/layouts/modules/{$lowername}/scripts.blade.php");
         file_put_contents(resource_path("views/admin/layouts/modules/{$lowername}/scripts.blade.php"), '');
@@ -182,6 +183,45 @@ class CRUDGeneratorService extends CommandHelper
 
         Artisan::call('make:request ' . $name . 'Request');
         $console->info('Request file created ... ✅');
+    }
+    // Make Other Necessary CRUD Files
+    protected static function addFileContent($name, $console)
+    {
+        // Adding Route
+        $lowercased_name = strtolower($name);
+        $route = "Route::resource('admin/{$lowercased_name}',\App\Http\Controllers\Admin\\{$name}Controller::class);";
+        file_put_contents('routes/web.php', "\n",  FILE_APPEND | LOCK_EX);
+        file_put_contents('routes/web.php', $route,  FILE_APPEND | LOCK_EX);
+
+        $console->info('Route  added to web.php ... ✅');
+
+        // Adding Route Interface Binding
+        $repository_interface_binding = '$this->app->bind(\App\Contracts\\' . $name . 'RepositoryInterface::class, \App\Repositories\\' . $name . 'Repository::class);';
+        $provider_path = app_path('Providers/AdminServiceProvider.php');
+        putContentToClassFunction($provider_path, 'protected function repos', $repository_interface_binding);
+
+        // Adding Module To Menu
+        $menu_content = "],[\n" .
+            "'type' => 'menu',\n" .
+            "'name' => '$name',\n" .
+            "'icon' => 'fa fa-wrench',\n" .
+            "'is_active' => request()->routeIs('$lowercased_name*') ? 'active' : '',\n" .
+            "'conditions' => [\n" .
+            "[\n" .
+            "'type' => 'or',\n" .
+            "'condition' => auth()->user()->can('view-any', \App\Models\Admin\\" . $name . "::class),\n" .
+            "],\n" .
+            "[\n" .
+            "'type' => 'or',\n" .
+            "'condition' => auth()->user()->can('create', \App\Models\Admin\\" . $name . "::class),\n" .
+            "],\n" .
+            "],\n";
+        $menu_content = $menu_content  . '"children" => $this->indexCreateChildren("' . $lowercased_name . '", \App\Models\Admin\\' . $name . '::class),';
+        $menu_content = "\n" . $menu_content . "\n";
+        $menu_path = app_path("Services/MyMenu.php");
+        putContentToClassFunction($menu_path, 'return [', $menu_content, ']');
+
+        $console->info('Menu added to Menu.php ... ✅');
     }
 
     protected static function fileMadeSuccess($console, $file, $type)

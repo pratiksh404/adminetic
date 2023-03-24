@@ -4,7 +4,7 @@
 <x-adminetic-edit-page name="user" route="user" :model="$user">
     <x-slot name="content">
         {{-- ================================Form================================ --}}
-        @include('adminetic::admin.layouts.modules.user.edit_add')
+        @include('adminetic::admin.layouts.modules.user.form')
         {{-- =================================================================== --}}
     </x-slot>
 </x-adminetic-edit-page>

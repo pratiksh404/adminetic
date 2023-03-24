@@ -4,11 +4,12 @@
       $(document).on('submit','#admin-form',function(){
          event.preventDefault();
          var url = $(this).attr('action');
+         var redirect_url = $(this).attr('redirectUrl');
          var request_type = $(this).attr('method') ?? 'POST';
          var token = "{{ csrf_token() }}";
           var $inputs = $(':input',this);
-         var data = $inputs;
-         serverRequest(url,request_type,data);
+         var data = new FormData(this);
+         serverRequest(url,redirect_url,request_type,data);
         /*  $inputs.each(function() {
             if (this.type == 'file') {
                var file = this.files;
@@ -39,7 +40,7 @@
       });
 
       // AJAX Server Request
-      function serverRequest(url,request_type,data){
+      function serverRequest(url,redirect_url,request_type,data){
          $.ajaxSetup({
          'headers':{
             'router':true,
@@ -51,13 +52,16 @@
                url: url,
                container: '#admin-form',
                file: true,
-               data: data.serializeArray(),
+               data: data,
+               contentType: false,
+               processData: false,
                beforeSend: function(xhr){
                   $('#admin-submit').prop('disabled', true);
                   $('#admin-submit').val('Processing...');
                },
                success: function(res, textStatus, jqXHR) {
-                  loadContent(res);
+                  loadContent(res,redirect_url);
+                  responseToast();
                },
                error: function (xhr, ajaxOptions, thrownError) {
                   window.location.replace(route);
@@ -138,5 +142,35 @@
                      }
             }
         });
+
+        function responseToast(){
+              $.notify({
+                 title:'Success',
+                 message:'Action Completed'
+              },
+              {
+                 type:'success',
+                 allow_dismiss:false,
+                 newest_on_top:false ,
+                 mouse_over:false,
+                 showProgressbar:false,
+                 spacing:10,
+                 timer:2000,
+                 placement:{
+                   from:'top',
+                   align:'right'
+                 },
+                 offset:{
+                   x:30,
+                   y:30
+                 },
+                 delay:1000 ,
+                 z_index:10000,
+                 animate:{
+                   enter:'animated bounce',
+                   exit:'animated bounce'
+               }
+             });
+        }
 </script>
 @endif

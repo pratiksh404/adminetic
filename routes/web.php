@@ -22,9 +22,7 @@ Route::resource('profile', ProfileController::class, [
     'only' => ['show', 'edit', 'update'],
 ]);
 
-Route::resource('activity', ActivityController::class, [
-    'only' => ['index', 'show', 'destroy'],
-]);
+Route::view('activities', 'adminetic::admin.activity.index');
 
 Route::resource('role', RoleController::class);
 

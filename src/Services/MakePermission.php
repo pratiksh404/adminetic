@@ -2,9 +2,9 @@
 
 namespace Pratiksh\Adminetic\Services;
 
-use App\Models\Admin\Role;
 use Illuminate\Support\Str;
-use App\Models\Admin\Permission;
+use Pratiksh\Adminetic\Models\Admin\Role;
+use Pratiksh\Adminetic\Models\Admin\Permission;
 use Pratiksh\Adminetic\Services\Helper\CommandHelper;
 
 class MakePermission extends CommandHelper

@@ -1,7 +1,7 @@
 @extends(request()->header('layout') ??  request()->header('layout') ?? 'adminetic::admin.layouts.app')
 
 @section('content')
-    <x-admin.show-page name="{{modelNameSinglularLowerCase}}" route="{{modelNameSinglularLowerCase}}" :model="${{modelNameSinglularLowerCase}}">
+    <x-adminetic-show-page name="{{modelNameSinglularLowerCase}}" route="{{modelNameSinglularLowerCase}}" :model="${{modelNameSinglularLowerCase}}">
         <x-slot name="content">
        
         </x-slot>

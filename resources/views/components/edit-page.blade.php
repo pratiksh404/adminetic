@@ -41,7 +41,8 @@
                 <span class="text-secondary">The field labels marked with * are required
                     input fields.</span>
                 <div class="d-flex justify-content-end">
-                    <a class="router btn btn-primary btn-air-primary" href="{{ adminRedirectRoute($route) }}">Back</a>
+                    <a class="router btn btn-primary btn-air-primary mx-2"
+                        href="{{ adminRedirectRoute($route) }}">Back</a>
                     <div class="btn-group" role="group">
                         <button class="btn btn-primary btn-air-primary dropdown-toggle" id="actions" type="button"
                             data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Actions</button>

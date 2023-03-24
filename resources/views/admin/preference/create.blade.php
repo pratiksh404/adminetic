@@ -4,7 +4,7 @@
 <x-adminetic-create-page name="preference" route="preference">
     <x-slot name="content">
         {{-- ================================Form================================ --}}
-        @include('adminetic::admin.layouts.modules.preference.edit_add')
+        @include('adminetic::admin.layouts.modules.preference.form')
         {{-- =================================================================== --}}
     </x-slot>
 </x-adminetic-create-page>

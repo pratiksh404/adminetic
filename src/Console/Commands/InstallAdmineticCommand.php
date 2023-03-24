@@ -46,15 +46,15 @@ class InstallAdmineticCommand extends Command
           /_/    \_\__,_|_| |_| |_|_|_| |_|\___|\__|_|\___|                                                                                                 
         ");
         $this->call('vendor:publish', [
-            '--tag' => ['admin.config'],
+            '--tag' => ['adminetic-config'],
         ]);
         $this->info('Adminetic config file published ... ✅');
         $this->call('vendor:publish', [
-            '--tag' => ['admin.assets-files'],
+            '--tag' => ['adminetic-assets-files'],
         ]);
         $this->info('Adminetic asset files published ... ✅');
         $this->call('vendor:publish', [
-            '--tag' => ['admin.static-files'],
+            '--tag' => ['adminetic-static-files'],
         ]);
         $this->info('Adminetic static files published ... ✅');
         $this->addMyMenu();
