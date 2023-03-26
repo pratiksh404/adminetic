@@ -85,6 +85,7 @@ class Setting extends Model
             8 => 'multiple',
             9 => 'tag',
             10 => 'image',
+            11 => 'custom',
         ][$attribute];
     }
 

@@ -20,7 +20,7 @@ class SettingRepository implements SettingRepositoryInterface
             }))
             : Setting::latest()->get();
 
-        $setting_grouped = Setting::all()->groupBy('setting_group');
+        $setting_grouped = Setting::where('setting_type', '<>', 11)->get()->groupBy('setting_group');
 
         return compact('settings', 'setting_grouped');
     }
@@ -119,7 +119,7 @@ class SettingRepository implements SettingRepositoryInterface
                         'string_value' => $value->store('admin/setting', 'public'),
                     ]);
                     $image = Image::make($value->getRealPath());
-                    $image->save(public_path('storage/'.$setting->string_value));
+                    $image->save(public_path('storage/' . $setting->string_value));
                 }
             }
         } elseif ($setting->getRawOriginal('setting_type') == 2 || $setting->getRawOriginal('setting_type') == 6 || $setting->getRawOriginal('setting_type') == 7) {
