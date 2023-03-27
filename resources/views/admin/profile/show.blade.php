@@ -20,7 +20,7 @@
 <div class="row">
     <div class="col-lg-4 col-md-12 col-sm-12">
         <div class="card shadow-lg custom-card p-2 my-2">
-            <div class="card-header"><img class="img-fluid" src="{{ getLogoBanner() }}" alt="Logo Banner"></div>
+            <div class="card-header"><img class="img-fluid" src="{{ logoBanner() }}" alt="Logo Banner"></div>
             <div class="card-profile"><img class="rounded-circle" src="{{ getProfilePlaceholder() }}"
                     alt="{{ $user->name ?? 'N/A' }}"></div>
             <ul class="card-social">

@@ -1,7 +1,6 @@
 <script>
     $(document).ready(function(){
-        var role = '{{auth()->user()->roles->first()->name}}';
-        console.log(role);
+        var role = '{{auth()->check() ? auth()->user()->roles->first()->name : ''}}';
         switch (role) {
             case 'receptionist':
                 setTheme('material-icon');

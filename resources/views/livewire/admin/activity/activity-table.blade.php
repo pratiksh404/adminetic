@@ -109,7 +109,7 @@
                 <div class="card-log_names shadow-lg p-2">
                     @if (count($log_names ?? []) > 0)
                     <div class="input-group">
-                        <span class="input-group-text">Model</span>
+                        <span class="input-group-text">Log</span>
                         <select wire:model="log_name" class="form-control">
                             <option value="">Select Log ..</option>
                             @foreach ($log_names as $log_name)

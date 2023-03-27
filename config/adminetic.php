@@ -15,6 +15,7 @@ return [
     'description' => 'Laravel Adminetic Admin Panel Upgrade.',
     'admin_home' => '/admin/dashboard',
     'dark_mode' => false,
+    'keywords' => 'adminetic, admin panel, adminetic admin panel, doctype innovations',
 
     /*
     |--------------------------------------------------------------------------
