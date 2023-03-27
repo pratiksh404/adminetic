@@ -34,7 +34,7 @@ class MakeTraitCommand extends GeneratorCommand
      */
     protected function getStub()
     {
-        return __DIR__ . '/../../Console/Commands/AdminStubs/Trait.stub';
+        return __DIR__.'/../../Console/Commands/AdminStubs/Trait.stub';
     }
 
     /**
@@ -45,6 +45,6 @@ class MakeTraitCommand extends GeneratorCommand
      */
     protected function getDefaultNamespace($rootNamespace)
     {
-        return $rootNamespace . '\Traits';
+        return $rootNamespace.'\Traits';
     }
 }

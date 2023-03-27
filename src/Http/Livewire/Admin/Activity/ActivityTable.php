@@ -2,8 +2,8 @@
 
 namespace Pratiksh\Adminetic\Http\Livewire\Admin\Activity;
 
-use Carbon\Carbon;
 use App\Models\User;
+use Carbon\Carbon;
 use Livewire\Component;
 use Livewire\WithPagination;
 use Spatie\Activitylog\Models\Activity;
@@ -53,9 +53,9 @@ class ActivityTable extends Component
 
     public function deleteWithLimit()
     {
-        if (!is_null($this->delete_limit)) {
+        if (! is_null($this->delete_limit)) {
             Activity::whereDate('created_at', '<', Carbon::now()->subDays($this->delete_limit))->delete();
-            $this->emit('activity_success', 'All activities Deleted except last ' . $this->delete_limit . 'days activities');
+            $this->emit('activity_success', 'All activities Deleted except last '.$this->delete_limit.'days activities');
         }
     }
 
@@ -72,6 +72,7 @@ class ActivityTable extends Component
             $this->start_date = $date->subDays($this->interval ?? 30);
         }
     }
+
     public function dateRangeFilter($start_date, $end_date)
     {
         $this->start_date = Carbon::create($start_date);
@@ -83,9 +84,11 @@ class ActivityTable extends Component
         $activity->delete();
         $this->emit('activity_success', 'Activity Deleted Successfully');
     }
+
     public function render()
     {
         $activities = $this->getActivities();
+
         return view('adminetic::livewire.admin.activity.activity-table', compact('activities'));
     }
 
@@ -94,23 +97,24 @@ class ActivityTable extends Component
         $this->resetPage();
         $data = Activity::query();
         // Filter By Log Name
-        if (!is_null($this->log_name)) {
+        if (! is_null($this->log_name)) {
             $data = $data->where('log_name', $this->log_name);
         }
         // Filter By Model
-        if (!is_null($this->model)) {
+        if (! is_null($this->model)) {
             $data = $data->where('subject_type', $this->model);
         }
         // Filter By User
-        if (!is_null($this->user_id)) {
+        if (! is_null($this->user_id)) {
             $data = $data->where('causer_id', $this->user_id);
         }
         // Filter By Date
-        if (!is_null($this->start_date) && !is_null($this->end_date)) {
+        if (! is_null($this->start_date) && ! is_null($this->end_date)) {
             $data = $data->whereDate('created_at', [$this->start_date, $this->end_date]);
         }
         $this->activity_count = with($data)->count();
         $this->emit('initialize_activity');
+
         return
             $data->latest()->paginate(10);
     }

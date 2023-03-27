@@ -3,8 +3,8 @@
 namespace Pratiksh\Adminetic\Services;
 
 use Illuminate\Support\Str;
-use Pratiksh\Adminetic\Models\Admin\Role;
 use Pratiksh\Adminetic\Models\Admin\Permission;
+use Pratiksh\Adminetic\Models\Admin\Role;
 use Pratiksh\Adminetic\Services\Helper\CommandHelper;
 
 class MakePermission extends CommandHelper
@@ -57,9 +57,9 @@ class MakePermission extends CommandHelper
     // Make a Policy
     protected static function makePolicy($name, $only_flags)
     {
-        if (!$only_flags) {
+        if (! $only_flags) {
             if (trim($name) != 'User' || trim($name) != 'user') {
-                if (!file_exists($path = app_path('Policies'))) {
+                if (! file_exists($path = app_path('Policies'))) {
                     mkdir($path, 0777, true);
                 }
                 $policyTemplate = str_replace(

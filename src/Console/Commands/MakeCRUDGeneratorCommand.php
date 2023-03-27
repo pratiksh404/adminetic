@@ -44,20 +44,20 @@ class MakeCRUDGeneratorCommand extends Command
         CRUDGeneratorService::makeCRUD($name, $this);
 
         if ($this->option('acl')) {
-            Artisan::call('make:permission ' . $name . ' --all');
+            Artisan::call('make:permission '.$name.' --all');
             $this->info('ACL created ... ✅');
         }
 
         if ($this->option('api')) {
-            Artisan::call('make:api ' . $name);
+            Artisan::call('make:api '.$name);
             $this->info('API resource files created ... ✅');
         }
 
         if ($this->option('rest')) {
-            Artisan::call('make:api ' . $name . ' --rest');
+            Artisan::call('make:api '.$name.' --rest');
             $this->info('RestAPI files created ... ✅');
         }
 
-        $this->info('CRUD made for model ' . $name . ' ... ✅');
+        $this->info('CRUD made for model '.$name.' ... ✅');
     }
 }

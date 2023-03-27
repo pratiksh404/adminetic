@@ -44,13 +44,13 @@ class MakeAPIResourceCommand extends Command
         $version = $this->option('v');
         if ($this->option('rest')) {
             MakeAPIResource::makeRestAPI($name, $path, $version);
-            $this->info('Restful API Resource created for model ' . $name);
+            $this->info('Restful API Resource created for model '.$name);
         } elseif ($this->option('client')) {
             MakeAPIResource::makeClientAPI($name, $path, $version);
-            $this->info('Client API created for model ' . $name);
+            $this->info('Client API created for model '.$name);
         } else {
             MakeAPIResource::makeAPI($name, $path, $version);
-            $this->info('API Resource created for model ' . $name);
+            $this->info('API Resource created for model '.$name);
         }
     }
 
@@ -65,6 +65,6 @@ class MakeAPIResourceCommand extends Command
     {
         $explode_path = preg_split('#/#', $given_name);
 
-        return count($explode_path) > 1 ? str_replace('/', '\\', $given_name) : ('App\\Models\\Admin\\' . $given_name);
+        return count($explode_path) > 1 ? str_replace('/', '\\', $given_name) : ('App\\Models\\Admin\\'.$given_name);
     }
 }
