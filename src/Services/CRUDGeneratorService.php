@@ -2,8 +2,8 @@
 
 namespace Pratiksh\Adminetic\Services;
 
-use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Str;
 use Pratiksh\Adminetic\Services\Helper\CommandHelper;
 
 class CRUDGeneratorService extends CommandHelper
@@ -20,7 +20,7 @@ class CRUDGeneratorService extends CommandHelper
     // Make Controller
     protected static function makeController($name, $console)
     {
-        if (!file_exists($path = app_path('/Http/Controllers/Admin'))) {
+        if (! file_exists($path = app_path('/Http/Controllers/Admin'))) {
             mkdir($path, 0777, true);
         }
         $controllerTemplate = str_replace(
@@ -44,7 +44,7 @@ class CRUDGeneratorService extends CommandHelper
     // Make Model
     protected static function makeModel($name, $console)
     {
-        if (!file_exists($path = app_path('/Models/Admin'))) {
+        if (! file_exists($path = app_path('/Models/Admin'))) {
             mkdir($path, 0777, true);
         }
         $modelTemplate = str_replace(
@@ -69,11 +69,11 @@ class CRUDGeneratorService extends CommandHelper
     protected static function makeViews($name, $console)
     {
         $lowername = strtolower($name);
-        if (!file_exists($path = resource_path('views/admin/' . $lowername))) {
+        if (! file_exists($path = resource_path('views/admin/'.$lowername))) {
             mkdir($path, 0777, true);
         }
 
-        if (!file_exists($path = resource_path('views/admin/layouts/modules/' . $lowername))) {
+        if (! file_exists($path = resource_path('views/admin/layouts/modules/'.$lowername))) {
             mkdir($path, 0777, true);
         }
 
@@ -172,53 +172,54 @@ class CRUDGeneratorService extends CommandHelper
     // Make Other neccesary CRUD files
     protected static function makeOthers($name, $console)
     {
-        Artisan::call('make:migration create_' . strtolower(Str::plural($name)) . '_table --create=' . strtolower(Str::plural($name)));
-        $console->info('Migration file created named create_' . strtolower(Str::plural($name)) . '_table ... ✅');
+        Artisan::call('make:migration create_'.strtolower(Str::plural($name)).'_table --create='.strtolower(Str::plural($name)));
+        $console->info('Migration file created named create_'.strtolower(Str::plural($name)).'_table ... ✅');
 
-        Artisan::call('make:seeder ' . $name . 'Seeder');
+        Artisan::call('make:seeder '.$name.'Seeder');
         $console->info('Seeder file created ... ✅');
 
-        Artisan::call('make:repo ' . $name);
+        Artisan::call('make:repo '.$name);
         $console->info('Repository and Interface created ... ✅');
 
-        Artisan::call('make:request ' . $name . 'Request');
+        Artisan::call('make:request '.$name.'Request');
         $console->info('Request file created ... ✅');
     }
+
     // Make Other Necessary CRUD Files
     protected static function addFileContent($name, $console)
     {
         // Adding Route
         $lowercased_name = strtolower($name);
         $route = "Route::resource('admin/{$lowercased_name}',\App\Http\Controllers\Admin\\{$name}Controller::class);";
-        file_put_contents('routes/web.php', "\n",  FILE_APPEND | LOCK_EX);
-        file_put_contents('routes/web.php', $route,  FILE_APPEND | LOCK_EX);
+        file_put_contents('routes/web.php', "\n", FILE_APPEND | LOCK_EX);
+        file_put_contents('routes/web.php', $route, FILE_APPEND | LOCK_EX);
 
         $console->info('Route  added to web.php ... ✅');
 
         // Adding Route Interface Binding
-        $repository_interface_binding = '$this->app->bind(\App\Contracts\\' . $name . 'RepositoryInterface::class, \App\Repositories\\' . $name . 'Repository::class);';
+        $repository_interface_binding = '$this->app->bind(\App\Contracts\\'.$name.'RepositoryInterface::class, \App\Repositories\\'.$name.'Repository::class);';
         $provider_path = app_path('Providers/AdminServiceProvider.php');
         putContentToClassFunction($provider_path, 'protected function repos', $repository_interface_binding);
 
         // Adding Module To Menu
-        $menu_content = "],[\n" .
-            "'type' => 'menu',\n" .
-            "'name' => '$name',\n" .
-            "'icon' => 'fa fa-wrench',\n" .
-            "'is_active' => request()->routeIs('$lowercased_name*') ? 'active' : '',\n" .
-            "'conditions' => [\n" .
-            "[\n" .
-            "'type' => 'or',\n" .
-            "'condition' => auth()->user()->can('view-any', \App\Models\Admin\\" . $name . "::class),\n" .
-            "],\n" .
-            "[\n" .
-            "'type' => 'or',\n" .
-            "'condition' => auth()->user()->can('create', \App\Models\Admin\\" . $name . "::class),\n" .
-            "],\n" .
+        $menu_content = "],[\n".
+            "'type' => 'menu',\n".
+            "'name' => '$name',\n".
+            "'icon' => 'fa fa-wrench',\n".
+            "'is_active' => request()->routeIs('$lowercased_name*') ? 'active' : '',\n".
+            "'conditions' => [\n".
+            "[\n".
+            "'type' => 'or',\n".
+            "'condition' => auth()->user()->can('view-any', \App\Models\Admin\\".$name."::class),\n".
+            "],\n".
+            "[\n".
+            "'type' => 'or',\n".
+            "'condition' => auth()->user()->can('create', \App\Models\Admin\\".$name."::class),\n".
+            "],\n".
             "],\n";
-        $menu_content = $menu_content  . '"children" => $this->indexCreateChildren("' . $lowercased_name . '", \App\Models\Admin\\' . $name . '::class),';
-        $menu_content = "\n" . $menu_content . "\n";
-        $menu_path = app_path("Services/MyMenu.php");
+        $menu_content = $menu_content.'"children" => $this->indexCreateChildren("'.$lowercased_name.'", \App\Models\Admin\\'.$name.'::class),';
+        $menu_content = "\n".$menu_content."\n";
+        $menu_path = app_path('Services/MyMenu.php');
         putContentToClassFunction($menu_path, 'return [', $menu_content, ']');
 
         $console->info('Menu added to Menu.php ... ✅');
@@ -227,9 +228,9 @@ class CRUDGeneratorService extends CommandHelper
     protected static function fileMadeSuccess($console, $file, $type)
     {
         if (file_exists($file)) {
-            $console->info($type . ' created successfully ... ✅');
+            $console->info($type.' created successfully ... ✅');
         } else {
-            $console->error('Failed to create ' . $type . ' ...');
+            $console->error('Failed to create '.$type.' ...');
         }
     }
 }

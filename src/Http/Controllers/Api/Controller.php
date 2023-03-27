@@ -2,12 +2,11 @@
 
 namespace Pratiksh\Adminetic\Http\Controllers\Api;
 
-use Illuminate\Http\Request;
-use Illuminate\Foundation\Bus\DispatchesJobs;
-use Illuminate\Routing\Controller as BaseController;
-use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-
+use Illuminate\Foundation\Bus\DispatchesJobs;
+use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Http\Request;
+use Illuminate\Routing\Controller as BaseController;
 
 class Controller extends BaseController
 {
@@ -18,7 +17,6 @@ class Controller extends BaseController
      *
      * @return \Illuminate\Http\Response
      */
-
     public function sendResponse($result, $message)
     {
         $response = [
@@ -26,6 +24,7 @@ class Controller extends BaseController
             'data'    => $result,
             'message' => $message,
         ];
+
         return response()->json($response, 200);
     }
 
@@ -34,7 +33,6 @@ class Controller extends BaseController
      *
      * @return \Illuminate\Http\Response
      */
-
     public function sendError($error, $errorMessages = [], $code = 404)
     {
         $response = [
@@ -42,9 +40,10 @@ class Controller extends BaseController
             'message' => $error,
         ];
 
-        if (!empty($errorMessages)) {
+        if (! empty($errorMessages)) {
             $response['data'] = $errorMessages;
         }
+
         return response()->json($response, $code);
     }
 
@@ -52,13 +51,13 @@ class Controller extends BaseController
     {
         // Where Search
         if ($request->has('where')) {
-            $where = json_decode(str_replace(" ", '', str_replace("'", "\"", $request->where)), true);
+            $where = json_decode(str_replace(' ', '', str_replace("'", '"', $request->where)), true);
             $query->where($where);
         }
 
         // orWhere Search
         if ($request->has('orWhere')) {
-            $orWhere = json_decode(str_replace(" ", '', str_replace("'", "\"", $request->orWhere)), true);
+            $orWhere = json_decode(str_replace(' ', '', str_replace("'", '"', $request->orWhere)), true);
             $query->orWhere($orWhere);
         }
 

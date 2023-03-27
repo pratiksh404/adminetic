@@ -88,7 +88,7 @@ class EditProfile extends Component
                 'profile_pic' => $this->profile_pic->store('admin/user', 'public'),
             ]);
             $image = Image::make($this->profile_pic->getRealPath());
-            $image->save(public_path('storage/' . $profile->profile_pic));
+            $image->save(public_path('storage/'.$profile->profile_pic));
         }
     }
 
