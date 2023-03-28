@@ -547,7 +547,7 @@
         </div>
       </section>
 
-      <section class="section-space components-section cuba-demo-section pt-0" id="components">
+      <section class="section-space components-section cuba-demo-section pt-0" id="components" style="width: 90vw; margin:5vw">
         <div class="container">
           <ul class="decoration">
             <li class="flower-gif">
@@ -578,8 +578,8 @@
             </div>
           </div>
         </div>
-        <div class="container-fluid">
-          <div class="row component_responsive g-3 mb-3" data-jarallax-element="0 100">
+        <div class="container-fluid" style="overflow: hidden;">
+          <div class="row g-3 mb-3">
             <div class="col-xxl-2 col-lg-3 col-md-4 col-6 component-col-set">
               <div class="component-hover-effect"><img src="{{asset('adminetic/assets/images/landing/icon/1.svg')}}" alt="">
                 <h6 class="m-0 Pt-4">Action Buttons</h6>

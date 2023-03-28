@@ -5,7 +5,7 @@ namespace Pratiksh\Adminetic\Console\Commands;
 use Illuminate\Console\Command;
 use Spatie\Activitylog\Models\Activity;
 
-class ClearActivityLog extends Command
+class ClearActivityLogCommand extends Command
 {
     /**
      * The name and signature of the console command.

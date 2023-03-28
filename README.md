@@ -115,6 +115,7 @@ This package was generated using the [Laravel Package Boilerplate](https://larav
 
 ### Admin Panel Screenshot
 
+![Adminetic](https://github.com/pratiksh404/adminetic/blob/main/payload/static/documentation/webcapture.jpeg)
 ![Adminetic](https://github.com/pratiksh404/adminetic/blob/main/payload/static/documentation/dashboard.jpg)
 ![Adminetic](https://github.com/pratiksh404/adminetic/blob/main/payload/static/documentation/profile.jpg)
 ![Adminetic](https://github.com/pratiksh404/adminetic/blob/main/payload/static/documentation/bread.jpg)

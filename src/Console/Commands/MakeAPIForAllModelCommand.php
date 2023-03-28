@@ -43,21 +43,20 @@ class MakeAPIForAllModelCommand extends Command
         if ($this->confirm('Do you wish to continue? Any existing api resources might be replaced.')) {
             $excluded_models = $this->option('except');
             $path = $this->option('path') ?? 'Models';
-            $exclude_website_models = getAllModelNames(app_path('Models/Admin/Website'));
             $models = getAllModelNames(app_path($path));
             foreach ($models as $name) {
-                if (Schema::hasTable(Str::plural($name)) && ! in_array($name, $excluded_models ?? []) && ! in_array($name, $exclude_website_models ?? [])) {
+                if (Schema::hasTable(Str::plural($name)) && !in_array($name, $excluded_models ?? [])) {
                     $path = $this->getModelPath($name);
                     $version = $this->option('v');
                     if ($this->option('rest')) {
                         MakeAPIResource::makeRestAPI($name, $path, $version);
-                        $this->info('Restful API Resource created for model '.$name.' ... ✅');
+                        $this->info('Restful API Resource created for model ' . $name . ' ... ✅');
                     } elseif ($this->option('client')) {
                         MakeAPIResource::makeClientAPI($name, $path, $version);
-                        $this->info('Client API created for model '.$name.' ... ✅');
+                        $this->info('Client API created for model ' . $name . ' ... ✅');
                     } else {
                         MakeAPIResource::makeAPI($name, $path, $version);
-                        $this->info('API Resource created for model '.$name.' ... ✅');
+                        $this->info('API Resource created for model ' . $name . ' ... ✅');
                     }
                 }
             }
@@ -75,6 +74,6 @@ class MakeAPIForAllModelCommand extends Command
     {
         $explode_path = preg_split('#/#', $given_name);
 
-        return count($explode_path) > 1 ? str_replace('/', '\\', $given_name) : ('App\\Models\\Admin\\'.$given_name);
+        return count($explode_path) > 1 ? str_replace('/', '\\', $given_name) : ('App\\Models\\Admin\\' . $given_name);
     }
 }
