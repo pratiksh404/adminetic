@@ -3,10 +3,8 @@
 namespace Pratiksh\Adminetic\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use Pratiksh\Adminetic\Contracts\RoleRepositoryInterface;
 use Pratiksh\Adminetic\Http\Requests\RoleRequest;
-use Pratiksh\Adminetic\Models\Admin\Permission;
 use Pratiksh\Adminetic\Models\Admin\Role;
 
 class RoleController extends Controller
