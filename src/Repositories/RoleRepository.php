@@ -36,12 +36,7 @@ class RoleRepository implements RoleRepositoryInterface
     // Role Show
     public function showRole(Role $role)
     {
-        $remaining_models = [];
-        $all_models = getAllModelNames(app_path('Models'));
-        $role_models = $role->permissions->pluck('model')->toArray();
-        $remaining_models = array_diff($all_models, $role_models);
-
-        return compact('role', 'remaining_models');
+        return compact('role');
     }
 
     // Role Edit

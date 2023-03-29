@@ -34,18 +34,6 @@ Route::resource('preference', PreferenceController::class);
 
 /* ================================================= */
 
-Route::post('make_role_module_permission/{role}', [RoleController::class, 'assignModulePermission']);
-
-Route::get('detach_role_module_permission/{role}/{permission}', [RoleController::class, 'detachModulePermssion']);
-
-Route::patch('change_role_module_permission', [RoleController::class, 'changeModulePermission'])->name('change_role_module_permission');
-
-/* Activitiy Routes */
-Route::get('delete-all-activities', [ActivityController::class, 'delete_all_activities']);
-Route::get('delete-last-month', [ActivityController::class, 'delete_last_month']);
-Route::get('keep-this-month-activities', [ActivityController::class, 'keep_this_month_activities']);
-Route::get('keep-latest-two-month-activities', [ActivityController::class, 'keep_latest_two_month_activities']);
-Route::get('keep-latest-three-month-activities', [ActivityController::class, 'keep_latest_three_month_activities']);
 /* Editor Route */
 Route::post('ckeditor/upload', [EditorUploadController::class, 'upload'])->name('ckeditor.upload');
 /* Setting Store */
