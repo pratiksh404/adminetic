@@ -30,7 +30,7 @@ class AclPanel extends Component
     public function makeModuleACL()
     {
         $this->validate([
-            'model_name' => 'required|max:30'
+            'model_name' => 'required|max:30',
         ]);
 
         Permission::create([

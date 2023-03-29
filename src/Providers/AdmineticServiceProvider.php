@@ -3,65 +3,65 @@
 namespace Pratiksh\Adminetic\Providers;
 
 use App\Models\User;
-use Livewire\Livewire;
 use Illuminate\Routing\Router;
-use Pratiksh\Adminetic\Models\Role;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Blade;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Route;
-use Pratiksh\Adminetic\Models\Setting;
 use Illuminate\Support\ServiceProvider;
-use Pratiksh\Adminetic\Models\Permission;
-use Pratiksh\Adminetic\Services\Adminetic;
-use Pratiksh\Adminetic\Policies\RolePolicy;
-use Pratiksh\Adminetic\Policies\UserPolicy;
-use Pratiksh\Adminetic\View\Components\Card;
-use Pratiksh\Adminetic\Policies\SettingPolicy;
-use Pratiksh\Adminetic\View\Components\Action;
-use Pratiksh\Adminetic\Models\Admin\Preference;
-use Pratiksh\Adminetic\View\Components\Sidebar;
-use Pratiksh\Adminetic\View\Components\EditPage;
-use Pratiksh\Adminetic\View\Components\ShowPage;
-use Pratiksh\Adminetic\Policies\PermissionPolicy;
-use Pratiksh\Adminetic\Policies\PreferencePolicy;
-use Pratiksh\Adminetic\View\Components\IndexPage;
-use Pratiksh\Adminetic\Mixins\AdmineticAuthMixins;
-use Pratiksh\Adminetic\View\Components\CreatePage;
-use Pratiksh\Adminetic\Repositories\RoleRepository;
-use Pratiksh\Adminetic\Repositories\UserRepository;
-use Pratiksh\Adminetic\View\Components\EditAddButton;
-use Pratiksh\Adminetic\Http\Livewire\Admin\Role\Bread;
-use Pratiksh\Adminetic\Http\Middleware\RoleMiddleware;
-use Pratiksh\Adminetic\Repositories\ProfileRepository;
-use Pratiksh\Adminetic\Repositories\SettingRepository;
-use Pratiksh\Adminetic\Console\Commands\MakeTraitCommand;
-use Pratiksh\Adminetic\Contracts\RoleRepositoryInterface;
-use Pratiksh\Adminetic\Contracts\UserRepositoryInterface;
-use Pratiksh\Adminetic\Http\Livewire\Admin\Role\AclPanel;
-use Pratiksh\Adminetic\Http\Middleware\BouncerMiddleware;
-use Pratiksh\Adminetic\Repositories\PermissionRepository;
-use Pratiksh\Adminetic\Repositories\PreferenceRepository;
-use Pratiksh\Adminetic\Http\Livewire\Admin\User\UserTable;
-use Pratiksh\Adminetic\Console\Commands\MakeServiceCommand;
-use Pratiksh\Adminetic\Http\Livewire\Admin\UserPreferences;
-use Pratiksh\Adminetic\Contracts\ProfileRepositoryInterface;
-use Pratiksh\Adminetic\Contracts\SettingRepositoryInterface;
-use Pratiksh\Adminetic\Console\Commands\MakeSuperUserCommand;
+use Livewire\Livewire;
 use Pratiksh\Adminetic\Console\Commands\AdmineticDummyCommand;
 use Pratiksh\Adminetic\Console\Commands\AdmineticResetCommand;
-use Pratiksh\Adminetic\Console\Commands\MakePermissionCommand;
-use Pratiksh\Adminetic\Console\Commands\MakeAPIResourceCommand;
-use Pratiksh\Adminetic\Contracts\PermissionRepositoryInterface;
-use Pratiksh\Adminetic\Contracts\PreferenceRepositoryInterface;
-use Pratiksh\Adminetic\Http\Livewire\Admin\Profile\EditAccount;
-use Pratiksh\Adminetic\Http\Livewire\Admin\Profile\EditProfile;
 use Pratiksh\Adminetic\Console\Commands\ClearActivityLogCommand;
 use Pratiksh\Adminetic\Console\Commands\InstallAdmineticCommand;
-use Pratiksh\Adminetic\Console\Commands\MakeCRUDGeneratorCommand;
 use Pratiksh\Adminetic\Console\Commands\MakeAPIForAllModelCommand;
-use Pratiksh\Adminetic\Http\Livewire\Admin\Activity\ActivityTable;
+use Pratiksh\Adminetic\Console\Commands\MakeAPIResourceCommand;
+use Pratiksh\Adminetic\Console\Commands\MakeCRUDGeneratorCommand;
+use Pratiksh\Adminetic\Console\Commands\MakePermissionCommand;
 use Pratiksh\Adminetic\Console\Commands\MakeRepositoryPatternCommand;
+use Pratiksh\Adminetic\Console\Commands\MakeServiceCommand;
+use Pratiksh\Adminetic\Console\Commands\MakeSuperUserCommand;
+use Pratiksh\Adminetic\Console\Commands\MakeTraitCommand;
+use Pratiksh\Adminetic\Contracts\PermissionRepositoryInterface;
+use Pratiksh\Adminetic\Contracts\PreferenceRepositoryInterface;
+use Pratiksh\Adminetic\Contracts\ProfileRepositoryInterface;
+use Pratiksh\Adminetic\Contracts\RoleRepositoryInterface;
+use Pratiksh\Adminetic\Contracts\SettingRepositoryInterface;
+use Pratiksh\Adminetic\Contracts\UserRepositoryInterface;
+use Pratiksh\Adminetic\Http\Livewire\Admin\Activity\ActivityTable;
+use Pratiksh\Adminetic\Http\Livewire\Admin\Profile\EditAccount;
+use Pratiksh\Adminetic\Http\Livewire\Admin\Profile\EditProfile;
+use Pratiksh\Adminetic\Http\Livewire\Admin\Role\AclPanel;
+use Pratiksh\Adminetic\Http\Livewire\Admin\Role\Bread;
+use Pratiksh\Adminetic\Http\Livewire\Admin\User\UserTable;
+use Pratiksh\Adminetic\Http\Livewire\Admin\UserPreferences;
+use Pratiksh\Adminetic\Http\Middleware\BouncerMiddleware;
+use Pratiksh\Adminetic\Http\Middleware\RoleMiddleware;
+use Pratiksh\Adminetic\Mixins\AdmineticAuthMixins;
+use Pratiksh\Adminetic\Models\Admin\Preference;
+use Pratiksh\Adminetic\Models\Permission;
+use Pratiksh\Adminetic\Models\Role;
+use Pratiksh\Adminetic\Models\Setting;
+use Pratiksh\Adminetic\Policies\PermissionPolicy;
+use Pratiksh\Adminetic\Policies\PreferencePolicy;
+use Pratiksh\Adminetic\Policies\RolePolicy;
+use Pratiksh\Adminetic\Policies\SettingPolicy;
+use Pratiksh\Adminetic\Policies\UserPolicy;
+use Pratiksh\Adminetic\Repositories\PermissionRepository;
+use Pratiksh\Adminetic\Repositories\PreferenceRepository;
+use Pratiksh\Adminetic\Repositories\ProfileRepository;
+use Pratiksh\Adminetic\Repositories\RoleRepository;
+use Pratiksh\Adminetic\Repositories\SettingRepository;
+use Pratiksh\Adminetic\Repositories\UserRepository;
+use Pratiksh\Adminetic\Services\Adminetic;
+use Pratiksh\Adminetic\View\Components\Action;
+use Pratiksh\Adminetic\View\Components\Card;
+use Pratiksh\Adminetic\View\Components\CreatePage;
+use Pratiksh\Adminetic\View\Components\EditAddButton;
+use Pratiksh\Adminetic\View\Components\EditPage;
+use Pratiksh\Adminetic\View\Components\IndexPage;
+use Pratiksh\Adminetic\View\Components\ShowPage;
+use Pratiksh\Adminetic\View\Components\Sidebar;
 
 class AdmineticServiceProvider extends ServiceProvider
 {
@@ -135,26 +135,26 @@ class AdmineticServiceProvider extends ServiceProvider
     {
         // Publish Config File
         $this->publishes([
-            __DIR__ . '/../../config/adminetic.php' => config_path('adminetic.php'),
+            __DIR__.'/../../config/adminetic.php' => config_path('adminetic.php'),
         ], 'adminetic-config');
         // Publish View Files
         $this->publishes([
-            __DIR__ . '/../../resources/views' => resource_path('views/vendor/adminetic'),
+            __DIR__.'/../../resources/views' => resource_path('views/vendor/adminetic'),
         ], 'adminetic-views');
         // Publish Migration Files
         $this->publishes([
-            __DIR__ . '/../../database/migrations' => database_path('migrations'),
+            __DIR__.'/../../database/migrations' => database_path('migrations'),
         ], 'adminetic-migrations');
         // Publish Database Seeds
         $this->publishes([
-            __DIR__ . '/../../database/seeders' => database_path('seeders'),
+            __DIR__.'/../../database/seeders' => database_path('seeders'),
         ], 'adminetic-seeders');
         $this->publishes([
-            __DIR__ . '/../../payload/assets' => public_path('adminetic/assets'),
+            __DIR__.'/../../payload/assets' => public_path('adminetic/assets'),
         ], 'adminetic-assets-files');
         // Publish Static Files
         $this->publishes([
-            __DIR__ . '/../../payload/static' => public_path('adminetic/static'),
+            __DIR__.'/../../payload/static' => public_path('adminetic/static'),
         ], 'adminetic-static-files');
     }
 
@@ -165,8 +165,8 @@ class AdmineticServiceProvider extends ServiceProvider
      */
     protected function registerResource()
     {
-        $this->loadMigrationsFrom(__DIR__ . '/../../database/migrations'); // Loading Migration Files
-        $this->loadViewsFrom(__DIR__ . '/../../resources/views', 'adminetic'); // Loading Views Files
+        $this->loadMigrationsFrom(__DIR__.'/../../database/migrations'); // Loading Migration Files
+        $this->loadViewsFrom(__DIR__.'/../../resources/views', 'adminetic'); // Loading Views Files
         $this->registerRoutes();
     }
 
@@ -178,7 +178,7 @@ class AdmineticServiceProvider extends ServiceProvider
     protected function registerRoutes()
     {
         Route::group($this->routeConfiguration(), function () {
-            $this->loadRoutesFrom(__DIR__ . '/../../routes/web.php');
+            $this->loadRoutesFrom(__DIR__.'/../../routes/web.php');
         });
     }
 

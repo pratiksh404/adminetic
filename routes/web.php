@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Pratiksh\Adminetic\Http\Controllers\Admin\ActivityController;
 use Pratiksh\Adminetic\Http\Controllers\Admin\DashboardController;
 use Pratiksh\Adminetic\Http\Controllers\Admin\EditorUploadController;
 use Pratiksh\Adminetic\Http\Controllers\Admin\FontAwesomeController;

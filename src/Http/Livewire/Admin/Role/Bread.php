@@ -4,7 +4,6 @@ namespace Pratiksh\Adminetic\Http\Livewire\Admin\Role;
 
 use Livewire\Component;
 use Pratiksh\Adminetic\Models\Admin\Permission;
-use Pratiksh\Adminetic\Models\Admin\Role;
 
 class Bread extends Component
 {
@@ -28,41 +27,41 @@ class Bread extends Component
     public function updatedBrowse()
     {
         $this->permission->update([
-            'browse' => $this->browse
+            'browse' => $this->browse,
         ]);
-        $this->emit('bread_updated', $this->permission->model . " model browse flag updated");
+        $this->emit('bread_updated', $this->permission->model.' model browse flag updated');
     }
 
     public function updatedRead()
     {
         $this->permission->update([
-            'read' => $this->read
+            'read' => $this->read,
         ]);
-        $this->emit('bread_updated', $this->permission->model . " model read flag updated");
+        $this->emit('bread_updated', $this->permission->model.' model read flag updated');
     }
 
     public function updatedEdit()
     {
         $this->permission->update([
-            'edit' => $this->edit
+            'edit' => $this->edit,
         ]);
-        $this->emit('bread_updated', $this->permission->model . " model edit flag updated");
+        $this->emit('bread_updated', $this->permission->model.' model edit flag updated');
     }
 
     public function updatedAdd()
     {
         $this->permission->update([
-            'add' => $this->add
+            'add' => $this->add,
         ]);
-        $this->emit('bread_updated', $this->permission->model . " model add flag updated");
+        $this->emit('bread_updated', $this->permission->model.' model add flag updated');
     }
 
     public function updatedDelete()
     {
         $this->permission->update([
-            'delete' => $this->delete
+            'delete' => $this->delete,
         ]);
-        $this->emit('bread_updated', $this->permission->model . " model delete flag updated");
+        $this->emit('bread_updated', $this->permission->model.' model delete flag updated');
     }
 
     public function delete()
