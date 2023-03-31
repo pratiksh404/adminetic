@@ -17,6 +17,7 @@
     ],
     "require": {
         "php": "^7.4|^8.0",
+        "doctrine/dbal": "^3.6",
         "drh2so4/thumbnail": "^1.0",
         "laravel/socialite": "^5.2",
         "laravel/ui": "^3.2",
