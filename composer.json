@@ -20,6 +20,7 @@
         "doctrine/dbal": "^3.6",
         "drh2so4/thumbnail": "^1.0",
         "laravel/socialite": "^5.2",
+        "laravel/ui": "*",
         "livewire/livewire": "^2.4",
         "spatie/laravel-activitylog": "^3.0|^4.0"
     },
