@@ -25,6 +25,17 @@ For detailed documentaion visit [Adminetic Documentation](https://pratikdai404.g
 - Theme Customization
 - Plugin Extensions
 
+## Installation Via Adminetic CLI
+Make sure to install adminetic cli
+```
+composer global require adminetic/cli
+```
+
+Make sure that you have created database named same as ur `project_name`
+```
+adminetic new project_name
+```
+All your setup process will be automated.
 ## Installation
 
 You can install the package via composer:

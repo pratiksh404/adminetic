@@ -22,11 +22,13 @@ class UserTable extends Component
     public function updatedSearch()
     {
         $this->filter = 2;
+        $this->resetPage();
     }
 
     public function updatedRole()
     {
         $this->filter = 3;
+        $this->resetPage();
     }
 
     public function render()
@@ -48,9 +50,9 @@ class UserTable extends Component
             case 2:
                 $this->resetPage();
                 $search = $this->search ?? null;
-                $data = $default->where('name', 'like', '%'.$search.'%')
-                    ->orWhere('email', 'like', '%'.$search.'%');
-                $this->information = 'Showing search results for "'.$search.'"';
+                $data = $default->where('name', 'like', '%' . $search . '%')
+                    ->orWhere('email', 'like', '%' . $search . '%');
+                $this->information = 'Showing search results for "' . $search . '"';
                 break;
             case 3:
                 $this->resetPage();
