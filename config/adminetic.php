@@ -146,4 +146,26 @@ return [
 
     // Bouncer
     'default_bouncer_credential' => 'adminetic',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Role Theme
+    |--------------------------------------------------------------------------
+    |
+    | compact-sidebar
+    | default-body
+    | dark-sidebar
+    | compact-wrap
+    | compact-small
+    | box-layout
+    | enterprice-type
+    | modern-layout
+    | material-layout
+    | material-icon
+    | advance-type
+    | 
+    */
+    'role_theme' => [
+        'admin' => 'compact-sidebar',
+    ]
 ];
