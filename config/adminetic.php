@@ -163,9 +163,9 @@ return [
     | material-layout
     | material-icon
     | advance-type
-    | 
+    |
     */
     'role_theme' => [
         'admin' => 'compact-sidebar',
-    ]
+    ],
 ];
