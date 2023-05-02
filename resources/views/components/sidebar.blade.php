@@ -3,15 +3,15 @@
 @foreach ($menus as $menu)
 @isset($menu['type'])
 @if ($menu['type'] == 'breaker' || $menu['type'] == 'Breaker')
+@if (isset($menu['conditions']) ? getCondition($menu['conditions']) : true)
 <li class="sidebar-main-title">
-    @if (isset($menu['conditions']) ? getCondition($menu['conditions']) : true)
     <div>
         @isset($menu['name'])
         <h6>{{ $menu['name'] }}</h6>
         @endisset
     </div>
-    @endif
 </li>
+@endif
 @elseif($menu['type'] == 'link' || $menu['type'] == 'Link')
 @isset($menu['link'])
 @if (isset($menu['conditions']) ? getCondition($menu['conditions']) : true)
