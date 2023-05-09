@@ -2,7 +2,6 @@
     $(document).ready(function() {
         var theme = '{{ role_theme() }}';
         setTheme(theme ?? 'compact-sidebar');
-    }
 
     function setTheme(type) {
         var boxed = "";
