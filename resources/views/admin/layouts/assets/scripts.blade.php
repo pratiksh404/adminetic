@@ -22,16 +22,18 @@
 @yield('custom_js')
 <!-- Theme js-->
 <script src="{{ asset('adminetic/assets/js/script.js') }}"></script>
-@if(Route::is('dashboard') )
-@if (auth()->user()->hasRole('admin') || auth()->user()->hasRole('superadmin'))
-@include('adminetic::admin.layouts.assets.customizer')
-@endif
+@if (Route::is('dashboard'))
+    @if (auth()->user()->hasRole('admin') ||
+            auth()->user()->hasRole('superadmin'))
+        @include('adminetic::admin.layouts.assets.customizer')
+    @endif
 @endif
 @include('adminetic::admin.layouts.assets.rolewise_theme_selector')
 @include('adminetic::admin.layouts.assets.router')
 {{-- Livewire --}}
 @livewireScripts
 @stack('livewire_third_party')
+<script src="https://cdn.jsdelivr.net/gh/livewire/sortable@v0.x.x/dist/livewire-sortable.js"></script>
 {{-- CUSTOM --}}
 <script src="{{ asset('adminetic/assets/custom/custom.js') }}"></script>
 @include('adminetic::admin.layouts.assets.custom')

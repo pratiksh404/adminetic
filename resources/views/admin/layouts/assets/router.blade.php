@@ -65,6 +65,7 @@
                     },
                     error: function(xhr, ajaxOptions, thrownError) {
                         responseToast('Server Error', thrownError, 'danger');
+                        $('#admin-submit').prop('disabled', false);
                     }
                 });
                 $('.modal').modal('hide');
