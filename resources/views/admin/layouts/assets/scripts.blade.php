@@ -32,8 +32,8 @@
 @include('adminetic::admin.layouts.assets.router')
 {{-- Livewire --}}
 @livewireScripts
-@stack('livewire_third_party')
 <script src="https://cdn.jsdelivr.net/gh/livewire/sortable@v0.x.x/dist/livewire-sortable.js"></script>
+@stack('livewire_third_party')
 {{-- CUSTOM --}}
 <script src="{{ asset('adminetic/assets/custom/custom.js') }}"></script>
 @include('adminetic::admin.layouts.assets.custom')
