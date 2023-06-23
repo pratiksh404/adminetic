@@ -34,6 +34,14 @@
 @livewireScripts
 <script src="https://cdn.jsdelivr.net/gh/livewire/sortable@v0.x.x/dist/livewire-sortable.js"></script>
 @stack('livewire_third_party')
+{{-- Alpine --}}
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.12.1/dist/cdn.min.js"></script>
+<style>
+    [x-cloak] {
+        display: none !important;
+    }
+</style>
+
 {{-- CUSTOM --}}
 <script src="{{ asset('adminetic/assets/custom/custom.js') }}"></script>
 @include('adminetic::admin.layouts.assets.custom')

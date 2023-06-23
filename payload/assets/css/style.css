@@ -43369,3 +43369,73 @@ html[dir=rtl] body.dark-only .page-wrapper .page-body-wrapper .page-body .card:n
   width: 100% !important;
   padding: 0;
 }
+
+/* Loader */
+.loader-wrapper svg {
+  width: 0;
+  height: 0
+}
+
+.loader-wrapper body {
+  font-family: sans;
+  min-height: 100vh;
+  margin: 0;
+  display: grid;
+  place-content: center;
+  background: black
+}
+
+.loader-wrapper h1 {
+  color: #fff;
+  text-align: center;
+  margin-bottom: 2em;
+  letter-spacing: 3px;
+  position: relative;
+  z-index: 2
+}
+
+.loader-wrapper h1:before {
+  position: absolute;
+  content: "";
+  height: 1px;
+  background: -webkit-gradient(linear, left top, right top, from(var(--theme-secondary)), color-stop(var(--theme-deafult)), to(#a927f9));
+  background: linear-gradient(to right, var(--theme-secondary), var(--theme-deafult), #a927f9);
+  color: #fff;
+  top: 2.75em;
+  left: 0.75em;
+  width: 2.5em;
+  font-weight: 400;
+  font-variant: small-caps;
+  font-size: 0.5em
+}
+.loader-box {
+  height: 150px;
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  vertical-align: middle;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-transition: .3s color, .3s border, .3s transform, .3s opacity;
+  transition: .3s color, .3s border, .3s transform, .3s opacity
+}
+.loader-box [class*="loader-"] {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  color: inherit;
+  vertical-align: middle
+}
+.loader-box .loader-2 {
+  border: .2em solid transparent;
+  border-left-color: var(--theme-secondary);
+  border-right-color: var(--theme-secondary);
+  border-radius: 50%;
+  -webkit-animation: 1s loader-02 linear infinite;
+  animation: 1s loader-02 linear infinite
+}
