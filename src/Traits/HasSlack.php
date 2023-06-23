@@ -12,7 +12,7 @@ trait HasSlack
     }
 
     /**
-     * @param $url
+     * @param  $url
      * @return $this
      */
     public function setSlackUrl($url)
