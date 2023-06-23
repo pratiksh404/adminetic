@@ -177,5 +177,5 @@ return [
     'default_image_placeholder' => 'adminetic/static/placeholder.png',
     'vertical_image_placeholder' => 'adminetic/static/vertical_placeholder.jpg',
     'slider_placeholder' => 'adminetic/static/slider.jpg',
-    'profile_placeholder' => 'adminetic/static/profile.gif'
+    'profile_placeholder' => 'adminetic/static/profile.gif',
 ];
