@@ -43,6 +43,6 @@ class Data extends Model
 
     // Cast
     protected $casts = [
-        'content' => 'array'
+        'content' => 'array',
     ];
 }
