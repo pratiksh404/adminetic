@@ -40,4 +40,9 @@ class Data extends Model
     {
         return LogOptions::defaults();
     }
+
+    // Cast
+    protected $casts = [
+        'content' => 'array'
+    ];
 }
