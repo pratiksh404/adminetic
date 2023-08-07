@@ -10,7 +10,7 @@ return [
     'title' => env('APP_NAME', 'Adminetic'),
     'prefix' => 'Admine',
     'suffix' => 'tic',
-    'logo' => '',
+    'logo' => 'adminetic/static/logo.png',
     'favicon' => 'adminetic/static/favicon.png',
     'description' => 'Laravel Adminetic Admin Panel Upgrade.',
     'admin_home' => '/admin/dashboard',
