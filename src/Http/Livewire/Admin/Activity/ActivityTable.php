@@ -41,7 +41,7 @@ class ActivityTable extends Component
     {
         $this->model = $model;
         $activities = Activity::all();
-        $this->descriptions = !is_null($activities) ? array_unique($activities->pluck('description')->toArray()) : null;
+        $this->descriptions = ! is_null($activities) ? array_unique($activities->pluck('description')->toArray()) : null;
         $this->log_names = array_unique($activities->pluck('log_name')->toArray());
         $this->models = array_unique($activities->pluck('subject_type')->toArray());
         $this->users = User::find($activities->pluck('causer_id')->toArray());
@@ -55,9 +55,9 @@ class ActivityTable extends Component
 
     public function deleteWithLimit()
     {
-        if (!is_null($this->delete_limit)) {
+        if (! is_null($this->delete_limit)) {
             Activity::whereDate('created_at', '<', Carbon::now()->subDays($this->delete_limit))->delete();
-            $this->emit('activity_success', 'All activities Deleted except last ' . $this->delete_limit . 'days activities');
+            $this->emit('activity_success', 'All activities Deleted except last '.$this->delete_limit.'days activities');
         }
     }
 
@@ -99,23 +99,23 @@ class ActivityTable extends Component
         $this->resetPage();
         $data = Activity::query();
         // Filter By Log Name
-        if (!is_null($this->log_name)) {
+        if (! is_null($this->log_name)) {
             $data = $data->where('log_name', $this->log_name);
         }
         // Filter By Model
-        if (!is_null($this->model)) {
+        if (! is_null($this->model)) {
             $data = $data->where('subject_type', $this->model);
         }
         // Filter By User
-        if (!is_null($this->user_id)) {
+        if (! is_null($this->user_id)) {
             $data = $data->where('causer_id', $this->user_id);
         }
         // Filter By Date
-        if (!is_null($this->start_date) && !is_null($this->end_date)) {
+        if (! is_null($this->start_date) && ! is_null($this->end_date)) {
             $data = $data->whereDate('created_at', [$this->start_date, $this->end_date]);
         }
         // Filter Description
-        if (!is_null($this->description)) {
+        if (! is_null($this->description)) {
             $data = $data->where('description', $this->description);
         }
         $this->activity_count = with($data)->count();

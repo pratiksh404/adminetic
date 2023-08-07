@@ -9,7 +9,7 @@ class CreateRoleUserTable extends Migration
     /**
      * Create Table.
      *
-     *@return void
+     * @return void
      */
     public function up()
     {
@@ -24,7 +24,7 @@ class CreateRoleUserTable extends Migration
     /**
      * Drop Table.
      *
-     *@return void
+     * @return void
      */
     public function down()
     {

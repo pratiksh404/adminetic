@@ -4,7 +4,7 @@
  *Application Administration Base URL.
  *
  * @param  string  $route
- *@return string
+ * @return string
  */
 if (! function_exists('adminBaseUrl')) {
     function adminBaseUrl($route)
@@ -16,8 +16,8 @@ if (! function_exists('adminBaseUrl')) {
 /**
  * Redirected Route.
  *
- *@param string $route
- *@return string
+ * @param  string  $route
+ * @return string
  */
 if (! function_exists('adminRedirectRoute')) {
     function adminRedirectRoute($route)
@@ -29,8 +29,8 @@ if (! function_exists('adminRedirectRoute')) {
 /**
  * Create View Route.
  *
- *@param string $route
- *@return string
+ * @param  string  $route
+ * @return string
  */
 if (! function_exists('adminCreateRoute')) {
     function adminCreateRoute($route)
@@ -42,9 +42,9 @@ if (! function_exists('adminCreateRoute')) {
 /**
  * Shpuw View Route.
  *
- *@param string $route
- *@param int $id
- *@return return_type
+ * @param  string  $route
+ * @param  int  $id
+ * @return return_type
  */
 if (! function_exists('adminShowRoute')) {
     function adminShowRoute($route, $id)
@@ -56,9 +56,9 @@ if (! function_exists('adminShowRoute')) {
 /**
  * Edit View Route.
  *
- *@param string $route
- *@param int $id
- *@return string
+ * @param  string  $route
+ * @param  int  $id
+ * @return string
  */
 if (! function_exists('adminEditRoute')) {
     function adminEditRoute($route, $id)
@@ -70,8 +70,8 @@ if (! function_exists('adminEditRoute')) {
 /**
  *Store Route.
  *
- *@param string $route
- *@return string
+ * @param  string  $route
+ * @return string
  */
 if (! function_exists('adminStoreRoute')) {
     function adminStoreRoute($route)
@@ -83,9 +83,9 @@ if (! function_exists('adminStoreRoute')) {
 /**
  *Update Route.
  *
- *@param string $route
- *@param int $id
- *@return string
+ * @param  string  $route
+ * @param  int  $id
+ * @return string
  */
 if (! function_exists('adminUpdateRoute')) {
     function adminUpdateRoute($route, $id)
@@ -97,9 +97,9 @@ if (! function_exists('adminUpdateRoute')) {
 /**
  *Update Route.
  *
- *@param string $route
- *@param int $id
- *@return string
+ * @param  string  $route
+ * @param  int  $id
+ * @return string
  */
 if (! function_exists('adminDeleteRoute')) {
     function adminDeleteRoute($route, $id)

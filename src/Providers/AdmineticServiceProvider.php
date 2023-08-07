@@ -129,7 +129,7 @@ class AdmineticServiceProvider extends ServiceProvider
     /**
      * Publish Package Resource.
      *
-     *@return void
+     * @return void
      */
     protected function publishResource()
     {
@@ -161,7 +161,7 @@ class AdmineticServiceProvider extends ServiceProvider
     /**
      * Register Package Resource.
      *
-     *@return void
+     * @return void
      */
     protected function registerResource()
     {
@@ -198,7 +198,7 @@ class AdmineticServiceProvider extends ServiceProvider
     /**
      * Register Package Command.
      *
-     *@return void
+     * @return void
      */
     protected function registerCommands()
     {
@@ -260,7 +260,7 @@ class AdmineticServiceProvider extends ServiceProvider
     /**
      * Register Middlewares.
      *
-     *@return void
+     * @return void
      */
     protected function registerMiddleware()
     {
@@ -272,7 +272,7 @@ class AdmineticServiceProvider extends ServiceProvider
     /**
      * Register View Components.
      *
-     *@return void
+     * @return void
      */
     protected function registerComponents()
     {
@@ -291,7 +291,7 @@ class AdmineticServiceProvider extends ServiceProvider
     /**
      * Register Policies.
      *
-     *@return void
+     * @return void
      */
     protected function registerPolicies()
     {
