@@ -124,4 +124,14 @@ class ActivityTable extends Component
         return
             $data->latest()->paginate(10);
     }
+
+    public function resetActivities()
+    {
+        $this->log_name = null;
+        $this->model = null;
+        $this->user_id = null;
+        $this->start_date = null;
+        $this->end_date = null;
+        $this->description = null;
+    }
 }

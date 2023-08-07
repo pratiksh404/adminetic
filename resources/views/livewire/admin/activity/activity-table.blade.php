@@ -61,6 +61,8 @@
                     <h6>{{ $activity_count }}</h6>
                 </div>
             </div>
+            <hr>
+            <button class="btn btn-danger btn-air-danger" type="button" style="width: 100%">Reset</button>
             <div class="card">
                 <div class="card-body shadow-lg p-2">
                     <div class="row">
