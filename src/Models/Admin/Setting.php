@@ -30,7 +30,10 @@ class Setting extends Model
     // Cache Keys
     private static function cacheKey()
     {
-        Cache::has('settings') ? Cache::forget('settings') : '';
+        Cache::has('settings') ? Cache::forget('settings') :
+            Cache::rememberForever('settings', function () {
+                return Setting::all();
+            });
     }
 
     // Logs
