@@ -17,7 +17,7 @@ class MakeSuperAdmin extends CommandHelper
     {
         $user = User::firstOrCreate([
             'email' => trim($email),
-        ],[
+        ], [
             'name' => trim($name),
             'password' => bcrypt($password),
         ]);
