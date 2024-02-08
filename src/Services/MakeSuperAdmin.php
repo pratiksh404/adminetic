@@ -2,8 +2,8 @@
 
 namespace Pratiksh\Adminetic\Services;
 
-use App\Models\Admin\Role;
 use App\Models\User;
+use Pratiksh\Adminetic\Models\Admin\Role;
 use Pratiksh\Adminetic\Services\Helper\CommandHelper;
 
 class MakeSuperAdmin extends CommandHelper
@@ -15,9 +15,10 @@ class MakeSuperAdmin extends CommandHelper
 
     public static function make($name, $email, $password)
     {
-        $user = User::create([
-            'name' => trim($name),
+        $user = User::firstOrCreate([
             'email' => trim($email),
+        ],[
+            'name' => trim($name),
             'password' => bcrypt($password),
         ]);
 
