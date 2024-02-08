@@ -15,7 +15,7 @@ trait HasRole
     // Check is user has given role
     public function hasRole($role)
     {
-        return $this->roles->where('name', trim($role))->count() == 1 || $this->roles->where('name', 'superuser')->count() == 1;
+        return $this->roles->where('name', trim($role))->count() == 1 || $this->roles->where('name', 'superuser')->count() == 1 || $this->roles->where('name', 'superadmin')->count() == 1;
     }
 
     // Check if user is superadmin
